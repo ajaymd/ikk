@@ -47,7 +47,7 @@ void queens(int n) {
     free(array);
 }
 
-int main(int arcg, char **argv) {
+int main(int argc, char **argv) {
     queens(atoi(argv[1]));
     return 0;
 } 
