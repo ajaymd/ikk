@@ -8,7 +8,7 @@
 
 #define MIN(a,b) ((a) < (b) ? (a) : (b))
 #define MAX(a,b) ((a) > (b) ? (a) : (b))
-#define getMax(i, j) max[i * length + j]
+#define getMax(i, j) max[(i) * length + (j)]
 
 int maxWin(int *coins, int length) {
     int *max = malloc(sizeof(int) * length * length);
@@ -16,8 +16,11 @@ int maxWin(int *coins, int length) {
     // on the table
 
     // At the end of the game he takes the last coin
-    for(int i = 0; i < length; ++i)
+    for(int i = 0; i < length; ++i) {
+        printf("%d ", coins[i]);
         getMax(i,i) = -1 * coins[i];
+    }
+    printf("\n");
     
     for(int i = 1; i < length; ++i) {
         // Go over the diagonal that starts with (0, i).
@@ -32,7 +35,7 @@ int maxWin(int *coins, int length) {
                           coins[end] + getMax(start, end - 1));
             } else { // His turn
                 getMax(start, end)
-                    // MIN because he wants mw to lose
+                    // MIN because he wants me to lose
                     // He takes the first coin on the table
                     = MIN(-1 * coins[start] + getMax(start + 1, end),
                     // he takes the last coin on the table
@@ -40,6 +43,41 @@ int maxWin(int *coins, int length) {
             }
         }
     }
+
+    /*
+    for(int i = 0; i < length; ++i) {
+        printf("\n");
+        for(int j = 0; j < length; ++j) {
+            if (j < i)
+                printf("      ");
+            else
+                printf("%*d ", 5, getMax(i, j));
+        }
+    }
+    printf("\n");
+    */
+
+    int i = 0;
+    int j = length - 1;
+    while(i != j) {
+        if ((j - i) % 2) { // My move
+            if (coins[i] + getMax(i + 1, j) > coins[j] + getMax(i, j - 1)) {
+                printf("%d ", coins[i]);
+                ++i;
+            } else {
+                printf("%d ", coins[j]);
+                --j;
+            }
+        } else {
+            if (getMax(i + 1, j) - coins[i]  > getMax(i, j - 1) - coins[j]) {
+                --j;
+            } else {
+                ++i;
+            }
+            
+        }
+    }
+    printf("-> %d\n", getMax(0, length - 1));
 
     int result = getMax(0, length - 1);
     free(max);
