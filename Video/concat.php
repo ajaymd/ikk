@@ -1,0 +1,66 @@
+<?php
+
+/*
+read classname as input
+input prefix hardcode
+output prefix hardcode
+sources = array of all 4 sources by hard coded names
+
+for each source
+	construct input path: prefix + name
+	consruct output path: perfix + classname + classname.source.MP4
+	call concat with -y
+	check return value
+	if error, dump and abort
+
+*/
+
+$SCRIPT_DIR = "/Users/sohammehta/videos";
+echo "Enter Class name (e.g. IK3Dec28Blah): ";
+$classname = trim(fgets(STDIN));
+
+$input_folder_prefix = "/Volumes"; //prefix to /volumes/chrysler etc
+$input_folder_suffix = "/VIDEO/100VIDEO"; //prefix to /volumes/chrysler etc
+
+$output_prefix = "/Volumes/EXTERNAL/" . $classname; // e.g. /Volumes/EXTERNAL/IK3Dec28Blah
+$sources = array("CHRYSLER", "ROCKEFEL", "TRANSAM", "EMPIREST");
+
+foreach ($sources as $source)
+{
+	echo "\nStarting $source\n^^^^^^^^^^^^^^^^^\n";
+
+	$input_path = $input_folder_prefix . '/' . $source . $input_folder_suffix;
+	echo "\nInput path: $input_path";
+
+	$output_path = $output_prefix . '/' . $classname . $source . '.MP4';
+	echo "\nOutput path: $output_path";
+
+	unset($output);
+	$return_var = 2;
+	$output_file = $classname . '_' . $source . '_' . time();
+ 	$command = "( cd \"$SCRIPT_DIR\" && ./concatenate-mp4s.sh \"$input_path\" \"$output_path\" \"$source\" ) 1>\"$output_file\" 2>&1 &";
+	echo "\nExecuting: $command \n";
+
+	//$result = exec($command, $output, $return_var);
+	$result = exec($command);
+
+/*
+	//$result isn't guaranteed to return FALSE like passthru does. Also, $output is useless because the output is piped to a file. And return_var is useless too, because it only checks if the command could be successfully spawned. Downsides of backgrounding the command: No way to check if it started properly. This is useful only in synchronous execution.
+
+	if ($result == FALSE || $return_var != 0)
+	{
+		echo "\n\nERROR!\n=====\n";
+		echo "\nReturn: ".$return_var."\n";
+		echo file_get_contents($SCRIPT_DIR . '/' . $output_file);
+		
+		exit(1);
+	}
+*/
+
+	echo "\nStarted with $source\n================\n";
+}
+
+echo "\nSuccessfully started all concatenation processes. You can monitor with \"watch -n 10 'clear; ls -lh /Volumes/EXTERNAL/IK3Dec29Graphs'\"";
+
+exit(0);
+?>
