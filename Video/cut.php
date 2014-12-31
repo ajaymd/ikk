@@ -12,22 +12,22 @@ $sources = array(
 		"Vignesh" => array("02:29:30", "03:35:33"),
 		),
 "ROCKEFEL" => array(
-		"Diana" => array("00:00:50", "01:06:20"),
-		"Vignesh" => array("01:06:45", "02:05:25"),
+		"Sudhindra" => array("00:10:57", "01:07:10"),
+		"Lucian" => array("01:07:15", "01:46:36"),
 		),
 "TRANSAM" => array(
-		"Meena" => array("00:10:00", "01:17:00"),
-		"Swarna" => array("01:26:50", "02:31:20"),
+		"Diana" => array("00:07:08", "01:12:10"),
+		"Shikha" => array("01:14:20", "02:14:12"),
 		),
 "EMPIREST" => array(
-		"Sudhindra" => array("01:01:40", "02:10:30"),
-		"Vinutha" => array("02:10:50", "03:19:15"),
+		"Vinutha" => array("00:11:00", "01:17:45"),
+		"Swarna" => array("01:18:00", "02:18:45"),
 		),
 );
 
-$SCRIPT_DIR = "/Users/sohammehta/InterviewKickstart/Videos";
+$SCRIPT_DIR = "/Users/sohammehta/InterviewKickstart/Video";
 $input_prefix = "/Volumes/EXTERNAL/";
-$output_prefix = "/Users/sohammehta/Desktop/Videos/" . $batchdate; //"/Volumes/EXTERNAL/Students/";
+$output_prefix = "/Users/sohammehta/Desktop/Videos/" . $batchdate;
 
 foreach ($sources as $source => $parts)
 {
@@ -65,7 +65,7 @@ foreach ($sources as $source => $parts)
 	}
 }
 
-echo "\nSuccessfully started all cutting processes\n";
+echo "\nSuccessfully started all cutting processes. You can monitor with \"watch -n 3 'clear; find $output_prefix -ls'\"\n";
 
 exit(0);
 ?>

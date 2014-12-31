@@ -1,6 +1,6 @@
 <?php
 
-$SCRIPT_DIR = "/Users/sohammehta/InterviewKickstart/Videos";
+$SCRIPT_DIR = "/Users/sohammehta/InterviewKickstart/Video";
 echo "Enter Class name (e.g. IK3Dec28Blah): ";
 $classname = trim(fgets(STDIN));
 
