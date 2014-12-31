@@ -11,7 +11,7 @@ then
 fi
 
 ts=$(date +%s)
-FILE_LIST_NAME=./file_list_$3_$ts.txt
+FILE_LIST_NAME=/tmp/file_list_$3_$ts.txt
 printf "file '%s'\n" "$1"/*.MP4 > $FILE_LIST_NAME
 
 rm -f "$2"

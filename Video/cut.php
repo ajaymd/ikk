@@ -25,7 +25,7 @@ $sources = array(
 		),
 );
 
-$SCRIPT_DIR = "/Users/sohammehta/videos";
+$SCRIPT_DIR = "/Users/sohammehta/InterviewKickstart/Videos";
 $input_prefix = "/Volumes/EXTERNAL/";
 $output_prefix = "/Users/sohammehta/Desktop/Videos/" . $batchdate; //"/Volumes/EXTERNAL/Students/";
 
@@ -57,7 +57,7 @@ foreach ($sources as $source => $parts)
 		$duration = (new DateTime($start_time))->diff(new DateTime($end_time));
 		$duration_string = $duration->format('%H:%I:%S');
 
-		$capture_output = $classname . $source . '_' . $studentname . '_' . time();
+		$capture_output = '/tmp/' . $classname . $source . '_' . $studentname . '_' . time();
 		$command = "( cd \"$SCRIPT_DIR\" && ./cut-mp4.sh \"$input_file\" \"$output_file\" $start_time $duration_string ) 1>\"$capture_output\" 2>&1 &";
 		echo "\n\tExecuting: $command \n";
 

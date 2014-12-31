@@ -1,21 +1,6 @@
 <?php
 
-/*
-read classname as input
-input prefix hardcode
-output prefix hardcode
-sources = array of all 4 sources by hard coded names
-
-for each source
-	construct input path: prefix + name
-	consruct output path: perfix + classname + classname.source.MP4
-	call concat with -y
-	check return value
-	if error, dump and abort
-
-*/
-
-$SCRIPT_DIR = "/Users/sohammehta/videos";
+$SCRIPT_DIR = "/Users/sohammehta/InterviewKickstart/Videos";
 echo "Enter Class name (e.g. IK3Dec28Blah): ";
 $classname = trim(fgets(STDIN));
 
@@ -37,7 +22,7 @@ foreach ($sources as $source)
 
 	unset($output);
 	$return_var = 2;
-	$output_file = $classname . '_' . $source . '_' . time();
+	$output_file = '/tmp/' . $classname . '_' . $source . '_' . time();
  	$command = "( cd \"$SCRIPT_DIR\" && ./concatenate-mp4s.sh \"$input_path\" \"$output_path\" \"$source\" ) 1>\"$output_file\" 2>&1 &";
 	echo "\nExecuting: $command \n";
 
