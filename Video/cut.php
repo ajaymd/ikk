@@ -2,26 +2,27 @@
 
 date_default_timezone_set('America/Los_Angeles');
 
-$batchdate = "IK3Dec29"; //Look at the drive and name it exactly that
-$classname = $batchdate . "Graphs";//Look at the drive and name it exactly that
-$mocksname = $batchdate . "DPMocks";//Make sure you append Mocks at the end, for clarity
+$batchdate = "IK3Dec22"; //Look at the drive and name it exactly that
+$classname = $batchdate . "Arrays";//Look at the drive and name it exactly that
+$mocksname = $batchdate . "TreesMocks";//Make sure you append 'Mocks' at the end, for clarity
 
 $sources = array(
 "CHRYSLER" => array(
-		"Class" => array("00:22:30", "02:02:15"),
-		"Vignesh" => array("02:29:30", "03:35:33"),
+		"Class" => array("00:02:40", "02:02:06"),
+		"Vignesh" => array("02:26:50", "03:33:25"),
+		"Diana" => array("03:35:40", "04:41:35"),
 		),
 "ROCKEFEL" => array(
-		"Sudhindra" => array("00:10:57", "01:07:10"),
-		"Lucian" => array("01:07:15", "01:46:36"),
+		"Swarna" => array("00:00:00", "01:01:55"),
+		"Lucian" => array("01:06:40", "02:21:30"),
 		),
 "TRANSAM" => array(
-		"Diana" => array("00:07:08", "01:12:10"),
-		"Shikha" => array("01:14:20", "02:14:12"),
+		"Meena" => array("00:00:00", "00:52:15"),
+		"Vinutha" => array("01:01:40", "01:57:40"),
 		),
 "EMPIREST" => array(
-		"Vinutha" => array("00:11:00", "01:17:45"),
-		"Swarna" => array("01:18:00", "02:18:45"),
+		"Sudhindra" => array("00:18:26", "01:20:03"),
+		"Shikha" => array("00:00:00", "00:00:01"),
 		),
 );
 
