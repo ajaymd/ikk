@@ -24,7 +24,7 @@ foreach ($sources as $source)
 	unset($output);
 	$return_var = 2;
 	$output_file = '/tmp/' . $classname . '_' . $source . '_' . time();
- 	$command = "( cd \"$SCRIPT_DIR\" && ./concatenate-mp4s.sh \"$input_path\" \"$output_path\" \"$source\" ) 1>\"$output_file\" 2>&1 &";
+ 	$command = "( cd \"$SCRIPT_DIR\" && ./concatenate-mp4s.sh \"$input_path\" \"$output_path\" ) 1>\"$output_file\" 2>&1 &";
 	echo "\nExecuting: $command \n";
 
 	//$result = exec($command, $output, $return_var);
