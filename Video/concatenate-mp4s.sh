@@ -12,10 +12,10 @@ FFMPEG=/usr/local/sbin/ffmpeg
 COUNTER=0
 str="concat:"
 cmd=""
-ts=$(date +%s)
 
 for f in $(ls "$1"/*.MP4); do
 
+	ts=$(date +%s)
         FIFO=/tmp/fifo${COUNTER}_${ts} #ts uniquifies the fifos just in case multiple of these are running
 
         rm -f $FIFO
@@ -23,6 +23,7 @@ for f in $(ls "$1"/*.MP4); do
 
         # Writing to FIFO happens in the background
         $FFMPEG -i $f -c copy -bsf h264_mp4toannexb -f mpegts -y $FIFO 2>/dev/null &
+	sleep 1
 
         # This is required in the reader command that follows
         str="${str}${FIFO}|"

@@ -9,7 +9,8 @@ $input_folder_suffix = "/VIDEO/100VIDEO"; //prefix to /volumes/chrysler etc
 
 $output_prefix = "/Volumes/EXTERNAL/" . $classname; // e.g. /Volumes/EXTERNAL/IK3Dec28Blah
 //$sources = array("CHRYSLER", "ROCKEFEL", "TRANSAM", "EMPIREST");
-$sources = array("CHRYSLER");//For days when there is just the class.
+$sources = array("SAMSUNG", "SAMSUNG1", "SAMSUNG2", "SAMSUNG3");
+//$sources = array("CHRYSLER");//For days when there is just the class.
 
 foreach ($sources as $source)
 {
@@ -44,9 +45,10 @@ foreach ($sources as $source)
 */
 
 	echo "\nStarted with $source\n================\n";
+	sleep(1);
 }
 
-echo "\nSuccessfully started all concatenation processes. You can monitor with \"watch -n 10 'clear; ls -lh $output_path'\"\n\n";
+echo "\nSuccessfully started all concatenation processes. You can monitor with \"watch -n 3 'clear; ls -lh $output_prefix'\"\n\n";
 
 exit(0);
 ?>
