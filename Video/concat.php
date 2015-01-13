@@ -9,8 +9,8 @@ $input_folder_suffix = "/VIDEO/100VIDEO"; //prefix to /volumes/chrysler etc
 
 $output_prefix = "/Volumes/EXTERNAL/" . $classname; // e.g. /Volumes/EXTERNAL/IK3Dec28Blah
 //$sources = array("CHRYSLER", "ROCKEFEL", "TRANSAM", "EMPIREST");
-$sources = array("SAMSUNG", "SAMSUNG1", "SAMSUNG2", "SAMSUNG3");
-//$sources = array("CHRYSLER");//For days when there is just the class.
+//$sources = array("SAMSUNG", "SAMSUNG1", "SAMSUNG2", "SAMSUNG3");
+$sources = array("SAMSUNG");//For days when there is just the class.
 
 foreach ($sources as $source)
 {
