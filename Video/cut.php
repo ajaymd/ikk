@@ -2,10 +2,17 @@
 
 date_default_timezone_set('America/Los_Angeles');
 
-$batchdate = "IK4Jan12"; //Look at the drive and name it exactly that
-$classname = $batchdate . "Recursion";//Look at the drive and name it exactly that
-$mocksname = $batchdate . "SortingMocks";//Make sure you append 'Mocks' at the end, for clarity
+$batchdate = "IK4Jan14"; //Look at the drive and name it exactly that
+$classname = $batchdate . "SysD";//Look at the drive and name it exactly that
+$mocksname = $batchdate . "NoMocks";//Make sure you append 'Mocks' at the end, for clarity
 
+$sources = array(
+"SAMSUNG1" => array(
+		"Class1" => array("00:00:00", "00:36:08"),
+		"Class2" => array("00:41:34", "02:28:28"),
+		));
+
+/*
 $sources = array(
 "SAMSUNG" => array(
 		"Class" => array("00:04:15", "02:10:33"),
@@ -24,6 +31,7 @@ $sources = array(
 		"Rohit" => array("00:58:25", "01:44:20"),
 		),
 );
+*/
 
 $SCRIPT_DIR = "/Users/sohammehta/InterviewKickstart/Video";
 $input_prefix = "/Volumes/EXTERNAL/";
@@ -40,7 +48,7 @@ foreach ($sources as $source => $parts)
 	
 	foreach ($parts as $studentname => $slots)
 	{
-		if ($studentname == 'Class') 
+		if (stripos($studentname, 'Class') === 0)
 		{
 			$output_file = $output_prefix . '/' . $classname . $studentname . '.MP4';// IK3Dec22DPClass.MP4
 		}
