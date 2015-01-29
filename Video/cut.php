@@ -2,9 +2,9 @@
 
 date_default_timezone_set('America/Los_Angeles');
 
-$batchdate = "IK4Jan19"; //Look at the drive and name it exactly that
-$classname = $batchdate . "Trees";//Look at the drive and name it exactly that
-$mocksname = $batchdate . "RecursionMocks";//Make sure you append 'Mocks' at the end, for clarity
+$batchdate = "IK4Jan26"; //Look at the drive and name it exactly that
+$classname = $batchdate . "Arrays";//Look at the drive and name it exactly that
+$mocksname = $batchdate . "TreeMocks";//Make sure you append 'Mocks' at the end, for clarity
 
 /* For just class
 $sources = array(
@@ -17,27 +17,29 @@ $sources = array(
 
 $sources = array(
 "SAMSUNG" => array(
-		"Class" => array("00:00:17", "02:27:10"),
-		"Kamakshi" => array("02:52:00", "03:20:08"),
+		"Class" => array("00:27:10", "02:43:20"),
+		"Rohit" => array("02:54:14", "03:58:54"),
+		"Michelle" => array("04:01:00", "05:10:03"),
 		),
 "SAMSUNG1" => array(
-		"Rohit" => array("00:00:01", "00:55:08"),
-		"Michelle" => array("00:56:40", "02:10:48"),
+		"Ganesh" => array("00:04:05", "01:04:40"),
+		"Kamakshi" => array("01:07:20", "02:18:45"),
 		),
 "SAMSUNG2" => array(
-		"Ganesh" => array("00:00:01", "00:35:43"),
-		"Zulma" => array("00:56:12", "01:59:48"),
+		"Maria" => array("00:01:15", "01:03:25"),
+		"Mayank" => array("01:03:40", "01:58:25"),
 		),
 "SAMSUNG3" => array(
-		"Maria" => array("00:00:01", "01:00:49"),
-		"Abbas" => array("01:01:20", "02:05:48"),
+		"Zulma" => array("00:06:30", "01:09:49"),
+		"Abbas" => array("01:10:00", "02:21:52"),
 		),
 );
 
 
 $SCRIPT_DIR = "/Users/sohammehta/InterviewKickstart/Video";
 $input_prefix = "/Volumes/EXTERNAL/";
-$output_prefix = "/Users/sohammehta/Desktop/Videos/" . $batchdate;
+//$output_prefix = "/Users/sohammehta/Desktop/Videos/" . $batchdate;
+$output_prefix = "/Volumes/EXTERNAL/Cuts/" . $batchdate;
 
 foreach ($sources as $source => $parts)
 {
