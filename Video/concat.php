@@ -1,7 +1,7 @@
 <?php
 
 $SCRIPT_DIR = "/Users/sohammehta/InterviewKickstart/Video";
-$classname = "IK4Feb04MT"; //(e.g. IK3Dec28Blah)
+$classname = "IK5Feb08MT"; //(e.g. IK3Dec28Blah)
 
 $input_folder_prefix = "/Volumes"; //prefix to /volumes/chrysler etc
 $input_folder_suffix = "/VIDEO/100VIDEO"; //prefix to /volumes/chrysler etc
