@@ -2,19 +2,19 @@
 
 date_default_timezone_set('America/Los_Angeles');
 
-$batchdate = "IK5Feb18"; //Look at the drive and name it exactly that
-$classname = $batchdate . "Trees"; //Look at the drive and name it exactly that
-$mocksname = $batchdate . "RecursionMocks"; //Make sure you append 'Mocks' at the end, for clarity
+$batchdate = "IK5Feb22"; //Look at the drive and name it exactly that
+$classname = $batchdate . "GraphsEtAl"; //Look at the drive and name it exactly that
+$mocksname = $batchdate . "NoMocks"; //Make sure you append 'Mocks' at the end, for clarity
 
 /* For just class
-$sources = array(
-"SAMSUNG1" => array(
-		"Class1" => array("00:00:00", "00:36:08"),
-		"Class2" => array("00:41:34", "02:28:28"),
-		));
 */
+$sources = array(
+"SAMSUNG" => array(
+		"Class" => array("00:00:00", "02:50:30"),
+		));
 
 
+/*
 $sources = array(
 
 "SAMSUNG" => array(
@@ -31,12 +31,16 @@ $sources = array(
 		"Mohit" => array("01:07:30", "02:16:08"),
 		),
 );
+*/
 
 
 $SCRIPT_DIR = "/Users/sohammehta/InterviewKickstart/Video";
-$input_prefix = "/Volumes/EXTERNAL/";
-//$output_prefix = "/Users/sohammehta/Desktop/Videos/" . $batchdate;
-$output_prefix = "/Volumes/EXTERNAL/Cuts/" . $batchdate;
+
+//$input_prefix = "/Volumes/EXTERNAL/";
+$input_prefix = "/Users/sohammehta/Desktop/Upload/";
+
+//$output_prefix = "/Volumes/EXTERNAL/Cuts/" . $batchdate;
+$output_prefix = "/Users/sohammehta/Desktop/Upload/Cuts/" . $batchdate;
 
 foreach ($sources as $source => $parts)
 {
