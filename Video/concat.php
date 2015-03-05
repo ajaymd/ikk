@@ -1,6 +1,6 @@
 <?php
 
-$classname = "IK5Mar3DP"; //(e.g. IK3Dec28Blah)
+$classname = "IKMarchMar3OM"; //(e.g. IK3Dec28Blah)
 
 $SCRIPT_DIR = "/Users/sohammehta/InterviewKickstart/Video";
 $input_folder_prefix = "/Volumes"; //prefix to /volumes/chrysler etc
@@ -11,9 +11,9 @@ $output_prefix = "/Users/sohammehta/Desktop/Upload/" . $classname; // e.g. /Volu
 
 //$sources = array("SAMSUNG", "SAMSUNG1", "SAMSUNG2", "SAMSUNG3"); //For days when the class is full. Be sure to name them like this. By default, samsung inserts a space between its name and the number, you will have to manually remove it. Otherwise Bash breaks :-P
 
-$sources = array("SAMSUNG1", "SAMSUNG2", "SAMSUNG");
+//$sources = array("SAMSUNG1", "SAMSUNG2", "SAMSUNG");
 
-//$sources = array("SAMSUNG");//For days when there is just the class.
+$sources = array("SAMSUNG");//For days when there is just the class.
 
 foreach ($sources as $source)
 {

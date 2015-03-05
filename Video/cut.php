@@ -1,10 +1,17 @@
 <?php
 
 date_default_timezone_set('America/Los_Angeles');
+$SCRIPT_DIR = "/Users/sohammehta/InterviewKickstart/Video";
 
-$batchdate = "IK5Feb24"; //Look at the drive and name it exactly that
-$classname = $batchdate . "Arrays"; //Look at the drive and name it exactly that
-$mocksname = $batchdate . "TreeMocks"; //Make sure you append 'Mocks' at the end, for clarity
+$batchdate = "IK5Mar3"; //Look at the drive and name it exactly that
+$classname = $batchdate . "DP"; //Look at the drive and name it exactly that
+$mocksname = $batchdate . "ArrayMocks"; //Make sure you append 'Mocks' at the end, for clarity
+
+//$input_prefix = "/Volumes/EXTERNAL/";
+$input_prefix = "/Users/sohammehta/Desktop/Upload/";
+
+$output_prefix = "/Volumes/EXTERNAL/Cuts/" . $batchdate;
+//$output_prefix = "/Users/sohammehta/Desktop/Upload/Cuts/" . $batchdate;
 
 /* For just class
 $sources = array(
@@ -17,31 +24,17 @@ $sources = array(
 $sources = array(
 
 "SAMSUNG" => array(
-		"Class" => array("00:06:49", "01:57:40"),
-		"Ernest" => array("02:49:07", "03:52:00"),
-		"Kevin" => array("03:56:14", "04:59:18"),
+		"Ernest" => array("00:00:00", "01:08:40"),
 		),
 "SAMSUNG1" => array(
-		"Nishant" => array("00:00:00", "00:55:43"),
-		"Sreekanth" => array("00:55:55", "01:44:15"),
+		"Amit" => array("00:00:00", "01:12:35"),
 		),
 "SAMSUNG2" => array(
-		"Radhesh" => array("00:00:00", "00:40:40"),
-		),
-"SAMSUNG3" => array(
-		"Amit" => array("00:01:10", "00:51:40"),
-		"Pulkit" => array("01:02:54", "01:54:44"),
+		"Class" => array("00:36:30", "02:30:40"),
+		"Radhesh" => array("02:53:58", "04:14:22"),
+		"Kevin" => array("04:18:15", "05:33:03"),
 		),
 );
-
-
-$SCRIPT_DIR = "/Users/sohammehta/InterviewKickstart/Video";
-
-$input_prefix = "/Volumes/EXTERNAL/";
-//$input_prefix = "/Users/sohammehta/Desktop/Upload/";
-
-//$output_prefix = "/Volumes/EXTERNAL/Cuts/" . $batchdate;
-$output_prefix = "/Users/sohammehta/Desktop/Upload/Cuts/" . $batchdate;
 
 foreach ($sources as $source => $parts)
 {
