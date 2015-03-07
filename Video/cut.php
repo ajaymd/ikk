@@ -3,8 +3,8 @@
 date_default_timezone_set('America/Los_Angeles');
 $SCRIPT_DIR = "/Users/sohammehta/InterviewKickstart/Video";
 
-$batchdate = "IK5Mar3"; //Look at the drive and name it exactly that
-$classname = $batchdate . "DP"; //Look at the drive and name it exactly that
+$batchdate = "IKMarchMar3"; //Look at the drive and name it exactly that
+$classname = $batchdate . "OM"; //Look at the drive and name it exactly that
 $mocksname = $batchdate . "ArrayMocks"; //Make sure you append 'Mocks' at the end, for clarity
 
 //$input_prefix = "/Volumes/EXTERNAL/";
@@ -13,13 +13,14 @@ $input_prefix = "/Users/sohammehta/Desktop/Upload/";
 $output_prefix = "/Volumes/EXTERNAL/Cuts/" . $batchdate;
 //$output_prefix = "/Users/sohammehta/Desktop/Upload/Cuts/" . $batchdate;
 
-/* For just class
+/* For just class*/
 $sources = array(
 "SAMSUNG" => array(
-		"Class" => array("00:00:00", "02:50:30"),
+		"Class1" => array("00:12:18", "01:12:48"),
+		"Class2" => array("01:27:25", "04:21:44"),
 		));
 
-*/
+/*
 
 $sources = array(
 
@@ -35,6 +36,7 @@ $sources = array(
 		"Kevin" => array("04:18:15", "05:33:03"),
 		),
 );
+*/
 
 foreach ($sources as $source => $parts)
 {
