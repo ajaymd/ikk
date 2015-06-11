@@ -1,10 +1,9 @@
 public class Lis {
     public static void main(String[] args) {
-        // longestCommonSubSequence(new int[]{1, 3, 6, 4, 7, 2, 8, 9, 12});
-        //longestCommonSubSequence(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9});
-        //longestCommonSubSequence(new int[]{1});
-        longestCommonSubSequence(new int[]{1000, 2, 4, 6, 8, 10, 1, 2, 3, 4, 5, 6});
-
+        int[] s = new int[args.length];
+        for (int i = 0; i < args.length; ++i)
+            s[i] = Integer.parseInt(args[i]);
+        longestCommonSubSequence(s);
     }
 
     public static void longestCommonSubSequence(int[] s) {
