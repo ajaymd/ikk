@@ -12,10 +12,12 @@ public class EditDistance {
             array[i][rLength] = lLength - i;
         for (int j = rLength - 1; j >= 0; --j)
             array[lLength][j] = rLength - j;
-        for (int i = lLength - 1; i >= 0; --i)
-            for (int j = rLength - 1; j >= 0; --j)
-                array[i][j] =
-                        Math.min(array[i][j + 1] + 1, array[i + 1][j + 1] + (left.charAt(i) == right.charAt(j) ? 0 : 1));
+        for (int i = lLength - 1; i >= 0; --i) {
+            for (int j = rLength - 1; j >= 0; --j) {
+                int min = Math.min(array[i][j + 1] + 1, array[i + 1][j + 1] + (left.charAt(i) == right.charAt(j) ? 0 : 1));
+                array[i][j] = Math.min(min, array[i + 1][j] + 1);
+            }
+        }    
 
         int i = 0;
         int j = 0;
@@ -27,17 +29,28 @@ public class EditDistance {
                 i++;
                 continue;
             }
+            if (i >= lLength) {
+                System.out.println(j + ": delete " + right.charAt(j));
+                j++;
+                continue;
+            }
             if (array[i][j] == array[i][j + 1] + 1) {
                 System.out.println(i + ": add " + right.charAt(j));
-            } else if (array[i][j] != array[i + 1][j + 1]) {
+                j++;
+            } else if (array[i][j] == array[i + 1][j] + 1) {
+                System.out.println(i + ": delete " + left.charAt(i));
+                i++;
+            }
+            else if (array[i][j] != array[i + 1][j + 1]) {
                 System.out.println(i + ": replace " + left.charAt(i) + " with " + right.charAt(j));
                 i++;
+                j++;
             }
             else {
                 System.out.println(i + ": move (" + right.charAt(j) + ")");
                 i++;
+                j++;
             }
-            j++;
         }
         return array[0][0];
     }
