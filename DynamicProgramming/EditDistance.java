@@ -30,7 +30,7 @@ public class EditDistance {
                 continue;
             }
             if (i >= lLength) {
-                System.out.println(j + ": delete " + right.charAt(j));
+                System.out.println(j + ": add " + right.charAt(j));
                 j++;
                 continue;
             }
