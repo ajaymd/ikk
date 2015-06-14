@@ -2,7 +2,7 @@ public class PopularElement {
     static int[] a;
 
     public static void main(String[] args) {
-        if (args.length < 4)
+        if (args.length == 0)
             return;
 
         a = new int[args.length];
