@@ -9,9 +9,7 @@ public class PopularElement {
         for (int i = 0; i < a.length; ++i)
             a[i] = Integer.valueOf(args[i]);
 
-        int p = a.length / 4;
-        if (p * 4 < a.length)
-            p++;
+        int p = (a.length + 3) / 4;
 
         for (int i = 1; i <= 4; ++i) {
             int candidate = a[p * i  - 1];
