@@ -22,7 +22,7 @@ int diameterRecursion(TreeNode *tree, int *max_distance_to_father) {
 
     int d = -1;
     int total_max_distance, total_2nd_max_distance;
-    total_max_distance = total_2nd_max_distance = -1;
+    total_max_distance = total_2nd_max_distance = 0;
     for(TreeNode **son = tree->sons; *son != NULL; ++son) {
         int max_distance;
         int d_son = diameterRecursion(*son, &max_distance);
@@ -36,10 +36,7 @@ int diameterRecursion(TreeNode *tree, int *max_distance_to_father) {
     }
 
     *max_distance_to_father = total_max_distance + tree->distance_from_father;
-    if (total_max_distance != -1 && total_2nd_max_distance != -1)
-        d = MAX(d, total_max_distance + total_2nd_max_distance);
-
-    return d;
+    return MAX(d, total_max_distance + total_2nd_max_distance);
 }
 
 int diameter(TreeNode *tree) {
@@ -107,9 +104,9 @@ TestCase tests[] = {
     // One node - no diameter
     {"{0,0}", 0}, 
     // One leaf - no diameter
-    {"{0,1,{5,0}}", 0},
+    {"{0,1,{5,0}}", 5},
     // Still one leaf - no diameter
-    {"{0,1,{5,1,{4,1,{7,0}}}}", 0},
+    {"{0,1,{5,1,{4,1,{7,0}}}}", 16},
     // The diameter of the first son is the diameter of the tree
     {"{0,1,{5,2,{8,0},{7,0}}}", 15},
     // The diameter of the last son is the diameter of the tree
