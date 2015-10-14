@@ -15,7 +15,7 @@ public class RegexMatcher {
         if (i + 1 < r.length() && r.charAt(i + 1) == '*')
             return (stringMatching(r, i + 2, s, j) ||
                     (j != s.length() && (r.charAt(i) == s.charAt(j) || r.charAt(i) == '.') && stringMatching(r, i, s, j + 1)));
-        if (r.charAt(i) == s.charAt(j) || r.charAt(i) == '.' && j != s.length())
+        if (j != s.length() && (r.charAt(i) == s.charAt(j) || r.charAt(i) == '.' ))
             return stringMatching(r, i + 1, s, j + 1);
 
         return false;
@@ -23,7 +23,7 @@ public class RegexMatcher {
 
     public static void main(String[] args) {
         int errors = 0;
-        for (int i = 0; i < args.length; ++i) {
+        for (int i = 0; i < tests.length; ++i) {
             boolean result = stringMatching(tests[i].r, tests[i].s);
             if (result != tests[i].result) {
                 System.out.println("Error: result of test case number " + i + " is " + tests[i].result + ". Got " + result + " instead");
