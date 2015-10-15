@@ -2,69 +2,67 @@ import java.util.*;
 
 public class ShortestContainingSubArray {
     public static class Pair {
-        public Pair() {
-            left = 0;
-            right = Integer.MAX_VALUE;
+        public Pair(int l, int r) {
+            left = l;
+            right = r;
         }
 
         int left, right;
     }
 
     public static Pair shortestContainingSubArray(char[] array, Set<Character> set) {
-        Pair result = new Pair();
-        Map<Character, Boolean> map = new HashMap<Character, Boolean>();
-        for (Character c : set)
-            map.put(c, false);
-        int missing = set.size();
-        int left = -1;
-        for (int right = 0; right < array.length; ++right) {
-            char c = array[right];
+        int left;
+        for (left = 0; left < array.length; ++left) {
+            if (set.contains(array[left]))
+                break;
+        }
 
+        if (left == array.length)
+            return null;
+
+        if (set.size() == 1)
+            return new Pair(left, left);
+
+        Map<Character, Integer> map = new HashMap<Character, Integer>();
+        map.put(array[left], 1);
+        int missing = set.size() - 1;
+        Pair result = null;
+
+        for (int right = left + 1; right < array.length; ++right) {
+            char c = array[right];
             if (!set.contains(c))
                 continue;
 
-            if (left == -1)
-                left = right;
+            int count = map.getOrDefault(c, 0);
+            map.put(c, count + 1);
 
-            boolean appears = map.get(c);
-            if (!appears)
+            if (count == 0)
                 missing--;
-            map.put(c, true);
 
             if (missing > 0)
                 continue;
 
-            if (right - left < result.right - result.left) {
-                result.right = right;
-                result.left = left;
-            }
-
-            if (left == right) {
-                left = -1;
-                continue;
-            }
-
-            char cc = array[left];
-            for (left++; ; left++) {
+            for (; ; ++left) {
                 c = array[left];
-
                 if (!set.contains(c))
                     continue;
 
-                if (c != cc)
-                    break;
+                if (result == null || right - left < result.right - result.left)
+                    result = new Pair(left, right);
 
-                if (right - left < result.right - result.left) {
-                    result.right = right;
-                    result.left = left;
+                count = map.get(c);
+                map.put(c, --count);
+
+                if (count == 0) {
+                    missing = 1;
+                    for (++left; ; ++left)
+                        if (set.contains(array[left]))
+                            break;
+                    break;
                 }
             }
-            map.put(cc, false);
-            missing = 1;
         }
 
-        if (result.right == Integer.MAX_VALUE)
-            result.left = -1;
         return result;
     }
 
@@ -76,8 +74,13 @@ public class ShortestContainingSubArray {
             for (Character c : tests[i].set.toCharArray())
                 set.add(c);
             Pair result = shortestContainingSubArray(array, set);
-            if (result.left != tests[i].left || result.right != tests[i].right) {
-                System.out.println("Error: result of test case number " + i);
+            if (result == null) {
+                if (tests[i].left != -1) {
+                    System.out.println("Error: result of test case number " + (i + 1));
+                    errors++;
+                }
+            } else if (result.left != tests[i].left || result.right != tests[i].right) {
+                System.out.println("Error: result of test case number " + (i + 1));
                 errors++;
             }
         }
@@ -94,7 +97,8 @@ public class ShortestContainingSubArray {
             new TestCase("abcdefgh", "j", -1, Integer.MAX_VALUE),
             new TestCase("", "a", -1, Integer.MAX_VALUE),
             new TestCase("abcccccdefg", "dc", 6, 7),
-            new TestCase("abcccccdeeeeeefg", "dec", 6, 8)
+            new TestCase("abcccccdeeeeeefg", "dec", 6, 8),
+            new TestCase("ababababcddd", "abc", 6, 8),
     };
 
     private static class TestCase {
