@@ -19,7 +19,7 @@ int dynamicProgramming(int *input, int length, int *coins, int change) {
   int *minCoins = malloc(sizeof(int) * (change + 1));
 
   for(int c = 1; c <= change; ++c) {  // c is the change of the recursion
-    if (c < input[length - 1] && coins[c]) {
+    if (c <= input[length - 1] && coins[c]) {
       minCoins[c] = 1;
       continue;
     }
