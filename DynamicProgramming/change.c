@@ -16,10 +16,10 @@ int recursion(int *input, int length, int *coins, int change) {
 }
 
 int dynamicProgramming(int *input, int length, int *coins, int change) {
-  int *minCoins = malloc(sizeof(int) * (change + 1));
+  int *minCoins = (int*)malloc(sizeof(int) * (change + 1));
 
   for(int c = 1; c <= change; ++c) {  // c is the change of the recursion
-    if (c < input[length - 1] && coins[c]) {
+    if (c <= input[length - 1] && coins[c]) {
       minCoins[c] = 1;
       continue;
     }
@@ -42,7 +42,7 @@ int LENGTH = sizeof(INPUT) / sizeof(int);
 
 int main() {
   int biggestCoin = INPUT[LENGTH - 1]; // A simple implementation of a set
-  int* coins = malloc(sizeof(int) * (biggestCoin + 1));
+  int* coins = (int*)malloc(sizeof(int) * (biggestCoin + 1));
   for(int i = 1; i <= biggestCoin; ++i)
     coins[i] = 0;
   for(int i = 0; i < LENGTH; ++i)
