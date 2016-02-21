@@ -45,7 +45,7 @@ public class PathsInMatrix {
         finder.array = new int[finder.rows][finder.cols];
         finder.counts = new int[finder.rows][finder.cols];
 
-        for(int i=0; i < finder.rows; i++) {
+        for(int i = 0; i < finder.rows; i++) {
             System.out.print("Enter " + (i+1) + "th row: ");
             for (int j = 0 ; j < finder.cols; j++) {
                 String s = reader.readLine();
