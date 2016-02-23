@@ -37,7 +37,7 @@ public class ArraySubsetSumsToK {
 		     return true;
 		}
 		
-		if (count == 0 && sum != 0) {
+		if ((count == 0) && (sum != 0)) {
 			return false;
 		}
 		
@@ -47,7 +47,7 @@ public class ArraySubsetSumsToK {
 		 
 		return
 			sumsToK(array, count-1, sum) ||
-			sumsToK(array, count-1, sum-array[count-1]);
+			sumsToK(array, count-1, (sum - array[count-1]));
 	}
 	
 	public static void main(String[] args) {
