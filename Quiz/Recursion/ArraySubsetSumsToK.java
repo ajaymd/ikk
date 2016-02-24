@@ -29,8 +29,7 @@ public class ArraySubsetSumsToK {
 		}
 		
 		if (k == 0) {
-			System.out.println("Sum to zero not supported");
-			return false;
+			System.out.println("Sum to zero not supported; always matches.");
 		}
 		
 		return sumsToK(data, data.length, k);
