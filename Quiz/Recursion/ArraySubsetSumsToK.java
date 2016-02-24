@@ -28,6 +28,11 @@ public class ArraySubsetSumsToK {
 			return false;
 		}
 		
+		if (k == 0) {
+			System.out.println("Sum to zero not supported");
+			return false;
+		}
+		
 		return sumsToK(data, data.length, k);
 	}
 	
@@ -37,12 +42,8 @@ public class ArraySubsetSumsToK {
 		     return true;
 		}
 		
-		if ((count == 0) && (sum != 0)) {
+		if (count == 0) {
 			return false;
-		}
-		
-		if (array[count-1] > sum) {
-			return sumsToK(array, count-1, sum);
 		}
 		 
 		return
@@ -54,6 +55,9 @@ public class ArraySubsetSumsToK {
 		System.out.println("Sum({2, 4, 8}, 6) = " +
 			new ArraySubsetSumsToK(new int[]{ 2, 4, 8 }).sumsToK(6));
 		
+		System.out.println("Sum({2, -4, 8}, 2) = " +
+			new ArraySubsetSumsToK(new int[]{ 2, -4, 8 }).sumsToK(2));
+		
 		System.out.println("Sum({2, -4, 8}, 1) = " +
 			new ArraySubsetSumsToK(new int[]{ 2, -4, 8 }).sumsToK(1));
 		
@@ -62,5 +66,17 @@ public class ArraySubsetSumsToK {
 		
 		System.out.println("Sum({2, 4, 8}, 9) = " +
 			new ArraySubsetSumsToK(new int[]{ 2, 4, 8 }).sumsToK(9));
+		
+		System.out.println("Sum({2, -4, 8}, 6) = " +
+			new ArraySubsetSumsToK(new int[]{ 2, -4, 8 }).sumsToK(6));
+		
+		System.out.println("Sum({2, -8, 8}, 0) = " +
+			new ArraySubsetSumsToK(new int[]{ 2, -8, 8 }).sumsToK(0));
+
+		System.out.println("Sum({2, -8, 7}, 0) = " +
+			new ArraySubsetSumsToK(new int[]{ 2, -8, 7 }).sumsToK(0));
+		
+		System.out.println("Sum({-2, -4, 8}, -6) = " +
+			new ArraySubsetSumsToK(new int[]{ -2, -4, 8 }).sumsToK(6));
 	}
 }
