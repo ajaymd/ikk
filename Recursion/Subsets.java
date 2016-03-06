@@ -21,7 +21,7 @@ public class Subsets {
         }
 
         printSubsets(set, read + 1, subset, write); // Don't select
-        subset[write++] = set[read++]; // Select
-        printSubsets(set, read, subset, write);
+        subset[write] = set[read]; // Select
+        printSubsets(set, read + 1, subset, write + 1);
     }
 }
