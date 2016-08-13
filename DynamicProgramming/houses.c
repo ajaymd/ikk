@@ -17,8 +17,8 @@ int recursiveMaxGain(int *array, int length, int i, int allowedToSelect) {
 }
 
 int dynamicProgramming(int *array, int length) {
-  int *allowed = malloc(sizeof(int) * length);
-  int *notAllowed = malloc(sizeof(int) * length);
+  int allowed[length];
+  int notAllowed[length];
 
   allowed[length - 1] = array[length - 1];
   notAllowed[length - 1] = 0;
@@ -28,13 +28,9 @@ int dynamicProgramming(int *array, int length) {
     notAllowed[i] = allowed[i + 1];
   }
 
-  int max = allowed[0];
-
-  free(allowed);
-  free(notAllowed);
-
-  return max;
+  return allowed[0];
 }
+
 int main() {
   printf("Recursion: %d\n", recursiveMaxGain(INPUT, LENGTH, 0, 1));
   printf("Dynamic Programming: %d\n", dynamicProgramming(INPUT, LENGTH));

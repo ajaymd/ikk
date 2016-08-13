@@ -14,8 +14,8 @@ int recursion(int ropeLength, int mustCut) {
   return max;
 }
 
-long dynamicProgramming(ropeLength) {
-  long *max = malloc(sizeof(long) * (ropeLength + 1));
+long dynamicProgramming(int ropeLength) {
+  long max[ropeLength + 1];
 
   max[1] = 1;
 
@@ -26,11 +26,7 @@ long dynamicProgramming(ropeLength) {
     max[j] = m;
   }
 
-  long result = max[ropeLength];
-
-  free(max);
-
-  return result;
+  return max[ropeLength];
 }
 
 int main() {

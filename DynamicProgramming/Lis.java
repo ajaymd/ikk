@@ -3,10 +3,10 @@ public class Lis {
         int[] s = new int[args.length];
         for (int i = 0; i < args.length; ++i)
             s[i] = Integer.parseInt(args[i]);
-        longestCommonSubSequence(s);
+        longestIncreasingSubSequence(s);
     }
 
-    public static void longestCommonSubSequence(int[] s) {
+    public static void longestIncreasingSubSequence(int[] s) {
         int length = s.length;
         // The following three lines are not needed but they make the rest of code more
         // readable as the indices of the original sequence will be from 1 to length
@@ -14,7 +14,9 @@ public class Lis {
         sequence[0] = Integer.MIN_VALUE;
         System.arraycopy(s, 0, sequence, 1, length);
 
+        // i - current, j - last
         int array[][] = new int[length + 1][length + 1];
+
         for (int j = length - 1; j >= 0; --j)
             array[length][j] = sequence[length] > sequence[j] ? 1 : 0;
 
