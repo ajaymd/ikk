@@ -1,4 +1,4 @@
-public class Fibonacci {
+public class FibonacciDP {
     public static long fibonacci(int n) {
         if (n == 0 || n == 1)
             return n;

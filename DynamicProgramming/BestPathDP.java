@@ -2,7 +2,7 @@
  * Find best path in an MxN matrix
  *****************************************************************************/
 
-public class BestPath {
+public class BestPathDP {
     public static int solve(int array[][]) {
         int m = array.length;
         int n = array[0].length;
