@@ -1,11 +1,11 @@
 public class Rope {
-    public static int recursion(int ropeLength, boolean mustCut) {
+    public static int recursion(int ropeLength, int initialRopeLength) {
         if (ropeLength == 1)
             return 1;
 
-        int max = mustCut ? 0 : ropeLength;
+        int max = initialRopeLength == ropeLength ? 0 : ropeLength;
         for (int i = 1; i < ropeLength; ++i)
-            max = Math.max(max, recursion(i, false) * recursion(ropeLength - i, false));
+            max = Math.max(max, recursion(i, initialRopeLength) * recursion(ropeLength - i, initialRopeLength));
 
         return max;
     }
@@ -27,7 +27,7 @@ public class Rope {
 
     public static void main(String[] args) {
         int ropeLength = 13;
-        System.out.println("Recursion:" + recursion(ropeLength, true));
+        System.out.println("Recursion:" + recursion(ropeLength, ropeLength));
         System.out.println("Dynamic Programming: " + dynamicProgramming(ropeLength));
     }
 }

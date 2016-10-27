@@ -42,7 +42,7 @@ public class Change {
         minCoins[0] = 0;
 
         for (int c = 1; c <= change; ++c) {  // c is the change of the recursion
-            int min = change;
+            int min = c;
             for (Integer coin : coins)
                 if (c - coin >= 0)
                     min = Math.min(min, 1 + minCoins[c - coin]);
@@ -56,7 +56,7 @@ public class Change {
     public static void main(String[] args) {
         Set<Integer> coins = new HashSet<>(Arrays.asList(1, 3, 10, 25, 40));
 
-        for (int change = 1; change < 60; ++change) {
+        for (int change = 1; change < 45; ++change) {
             System.out.print(change + " Recursion: " + recursion(coins, change));
             System.out.print(" Memoization: " + memoization(coins, change));
             System.out.println(" Dynamic Programming: " + dynamicProgramming(coins, change));
