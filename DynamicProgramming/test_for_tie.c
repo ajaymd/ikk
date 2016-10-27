@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 int testTie(int *votes, int size) {
-    int sum;
+    int sum = 0;
     for(int state = 0; state < size; ++state) 
         sum += votes[state];
     printf("Sum: %d\n", sum);
