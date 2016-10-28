@@ -3,7 +3,7 @@ public class Rope {
         if (ropeLength == 1)
             return 1;
 
-        int max = initialRopeLength == ropeLength ? 0 : ropeLength;
+        int max = initialRopeLength != ropeLength ? 0 : ropeLength;
         for (int i = 1; i < ropeLength; ++i)
             max = Math.max(max, recursion(i, initialRopeLength) * recursion(ropeLength - i, initialRopeLength));
 
