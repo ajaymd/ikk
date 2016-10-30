@@ -5,7 +5,7 @@ public class Rope {
 
         int max = initialRopeLength == ropeLength ? 0 : ropeLength;
         for (int i = 1; i < ropeLength; ++i)
-            max = Math.max(max, recursion(i, initialRopeLength) * recursion(ropeLength - i, initialRopeLength));
+            max = Math.max(max, i * recursion(ropeLength - i, initialRopeLength));
 
         return max;
     }
@@ -18,7 +18,7 @@ public class Rope {
         for(int j = 2; j <= ropeLength; ++j) { // j is the ropeLength on the recursion
             long m = (j == ropeLength ?  0 : j);
             for(int i = 1; i < j; ++i) // i has the same role as in the recursion
-                m = Math.max(m, max[i] * max[j - i]);
+                m = Math.max(m, i * max[j - i]);
             max[j] = m;
         }
 
