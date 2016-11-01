@@ -46,7 +46,8 @@ public class LongestPalindrome {
                 --b;
                 ++e;
             }
-            ++b; --e;
+            ++b;
+            --e;
             if (e - b + 1 > max.e - max.b + 1)
                 max = new Pair(b, e);
 
@@ -56,7 +57,8 @@ public class LongestPalindrome {
                 --b;
                 ++e;
             }
-            ++b; --e;
+            ++b;
+            --e;
             if (e - b + 1 > max.e - max.b + 1)
                 max = new Pair(b, e);
         }
