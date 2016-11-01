@@ -36,10 +36,10 @@ public class PalindromePairs {
         Set<Integer> wordIndices = new HashSet<>(); // Only used when it is the end (beginning) of (a) word(s).
     }
 
-    // We calculate the length of all palindromes in string that we by adding # signs between all letters,
-    // in the beginning, and in the end. We do that so all palindromes will be of odd size.
+    // We calculate the length of all palindromes in input string. We start by adding # signs between all letters,
+    // at the beginning of the string, and at the end of teh string. We do that so all palindromes will be of odd size.
     // So result[2x] is the length of the palindrome centered at gap between indices x - 1 and x in s
-    // for  0 <= x <= s.length() therefore result[0] == result[2 * s.length()] == 0.
+    // for 0 <= x <= s.length(). Therefore always result[0] == result[2 * s.length()] == 0.
     // result[2x + 1] is the length of the palindrome centered at index x in s for 0 <= x <= s.length() - 1
     private static int[] findAllPalindromes(String s) {
         if (s.length() == 0)
