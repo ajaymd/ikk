@@ -23,7 +23,7 @@ public class ShortestContainingSubArray {
         if (set.size() == 1)
             return new Pair(left, left);
 
-        Map<Character, Integer> map = new HashMap<Character, Integer>();
+        Map<Character, Integer> map = new HashMap<>();
         map.put(array[left], 1);
         int missing = set.size() - 1;
         Pair result = null;
@@ -55,9 +55,6 @@ public class ShortestContainingSubArray {
 
                 if (count == 0) {
                     missing = 1;
-                    for (++left; ; ++left)
-                        if (set.contains(array[left]))
-                            break;
                     break;
                 }
             }
@@ -70,7 +67,7 @@ public class ShortestContainingSubArray {
         int errors = 0;
         for (int i = 0; i < tests.length; ++i) {
             char[] array = tests[i].array.toCharArray();
-            HashSet<Character> set = new HashSet<Character>();
+            HashSet<Character> set = new HashSet<>();
             for (Character c : tests[i].set.toCharArray())
                 set.add(c);
             Pair result = shortestContainingSubArray(array, set);
