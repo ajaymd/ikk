@@ -1,5 +1,50 @@
 public class TestForTie {
-    static int testTie(int[] votes) {
+    static boolean testTie(int[] votes) {
+        int sum = 0;
+        for (int vote : votes)
+            sum += vote;
+        if (sum % 2 == 1)
+            return false;
+
+        return testTie(votes, 0, sum / 2);
+    }
+
+    static boolean testTie(int[] votes, int i, int target) {
+        if (target < 0)
+            return false;
+        if (target == 0)
+            return true;
+        if (i == votes.length)
+            return false;
+        return testTie(votes, i + 1, target) || testTie(votes, i + 1, target - votes[i]);
+    }
+
+    // O(nv) space;
+    static boolean testTieDP(int[] votes) {
+        int sum = 0;
+        for (int vote : votes)
+            sum += vote;
+        if (sum % 2 == 1)
+            return false;
+        int target = sum / 2;
+
+        boolean[][] dp = new boolean[votes.length + 1][target + 1];
+
+        for (int i = 0; i <= votes.length; ++i)
+            dp[i][0] = true;
+
+        for (int t = 1; t <= target; ++t)
+            dp[votes.length][t] = false;
+
+        for (int i = votes.length - 1; i >= 0; i--)
+            for (int t = 1; t <= target; t++)
+                dp[i][t] = dp[i + 1][t] || target - votes[i] >= 0 && dp[i + 1][target - votes[i]];
+
+        return dp[0][target];
+    }
+
+    // O(N) space
+    static int testTieFancy(int[] votes) {
         int sum = 0;
         for (int vote : votes)
             sum += vote;
@@ -43,6 +88,6 @@ public class TestForTie {
     };
 
     public static void main(String[] args) {
-        testTie(votes);
+        testTieFancy(votes);
     }
 }
