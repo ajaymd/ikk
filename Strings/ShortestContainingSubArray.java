@@ -17,13 +17,15 @@ public class ShortestContainingSubArray {
             for (int right = left + set.size() - 1; right < array.length; ++right) {
                 Set<Character> s = new HashSet<>(set);
                 for (int k = left; k <= right; ++k) {
-                    if (set.contains(array[k]))
-                        s.remove(array[k]);
-                    if (s.isEmpty())
+                    if (!set.contains(array[k]))
+                        continue;
+                    s.remove(array[k]);
+                    if (s.isEmpty()) {
+                        if (result == null || right - left < result.right - result.left)
+                            result = new Pair(left, right);
                         break;
+                    }
                 }
-                if (s.isEmpty() && (result == null || right - left < result.right - result.left))
-                    result = new Pair(left, right);
             }
         }
         return result;
@@ -36,13 +38,15 @@ public class ShortestContainingSubArray {
             Set<Character> s = new HashSet<>(set);
             int right;
             for (right = left; right < array.length; ++right) {
-                if (set.contains(array[right]))
-                    s.remove(array[right]);
-                if (s.isEmpty())
+                if (!set.contains(array[right]))
+                    continue;
+                s.remove(array[right]);
+                if (s.isEmpty()) {
+                    if (result == null || right - left < result.right - result.left)
+                        result = new Pair(left, right);
                     break;
+                }
             }
-            if (s.isEmpty() && (result == null || right - left < result.right - result.left))
-                result = new Pair(left, right);
         }
         return result;
     }
