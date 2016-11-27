@@ -10,6 +10,44 @@ public class ShortestContainingSubArray {
         int left, right;
     }
 
+    // O(N^3)
+    public static Pair shortestContainingSubArraySlow(char[] array, Set<Character> set) {
+        Pair result = null;
+        for (int left = 0; left + set.size() - 1 < array.length; ++left) {
+            for (int right = left + set.size() - 1; right < array.length; ++right) {
+                Set<Character> s = new HashSet<>(set);
+                for (int k = left; k <= right; ++k) {
+                    if (set.contains(array[k]))
+                        s.remove(array[k]);
+                    if (s.isEmpty())
+                        break;
+                }
+                if (s.isEmpty() && (result == null || right - left < result.right - result.left))
+                    result = new Pair(left, right);
+            }
+        }
+        return result;
+    }
+
+    // O(N^2)
+    public static Pair shortestContainingSubArrayFaster(char[] array, Set<Character> set) {
+        Pair result = null;
+        for (int left = 0; left +set.size() - 1 < array.length; ++left) {
+            Set<Character> s = new HashSet<>(set);
+            int right;
+            for (right = left; right < array.length; ++right) {
+                if (set.contains(array[right]))
+                    s.remove(array[right]);
+                if (s.isEmpty())
+                    break;
+            }
+            if (s.isEmpty() && (result == null || right - left < result.right - result.left))
+                result = new Pair(left, right);
+        }
+        return result;
+    }
+
+    // O(n)
     public static Pair shortestContainingSubArray(char[] array, Set<Character> set) {
         int left;
         for (left = 0; left < array.length; ++left) {
