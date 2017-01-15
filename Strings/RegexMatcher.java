@@ -12,10 +12,12 @@ public class RegexMatcher {
     private static boolean stringMatching(String r, int i, String s, int j) {
         if (i == r.length())
             return (j == s.length());
+        if (j == s.length())
+            return false;
         if (i + 1 < r.length() && r.charAt(i + 1) == '*')
             return (stringMatching(r, i + 2, s, j) ||
-                    (j != s.length() && (r.charAt(i) == s.charAt(j) || r.charAt(i) == '.') && stringMatching(r, i, s, j + 1)));
-        if (j != s.length() && (r.charAt(i) == s.charAt(j) || r.charAt(i) == '.' ))
+                    (r.charAt(i) == s.charAt(j) || r.charAt(i) == '.') && stringMatching(r, i, s, j + 1));
+        if (r.charAt(i) == s.charAt(j) || r.charAt(i) == '.')
             return stringMatching(r, i + 1, s, j + 1);
 
         return false;
