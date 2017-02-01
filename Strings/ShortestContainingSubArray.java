@@ -34,7 +34,7 @@ public class ShortestContainingSubArray {
     // O(N^2)
     public static Pair shortestContainingSubArrayFaster(char[] array, Set<Character> set) {
         Pair result = null;
-        for (int left = 0; left +set.size() - 1 < array.length; ++left) {
+        for (int left = 0; left + set.size() - 1 < array.length; ++left) {
             Set<Character> s = new HashSet<>(set);
             int right;
             for (right = left; right < array.length; ++right) {
