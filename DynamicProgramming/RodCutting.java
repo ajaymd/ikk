@@ -29,7 +29,7 @@ public class RodCutting {
 
         int max = 0;
         for (int cut = 1; cut <= length; ++cut) {
-            int i = prices[cut] + recursion(prices, length - cut);
+            int i = prices[cut] + memoization(prices, length - cut);
             if (i > max)
                 max = i;
         }
