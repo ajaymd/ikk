@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class RodCutting {
     public static int recursion(int[] prices, int length) {
         if (length == 0)
@@ -12,16 +15,17 @@ public class RodCutting {
         return max;
     }
     public static int memoization(int[] prices, int length) {
-        int[] cache = new int[length + 1];
+        Map<Integer, Integer> cache = new HashMap<>();
         return memoization(prices, length, cache);
     }
 
-    public static int memoization(int[] prices, int length, int[] cache) {
+    public static int memoization(int[] prices, int length, Map<Integer, Integer> cache) {
         if (length == 0)
             return 0;
 
-        if (cache[length] != 0)
-            return cache[length];
+        int c = cache.getOrDefault(length, 0);
+        if (c != 0)
+            return c;
 
         int max = 0;
         for (int cut = 1; cut <= length; ++cut) {
@@ -29,7 +33,7 @@ public class RodCutting {
             if (i > max)
                 max = i;
         }
-        cache[length] = max;
+        cache.put(length, max);
         return max;
     }
 
