@@ -10,13 +10,13 @@ public class Rope {
         return max;
     }
 
-    public static long dynamicProgramming(int ropeLength) {
-        long max[] = new long[ropeLength + 1];
+    public static int dynamicProgramming(int ropeLength) {
+        int max[] = new int[ropeLength + 1];
 
         max[1] = 1;
 
         for(int j = 2; j <= ropeLength; ++j) { // j is the ropeLength on the recursion
-            long m = (j == ropeLength ?  0 : j);
+            int m = (j == ropeLength ?  0 : j);
             for(int i = 1; i < j; ++i) // i has the same role as in the recursion
                 m = Math.max(m, i * max[j - i]);
             max[j] = m;
