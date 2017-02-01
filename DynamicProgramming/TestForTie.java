@@ -38,7 +38,7 @@ public class TestForTie {
 
         for (int i = votes.length - 1; i >= 0; i--)
             for (int t = 1; t <= target; t++)
-                dp[i][t] = dp[i + 1][t] || target - votes[i] >= 0 && dp[i + 1][target - votes[i]];
+                dp[i][t] = dp[i + 1][t] || t - votes[i] >= 0 && dp[i + 1][t - votes[i]];
 
         return dp[0][target];
     }
