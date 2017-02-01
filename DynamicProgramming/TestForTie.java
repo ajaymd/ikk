@@ -43,7 +43,7 @@ public class TestForTie {
         return dp[0][target];
     }
 
-    // O(N) space
+    // O(V) space
     static int testTieFancy(int[] votes) {
         int sum = 0;
         for (int vote : votes)
