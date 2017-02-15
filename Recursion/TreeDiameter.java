@@ -10,8 +10,8 @@ public class TreeDiameter {
     }
 
     public static class TreeNode {
-        int distanceFromFather;
-        ArrayList<TreeNode> sons;
+        int distanceFromParent;
+        ArrayList<TreeNode> children;
     }
 
     private static class DiameterReturnValue {
@@ -27,28 +27,28 @@ public class TreeDiameter {
 
     private static DiameterReturnValue diameterRecursion(TreeNode tree) {
         DiameterReturnValue returnValue = new DiameterReturnValue();
-        if (tree.sons == null) {
-            returnValue.distanceToMostDistantLeaf = tree.distanceFromFather;
+        if (tree.children == null) {
+            returnValue.distanceToMostDistantLeaf = tree.distanceFromParent;
             returnValue.diameter = 0;
             return returnValue;
         }
 
         returnValue.diameter = -1;
-        int total_max_distance, total_2nd_max_distance;
-        total_max_distance = total_2nd_max_distance = 0;
-        for (TreeNode son : tree.sons) {
-            DiameterReturnValue r = diameterRecursion(son);
+        int distanceToMostDistantLeaf, distanceTo2ndMostDistantLeaf;
+        distanceToMostDistantLeaf = distanceTo2ndMostDistantLeaf = 0;
+        for (TreeNode child : tree.children) {
+            DiameterReturnValue r = diameterRecursion(child);
             returnValue.diameter = Math.max(returnValue.diameter, r.diameter);
-            if (r.distanceToMostDistantLeaf > total_max_distance) {
-                total_2nd_max_distance = total_max_distance;
-                total_max_distance = r.distanceToMostDistantLeaf;
-            } else if (r.distanceToMostDistantLeaf > total_2nd_max_distance) {
-                total_2nd_max_distance = r.distanceToMostDistantLeaf;
+            if (r.distanceToMostDistantLeaf > distanceToMostDistantLeaf) {
+                distanceTo2ndMostDistantLeaf = distanceToMostDistantLeaf;
+                distanceToMostDistantLeaf = r.distanceToMostDistantLeaf;
+            } else if (r.distanceToMostDistantLeaf > distanceTo2ndMostDistantLeaf) {
+                distanceTo2ndMostDistantLeaf = r.distanceToMostDistantLeaf;
             }
 
         }
-        returnValue.distanceToMostDistantLeaf = total_max_distance + tree.distanceFromFather;
-        returnValue.diameter = Math.max(returnValue.diameter, total_max_distance + total_2nd_max_distance);
+        returnValue.distanceToMostDistantLeaf = distanceToMostDistantLeaf + tree.distanceFromParent;
+        returnValue.diameter = Math.max(returnValue.diameter, distanceToMostDistantLeaf + distanceTo2ndMostDistantLeaf);
 
         return returnValue;
     }
@@ -82,15 +82,15 @@ public class TreeDiameter {
         index++; // '{'
         TreeNode node = new TreeNode();
 
-        node.distanceFromFather = readNumber(s);
+        node.distanceFromParent = readNumber(s);
         index++; // ','
-        int number_of_sons = readNumber(s);
+        int numberOfChildren = readNumber(s);
         index++; // ',' or '}'
-        if (number_of_sons == 0)
+        if (numberOfChildren == 0)
             return node;
-        node.sons = new ArrayList<TreeNode>();
-        while (number_of_sons-- > 0) {
-            node.sons.add(buildTree(s));
+        node.children = new ArrayList<TreeNode>();
+        while (numberOfChildren-- > 0) {
+            node.children.add(buildTree(s));
             index++;
         }
         return node;
@@ -103,11 +103,11 @@ public class TreeDiameter {
             new TestCase("{0,1,{5,0}}", 5),
             // Still one leaf
             new TestCase("{0,1,{5,1,{4,1,{7,0}}}}", 16),
-            // The diameter of the first son is the diameter of the tree
+            // The diameter of the first child is the diameter of the tree
             new TestCase("{0,1,{5,2,{8,0},{7,0}}}", 15),
-            // The diameter of the last son is the diameter of the tree
+            // The diameter of the last child is the diameter of the tree
             new TestCase("{0,3,{1,2,{5,0},{7,0}},{1,2,{6,0},{5,0}},{1,2,{10,0},{9,0}}}", 19),
-            // Now the diameter is between a leaf in the first son and a leaf in the third son
+            // Now the diameter is between a leaf in the first child and a leaf in the third child
             new TestCase("{0,3,{5,2,{8,0},{7,0}},{5,2,{9,0},{8,0}},{5,2,{10,0},{9,0}}}", 29)
     };
 
