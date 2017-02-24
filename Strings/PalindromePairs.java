@@ -33,7 +33,7 @@ public class PalindromePairs {
 
     private static class TrieNode {
         TrieNode[] children = new TrieNode[26];     // We assume only small English letters
-        Set<Integer> wordIndices = new HashSet<>(); // Only used when it is the end (beginning) of (a) word(s).
+        int wordIndex = -1; // Only used when it is the end (beginning) of a word.
     }
 
     // We calculate the length of all palindromes in input string. We start by adding # signs between all letters,
@@ -58,7 +58,7 @@ public class PalindromePairs {
             int buddy = leader - (c - leader);
             if (buddy - w[buddy] > leader - w[leader]) {
                 w[c] = Math.min(w[buddy], (w.length - 1) - c);
-                continue;   // We spend only O(1) on this center. Thank you Mancher.
+                continue;   // We spend only O(1) on this center. Thank you Manacher.
             }
 
             int b = c - (e - c);
@@ -94,7 +94,7 @@ public class PalindromePairs {
                 else
                     node = node.children[c - 'a'] = new TrieNode();
             }
-            node.wordIndices.add(i);
+            node.wordIndex = i;
         }
 
         // Build trie of inverse of words in O(nk).
@@ -109,12 +109,12 @@ public class PalindromePairs {
                 else
                     node = node.children[c - 'a'] = new TrieNode();
             }
-            node.wordIndices.add(i);
+            node.wordIndex = i;
         }
 
         for (int i = 0; i < words.length; ++i) {        // A loop of n iterations
             String word = words[i];
-            int[] palindromes = findAllPalindromes(word); // We use "Mancher" so O(k)
+            int[] palindromes = findAllPalindromes(word); // We use "Manacher" so O(k)
 
             TrieNode node = rootOfWordsTrie;
             for (int k = word.length() - 1; k >= 0; --k) {   // A loop of k iterations. From the end to the beginning
@@ -127,12 +127,9 @@ public class PalindromePairs {
                 assert palindromes != null;
                 boolean isPalindromeLongEnough = palindromes[k] / 2 >= k / 2;
 
-                if (node.wordIndices.isEmpty() || !isPalindromeLongEnough)
-                    continue;
-
-                for (int j : node.wordIndices)
-                    if (i != j)
-                        result.add(new Pair(j, i));      // words[i] == P + inverse(W), words[j] == W. P might be empty.
+                if (node.wordIndex >= 0 && isPalindromeLongEnough && node.wordIndex != i
+                        && words[i].length() > words[node.wordIndex].length()) // Equal length words will be added by the second part
+                    result.add(new Pair(node.wordIndex, i));      // words[i] == P + inverse(W), words[j] == W. P might be empty.
             }
 
             node = rootOfInversedWordsTrie;
@@ -149,12 +146,8 @@ public class PalindromePairs {
                 assert palindromes != null;
                 boolean isPalindromeLongEnough = palindromes[indexInPalindromesArray] / 2 >= leftOverCharacters / 2;
 
-                if (node.wordIndices.isEmpty() || !isPalindromeLongEnough)
-                    continue;
-
-                for (int j : node.wordIndices)
-                    if (i != j && words[i].length() != words[j].length())
-                        result.add(new Pair(i, j));      // words[i] == W + P, words[j] == inverse(W). P can't be empty.
+                if (node.wordIndex >= 0 && isPalindromeLongEnough && node.wordIndex != i)
+                    result.add(new Pair(i, node.wordIndex));      // words[i] == W + P, words[j] == inverse(W). P can't be empty.
             }
         }
 
