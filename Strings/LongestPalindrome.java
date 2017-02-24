@@ -67,7 +67,7 @@ public class LongestPalindrome {
     }
 
     // O(n)
-    public static Pair findLongestPalindromeMancher(String s) {
+    public static Pair findLongestPalindromeManacher(String s) {
         if (s.length() == 0)
             return null;
 
@@ -85,7 +85,7 @@ public class LongestPalindrome {
             int buddy = leader - (c - leader);
             if (getLeftTip(buddy, w[buddy]) > getLeftTip(leader, w[leader])) {
                 w[c] = Math.min(w[buddy], (s.length() - 1) - c / 2);
-                continue;   // We spend only O(1) on this center. Thank you Mancher.
+                continue;   // We spend only O(1) on this center. Thank you Manacher.
             }
 
             int b = getLeftTip(c, e - c / 2);
@@ -118,24 +118,24 @@ public class LongestPalindrome {
 
     public static void main(String[] args) {
         String s = "a";
-        System.out.println(findLongestPalindromeSlow(s) + " " + findLongestPalindromeFaster(s) + " " + findLongestPalindromeMancher(s));
+        System.out.println(findLongestPalindromeSlow(s) + " " + findLongestPalindromeFaster(s) + " " + findLongestPalindromeManacher(s));
 
         s = "abcde";
-        System.out.println(findLongestPalindromeSlow(s) + " " + findLongestPalindromeFaster(s) + " " + findLongestPalindromeMancher(s));
+        System.out.println(findLongestPalindromeSlow(s) + " " + findLongestPalindromeFaster(s) + " " + findLongestPalindromeManacher(s));
 
         s = "abcdefedcba";
-        System.out.println(findLongestPalindromeSlow(s) + " " + findLongestPalindromeFaster(s) + " " + findLongestPalindromeMancher(s));
+        System.out.println(findLongestPalindromeSlow(s) + " " + findLongestPalindromeFaster(s) + " " + findLongestPalindromeManacher(s));
 
         s = "aaaaabcdefedcba";
-        System.out.println(findLongestPalindromeSlow(s) + " " + findLongestPalindromeFaster(s) + " " + findLongestPalindromeMancher(s));
+        System.out.println(findLongestPalindromeSlow(s) + " " + findLongestPalindromeFaster(s) + " " + findLongestPalindromeManacher(s));
 
         s = "abcdefedcbaaaaa";
-        System.out.println(findLongestPalindromeSlow(s) + " " + findLongestPalindromeFaster(s) + " " + findLongestPalindromeMancher(s));
+        System.out.println(findLongestPalindromeSlow(s) + " " + findLongestPalindromeFaster(s) + " " + findLongestPalindromeManacher(s));
 
         s = "abcdeffedcba";
-        System.out.println(findLongestPalindromeSlow(s) + " " + findLongestPalindromeFaster(s) + " " + findLongestPalindromeMancher(s));
+        System.out.println(findLongestPalindromeSlow(s) + " " + findLongestPalindromeFaster(s) + " " + findLongestPalindromeManacher(s));
 
         s = "abcabcdccdccdccdcbabbaabbabcdccdccdccdccghg";
-        System.out.println(findLongestPalindromeSlow(s) + " " + findLongestPalindromeFaster(s) + " " + findLongestPalindromeMancher(s));
+        System.out.println(findLongestPalindromeSlow(s) + " " + findLongestPalindromeFaster(s) + " " + findLongestPalindromeManacher(s));
     }
 }
