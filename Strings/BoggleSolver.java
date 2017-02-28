@@ -20,7 +20,7 @@ public class BoggleSolver {
             int c;
             for (c = 0; c < word.length(); ++c)
                 if (word.charAt(c) < 'a' || word.charAt(c) > 'z')
-                    break;
+                    break;     // Our trie doesn't support characters outside [a-z]
             if (c >= word.length()) {
                 wordList.add(word);
                 ++i;
@@ -60,7 +60,7 @@ public class BoggleSolver {
     private void solve(char[][] board, boolean[][] used, int r, int c, TrieNode node, int length) {
         node = node.children[board[r][c] - 'a'];
         if (node == null)
-            return;
+            return;       // If the node that exist in the trie, prune.
         length++;
 
         used[r][c] = true;
