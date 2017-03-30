@@ -1,5 +1,5 @@
 /**
- * **************** PROBLEM DEFINITION ******************
+ * **************** PROBLEM DESCRIPTION ******************
  * Convert a string to an integer.
 
 atoi() first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, it takes an optional plus or minus sign, followed by as many numerical digits as possible and interprets them as numerical value.
