@@ -46,6 +46,6 @@ int main(){
 	return 0;
 }
 /**
- * Time complexity: O(2*N)
+ * Time complexity: O(N)
  * Space complexity: O(N)
 */
