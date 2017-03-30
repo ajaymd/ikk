@@ -48,6 +48,6 @@ public class ArrayProduct{
 }
 
 /**
- * Time complexity: O(2*N)
+ * Time complexity: O(N)
  * Space complexity: O(N)
 */
