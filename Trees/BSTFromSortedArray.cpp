@@ -81,10 +81,10 @@ void createBSTFromSortedArray(vector<int>inputSortedArray){
 }
 
 int main(){
-	int n; cin>>n;
-	vector<int>v(n);
-	for(int i=0;i<n;i++) cin>>v[i];
-	createBSTFromSortedArray(v);
+	int lengthOfArray; cin>>lengthOfArray;
+	vector<int>sortedArray(lengthOfArray);
+	for(int i=0;i<lengthOfArray;i++) cin>>sortedArray[i];
+	createBSTFromSortedArray(sortedArray);
 	return 0;
 }
 /**
