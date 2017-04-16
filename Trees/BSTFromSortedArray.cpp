@@ -89,5 +89,5 @@ int main(){
 }
 /**
  * Time complexity: O(N log N)
- * Space complexity: 3*N*size_of_the(Node)
+ * Space complexity: O(3*N*size_of_Node)
  */
