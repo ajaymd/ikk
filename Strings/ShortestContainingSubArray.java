@@ -36,8 +36,7 @@ public class ShortestContainingSubArray {
         Pair result = null;
         for (int left = 0; left + set.size() - 1 < array.length; ++left) {
             Set<Character> s = new HashSet<>(set);
-            int right;
-            for (right = left; right < array.length; ++right) {
+            for (int right = left; right < array.length; ++right) {
                 if (!set.contains(array[right]))
                     continue;
                 s.remove(array[right]);
@@ -96,6 +95,7 @@ public class ShortestContainingSubArray {
                 map.put(c, --count);
 
                 if (count == 0) {
+                    ++left;
                     missing = 1;
                     break;
                 }
@@ -135,7 +135,7 @@ public class ShortestContainingSubArray {
             new TestCase("abcdefabcdef", "c", 2, 2),
             new TestCase("abcdefgh", "j", -1, Integer.MAX_VALUE),
             new TestCase("", "a", -1, Integer.MAX_VALUE),
-            new TestCase("abcccccdefg", "dc", 6, 7),
+            new TestCase("abcccccfdefdcg", "dc", 11, 12),
             new TestCase("abcccccdeeeeeefg", "dec", 6, 8),
             new TestCase("ababababcddd", "abc", 6, 8),
     };
