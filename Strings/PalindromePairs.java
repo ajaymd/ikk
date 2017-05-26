@@ -7,6 +7,7 @@ public class PalindromePairs {
             this.i = i;
             this.j = j;
         }
+
         public int i, j;
     }
 
@@ -20,9 +21,7 @@ public class PalindromePairs {
 
         for (int i = 0; i < words.length; ++i) {
             for (int j = 0; j < words.length; ++j) {
-                if (i == j)
-                    continue;
-                if (isPalindrome(words[i] + words[j], 0, words[i].length() + words[j].length() - 1))
+                if (i != j && isPalindrome(words[i] + words[j], 0, words[i].length() + words[j].length() - 1))
                     result.add(new Pair(i, j));
             }
         }
@@ -101,7 +100,7 @@ public class PalindromePairs {
         TrieNode rootOfInversedWordsTrie = new TrieNode();
         for (int i = 0; i < words.length; ++i) {
             TrieNode node = rootOfInversedWordsTrie;
-            for (int j = words[i].length() - 1; j >= 0 ; --j) {
+            for (int j = words[i].length() - 1; j >= 0; --j) {
                 char c = words[i].charAt(j);
                 TrieNode child = node.children[c - 'a'];
                 if (child != null)
@@ -142,9 +141,8 @@ public class PalindromePairs {
 
                 int matchedCharacters = k + 1;
                 int leftOverCharacters = word.length() - matchedCharacters;
-                int indexInPalindromesArray = 2 * (matchedCharacters + leftOverCharacters / 2) + leftOverCharacters % 2 == 0 ? 0 : 1;
                 assert palindromes != null;
-                boolean isPalindromeLongEnough = palindromes[indexInPalindromesArray] / 2 >= leftOverCharacters / 2;
+                boolean isPalindromeLongEnough = palindromes[matchedCharacters + word.length()] / 2 >= leftOverCharacters / 2;
 
                 if (node.wordIndex >= 0 && isPalindromeLongEnough && node.wordIndex != i)
                     result.add(new Pair(i, node.wordIndex));      // words[i] == W + P, words[j] == inverse(W). P can't be empty.
@@ -155,40 +153,25 @@ public class PalindromePairs {
     }
 
     public static void main(String[] args) {
-        Set<Pair> result = findPalindromePairsSlow("bat", "tab", "cat");
-        for (Pair p : result)
-            System.out.print("[" + p.i + ", " + p.j + "] ");    // [[0, 1], [1, 0]]
-        System.out.println();
-        result = findPalindromePairsFast("bat", "tab", "cat");
-        for (Pair p : result)
-            System.out.print("[" + p.i + ", " + p.j + "] ");    // [[0, 1], [1, 0]]
-        System.out.println();
+        runTestCase("bat", "tab", "cat"); // [[0, 1], [1, 0]]
+        runTestCase("abcd", "dcba", "lls", "s", "sssll"); // [[0, 1], [1, 0], [3, 2], [2, 4]]
+        runTestCase("abcdc", "ba"); // [[0, 1], [0, 2]]
+        runTestCase("abcdccdc", "ba", "cdcba"); // [[0, 1], [0, 2]]
+        runTestCase("abbaqwe", "ewq", "abaert", "tre", "abcdedcbafg", "gf"); // [1, 0] [5, 4] [3, 2]
+    }
 
-        result = findPalindromePairsSlow("abcd", "dcba", "lls", "s", "sssll");
-        for (Pair p : result)
-            System.out.print("[" + p.i + ", " + p.j + "] ");  // [[0, 1], [1, 0], [3, 2], [2, 4]]
+    private static void runTestCase(String... words) {
+        for (String s : words) {
+            System.out.print(" " + s);
+        }
         System.out.println();
-        result = findPalindromePairsFast("abcd", "dcba", "lls", "s", "sssll");
+        Set<Pair> result = findPalindromePairsSlow(words);
         for (Pair p : result)
-            System.out.print("[" + p.i + ", " + p.j + "] ");  // [[0, 1], [1, 0], [3, 2], [2, 4]]
+            System.out.print("[" + p.i + ", " + p.j + "] ");
         System.out.println();
-
-        result = findPalindromePairsSlow("abcdc", "ba", "ba");
+        result = findPalindromePairsFast(words);
         for (Pair p : result)
-            System.out.print("[" + p.i + ", " + p.j + "] ");  // [[0, 1], [1, 0], [3, 2], [2, 4]]
-        System.out.println();
-        result = findPalindromePairsSlow("abcdc", "ba", "ba");
-        for (Pair p : result)
-            System.out.print("[" + p.i + ", " + p.j + "] ");  // [[0, 1], [1, 0], [3, 2], [2, 4]]
-        System.out.println();
-
-        result = findPalindromePairsSlow("abcdccdc", "ba", "cdcba");
-        for (Pair p : result)
-            System.out.print("[" + p.i + ", " + p.j + "] ");  // [[0, 1], [1, 0], [3, 2], [2, 4]]
-        System.out.println();
-        result = findPalindromePairsSlow("abcdccdc", "ba", "cdcba");
-        for (Pair p : result)
-            System.out.print("[" + p.i + ", " + p.j + "] ");  // [[0, 1], [1, 0], [3, 2], [2, 4]]
+            System.out.print("[" + p.i + ", " + p.j + "] ");
         System.out.println();
     }
 }
