@@ -1,0 +1,5 @@
+GeeksforGeeks Solution:
+http://www.geeksforgeeks.org/check-given-string-rotation-palindrome/
+
+Our Solution:
+https://github.com/InterviewKickstart/CodingProblemsIK/tree/master/Arrays/1_Is-It-A-Rotation-Of-A-Palindrome
