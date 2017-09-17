@@ -1,0 +1,8 @@
+Our Solution:
+https://github.com/InterviewKickstart/CodingProblemsIK/blob/master/Arrays/3_Complete_Read(N)_Using_Already_Given_Read_K()
+
+
+Helpful Article:
+https://leetcode.com/discuss/21219/a-simple-java-code
+
+

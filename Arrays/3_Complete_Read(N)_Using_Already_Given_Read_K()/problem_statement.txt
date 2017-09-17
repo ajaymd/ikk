@@ -1,0 +1,51 @@
+
+Complete Read(N) Using Already Given Read_K()
+
+
+Problem Statement:
+
+You are already given Read_K() function, which reads some bytes (characters) from an underlying file and returns them as a string. More specifically when >= K bytes are available in the file, it reads and returns exactly K bytes. But when < K bytes are available in the file then it reads and returns that many available bytes. 
+
+Using the given function Read_K(), you have to implement Read(N) function which does exactly the same thing for N bytes.
+
+Read(N) function can be called many times with different values of N. So, our Read(N) function should be consistent. It should return bytes from where we left. For example if our file contains "Let's read something!" then first call to Read(N) with N = 2 should return "Le" and then second call to Read(N) with N = 3 should return "t's" regardless the value of K.  
+
+Read_K() will start reading from the beginning of the file and will remember the point where it left in its last call.
+
+Note that you are not supposed to write Read_K() function. It is already given. You only have to complete Read(N) function.   
+
+Input Format:
+
+There is only one argument denoting N. 
+
+Output Format:
+
+Return a string. More specifically when >= N bytes are available in the file, it reads and returns exactly N bytes. But when < N bytes are available in the file then it reads and returns that many available bytes. 
+
+Constraints:
+
+1 <= K <= 10^5
+0 <= N <= 10^5 
+0 <= size of file <= 10^5
+You are not given the value of K.
+K will be a constant.
+Read(N) can call itself.
+Read_K() can be called multiple times (by your Read(N) function).
+Read(N) can be called multiple times (by driver function to test your function).
+Assume that nobody else is touching the underlying file. Only you are accessing it using Read_K() function.
+You can not read the file in any other way except the Read_K() function.
+File will not contains new line ('\n') character (just for our simplicity to handle input output).
+Sum of N over all calls to Read(N) will be <= 10^5. Which means total number of bytes read will be <= 10^5. 
+
+Sample Test Case:
+
+Suppose our file contains "Let's read something!" and K = 5.
+
+Now first call to Read(N) with N = 7 should return "Let's r". Here note that " " (space) will also be occupying one byte. 
+After that second call to Read(N) with N = 1 should return "e". 
+
+Notes:
+
+Maximum time allowed in interview: 20 Minutes.
+Currently we are allowing only C++, but will try to add others as early as possible. 
+Here we are passing strings around which will be costly and in real systems we don't do that. In real systems we use some fixed length char array(buffer) and pass the pointer to function. Function stores available bytes in that array and returns number of bytes stored. But here for simplicity we preferred this.

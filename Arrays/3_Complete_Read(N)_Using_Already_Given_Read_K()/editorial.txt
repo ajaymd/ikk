@@ -1,0 +1,3 @@
+Here you can easily cheat by directly using the string named file. But obviously this is not expected solution.  
+
+For expected solution go through code provided by us. 
