@@ -1,8 +1,8 @@
-Our Solution: 
-https://github.com/InterviewKickstart/CodingProblemsIK/tree/master/Arrays/2_Detect_Prime_Numbers
- 
-Helpful Article: 
-http://stackoverflow.com/a/5347588
+GeeksforGeeks Solution:
+http://www.geeksforgeeks.org/check-given-string-rotation-palindrome/
+
+Our Solution:
+https://github.com/InterviewKickstart/CodingProblemsIK/tree/master/Arrays/1_Is_It_A_Rotation_Of_A_Palindrome
 
 Problem type:
 1) We handle the input/output and user only needs to complete the given funciton.
@@ -11,6 +11,5 @@ or
 This problem is of type: 1
 
 Here problem is of type 1 hence the input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
-
-First line contains N the number of elements in the array a.
-Next N lines contains value of each element in array. 
+ 
+First and only line contains one string. (Same as input format to the function.)
