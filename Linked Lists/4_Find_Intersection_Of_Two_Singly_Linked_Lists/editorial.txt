@@ -1,0 +1,2 @@
+Article below has very good explanation:
+http://www.geeksforgeeks.org/write-a-function-to-get-the-intersection-point-of-two-linked-lists/
