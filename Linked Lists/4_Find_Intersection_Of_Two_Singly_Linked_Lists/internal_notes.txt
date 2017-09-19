@@ -1,5 +1,5 @@
 Our Solution:
-https://github.com/InterviewKickstart/CodingProblemsIK/tree/master/Arrays/4_Find_Intersection_Of_Two_Singly_Linked_Lists
+https://github.com/InterviewKickstart/CodingProblemsIK/tree/master/Linked%20Lists/4_Find_Intersection_Of_Two_Singly_Linked_Lists
  
 Helpful Article:
 http://www.geeksforgeeks.org/write-a-function-to-get-the-intersection-point-of-two-linked-lists/
