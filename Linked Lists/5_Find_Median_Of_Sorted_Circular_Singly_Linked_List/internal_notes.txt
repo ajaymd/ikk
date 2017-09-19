@@ -15,3 +15,4 @@ Here problem is of type 1 hence the input format in problem statement describes 
  
 First line contains N, number of elements in linked list.
 Next N lines contains value of each node. 
+Next line contains shift value in range [0, ptr_size)

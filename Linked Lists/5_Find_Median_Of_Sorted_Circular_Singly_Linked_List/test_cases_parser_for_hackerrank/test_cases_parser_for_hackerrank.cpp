@@ -101,6 +101,9 @@ void copy_input()
 		cin >> no;
 		cout << no << endl;
 	}
+	int arbitary_shift;
+	cin >> arbitary_shift;
+	cout << arbitary_shift << endl;
 }
 
 // This fucntion copies no_of_test_cases testcases from given files. copy_input_from file will contain inputs and copy_output_from will contain expected outpus. 
@@ -125,8 +128,8 @@ void parse_test_cases(string copy_input_from, string copy_output_from, int no_of
 int main()
 {
 	parse_test_cases("..//test_cases//sample_test_cases_input.txt", "..//test_cases//sample_test_cases_output.txt", 3);
-	parse_test_cases("..//test_cases//handmade_test_cases_input.txt", "..//test_cases//handmade_test_cases_output.txt", 8);
-	parse_test_cases("..//test_cases//small_test_cases_input.txt", "..//test_cases//small_test_cases_output.txt", 17);
+	parse_test_cases("..//test_cases//handmade_test_cases_input.txt", "..//test_cases//handmade_test_cases_output.txt", 20);
+	parse_test_cases("..//test_cases//small_test_cases_input.txt", "..//test_cases//small_test_cases_output.txt", 5);
 	parse_test_cases("..//test_cases//big_test_cases_input.txt", "..//test_cases//big_test_cases_output.txt", 2);
 
 	return 0;

@@ -48,7 +48,7 @@ int main()
 	while (test_cases--)
 	{
 		cout << endl;
-		int N = MAX_N;
+		int N = random_number(MAX_N) + 1;
 		cout << N << endl;
 		multiset<int> ms;
 		for (int i = 0; i < N; i++)
@@ -56,10 +56,21 @@ int main()
 			ms.insert(2LL * ((random_number(2LL * MAX_VAL + 1LL) - MAX_VAL) / 2LL));
 		}
 		assert(ms.size() == N);
-		for (auto it = ms.begin(); it != ms.end(); it++)
+		if (random_number(2))
 		{
-			cout << *it << endl;
+			for (auto it = ms.begin(); it != ms.end(); it++)
+			{
+				cout << *it << endl;
+			}	
 		}
+		else
+		{
+			for (auto it = ms.rbegin(); it != ms.rend(); it++)
+			{
+				cout << *it << endl;
+			}	
+		}
+		cout << random_number(N) << endl;
 	}
 
 	return 0;
