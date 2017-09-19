@@ -41,5 +41,6 @@ There are 5 nodes in L hence median M will be the value of 3rd node, which is 6.
 Notes:
 
 Expected solution: Linear time complexity with constant extra space. 
-Due to some limitations, only in C and C++ we have provided ptr to arbitrary node of sorted circular singly linked with lists. But in other languages you are provided pointer to the head of sorted singly linked list which is not circular, but other constraints remains same. 
+Due to some limitations, we have provided code in only C and C++. In other languages you need to implement it from scratch. For that you can consider C and C++ provided code as a template. 
+
 
