@@ -41,6 +41,18 @@ There are 5 nodes in L hence median M will be the value of 3rd node, which is 6.
 Notes:
 
 Expected solution: Linear time complexity with constant extra space. 
-Due to some limitations, we have provided code in only C and C++. In other languages you need to implement it from scratch. For that you can consider C and C++ provided code as a template. 
+Currently we have written code to handle input/output in C and C++ only, so in other languages you will need to implement from scratch. You can use given C and C++ implementations to implement in other languages. 
+For implementation in other languages you will need the input format of the actual program. 
 
-
+First line contains N, number of nodes in linked list.
+Next N lines contains value of each node. 
+Next line contains shift value in range [0, ptr_size). 
+For example:
+Our sample test case actual input can be described as:
+5
+2
+4
+6
+8
+10 (L: 2 -> 4 -> 6 -> 8 -> 10 -> NULL then you need to make it circular using tail->next = head. Now L will become circular.)
+1  (Initially our pointer will be at the beginning of the linked list pointing at 2, but We need to give arbitrary node. So we do ptr = ptr->next 1 times hence not ptr will be pointing at 4 and we pass this to the function.)

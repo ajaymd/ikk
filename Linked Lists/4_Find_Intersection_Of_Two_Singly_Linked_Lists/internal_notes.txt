@@ -16,15 +16,13 @@ Here problem is of type 1 hence the input format in problem statement describes 
 
 (To generate test cases I have generated linked list L1, then I generate some part of L2 and then merge it with L1 at some position (0-indexed).)
 
-First line contains size of linked list L1 (N1).
+First line contains N1, size of linked list L1.
 Next N1 lines contains value of each node in L1.
-Next line contains size of linked list L2 before we merge it with L1.
+Next line contains X, size of linked list L2 before we merge it with L1.
 Next X lines contains value of first X nodes in L2.
 Next line contains one integer denoting position at which we merge L2 with L1. (position will be in range [0, N1] (inclusive) and we take 0 indexed position. 0 means L2 gets merged with L1's head, N1 means L2 gets merged with L1's NULL) 
-
 For example:
 Our sample test case actual input can be described as:
-
 7
 1
 2
@@ -32,13 +30,11 @@ Our sample test case actual input can be described as:
 4
 7
 8
-9
-
+9  (L1: 1 -> 2 -> 3 -> 4 -> 7 -> 8 -> 9 -> NULL)
 2
 5
-6
-
-3(3rd position (0-indexed) means 1 -> 2 -> 3 -> [4])
+6 (L2: 5 -> 6 -> NULL)
+3 (Merge L2 with L1 at 3rd position (0-indexed) of L1. Now L2: 5 -> 6 -> 4 -> 7 -> 8 -> 9 -> NULL)
 
 
 

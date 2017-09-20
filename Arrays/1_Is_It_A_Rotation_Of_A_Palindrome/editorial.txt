@@ -1,6 +1,6 @@
 Brief Explanation:
 
-In whatever way we apply rotations (left rotation by some x or right rotation by some y or left rotation by some x followed by right rotation by some y...) total number of possible strings we can get is <= N (N when all chars are different, but might be < N when duplicate chars. Consider “aaa” there will be only one string “aaa” after any rotation). So if given string is a rotation of any palindrome then that palindrome will be one of the N strings. We can try all rotations and find if it is a palindrome or not. Finding if a given string is palindrome or not is O(N). So, overall time complexity will be O(N) * O(N) = O(N ^ 2).
+In whatever way we apply rotations (left rotation by some x or right rotation by some y or left rotation by some x followed by right rotation by some y...) total number of possible strings we can get is <= N (N when all chars are different, but might be < N when duplicate chars. Consider “aaa” there will be only one string “aaa” after any rotation). So if given string is a rotation of any palindrome then that palindrome will be one of the N strings. We can try all rotations and find if it is a palindrome or not. Finding if a given string is palindrome or not is O(N). So, overall time complexity will be O(N) * O(N) = O(N ^ 2). Also space complexity of the programme will be O(N) because space complexity includes the input space also. But auxiliary space will depend on our implementation. It can be O(N) or (1). Solution provided by us is using O(1) auxiliary space.   
 
 
 Detailed Explanation:
@@ -15,7 +15,7 @@ So if given string is a rotation of any palindrome then that palindrome will be 
 
 Finding if a given string is palindrome or not is O(N). So, overall time complexity will be O(N) * O(N) = O(N ^ 2).
 
-
+Also space complexity of the programme will be O(N) because space complexity includes the input space also. But auxiliary space will depend on our implementation. It can be O(N) or (1). Solution provided by us is using O(1) auxiliary space.   
 
 
 Just for information: 
