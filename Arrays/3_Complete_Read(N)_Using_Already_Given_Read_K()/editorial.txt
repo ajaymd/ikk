@@ -1,3 +1,5 @@
 Here you can easily cheat by directly using the string named file. But obviously this is not expected solution.  
 
+Only thing to need care is that our read(N) should be consistent. Hence during each call to read(N), first we should check if there are any remaining bytes or not and then only we should call read_K() to get more bytes if needed. 
+
 For expected solution go through code provided by us. 
