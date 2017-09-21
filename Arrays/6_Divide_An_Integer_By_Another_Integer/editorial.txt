@@ -1,10 +1,10 @@
 If you are getting wrong answer then read the constraints again. int / int does not gaurantee that answer will always be int! Try test case a = -2147483648 and b = -1 answer will be 2147483648 that can not be stored in int. So use appropriate data types. 
 
-Now for division we can use shifting. Consider 37 / 3. We keep on left shifting by 1 (multiply by 2) till the number does not exceed 37 so it will be 3 -> 6 -> 12 -> 24. Now we can write our division 37 / 3 = (37 / (3 * 8)) * 8 + (37 - (3 * 8)) / 3. For the first part we know that it will be the 1 * 2^shift and for the second part we can call the function again!
+Now for division we can use shifting. Consider 37 / 3. We keep on left shifting by 1 (multiply by 2) till the number does not exceed 37 so it will be 3 -> 6 -> 12 -> 24. Now we can write our division 37 / 3 = (37 / (3 * 8)) * 8 + (37 - (3 * 8)) / 3. For the first part we know that it will be (1 * 2 ^ shift) and for the second part we can call the function again!
 
 Note that this method uses divide and conqure rule. 
 
-Time complexity of the function is O(log b(a)) because at each step we will be removing highest power of b possible from a. 
-Auxiliary space of solution provided by us is O(log b(a)) due to recursive function calls. For readibility purpose we have used recursive implementation. You can use iterative implemenation to get O(1). 
+Time complexity of the function is O(log(a) ^ 2) because of shifting and recursive function calls. 
+Auxiliary space of solution provided by us is O(log(a)) due to recursive function calls. For readability purpose we have used recursive implementation. You can use iterative implemenation to get O(1). 
 
 If you are using C then direct copy pasting of code provided by us will not work. In C abs(x) and fabs(x) are different. Use fabs instead of abs. 

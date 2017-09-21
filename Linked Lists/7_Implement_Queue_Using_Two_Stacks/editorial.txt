@@ -1,0 +1,13 @@
+Take 2 stacks, s1 and s2. 
+Whenever enqeue operation comes push the value on s1.
+Whenever dequeue operation comes:
+if s2 is empty:
+{
+	Pop all the elements from s1 one by one and add to s2.
+}
+return top element from s2.  
+
+Try one example:
+[1 2 3 -1 4 -1 -1 5 -1 6 7 -1 -1] 
+
+Here operation push will be O(N) (only in some cases when we transfer values from s1 to s2), but on an average it will be constant. So we use amortized time complexity. Amortized time complexity of both enqueue and dequeue operation will be constant. Hence overall time complexity will be O(N). We are using two stacks, hence auxiliary space and space complexity will be O(N).  

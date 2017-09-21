@@ -1,0 +1,56 @@
+
+Implement Queue Using Two Stacks
+
+Problem Statement:
+
+Implement a queue Q using exactly two stacks S1 and S2.
+
+As an input you will receive a singly linked list L containing integers values. Denote size of L as N.
+
+When node value of L is negative, you should consider it as a dequeue operation else consider it as an enqueue operation. 
+
+You have to return a singly linked list of dequeued values.
+
+In the case where there is noting left to dequeue and still you see a dequeue operation, add -1.
+
+Input Format:
+
+A singly linked list L of size N.
+
+Output Format:
+
+Return a singly linked list of dequeued values.
+
+Constraints:
+
+-1 <= value of node <= 2 * 10^9
+1 <= N <= 10^5
+There will be at least one dequeue operation. 
+
+Sample Test Case:
+
+Sample Input:
+
+1 -> -1 -> 2 -> -1 -> -1 -> 3 -> -1 -> NULL
+
+Sample Output:
+
+1 -> 2 -> -1 -> 3 -> NULL
+
+Explanation:
+
+L  -> ans      
+
+1   : NULL
+-1 : 1 -> NULL
+2  : 1 -> NULL
+-1 : 1 -> 2 -> NULL
+-1 : 1 -> 2 -> -1 -> NULL       (At this time queue is empty so add -1.)
+3  : 1 -> 2 -> -1 -> NULL
+-1 : 1 -> 2 -> -1 -> 3 -> NULL
+
+Notes:
+
+Maximum time allowed in interview: 20 Minutes.
+
+
