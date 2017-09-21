@@ -1,5 +1,5 @@
 Our Solution:
-https://github.com/InterviewKickstart/CodingProblemsIK/tree/master/Linked%20Lists/5_Find_Median_Of_Sorted_Circular_Singly_Linked_List
+https://github.com/InterviewKickstart/CodingProblemsIK/tree/master/Linked%20Lists/Find_Median_Of_Sorted_Circular_Singly_Linked_List
  
 Helpful Article:
 https://knaidu.gitbooks.io/problem-solving/content/linked_lists/median_in_a_circular_list.html

@@ -1,5 +1,5 @@
 Our Solution:
-https://github.com/InterviewKickstart/CodingProblemsIK/tree/master/Linked%20Lists/7_Implement_Queue_Using_Two_Stacks
+https://github.com/InterviewKickstart/CodingProblemsIK/tree/master/Linked%20Lists/Implement_Queue_Using_Two_Stacks
  
 Helpful Article:
 http://stackoverflow.com/questions/69192/how-to-implement-a-queue-using-two-stacks
