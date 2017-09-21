@@ -100,5 +100,5 @@ vector<string> read_function_caller(string file, int K, vector<int> value_of_n)
 }
 
 Here we are passing strings around which will be costly and in real systems we don't do that. In real systems we use some fixed length char array(buffer) and pass the pointer to function. Function stores available bytes in that array and returns number of bytes stored. But here for simplicity we preferred this.
-
+Maximum time allowed in interview: 20 Minutes. 
 

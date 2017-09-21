@@ -3,3 +3,7 @@ Here you can easily cheat by directly using the string named file. But obviously
 Only thing to need care is that our read(N) should be consistent. Hence during each call to read(N), first we should check if there are any remaining bytes or not and then only we should call read_K() to get more bytes if needed. 
 
 For expected solution go through code provided by us. 
+
+Time complexity of the problem will be O(file size + number of calls to read function). Here note that we should not use only O(file size). If file is empty and still we are going to call 10^5 times then time complexity will be affected by number of function calls. 
+
+Space complexity of the problem will be O(file size + number of calls to read function). Here also we should not use only O(file size) because in each function call we will return at least empty string and will store it in arry of strings. 

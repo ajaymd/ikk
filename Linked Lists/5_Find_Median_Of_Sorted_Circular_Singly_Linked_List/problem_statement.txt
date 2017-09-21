@@ -41,6 +41,7 @@ There are 5 nodes in L hence median M will be the value of 3rd node, which is 6.
 Notes:
 
 Expected solution: Linear time complexity with constant extra space. 
+Maximum time allowed in interview: 20 Minutes. 
 Currently we have written code to handle input/output in C and C++ only, so in other languages you will need to implement from scratch. You can use given C and C++ implementations to implement in other languages. 
 For implementation in other languages you will need the input format of the actual program. 
 
