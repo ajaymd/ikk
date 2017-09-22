@@ -48,26 +48,13 @@ int main()
 		cout << endl;
 		int N = MAX_N;
 		cout << N << endl;
-		int dequeue = 0;
-		for (int i = 0; i < N - 1; i++)
+		for (int i = 0; i < N / 2; i++)
 		{
-			if (random_number(2))
-			{
-				cout << -1 << endl;
-				dequeue++;
-			}
-			else
-			{
-				cout << random_number(MAX_VAL + 1) << endl;
-			}
+			cout << random_number(MAX_VAL + 1) << endl;
 		}
-		if (dequeue == 0)
+		for (int i = 0; i < N / 2; i++)
 		{
-			cout << -1 << endl;
-		}
-		else
-		{
-			if (random_number(2))
+			if (i % 2)
 			{
 				cout << -1 << endl;
 			}

@@ -1,22 +1,10 @@
-Brief Explanation:
+For any string of length N, number of different string obtained by rotating it will be <= N (in some cases it can be < N, due to duplicates). Initially we might think that there are many ways to apply rotations like (left rotation -> left rotation -> left rotation -> right rotation...). But left rotation and right rotation cancel out each other. Also applying left shift x times is same as applying left shift by x % N times and applying right shift x times is same as applying right shift by x % N times. For better inderstanding try some examples.
 
-In whatever way we apply rotations (left rotation by some x or right rotation by some y or left rotation by some x followed by right rotation by some y...) total number of possible strings we can get is <= N (N when all chars are different, but might be < N when duplicate chars. Consider “aaa” there will be only one string “aaa” after any rotation). So if given string is a rotation of any palindrome then that palindrome will be one of the N strings. We can try all rotations and find if it is a palindrome or not. Finding if a given string is palindrome or not is O(N). So, overall time complexity will be O(N) * O(N) = O(N ^ 2). Also space complexity of the programme will be O(N) because space complexity includes the input space also. But auxiliary space will depend on our implementation. It can be O(N) or (1). Solution provided by us is using O(1) auxiliary space.   
-
-
-Detailed Explanation:
-
-In whatever way we apply rotations (left rotation by some x or right rotation by some y or left rotation by some x followed by right rotation by some y...) total number of possible strings we can get is N (N when all chars are different, but might be < N when duplicate chars. Consider “aaa” there will be only one string “aaa” after any rotation). 
-
-Initially we might think that there are many ways to apply rotations then number of strings we get will also be more, but no!  Let’s take one example, “abcd” now if we do left rotation by 1 then it will give “bcda”, if we do right rotation by 3 then also it will give “bcda” and if we do left rotation by 3 and then do right rotation by 2 then also it will give “bcda”. So eventually number of different strings we can get after rotation will be no more than N.  
-
-Applying left shift/right shift by 0 to N - 1 times will generate all possible strings. Consider “abc” then 1) right shift by 0 will generate“abc” 2) right shift by 1 will generate “cab” 3) right shift by 2 will give “bca”. 
-
-So if given string is a rotation of any palindrome then that palindrome will be one of the N strings.  Let’s take one example, “aab”. Now total strings we get are “aab”, “aba”, “baa”. We can see that “aba” is a palindrome so “aab” is a rotated palindrome! Now consider “abc”. Total strings we get are “abc”, “bca”, “cab”. So here none of the three is a palindrome hence we can say that “abc” is not a rotated palindrome. 
+If any string x is rotations of some palindromic string p, then at least one rotation of x will be p. So we can try all N rotations of given string and check if resulting string is palindrome or not.   
 
 Finding if a given string is palindrome or not is O(N). So, overall time complexity will be O(N) * O(N) = O(N ^ 2).
 
-Also space complexity of the programme will be O(N) because space complexity includes the input space also. But auxiliary space will depend on our implementation. It can be O(N) or (1). Solution provided by us is using O(1) auxiliary space.   
-
+Space complexity of the programme will be O(N) because space complexity includes the input space also. Auxiliary space used by programme will depend on our implementation. It can be O(N) or (1). Solution provided by us is using O(1) auxiliary space.   
 
 Just for information: 
 
@@ -27,8 +15,7 @@ http://www.geeksforgeeks.org/suffix-array-set-2-a-nlognlogn-algorithm/
 Link for LCP array:
 http://www.geeksforgeeks.org/%C2%AD%C2%ADkasais-algorithm-for-construction-of-lcp-array-from-suffix-array/
 
-
-Also more efficient solutions like O(N) possible using longest palindromic substring. 
+Also more efficient solution like O(N) possible using longest palindromic substring. 
 
 Link for longest palindromic substring:
 https://en.wikipedia.org/wiki/Longest_palindromic_substring
