@@ -1,0 +1,7 @@
+For depth-first traversal on a tree, if the interviewer says "Don't use recursion" or "Do it iteratively" then what data-structure do they most likely mean you use?
+ 
+Pick one of the choices
+1) Queue
+2) B-Tree
+3) Stack
+4) Heap
