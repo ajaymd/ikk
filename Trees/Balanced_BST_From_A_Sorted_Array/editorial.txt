@@ -1,5 +1,5 @@
 Balanced tree has two definitions:
-1) weight-balanced: here we focus on difference in number of nodes in left and right subtree. (Complete tree)
+1) weight-balanced: here we focus on difference in number of nodes in left and right subtree. (Perfect tree)
 2) height-balanced: here we focus on difference in height of left and right subtree. (AVL tree, Red-Black tree)
 
 
@@ -110,4 +110,14 @@ Now check out solution provided by us for implementation details.
 
 
 
-  
+
+Time complexity:
+T(N) = 2 * T(N / 2) + O(1) which will be O(N). 
+
+More intuitive explanation is: function is just creating new node and assigning value to that node, that is O(1) computation. And in our tree we will create exactly N nodes! 
+
+Auxiliary space and Space complexity:
+O(N) because we are creating a tree containing N nodes.
+
+
+
