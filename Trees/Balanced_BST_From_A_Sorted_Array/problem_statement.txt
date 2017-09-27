@@ -1,0 +1,64 @@
+
+Balanced BST From A Sorted Array
+
+
+Problem Statement:
+
+Given a sorted array a of size N containing distinct integers. You have to build a balanced binary search tree from a.  
+
+A binary search tree is balanced if for each node it holds that the number of nodes in the left subtree and the number of nodes in the right subtree differ by at most 1.
+
+Input Format:
+
+There is only one argument denoting array a. 
+
+Output Format:
+
+You have to return 2D array of dimension N * 3 where array[i][0] is the parent, array[i][1] is the left child of array[i][0] and array[i][2] is the right child of array[i][0].
+
+In case left child is null set array[i][1] = array[i][0].
+
+In case right child is null set array[i][2] = array[i][0].  
+
+For input [1 2 3], output [[1 1 1] [2 1 3] [3 3 3]] and [[3 3 3] [1 1 1] [2 1 3]] will reconstruct the same tree. So you are free to return any of valid one. 
+
+Only thing you have to consider is that the output array should be able to construct a valid balanced BST of a. 
+
+Constraints:
+
+a is sorted.
+a contains distinct integers.
+-2 * 10^9 <= a[i] <= 2 * 20^9 
+1 <= N <= 10^5
+Create a standard tree node structure without the parent pointer and use it to build your balanced BST. (Though in output you only need to return an array.)
+
+Sample Test Case:
+
+Sample Input:
+
+[8 10 12 15 16 20 25]
+
+Sample Output:
+
+(One possible output)
+
+[
+[8 8 8]
+[12 12 12]
+[16 16 16]
+[25 25 25]
+[10 8 12]
+[20 16 25]
+[15 10 20]
+]
+
+Explanation:
+
+All the leaf nodes 8, 12, 16 and 25 are at the same level hence difference of depth is <= 1 and it is also a binary search tree. 
+
+Notes:
+
+Maximum time allowed in interview: 20 Minutes.
+
+
+

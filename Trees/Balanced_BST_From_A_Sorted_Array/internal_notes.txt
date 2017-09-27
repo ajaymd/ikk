@@ -1,0 +1,15 @@
+Our Solution: 
+https://github.com/InterviewKickstart/CodingProblemsIK/tree/master/Trees/Balanced_BST_From_A_Sorted_Array
+
+This problem can have more than one solutions so we can not check it against one particular output. So we need to use some code checker to check the validity of output. 
+
+Problem type:
+1) We handle the input/output and user only needs to complete the given funciton.
+or
+2) User writes code from the scratch. Nothing is provided by us. 
+This problem is of type: 1
+
+Here problem is of type 1 hence the input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
+ 
+First line contains value of N.
+Next N line contains value of each element in a.
