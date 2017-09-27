@@ -1,0 +1,25 @@
+Answer:
+O(Maximum nodes at any level)
+
+Consider tree having N nodes where all the N - 1 nodes (except the root) are connected to the root node.
+
+Here maximum queue size can be N - 1 or N, depending on our implementation of BFS. In BFS, if first we dequeue the front node and then add its children then it will be N - 1. And if we first add children of the front node and then dequeue front node then it will be N. So in both cases we can say that it is O(N).
+
+Now height of our tree will always be 2 irrespective of N, which can be written as O(1). Which rules out possibility of O(Height of the tree). 
+
+Minimum number of nodes at a level will always be 1 (at first level, root node) which can be written as O(1). Which rules out possibility of O(Minimum nodes at a level).
+
+In BFS, at any point of time our queue will store elements from maximum two different levels. It will never happen that elements of >= 3 levels are stored in queue at the same time. So at any point of time,
+
+number of nodes present in queue <= (number of nodes at level i) + (number of nodes at level (i + 1)) for i = 1 to (height - 1).
+
+Now number of nodes at any level <= maximum nodes at any level.
+
+so we can write above equation as,
+
+number of nodes present in queue <= maximum nodes at a level + maximum nodes at a level.
+number of nodes present in queue <= 2 * maximum nodes at a level.
+
+So it is O(Maximum nodes at a level).
+
+Now maximum nodes at a level <= number of nodes in the tree, hence O(Number of nodes in the tree) is also correct but O(Maximum nodes at any level) is tighter! 
