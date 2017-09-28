@@ -1,0 +1,43 @@
+We want to find kth smallest element of given BST. 
+
+
+
+
+
+If we can get all the elements of BST in sorted order then our answer will be the kth element. We know that inroder traversal visites elements in sorted order! But time complexity of the problem is O(N) and auxiliary space used is also O(N).
+
+
+
+
+Note that we need not to store all the elements, we can just keep the count on number of nodes visited till now and when counter becomes k it is the node we wanted! 
+
+Your code should look like:
+
+void modified_inorder(root, k)
+{
+	handle base case;
+	modified_inorder(root->l);
+	if (answer is not found in left subtree)
+	{
+		counter++;			// make sure that you are incrementing after left subtree is visited. 
+		consider current node;
+		modified_inorder(root->r);
+	}
+}
+
+Now have a look at the code provided by us.
+
+Time complexity:
+In terms of N we can write it as O(N). Because time complexity of inorder traversal is O(N).
+
+Using other variables we can write tighter bound for the same solution. In terms of height of the tree and k, we can write tighter bound as O(height of tree + k). Total number of different nodes visited by our programme will be <= (height of tree + k). Among visited nodes, any leaf node is visited exactly once (by parent), any node having only one child will be visited two times (by parent + by child) and node having two children will be visited 3 times (by parent + by left child + by right child). So our programme is O(3 * number of nodes visited) = O(number of nodes visited) = O(k + height of the tree). Using pen and paper it will be more clear! 
+
+Auxiliary space used:
+O(height of the tree) due to recursive calls. (Assuming that you are already given BST you are not creating it.)
+
+Space complexity:
+O(N) due to input array and BST. 
+
+
+
+

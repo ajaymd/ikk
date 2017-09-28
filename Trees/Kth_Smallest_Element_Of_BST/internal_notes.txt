@@ -1,0 +1,21 @@
+Our Solution:
+
+https://github.com/InterviewKickstart/CodingProblemsIK/tree/master/Trees/Kth_Smallest_Element_Of_BST
+
+
+
+Helpful Article:
+
+http://www.geeksforgeeks.org/kth-largest-element-in-bst-when-modification-to-bst-is-not-allowed/
+
+Problem type:
+1) We handle the input/output and user only needs to complete the given funciton.
+or
+2) User writes code from the scratch. Nothing is provided by us. 
+This problem is of type: 1
+
+Here problem is of type 1 hence the input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
+ 
+First line contains N number of elements in data.
+Next N lines contains data[i].
+Next line contains k. 
