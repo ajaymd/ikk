@@ -1,0 +1,19 @@
+Our solution:
+https://github.com/InterviewKickstart/CodingProblemsIK/tree/master/Trees/Height_Of_K-Ary_Tree
+ 
+Helpful Article:
+http://www.geeksforgeeks.org/write-a-c-program-to-find-the-maximum-depth-or-height-of-a-tree/
+
+Problem type:
+1) We handle the input/output and user only needs to complete the given funciton.
+or
+2) User writes code from the scratch. Nothing is provided by us. 
+This problem is of type: 1
+
+Here problem is of type 1 hence the input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
+ 
+First line contains value of k.
+Next line contains value of N - 1. (number of edges)
+Next N - 1 lines contain from[i].
+Next line contains value of N - 1. (number of edges)
+Next N - 1 lines contain to[i].
