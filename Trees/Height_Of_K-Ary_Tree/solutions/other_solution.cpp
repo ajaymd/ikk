@@ -6,45 +6,35 @@ using namespace std;
 
 const int MAX_N = 100000;
 
-struct node
-{
-	//int val;														// To find height of tree, value stored in nodes does not matter. So in input also we are not given this field. 
-	vector<node*> children;											// Address of children nodes. 
-	node()
-	{
-		children.clear();
-	}
-};
+vector<vector<int>> kary(MAX_N + 1);
 
-int find_max_height(node* root)
+int find_max_height(int root)
 {
-	if (root->children.size() == 0)									// Handle base case when root is a leaf node.
+	if (kary[root].size() == 0)									// Handle base case when root is a leaf node.
 	{
 		return 0;
 	}
 	int h = 0;
-	for (int i = 0; i < root->children.size(); i++)
+	for (int i = 0; i < kary[root].size(); i++)
 	{
-		h = max(h, find_max_height(root->children[i]));				// Find height of each children and store the maximum height of children. 
+		h = max(h, find_max_height(kary[root][i]));				// Find height of each children and store the maximum height of children. 
 	}
 	return h + 1;			
 }
 
-unordered_map<int, node*> address; 									// To build k-ary tree use this to speed up the insertion process. 
-
 int find_height(int k, vector<int> from, vector<int> to)
 {
-	int N = from.size() + 1;
-	address.clear();												// Clear the global variable. 
-	for (int i = 1; i <= N; i++)
+	int edges = from.size();
+	for (int i = 1; i <= edges + 1; i++)
 	{
-		address[i] = new node();									// Create N nodes. 
+		kary[i].clear();										// Just clear the global variable. 
 	}
-	for (int i = 0; i < N - 1; i++)								  
+	for (int i = 0; i < edges; i++)								// It is not a good idea to iterate over from array for each node, hence we iterate over from array once and store children of each node separately in kary[node].  
 	{
-		address[from[i]]->children.push_back(address[to[i]]);		// Link the nodes. (Build the k-ary tree.)
+		kary[from[i]].push_back(to[i]);							// Array kary[node] will store all the children of node. 
+		assert(kary[from[i]].size() <= k);						// Ignore this. This is just for validation of input.
 	}
-	return find_max_height(address[1]);									
+	return find_max_height(1);									// Till now we have separated and stored children of each node in kary[node] array. Now we can do dfs and find the height of the tree. 
 }
 
 //--------------------------------STOP------------------------------------

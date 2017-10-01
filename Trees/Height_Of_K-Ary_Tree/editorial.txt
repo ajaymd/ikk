@@ -21,7 +21,7 @@ struct node
 
 
 
-Here we only need to find the height hence what value each node is storing does not matter, only thing that matters is how nodes are connected to each other. So in input also we are just given how nodes are connected to each other.
+Here we only need to find the height hence what value each node is storing does not matter, only thing that matters is how nodes are connected to each other. So in input also we are just given how nodes are connected to each other. 
 
 
 
@@ -43,22 +43,15 @@ We can use algorithm similar to dfs to do all these calculations.
 
 
 
-Given that root of the tree will always be 1. We can find the children of 1 by looking at the from array. When from[i] = 1, to[i] will be the child of 1. Now we can use the above formula to solve the problem. Also from each child we will solve the same problem with smaller constraints hence we can use recursive calls! 
+First we need to create k-ary tree. For that first we can create N nodes, then we add all edges given as from[i] to to[i]. But here we do not know the address of from[i] node and to[i] node! So while creating N nodes we use one unordered_map<int, node*> to store the addresses of created nodees and then we can easily add edges! 
 
-But in this method, for each node we will iterate over from array to find the children. Hence time complexity will be O(N^2). 
+Now have a look at the code provided by us.
 
-With some modifications we can improve.
+Time complexity of the solution is O(N) because our solution is similar to dfs. (Here we have assumed that addition and lookup on random data in unordered_map is O(1))
 
-Have a look at the code provided by us. 
+Auxiliary space used and space complexity of our programme is O(N) because we have used unordered_map to store N addresses and created the k-ary tree of size N. 
 
-Time compleity:
-O(N) because this is just a modification of dfs on tree.
 
-Auxiliary space:
-O(N) because we will store all the N - 1 edges in some array.
-
-Space complexity:
-O(N) because of the input size and other vector we are using in the solution. 
 
 
 
