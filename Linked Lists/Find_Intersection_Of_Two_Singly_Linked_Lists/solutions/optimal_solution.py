@@ -38,20 +38,20 @@ def get_size(head):
     return N
 
 def find_intersection(l1, l2):
-    N1 = get_size(l1)
-    N2 = get_size(l2)
+    N1 = get_size(l1)                   # Size of first linked list
+    N2 = get_size(l2)                   # Size of second linked list
     while (N1 > N2):
         l1 = l1.next
         N1 -= 1
     while (N2 > N1):
         l2 = l2.next
         N2 -= 1
-    while (l1 != None and l1 != l2):
+    while (l1 != None and l1 != l2):    # Comparing address 
         l1 = l1.next
         l2 = l2.next
-    if (l1 == None):
+    if (l1 == None):                    # If we have reached end 
         return -1
-    return l1.val
+    return l1.val                       # Intersection at node pointed by current value of l1 
 
 
 '''

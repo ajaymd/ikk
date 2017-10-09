@@ -7,10 +7,10 @@ Linked list will be one of these 3 types
 1) (2 -> 2 -> 2 -> 2 -> 2 -> 2)
 2) (2 -> 2 -> 4 -> 6 -> 8 -> 8)
 3) (8 -> 8 -> 4 -> 6 -> 2 -> 2)
-Now first case is trivial.
-In 2nd case if we can find first smallest element (call it head) then finding median will be trivial (Just find middle element/elements). 
+First case is trivial.
+In 2nd case if we can find first smallest element (call it head) then finding median will be easy (Just find middle element/elements). 
 (2 -> 2 -> 4 -> 6 -> 8 -> 8) then head will be ([2]head -> 2 -> 4 -> 6 -> 8 -> 8)
-In 3rd case if we can find first largest element (call it head) then finding median will be trivial (Just find middle element/elements).
+In 3rd case if we can find first largest element (call it head) then finding median will be easy (Just find middle element/elements).
 (8 -> 8 -> 4 -> 6 -> 2 -> 2) then head will be ([8]head -> 8 -> 4 -> 6 -> 2 -> 2)
 
 Time compleity of the solution will be O(N) because we are going to traverse linked list to find head and then to find the median. 

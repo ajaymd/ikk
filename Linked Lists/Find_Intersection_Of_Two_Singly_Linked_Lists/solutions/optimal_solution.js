@@ -43,8 +43,8 @@ function get_size(head)
 
 function find_intersection(l1, l2)
 {
-    var N1 = get_size(l1);                                  // Size of first linked list
-    var N2 = get_size(l2);                                  // Size of second linked list   
+    var N1 = get_size(l1);                                  	// Size of first linked list
+    var N2 = get_size(l2);                                  	// Size of second linked list   
     while (N1 > N2)                                     
     {
         l1 = l1.next;
@@ -64,7 +64,7 @@ function find_intersection(l1, l2)
     {
         return -1;
     }
-    return l1.val;                                          // Intersection at node pointed by current value of l1 
+    return l1.val;                                          	// Intersection at node pointed by current value of l1 
 }
 
 /*

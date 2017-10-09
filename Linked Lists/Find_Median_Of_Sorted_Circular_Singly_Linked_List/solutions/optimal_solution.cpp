@@ -39,17 +39,9 @@ LinkedListNode {
 };
 */
 
-void print_linked_list(LinkedListNode* ptr)
-{
-	while (ptr != NULL)
-	{
-		cout << ptr->val << " -> ";
-		ptr = ptr->next;
-	}
-	cout << "NULL" << endl;
-}
-
-//---------------------------------------START----------------------------------------
+/*
+	----START----
+*/
 
 LinkedListNode* find_first_big(LinkedListNode* ptr)
 {
@@ -111,7 +103,6 @@ int find_size(LinkedListNode* ptr)                                              
         N++;
         cur = cur->next;
     }
-    //cout << "Size = " << N << endl;
     return N;
 }
 
@@ -164,7 +155,9 @@ int find_median(LinkedListNode* ptr)
 	return ((long long int)head->val + (long long int)head->next->val) / 2LL;	// Look at the constraints, do not forget to use long long int otherwise wrong answer due to overflow. Test cases are carefully chosen to overflow this. 
 }
 
-//---------------------------------------STOP--------------------------------------
+/*
+	----STOP----
+*/
 
 int main()
 {
@@ -185,80 +178,72 @@ int main()
 	while (test_cases--)
 	{
 
-    int res;
-    int ptr_size = 0;
+	    int res;
+	    int ptr_size = 0;
 
-    LinkedListNode* ptr = NULL;
-    LinkedListNode* ptr_tail = NULL;
+	    LinkedListNode* ptr = NULL;
+	    LinkedListNode* ptr_tail = NULL;
 
-    cin >> ptr_size;
+	    cin >> ptr_size;
 
-    assert(1 <= ptr_size);
-    assert(ptr_size <= MAX_N);
+	    assert(1 <= ptr_size);
+	    assert(ptr_size <= MAX_N);
 
-    vector<int> nos(ptr_size);
+	    vector<int> nos(ptr_size);
 
-    for(int i = 0; i < ptr_size; i++) {
-        int ptr_item;
-        cin >> ptr_item;
+	    for(int i = 0; i < ptr_size; i++) {
+	        int ptr_item;
+	        cin >> ptr_item;
 
-        nos[i] = ptr_item;
+	        nos[i] = ptr_item;
 
-        assert(-MAX_VAL <= ptr_item);
-        assert(ptr_item <= MAX_VAL);
-        assert(ptr_item % 2 == 0);
-        
-        //cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        ptr_tail = _insert_node_into_singlylinkedlist(ptr, ptr_tail, ptr_item);
+	        assert(-MAX_VAL <= ptr_item);
+	        assert(ptr_item <= MAX_VAL);
+	        assert(ptr_item % 2 == 0);
+	        
+	        //cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	        ptr_tail = _insert_node_into_singlylinkedlist(ptr, ptr_tail, ptr_item);
 
-        if(i == 0) {
-            ptr = ptr_tail;
-        }
-    }
+	        if(i == 0) {
+	            ptr = ptr_tail;
+	        }
+	    }
 
-    vector<int> sorted_nos = nos;                                               // This section makes sure that input is either in non-increasing or non-decreasing order
-    sort(sorted_nos.begin(), sorted_nos.end());
-    if (nos[0] == sorted_nos[0])
-    {
-        for (int i = 0; i < ptr_size; i++)
-        {
-            assert(nos[i] == sorted_nos[i]);
-        }
-    }
-    else
-    {
-        for (int i = 0; i < ptr_size; i++)
-        {
-            assert(nos[ptr_size - 1 - i] == sorted_nos[i]);
-        }
-    }
+	    vector<int> sorted_nos = nos;                                               // This section makes sure that input is either in non-increasing or non-decreasing order
+	    sort(sorted_nos.begin(), sorted_nos.end());
+	    if (nos[0] == sorted_nos[0])
+	    {
+	        for (int i = 0; i < ptr_size; i++)
+	        {
+	            assert(nos[i] == sorted_nos[i]);
+	        }
+	    }
+	    else
+	    {
+	        for (int i = 0; i < ptr_size; i++)
+	        {
+	            assert(nos[ptr_size - 1 - i] == sorted_nos[i]);
+	        }
+	    }
 
-    //print_linked_list(ptr);
+	    //----added manually----
+	   	ptr_tail->next = ptr;															// Till now it was linear, now join tail to head and make it circular. 
+	    // Now we have got circular linked list but ptr will be the first element, but we need to give arbitrary node. 
+	    // Value of arbitrary_shift will be [0, ptr_size). 
+	   	int arbitrary_shift;                 											 
+	    cin >> arbitrary_shift;
+	   	while (arbitrary_shift--)
+	   	{
+	   		ptr = ptr->next;
+	   	}
+	   	//--------
 
-   	ptr_tail->next = ptr;															// Till now it was linear, now join tail to head and make it circular. 
-    // Now we have got circular linked list but ptr will be the first element, but we need to give arbitrary node. 
-    // Value of arbitrary_shift will be [0, ptr_size). 
-   	int arbitrary_shift;                 											 
-    cin >> arbitrary_shift;
-   	while (arbitrary_shift--)
-   	{
-   		ptr = ptr->next;
-   	}
-
-
-    //cout << "passed pointer is " << ptr->val << endl;
-    res = find_median(ptr);
-    
-    assert(-MAX_VAL <= res);
-    assert(res <= MAX_VAL);
-    
-    cout << res << endl;
-
-
-    //fout << res << endl;
-
-    //fout.close();
-
+	    res = find_median(ptr);
+	    
+	    assert(-MAX_VAL <= res);
+	    assert(res <= MAX_VAL);
+	    
+	    cout << res << endl;
 	}
     return 0;
 }
