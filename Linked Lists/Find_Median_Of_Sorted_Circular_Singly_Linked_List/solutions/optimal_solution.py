@@ -75,9 +75,7 @@ def find_median(ptr):
         1) (2 -> 2 -> 2 -> 2 -> 2 -> 2)
         2) (2 -> 2 -> 4 -> 6 -> 8 -> 8)
         3) (8 -> 8 -> 4 -> 6 -> 2 -> 2)
-
         Now first case is trivial.
-
         In 2nd case if we can find first smallest element (call it head) then finding median will be trivial. Just find middle element/elements.
         // (2 -> 2 -> 4 -> 6 -> 8 -> 8) then head will be ([2]head -> 2 -> 4 -> 6 -> 8 -> 8)
     
@@ -97,12 +95,13 @@ def find_median(ptr):
     # Till now we have found our head. 
 
     i = 0
-    while i < math.floor((N - 1) / 2):                                                      # Exact middle element in case of odd N and middle left element in case of even N.
+    while i < int(math.floor((N - 1) / 2)):                                                      # Exact middle element in case of odd N and middle left element in case of even N.
         i += 1
         head = head.next
     if ((N % 2) == 1):
         return head.val
-    return math.floor((head.val + head.next.val) / 2)
+    return int(math.floor((head.val + head.next.val) / 2))
+
 
 '''
     ---STOP---
