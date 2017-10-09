@@ -41,29 +41,12 @@ L1 and L2 intersects at node containing value 4.
 
 Notes:
 
-
 Expected solution: Linear time complexity, with constant extra space.
-Maximum time allowed in interview: 20 Minutes. 
-Realize that when comparing two nodes, you should be comparing the addresses, and NOT values.
-Currently we have written code to handle input/output in C and C++ only, so in other languages you will need to implement from scratch. You can use given C and C++ implementations to implement in other languages. 
-For implementation in other languages you will need the input format of the actual program. 
 
-First line contains N1, size of linked list L1.
-Next N1 lines contains value of each node in L1.
-Next line contains X, size of linked list L2 before we merge it with L1.
-Next X lines contains value of first X nodes in L2.
-Next line contains one integer denoting position at which we merge L2 with L1. (position will be in range [0, N1] (inclusive) and we take 0 indexed position. 0 means L2 gets merged with L1's head, N1 means L2 gets merged with L1's NULL) 
-For example:
-Our sample test case actual input can be described as:
-7
-1
-2
-3
-4
-7
-8
-9  (L1: 1 -> 2 -> 3 -> 4 -> 7 -> 8 -> 9 -> NULL)
-2
-5
-6 (L2: 5 -> 6 -> NULL)
-3 (Merge L2 with L1 at 3rd position (0-indexed) of L1. Now L2: 5 -> 6 -> 4 -> 7 -> 8 -> 9 -> NULL)
+Maximum time allowed in interview: 20 Minutes. 
+
+Realize that when comparing two nodes, you should be comparing the addresses, and NOT values.
+
+Due to some HackerRank limitations currently we are only allowing C, C++, C++ 14, Java 7, Java 8, JavaScript, Python 2 and Python 3.
+
+
