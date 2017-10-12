@@ -2,74 +2,70 @@
 
 using namespace std;
 
-//-------------------------------START-----------------------------------
-
 const int MAX_N = 6000, MAX_VAL = 2000000000;
 
-struct node
+struct TreeNode
 {
 	int val;
-	node* l;
-	node* r;
-	node(int _val = MAX_VAL + 1) : val(_val) 
+	TreeNode* left_ptr;
+	TreeNode* right_ptr;
+
+	TreeNode(int _val = 0)
 	{
-		l = NULL;
-		r = NULL;
+		val = _val;
+		left_ptr = NULL;
+		right_ptr = NULL;
 	}
 };
 
-int kth_element = MAX_VAL + 1;							// kth smallest element is stored in this variable. 
-//int counter = 0;										// when running more than one testcases then dont use static in counter = 0 use this and initialize counter = 0 at the beginning of each testcase. 
+TreeNode* bst_insert(TreeNode* root, int val)
+{
+	if (root == NULL)												// destination.
+	{
+		return new TreeNode(val);
+	}
+	if (val <= root->val)											// element is <= hence insert it in left subtree.
+	{
+		root->left_ptr = bst_insert(root->left_ptr, val);			// if root->left_ptr is null then new TreeNode will be created and root->left_ptr is assigned its address else it will be assigned to the same value as previouly stored.
+	}
+	else  															// element is > hence insert it in right subtree.
+	{
+		root->right_ptr = bst_insert(root->right_ptr, val);			// if root->right_ptr is null then new TreeNode will be created and root->right_ptr is assigned its address else it will be assigned to the same value as previouly stored.
+	}
+	return root;
+}
 
-void get_k_th_element(node* root, int k)
+//-------------------------------START-----------------------------------
+
+int kth_element;													// kth smallest element is stored in this variable. 
+//int counter = 0;													// when running more than one testcases then dont use static in counter = 0 use this and initialize counter = 0 at the beginning of each testcase. 
+
+void get_k_th_element(TreeNode* root, int k)
 {
 	/*
 		this function uses the idea of inorder_traversal. 
 	*/
 	static int counter = 0;
-	if (root == NULL || counter >= k)					// either root is null or we have already found the answer. 			
+	if (root == NULL || counter >= k)								// either root is null or we have already found the answer. 			
 	{
 		return;
 	}
-	get_k_th_element(root->l, k);						// first try to find from left subtree, because elements in left suubtree will be smaller than the root.
-	if (counter < k)									// if we have not found the answer till now. 		
+	get_k_th_element(root->left_ptr, k);							// first try to find from left subtree, because elements in left suubtree will be smaller than the root.
+	if (counter < k)												// if we have not found the answer till now. 		
 	{
 		counter++;
-		if (counter == k)								// if current node is the kth node.
+		if (counter == k)											// if current node is the kth node.
 		{
 			kth_element = root->val;
 			return;
 		}
-		get_k_th_element(root->r, k);					// we have explored left subtree and the root now explore right subtree. 
+		get_k_th_element(root->right_ptr, k);						// we have explored left subtree and the root now explore right subtree. 
 	}
 }
 
-node* bst_insert(node* root, int val)
+int kth_smallest_element(TreeNode *root, int k)
 {
-	if (root == NULL)									// destination.
-	{
-		return new node(val);
-	}
-	if (val <= root->val)								// element is <= hence insert it in left subtree.
-	{
-		root->l = bst_insert(root->l, val);				// if root->l is null then new node will be created and root->l is assigned its address else it will be assigned to the same value as previouly stored.
-	}
-	else  												// element is > hence insert it in right subtree.
-	{
-		root->r = bst_insert(root->r, val);				// if root->r is null then new node will be created and root->l is assigned its address else it will be assigned to the same value as previouly stored.
-	}
-	return root;
-}
-
-int kth_smallest_element(vector<int> data, int k)
-{
-	int N = data.size();
-	node* root = NULL;
-	for (int i = 0; i < N; i++)							// build bst from data
-	{
-		root = bst_insert(root, data[i]);
-	}
-	get_k_th_element(root, k);							// find kth smallest element
+	get_k_th_element(root, k);										// find kth smallest element
 	return kth_element;
 }
 
@@ -96,20 +92,26 @@ int main()
 		cin >> N;
 		assert(1 <= N);
 		assert(N <= MAX_N);
-		vector<int> data(N, 0);
+
+		TreeNode* root = NULL;
+
 		for (int i = 0; i < N; i++)
 		{
-			cin >> data[i];
-			assert(-MAX_VAL <= data[i]);
-			assert(data[i] <= MAX_VAL);
+			int data;
+			cin >> data;
+
+			assert(-MAX_VAL <= data);
+			assert(data <= MAX_VAL);
+
+			root = bst_insert(root, data);
 		}
+
 		int k;
 		cin >> k;
 		assert(1 <= k);
 		assert(k <= k);
-		int ans = kth_smallest_element(data, k);
-		sort(data.begin(), data.end());
-		assert(ans == data[k - 1]);
+
+		int ans = kth_smallest_element(root, k);
 		cout << ans << endl;
 	}
 

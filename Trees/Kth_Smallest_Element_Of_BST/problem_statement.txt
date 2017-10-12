@@ -6,11 +6,9 @@ Problem Statement:
 
 Given a BST (binary search tree) of size N containing integer elements and an integer k. You have to find kth smallest element of given BST.
 
-Due to some limitations currently it is not possible to provide BST. So, instead of BST you are given an array data. You have to first create BST by inserting elements in data one by one. First you will insert data[0] then data[1] and so on. Doing this way data[0] will always become the root of BST and other elements will be inserted accordingly.  Create a standard tree node structure without the parent pointer and use it to build your BST.
-
 Input Format:
 
-There are two arguments in the input. First one is an array data and second one is an integer k.
+There are two arguments in the input. First one is the root of the BST and second one is an integer k.
 
 Output Format:
 
@@ -28,7 +26,11 @@ Sample Test Case:
 
 Sample Input:
 
-data = [2 3 1]
+BST =
+2 is the root node.
+1 is 2's left child.
+3 is 2's right child. 
+
 k = 3
 
 Sample Output:
@@ -37,17 +39,13 @@ Sample Output:
 
 Explanation:
 
-Initially our BST will be empty.
-Now 2 is inserted. Hence our BST will contain 2 where 2 is the root of BST.
-Now 3 is inserted. Hence our BST will contain 2 and 3 where 2 is the root of BST and 3 is the right child of 2.
-Now 1 is inserted. Hence our BST will contain 1, 2 and 3 where 2 is the root of BST, 3 is the right child of 2 and 1 is the left child of 2.
-
-Hence 3rd smallest element is 3.
+3rd smallest element is 3.
 
 Notes:
 
-You can just sort the data and return kth element. But doing this you will miss the learning part, which is more imp than problem getting accepted. 
 Maximum time allowed in interview: 20 Minutes. 
+
+Due to some HackerRank limitations currently we are only allowing C, C++, C++ 14, Java 7, Java 8, JavaScript and Python 3.
 
 
 
