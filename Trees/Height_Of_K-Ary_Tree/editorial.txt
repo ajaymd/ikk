@@ -1,4 +1,4 @@
-When we are dealing with binary tree, our struture looks like:
+When we are dealing with binary tree, our node struture looks like:
 
 struct node
 {
@@ -27,6 +27,7 @@ Here we only need to find the height hence what value each node is storing does 
 
 
 
+
 Height of the tree = Number of edges in longest path from root to any node = Number of nodes in longest path from root to any node - 1.
 
 We can find height of tree using height of its subtrees. 
@@ -43,7 +44,6 @@ We can use algorithm similar to dfs to do all these calculations.
 
 
 
-First we need to create k-ary tree. For that first we can create N nodes, then we add all edges given as from[i] to to[i]. But here we do not know the address of from[i] node and to[i] node! So while creating N nodes we use one unordered_map<int, node*> to store the addresses of created nodees and then we can easily add edges! 
 
 Now have a look at the code provided by us.
 
@@ -51,6 +51,12 @@ Time complexity of the solution is O(N) because our solution is similar to dfs. 
 
 Auxiliary space used and space complexity of our programme is O(N) because we have used unordered_map to store N addresses and created the k-ary tree of size N. 
 
+
+
+
+
+
+As mentioned in the problem statement, some languages like javascript and python might not pass one testcase. The reason is given tree in that testcase is degenerate tree and we are using algorithm similar to dfs. Hence there will be ~10^5 recursive calls to reach the base case and some languages don't allow that many recursive calls.  
 
 
 
