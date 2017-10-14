@@ -1,23 +1,53 @@
 For any number a[i] we iterate over 2 to a[i] - 1 and check if any of them divides a[i] or not. If we find atleast one number that divides a[i] then a[i] is not a prime number. This is brute force solution with time complexity O(N * A).
 
+
+
+
+
 Any positive number x which is non-prime (and not 1) can be written as x = a * b where a > 1 and b > 1. Here both of them can not be > root(x) because if a > root(x) and b > root(x) then a * b > root(x) * root(x) hence a * b > x, which contradicts a * b = x. When number is a square like 16 then it can be written as root(16) * root(16). So, non-prime number x can be writen as a * b having at least one of them <= root(x). Now in previous solution for each a[i] loop from root(a[i]) + 1 to a[i] - 1 is not necessary. So our solution will become O(N * root(A)). 
+
+
+
+
 
 Still we can improve. We can write any composite number as multiplication of prime numbers. Like 60 = 2 * 2 * 3 * 5 = 2 * 30. So when we find any prime number, we can  visit all the multiple of it and mark them as non prime. We start from 2 as base case, consider 2 as prime number and mark 4, 6, 8, 10, … as visited means they are multiples of 2 hence composite numbers. After 2, 3 will come. 3 is not visited which means there are no factors of 3 and it is a prime number. Here also we do the same thing mark 6, 9, 12, 15 ...as visited means they are multiple of 3 hence composite numbers. Now 4 comes, but 4 is visited by 2 so we know that 4 is not a prime number. Here also we can do the same thing mark 8, 12, 16… as visited, but all the positions we are going to visit will be already visited by 2 because all multiples of 4 are also multiples of 2. So no need to do rework! We keep on doing the same thing for next numbers. 
 
 Try to find prime numbers till 30 and you will get more clear idea. 
 
+
+
+
+
 Still there can be some optimizations. When we find any prime number like 11, then we visit 22, 33, 44, 55… and mark them as non-prime but 22, 33, 44, 55 are already visited by smaller prime number 5, because 55 = 5 * 11. So instead of start marking non prime from x + x, we can start from x * x. 
 
 This solution will be O(N * log(log A)). 
 
+
+
+
+
 Can we say that solution with O(N * log(log A)) is better than O(N * root(A))? NO! It depends on situation. In terms of time complexity of course it is better, but we should also consider space! Solution with time complexity O(N * root(A)) requires O(1) extra space but other needs O(A) extra space. So when space is more imp than time, we should opt the slower one! 
 
+
+
+
+
 When we are given a single integer and we need to find if it is a prime or not, then should we use Sieve of Eratosthenes? No!! If there is only one number to check then we can do it in O(root(A)) by iterating over 2 to root(A). We use Sieve of Eratosthenes only when numbers are given in some range where pre-processing can work. Think! 
+
+
+
+
 
 In this problem we are given the range of a[i]. But when given a stream of random numbers and nothing is specified about range of a[i] then we can use caching (though caching will be useful only when some numbers are going to repeat, but in real life it is likely to happen). We maintain two hash-tables. One containing prime numbers encountered till now and other containing non-prime numbers encountered till now. For next number, we check the presence in our hash tables and if it is present in one of them then nothing much to do, but if it is not present then we use O(root(number)) method to check if it is prime or non-prime and add into appropriate hash table for future reference.
 
 Here also we can improve, there is no need to store even numbers as non-prime. Handle the case of even number separately. Doing this we can save some space.  
 
+
+
+
+
 Now have a look at the code provided by us. 
+
+
 
 

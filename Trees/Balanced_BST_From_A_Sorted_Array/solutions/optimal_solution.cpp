@@ -2,78 +2,96 @@
 
 using namespace std;
 
-//-----------------------------------START----------------------------------------
-
 const int MAX_N = 100000, MAX_VAL = 2000000000;
 
-struct node
+struct TreeNode
 {
 	int val;
-	node *l;
-	node *r;
-	node()
+	TreeNode* left_ptr;
+	TreeNode* right_ptr;
+
+	TreeNode(int _val = 0)
 	{
-		val = MAX_VAL + 1;
-		l = NULL;
-		r = NULL;
+		val = _val;
+		left_ptr = NULL;
+		right_ptr = NULL;
 	}
 };
 
-//int index = 0;													// when running more than 1 testcase use this (each time set index = 0) else use static given in function  
+//-----------------------------------START----------------------------------------
 
-void dfs(node *root, vector<vector<int>> &ans)	
-{
-	static int index = 0;										// at which index of ans we should store 
-	if (root == NULL)
-	{
-		return;
-	}
-	ans[index][0] = root->val;									// set the root
-	if (root->l == NULL)										// if root has left child then store it else store itself, as suggested in output format
-	{	
-		ans[index][1] = root->val;
-	}
-	else											
-	{
-		ans[index][1] = root->l->val;
-	}
-	if (root->r == NULL)										// if root has right child then store it else store itself, as suggested in output format
-	{
-		ans[index][2] = root->val;
-	}
-	else
-	{
-		ans[index][2] = root->r->val;
-	}
-	index++;
-	dfs(root->l, ans);											// recursively add from left and right child 
-	dfs(root->r, ans);
-}
+/*
+ * Complete the function below.
+ */
 
-node * add_node(int l, int r, vector<int> &a)					// build tree using values (a[l], a[l+1], ..., a[r]).
+/*
+    For your reference. 
+
+    struct TreeNode
+    {
+        int val;
+        TreeNode* left_ptr;
+        TreeNode* right_ptr;
+
+        TreeNode(int _val = 0)
+        {
+            val = _val;
+            left_ptr = NULL;
+            right_ptr = NULL;
+        }
+    };
+*/
+
+TreeNode * build_balanced_bst_helper(int l, int r, vector<int> &a)					// build tree using values (a[l], a[l+1], ..., a[r]).
 {
 	if (l > r)	
 	{
 		return NULL;
 	}
 	int m = l + (r - l) / 2;
-	node *temp = new node();
-	temp->val = a[m];											// to build balanced tree we need to choose the middle element as the root 
-	temp->l = add_node(l, m - 1, a);							// recursively create subtree and add it as left child
-	temp->r = add_node(m + 1, r, a);							// recursively create subtree and add it as right child 
+	TreeNode *temp = new TreeNode(a[m]);											// to build balanced tree we need to choose the middle element as the root 
+	temp->left_ptr = build_balanced_bst_helper(l, m - 1, a);						// recursively create subtree and add it as left child
+	temp->right_ptr = build_balanced_bst_helper(m + 1, r, a);						// recursively create subtree and add it as right child 
 	return temp;
 }
 
-vector<vector<int>> build_balanced_bst(vector<int> a)
+TreeNode * build_balanced_bst(vector<int> a)
 {
 	int N = a.size();
-	vector<vector<int>> ans(N, vector<int>(3, MAX_VAL + 1));
-	node *root = add_node(0, N - 1, a);							// build balanced BST
-	dfs(root, ans);												// fill ans from tree
-	return ans;
+	return build_balanced_bst_helper(0, N - 1, a);									// build balanced BST
 }
 
 //-----------------------------------STOP----------------------------------------
+
+bool check_balanced_bst(TreeNode *root, int l, int r, vector<int>& a)
+{
+    if (l > r && root == NULL)                              // If no value in [l, r] and tree is also empty.
+    {
+        return true;
+    }
+    else if (l > r && root != NULL)                         // If no value in [l, r] but tree contains something. 
+    {
+        return false;
+    }
+    if (root == NULL)                                       // If some values in [l, r] but tree is empty.
+    {
+        return false;
+    }
+    
+    int mid1 = l + (r - l) / 2;
+    int mid2 = l + (r - l + 1) / 2;
+    
+    bool valid1 = (root->val == a[mid1] && check_balanced_bst(root->left_ptr, l, mid1 - 1, a) && check_balanced_bst(root->right_ptr, mid1 + 1, r, a));
+    if (valid1)                                             // actually we are doing valid1 || valid2 but when valid1 is true then no need to find valid2
+    {
+        return true;        
+    }
+    if (mid1 == mid2)                                       // when odd no of elements in [l, r] then mid1 = mid2 so valid1 = valid2 and no need to find valid2.  
+    {
+        return false;        
+    }
+    return (root->val == a[mid2] && check_balanced_bst(root->left_ptr, l, mid2 - 1, a) && check_balanced_bst(root->right_ptr, mid2 + 1, r, a));  
+}
 
 int main()
 {
@@ -113,21 +131,16 @@ int main()
 			assert(a[idx++] == *it);
 		}
 
-		vector<vector<int>> ans = build_balanced_bst(a);
-		assert(ans.size() == N);
-		assert(ans[0].size() == 3);
-		for (int i = 0; i < N; i++)
-		{
-			for (int j = 0; j < 3; j++)
-			{
-				assert(-MAX_VAL <= ans[i][j]);
-				assert(ans[i][j] <= MAX_VAL);
-
-				cout << ans[i][j] << " ";
-			}
-			cout << endl;
-		}
-		cout << endl;
+		TreeNode* root = build_balanced_bst(a);
+    
+	    if (check_balanced_bst(root, 0, a_size - 1, a))
+	    {
+	        cout << "Valid Balanced BST" << endl;
+	    }
+	    else
+	    {
+	        cout << "Invalid Balanced BST" << endl;
+	    }
 	}
 
 	return 0;

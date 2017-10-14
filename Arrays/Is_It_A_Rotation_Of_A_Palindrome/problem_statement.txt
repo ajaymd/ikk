@@ -1,3 +1,4 @@
+
 Is It A Rotation Of A Palindrome?
 
 
@@ -17,6 +18,7 @@ Constraints:
 
 1 <= N <= 4000
 s will only contain lower case letters (a - z).
+String may or may not be sorted.
 
 Sample Test Case:
 

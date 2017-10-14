@@ -60,7 +60,7 @@ void copy_output(ifstream &fin)
 	string file_name = file_name_for_next_output();
 	ofstream fout(file_name.c_str());
 	
-	fout << "checked using code checker" << endl;
+	fout << "Valid Balanced BST" << endl;
 
 	fout.close();
 }
