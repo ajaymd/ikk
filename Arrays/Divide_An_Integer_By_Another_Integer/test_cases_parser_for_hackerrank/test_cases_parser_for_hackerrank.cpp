@@ -95,7 +95,7 @@ void copy_input()
 	freopen(file_name.c_str(), "w", stdout);
 	// start from here	
 
-	int a, b;
+	long long int a, b;
 	cin >> a >> b;
 	cout << a << endl;
 	cout << b << endl;
@@ -124,7 +124,7 @@ void parse_test_cases(string copy_input_from, string copy_output_from, int no_of
 int main()
 {
 	parse_test_cases("..//test_cases//sample_test_cases_input.txt", "..//test_cases//sample_test_cases_output.txt", 3);
-	parse_test_cases("..//test_cases//handmade_test_cases_input.txt", "..//test_cases//handmade_test_cases_output.txt", 31);
+	parse_test_cases("..//test_cases//handmade_test_cases_input.txt", "..//test_cases//handmade_test_cases_output.txt", 36);
 	parse_test_cases("..//test_cases//small_test_cases_input.txt", "..//test_cases//small_test_cases_output.txt", 0);
 	parse_test_cases("..//test_cases//big_test_cases_input.txt", "..//test_cases//big_test_cases_output.txt", 0);
 

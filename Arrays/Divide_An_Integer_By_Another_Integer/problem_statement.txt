@@ -15,7 +15,7 @@ Quotient q of a/b.
 
 Constraints:
 
--2147483648 (INT_MIN) <= a, b <= 2147483647 (INT_MAX)
+-10^18 <= a, b <= 10^18
 b != 0
 You are not allowed to use division (/) operator.
 You are not allowed to use multiplication (*) operator.

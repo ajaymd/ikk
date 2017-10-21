@@ -2,6 +2,11 @@
 
 using namespace std;
 
+const long long int MAX_AB = 1000000000000000000LL;
+
+
+//-------------------------START------------------------------
+
 long long int divide(long long int a, long long int b)
 {
 	if (a == 0)											// 0 / non_zero = 0
@@ -22,13 +27,16 @@ long long int divide(long long int a, long long int b)
 	}
 	long long int q = 1;								// long long int is imp
 	long long int b_copy = b;							// long long int is imp
-	while (b_copy << 1 <= a)							// 37 / 3 can be written as 8 * (37 / (3 * 8)) + (37 - (3 * 8)) / 3
+	while ((b_copy << 1) <= a)							// 37 / 3 can be written as 8 * (37 / (3 * 8)) + (37 - (3 * 8)) / 3
 	{
 		b_copy <<= 1;
 		q <<= 1;
 	}
 	return q + divide(a - b_copy, b);
 }
+
+//-------------------------STOP------------------------------
+
 
 int main()
 {
@@ -48,10 +56,10 @@ int main()
 	{
 		long long int a, b;
 		cin >> a >> b;
-		assert(INT_MIN <= a);
-		assert(a <= INT_MAX);
-		assert(INT_MIN <= b);
-		assert(b <= INT_MAX);
+		assert(-MAX_AB <= a);
+		assert(a <= MAX_AB);
+		assert(-MAX_AB <= b);
+		assert(b <= MAX_AB);
 		assert(b != 0);
 		long long int ans = divide(a, b);
 		assert(ans == a / b);
