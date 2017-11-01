@@ -61,4 +61,15 @@ Maximum time allowed in interview: 20 Minutes.
 
 When from_node = to_node, path contains only one node, so output should be [from_node] containing only one node. 
 
+It can be helpful to first store edges node wise and then use it.
+Something like this:
+
+vector<vector<pair<int, int>>> node_wise_edges(dag_nodes + 1, vector<pair<int, int>>(0));
+for (int i = 0; i < dag_edges; i++)
+{
+    node_wise_edges[dag_from[i]].push_back({dag_to[i], dag_weight[i]});
+}
+
+Now we have all the outgoing edges from node i in vector node_wise_edges[i]. And it will be easier to use. 
+
 
