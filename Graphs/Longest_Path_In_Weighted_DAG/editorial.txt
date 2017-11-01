@@ -1,0 +1,26 @@
+If you are getting wrong answer then first thing to check is that you are using appropriate data type to store the values. int will not work, need to use long long int. 
+
+
+
+
+
+Given graph is dag. In dag we can divide our nodes in different levels, with "each edge" going from upper level to lower level. 
+
+So we can start updating maximum length level wise, starting from upper level and then moving to level below it! 
+
+To divide nodes level wise with each edge going from upper level to lower level, we can use topological sort! 
+
+For more clear idea have a look at the solution provided by us. 
+
+
+
+
+
+
+Time complexity of the solution is O(number of nodes in dag + number of edges in dag) and that can be re-written as O(number of edges in dag) from given constraints. 
+
+Auxiliary space used by the solution is O(number of nodes in dag + number of edges in dag) and that can be re-written as O(number of edges in dag) from given constraints.
+
+Space complexity of the solution is also O(number of nodes in dag + number of edges in dag) and that can be re-written as O(number of edges in dag) from given constraints.
+
+Note that we should not write any of them as O(numberber of nodes in dag) because number of edges in dag can be way larger than number of nodes! 
