@@ -152,8 +152,8 @@ void parse_test_cases(string copy_input_from, string copy_output_from, int no_of
 int main()
 {
 	parse_test_cases("..//test_cases//sample_test_cases_input.txt", "..//test_cases//sample_test_cases_expected_output.txt", 2);
-	parse_test_cases("..//test_cases//handmade_test_cases_input.txt", "..//test_cases//handmade_test_cases_expected_output.txt", 10);
-	parse_test_cases("..//test_cases//generated_small_test_cases_input.txt", "..//test_cases//generated_small_test_cases_expected_output.txt", 15);
+	parse_test_cases("..//test_cases//handmade_test_cases_input.txt", "..//test_cases//handmade_test_cases_expected_output.txt", 11);
+	parse_test_cases("..//test_cases//generated_small_test_cases_input.txt", "..//test_cases//generated_small_test_cases_expected_output.txt", 14);
 	parse_test_cases("..//test_cases//generated_big_test_cases_input.txt", "..//test_cases//generated_big_test_cases_expected_output.txt", 3);
 
 	return 0;

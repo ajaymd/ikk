@@ -1,1 +1,1 @@
-26597369167 is the maximum length possible.
+15 is the maximum length possible.
