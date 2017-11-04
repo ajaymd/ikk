@@ -1,0 +1,7 @@
+6
+a
+bed
+ca
+dc
+dcabe
+dcaba

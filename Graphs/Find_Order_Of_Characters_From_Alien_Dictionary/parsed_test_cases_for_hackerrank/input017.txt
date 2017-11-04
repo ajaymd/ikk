@@ -1,0 +1,6 @@
+5
+a
+ab
+acb
+aca
+aa
