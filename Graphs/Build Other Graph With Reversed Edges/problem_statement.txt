@@ -1,0 +1,53 @@
+
+Build Other Graph With Reversed Edges
+
+Problem Statement:
+
+Given a strongly connected graph containing n nodes, you have to build other graph containing n nodes where edges are reversed than the original graph.
+
+Input Format:
+
+There is only one argument denoting any random node of the graph. 
+
+Output Format:
+
+Return any node of the new graph.
+
+As input is a strongly connected graph, you will be able to visit all the nodes, given any random node.
+
+Also when we reverse all the edges of strongly connected graph it will remain strongly connected graph, hence returning any one node is sufficient. 
+
+Constraints:
+
+1 <= n <= 315
+Given graph is strongly connected.
+Given graph does not contain multiple edges (there will not be more than one edges connecting same pair of vertices in the same direction) and self loops. 
+Each node contains distinct values. 
+1 <= value stored in node <= n
+You are not allowed to modify the given graph. Return completely new graph. 
+
+Sample Test Case:
+
+Sample Input:
+
+Any node of the graph where:
+n = 3
+nodes = [1 2 3]
+edges = [(1 -> 2), (2 -> 3), (3 -> 1)]
+
+Sample Output:
+
+Graph where;
+n = 3
+nodes = [1 2 3]
+edges = [(2 -> 1), (3 -> 2), (1 -> 3)]
+
+Notes:
+
+Maximum time allowed in interview: 20 Minutes.
+
+Due to some HackerRank limitations currently we are providing code-stubs only in C++, C++ 14, Java 8, JavaScript, Python 2 and Python 3.
+
+For other languages simply write your solution (no need to read input and write output) assuming that you are given input arguments mentioned in the input format. Your solution will be checked manually. Do not worry about input, output and test cases. Just submit it.  
+
+
