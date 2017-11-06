@@ -15,31 +15,41 @@ function Node()
     this.neighbours = [];
 }
 
+
 const MAX_NODES = 315;
+
+
 
 // ---- START ----
 
+// In constraints we are given that each node contains distinct values, so we can keep track of node address using that value. {value : node}.
 var reversed_graph = new Map();
 
 function dfs(node)
 {        
+    // First create new node.
     var temp_node = new Node;
     temp_node.val = node.val;
     reversed_graph.set(node.val, temp_node);        
     var n = node.neighbours.length;
+    // Visit all the neighbours.
     for (var i = 0; i < n; i++)
     {
+        // If node is not visited then first visit it.
         if (reversed_graph.has(node.neighbours[i].val) == false)
         {
             dfs(node.neighbours[i]);
         }
+        // Add the reverse edge. 
         reversed_graph.get(node.neighbours[i].val).neighbours.push(reversed_graph.get(node.val));
     }
 }
 
 function build_other_graph(node)
 {
+    // Build the graph.
     dfs(node);
+    // Return any node of the new graph. 
     return reversed_graph.get(1);
 }
 
@@ -84,7 +94,7 @@ function helper(graph_nodes, graph_from, graph_to) {
         edges.set(MAX_NODES * (graph_from[i] - 1) + graph_to[i] - 1, true);
     }	 
 
-    
+    // Student will return only one node. Do a dfs and get all the nodes.
     var reversed = helper_get_all_addresses_in_reversed_graph(build_other_graph(original.get(1)));
     if (reversed.size != graph_nodes)
     {
@@ -97,6 +107,7 @@ function helper(graph_nodes, graph_from, graph_to) {
         {
             return "Wrong Answer!";
         }
+        // New graph should not contain node from original graph. 
         if (original.get(val) == reversed.get(val))
         {
             return "Wrong Answer!";
@@ -113,6 +124,7 @@ function helper(graph_nodes, graph_from, graph_to) {
             edges.delete(temp);
         }
     }
+    // All the edges should be present in the new graph. 
     if (edges.size > 0)
     {
         return "Wrong Answer!";

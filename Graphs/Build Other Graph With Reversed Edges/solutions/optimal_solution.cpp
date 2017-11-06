@@ -19,22 +19,29 @@ struct Node
 
 void dfs(Node *node, unordered_map<int, Node *> &reversed)
 {
+	// First create new node.
 	reversed[node->val] = new Node(node->val);
 	int n = node->neighbours.size();
+	// Visit all the neighbours.
 	for (int i = 0; i < n; i++)
 	{
+		// If node is not visited then first visit it.
 		if (reversed.find(node->neighbours[i]->val) == reversed.end())
 		{
 			dfs(node->neighbours[i], reversed);
 		}
+		// Add the reverse edge. 
 		reversed[node->neighbours[i]->val]->neighbours.push_back(reversed[node->val]);
 	}
 }
 
 Node *build_other_graph(Node *node)
 {
+	// In constraints we are given that each node contains distinct values, so we can keep track of node address using that value. {value : node}.
 	unordered_map<int, Node *> reversed;
+	// Build the graph.
 	dfs(node, reversed);
+	// Return any node of the new graph. 
 	return reversed.begin()->second;
 }
 
@@ -76,6 +83,7 @@ string helper(int graph_nodes, vector<int> graph_from, vector<int> graph_to)
 		edges.insert({graph_from[i], graph_to[i]});
 	}	 
 
+	// Student will return only one node. Do a dfs and get all the nodes.
 	unordered_map<int, Node *> reversed = helper_get_all_addresses_in_reversed_graph(build_other_graph(original[1]));
 
 	if (reversed.size() != graph_nodes)
@@ -89,16 +97,15 @@ string helper(int graph_nodes, vector<int> graph_from, vector<int> graph_to)
 		{
 			return "Wrong Answer!";
 		}
+		// New graph should not contain node from original graph. 
 		if (original[it->first] == reversed[it->first])
 		{
 			return "Wrong Answer!";
 		}
 		int n = it->second->neighbours.size();
-		//cout << "no of edges of node " << it->first << " = " << n << endl;
 		for (int i = 0; i < n; i++)
 		{
 			int val = it->second->neighbours[i]->val;
-			//cout << "to = " << val << endl;
 			auto itttt = edges.find({val, it->first}); 
 			if (itttt == edges.end())
 			{
@@ -107,6 +114,7 @@ string helper(int graph_nodes, vector<int> graph_from, vector<int> graph_to)
 			edges.erase(itttt);
 		}
 	}
+	// All the edges should be present in the new graph. 
 	if (edges.size() > 0)
 	{
 		return "Wrong Answer!";

@@ -20,25 +20,32 @@ public class Solution {
 
 	// ---- START ----
 
+    // In constraints we are given that each node contains distinct values, so we can keep track of node address using that value. {value : node} 
 	static HashMap<Integer, Node> reversed_graph = new HashMap<Integer, Node>();
 
     static void dfs(Node node)
 	{        
+        // First create new node.
 		reversed_graph.put(node.val, new Node(node.val));        
 		int n = node.neighbours.size();
+        // Visit all the neighbours.
 		for (int i = 0; i < n; i++)
 		{
+            // If node is not visited then first visit it.
 			if (reversed_graph.containsKey(node.neighbours.get(i).val) == false )
 			{
 				dfs(node.neighbours.get(i));
 			}
+            // Add the reverse edge. 
 			reversed_graph.get(node.neighbours.get(i).val).neighbours.add(reversed_graph.get(node.val));
 		}
 	}
 
 	static Node build_other_graph(Node node)
 	{
+        // Build the graph.
 		dfs(node);
+        // Return any node of the new graph. 
 		return reversed_graph.get(1);
 	}
 
@@ -80,6 +87,7 @@ public class Solution {
             edges.put(new Pair<Integer, Integer> (graph_from[i], graph_to[i]), true);
         }	 
         
+        // Student will return only one node. Do a dfs and get all the nodes.
         HashMap<Integer, Node> reversed = helper_get_all_addresses_in_reversed_graph(build_other_graph(original.get(1)));
 
         if (reversed.size() != graph_nodes)
@@ -94,6 +102,7 @@ public class Solution {
             {
                 return "Wrong Answer!";
             }
+            // New graph should not contain node from original graph. 
             if (original.get(val) == reversed.get(val))
             {
                 return "Wrong Answer!";
@@ -109,6 +118,7 @@ public class Solution {
                 edges.remove(new Pair<Integer, Integer> (_val, val));
             }
         }
+        // All the edges should be present in the new graph. 
         if (edges.size() > 0)
         {
             return "Wrong Answer!";
