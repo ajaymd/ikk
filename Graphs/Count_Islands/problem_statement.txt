@@ -1,0 +1,57 @@
+
+Count Islands
+
+Problem Statement:
+
+Given a 2D integer matrix of size n * m, containing only 0s and 1s. 
+
+You have to find number islands in that matrix.
+
+An island is a group of connected 1s. Here connected is defined on all the 8 neighbours (4 side neighbours and 4 diagonal neighbours).
+
+Input Format:
+
+There is only one argument denoting the 2D integer matrix of size n * m.
+
+Output Format:
+
+Return an integer denoting the number of islands.
+
+Constraints:
+
+1 <= n, m <= 450
+0 <= matrix[i][j] <= 1
+Individual 1 (which is not connected to any neighbour) is also considered as an island. 
+Do not use visited matrix.
+Use as little extra memory as possible.
+
+Sample Test Case:
+
+Sample Input:
+
+matrix = 
+[
+    [1 1 0 0 0]
+    [0 1 0 0 1]
+    [1 0 0 1 1]
+    [0 0 0 0 0]
+    [1 0 1 0 1]
+]
+
+Sample Output:
+
+5
+
+Explanation:
+
+(0 0), (0 1), (1 1) and (2 0) makes one island.
+(1 4), (2 4) and (2 3) makes one island. 
+(4 0) makes one island.
+(4 2) makes one island.
+(4 4) makes one island.
+
+Notes:
+
+Maximum time allowed in interview: 20 Minutes.
+
+

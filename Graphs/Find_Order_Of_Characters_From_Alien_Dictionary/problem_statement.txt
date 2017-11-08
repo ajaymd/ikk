@@ -4,6 +4,7 @@ Find Order Of Characters From Alien Dictionary
 Problem Statement:
 
 Given a sorted dictionary of an alien language. You have to find the order of characters in that language. 
+(This a popular interview problem)
 
 Input Format:
 
@@ -44,5 +45,7 @@ Sample Output2:
 Notes:
 
 Maximum time allowed in interview: 20 Minutes.
+
+Here input is given such that it is possible to determine order uniquely. But in interview you should clarify these things with interviewer. Like if we are given words = ["z" "bc"] then we can only conclude that 'z' will come before 'b', but nothing about the order of 'c'!  
 
 
