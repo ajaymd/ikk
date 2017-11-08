@@ -6,6 +6,7 @@ const int MAX_N = 450;
 
 // ---- START ----
 
+// All 8 directions. Consider as pair: {add_r[i], add_r[i]}.
 const int add_r[8] = {0, -1, -1, -1, 0, 1, 1, 1};
 const int add_c[8] = {-1, -1, 0, 1, 1, 1, 0, -1};
 
@@ -20,13 +21,14 @@ void bfs(int r, int c, vector<vector<int>> &matrix)
 		q.pop();
 		int r = head.first;
 		int c = head.second;
-		
 	
 		for (int i = 0; i < 8; i++)
 		{
+			// Try to visit all 8 neighbours.
 			int new_r = r + add_r[i];
 			int new_c = c + add_c[i];
 
+			// Out of the matrix. 
 			if (new_r < 0 || new_r >= matrix.size() || new_c < 0 || new_c >= matrix[0].size())
 			{
 				continue;
@@ -34,6 +36,7 @@ void bfs(int r, int c, vector<vector<int>> &matrix)
 
 			if (matrix[new_r][new_c])
 			{
+				// We could have marked as 0 when we pop-up the element from the queue and not here. This will also give correct answer, but that is not the correct way! If we do that, same element will be pushed multiple times in the queue (that will increase running time and queue size unnecessarily)! Take some examples and try to figure it out. 
 				matrix[new_r][new_c] = 0;
 				q.push({new_r, new_c});
 			}
@@ -51,6 +54,7 @@ int count_islands(vector<vector<int>> matrix)
 	{
 		for (int j = 0; j < m; j++)
 		{
+			// When we find unvisited node, visit it and visit all the reachable nodes. 
 			if (matrix[i][j])
 			{
 				islands++;

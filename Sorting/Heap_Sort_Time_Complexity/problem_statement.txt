@@ -1,0 +1,6 @@
+Worst case time complexity of Heap Sort is? 
+
+1) O(N * Log(N))
+2) O(N)
+3) O(N + Log(N))
+4) O(N ^ 2)

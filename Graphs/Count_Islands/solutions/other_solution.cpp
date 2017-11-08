@@ -6,6 +6,7 @@ const int MAX_N = 450;
 
 // ---- START ----
 
+// All 8 directions. Consider as pair: {add_r[i], add_r[i]}.
 const int add_r[8] = {0, -1, -1, -1, 0, 1, 1, 1};
 const int add_c[8] = {-1, -1, 0, 1, 1, 1, 0, -1};
 
@@ -14,9 +15,11 @@ void dfs(int r, int c, vector<vector<int>> &matrix)
 	matrix[r][c] = 0;
 	for (int i = 0; i < 8; i++)
 	{
+		// Try to visit all 8 neighbours. 
 		int new_r = r + add_r[i];
 		int new_c = c + add_c[i];
 
+		// Out of the matrix. 
 		if (new_r < 0 || new_r >= matrix.size() || new_c < 0 || new_c >= matrix[0].size())
 		{
 			continue;
@@ -39,6 +42,7 @@ int count_islands(vector<vector<int>> matrix)
 	{
 		for (int j = 0; j < m; j++)
 		{
+			// When we find unvisited node, visit it and visit all the reachable nodes. 
 			if (matrix[i][j])
 			{
 				islands++;

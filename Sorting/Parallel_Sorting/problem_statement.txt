@@ -1,0 +1,9 @@
+Which sorting algorithm will you use for large scale parallel sorting? 
+
+1) Bucket Sort
+2) Merge Sort
+3) Radix Sort
+4) Heap Sort
+5) Bubble Sort
+6) Selection Sort
+7) Insertion Sort

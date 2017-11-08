@@ -1,0 +1,9 @@
+Answer: Stack.
+
+Building a heap will mostly need a data structure that can access parent and children quickly. 
+
+So, Stack is not useful for that. (Though using tree for building a heap is also tricky but still it serves the purpose!).
+
+
+
+
