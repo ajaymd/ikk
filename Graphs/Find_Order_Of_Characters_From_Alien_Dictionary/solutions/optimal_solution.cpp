@@ -7,7 +7,7 @@ int MAX_CHARS = 100000;
 // ---- START ----
 
 void dfs(char from, unordered_map<char, vector<char>> &adj_list, string &topological_order, unordered_set<char> &visited)
-{
+{	// Note that we are passing adj_list, topological_order and visited by reference. Either use pass by reference or use global variables. 
 	visited.insert(from);
 	for (auto it = adj_list[from].begin(); it != adj_list[from].end(); it++)
 	{

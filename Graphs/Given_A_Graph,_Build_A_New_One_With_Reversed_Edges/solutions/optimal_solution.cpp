@@ -18,7 +18,7 @@ struct Node
 // ---- START ----
 
 void dfs(Node *node, unordered_map<int, Node *> &reversed)
-{
+{	// Note that we are passing reversed by reference, either use passing by reference or use global variable. 
 	// First create new node.
 	reversed[node->val] = new Node(node->val);
 	int n = node->neighbours.size();

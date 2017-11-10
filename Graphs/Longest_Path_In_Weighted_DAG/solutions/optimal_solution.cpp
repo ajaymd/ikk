@@ -8,7 +8,7 @@ const int MAX_NODES = 450, MAX_WEIGHT = 2000000000;
 
 // Note that we are passing vectors by reference. Passing vector by value will slow down solution. Either use pass by reference or use global vectors.
 void dfs(int from, vector<vector<pair<int, int>>> &node_wise_edges, vector<int> &topological_order, vector<bool> &active, vector<bool> &visited)
-{
+{	// Note that we are passing node_wise_edges, topological_order, active and visited by reference. Either pass by reference or use global variables.  
 	// Mark as visited.
 	visited[from] = true;
 	// This is just for our use you can ignore it. 
