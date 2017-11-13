@@ -41,7 +41,7 @@ string find_order(vector<string> words)
 	// Contains adjacent nodes. 
 	unordered_map<char, vector<char>> adj_list;
 	
-	// Initialize nodes with no edges. 
+	// Initialize nodes with no edges. This is imp. Otherwise testcases having only one type of character will fail.
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < words[i].length(); j++)
