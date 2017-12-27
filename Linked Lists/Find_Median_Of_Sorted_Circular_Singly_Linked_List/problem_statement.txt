@@ -20,7 +20,7 @@ Constraints:
 
 1 <= Number of nodes in linked list <= 10^5
 - 2 * 10^9 <= value contained in nodes <= 2 * 10^9 
-Value contained in nodes will be even number. (Hence when even number of elements in L, median M will be an integer. (Even + Even) / 2 = Even)
+Value contained in nodes will be even number. (Hence when even number of elements in L, median M will be an integer. (even + even) / 2 = integer (aka, not float). So answer will always be integer (never float).)
 
 Sample Test Case:
 

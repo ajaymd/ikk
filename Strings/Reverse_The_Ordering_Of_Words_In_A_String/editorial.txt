@@ -1,0 +1,54 @@
+
+Idea to solve the problem is:
+1) First reverse the whole string.
+2) Then reverse the individual words.
+
+For example if input is:
+
+s = "Have a nice day!"
+
+1) Then first reverse the whole string, 
+s = "!yad ecin a evaH"
+
+2) Then reverse the individual words,
+s = "day! nice a Have"
+
+
+
+
+
+
+
+Now have a look at the solution provided by us.
+
+
+
+
+
+
+
+
+Time Complexity:
+
+O(n).
+The first pass over the string is obviously O(n/2) = O(n). The second pass is O(n + combined length of all words / 2) = O(n + n/2) = O(n), which makes this an O(n) algorithm.
+
+
+Auxiliary Space used:
+
+O(1).
+
+
+Space Complexity:
+
+O(n).
+As space complexity includes the input size also and we have a string in input of length n.
+Note that generally we use Auxiliary Space Used = Space Complexity, but there is a different. Auxiliary space does not count the input size but space complexity does. 
+
+
+
+
+
+
+
+
