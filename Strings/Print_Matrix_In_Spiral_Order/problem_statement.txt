@@ -1,0 +1,48 @@
+
+Print Matrix In Spiral Order
+
+
+Problem Statement:
+
+Given a character matrix named matrix of size rows * cols. Print matrix in spiral order. (Starting from top-left corner and going clockwise direction.)
+
+Input Format:
+
+There is only one argument denoting character matrix matrix.
+
+Output Format:
+
+Return a string of length rows * cols denoting the spiral order of matrix.
+
+Constraints:
+
+1 <= rows, cols
+1 <= rows * cols <= 10^5
+Any character in matrix will be either uppercase letter (A - Z) or lowercase letter (a-z).
+Avoid recursion. 
+
+Sample Test Case:
+
+Sample Input:
+
+[
+[X Y A] 
+[M B C]
+[P Q R]
+]
+
+Sample Output:
+
+XYACRQPMB 
+
+Explanation:
+
+For the given matrix rows = 3 and cols = 3. Spiral order is X -> Y -> A -> C -> R -> Q -> P -> M -> B. So return string "XYACRQPMB" of length rows * cols = 9.
+
+Notes:
+
+* This problem is less about logic, but more about careful index manipulation.
+* Hint - It may be faster to write this, if you name your variables clearly. Instead of i,j,k,l etc, try naming them like row, col, start, end etc. That will also help your interviewer follow along more easily.
+
+
+

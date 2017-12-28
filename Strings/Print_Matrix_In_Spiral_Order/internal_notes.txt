@@ -1,0 +1,27 @@
+Many solutions to this. All are interview-acceptable.
+
+Boring non-recursive solution: http://www.geeksforgeeks.org/print-a-given-matrix-in-spiral-form/
+
+First three solutions here are all excellent: http://stackoverflow.com/questions/726756/print-two-dimensional-array-in-spiral-order
+
+1. Recursive Solution:  Don't do this unless your interviewer explicitly asks you to use Recursion
+2. Python Solution: This can be done in any language
+3. Tricky, single for-loop solution: This is just clever
+
+
+
+
+
+
+Input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
+
+
+First line contains one integer denoting rows in the matrix.
+Second line contains one integer denoting columns in the matrix.
+Next rows lines contains actual values in matrix. Each line contains space separated columns number of characters, makng one row of the matrix. 
+
+
+
+
+
+

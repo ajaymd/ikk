@@ -1,0 +1,191 @@
+
+There are many solutions possible for this problem.
+Here we will provide one interesting solution that uses only one for loop.
+
+
+
+
+
+
+
+Imagine there is a turtle standing at point (0,0), that is, top-left corner, facing east (to the right).
+
+It will keep going forward and each time it sees a sign, the turtle will turn right.
+
+So if we put the turtle at point (0,0) facing right-ward, and if we place the signs at appropriate places, the turtle will traverse the array in spiral way.
+
+Now the problem is: "Where to put the signs?"
+
+Let's see where we should put the signs (marked by #, and numbers by O):
+
+For a grid that looks like this:
+O O O O
+O O O O
+O O O O
+O O O O
+
+We put the signs like this:
+O O O #
+# O # O
+O # # O
+# O O #
+
+For a grid that looks like this:
+O O O
+O O O
+O O O
+O O O
+
+We put the signs like this:
+O O #
+# # O
+O # O
+# O #
+
+And for a grid that looks like this:
+O O O O O O O
+O O O O O O O
+O O O O O O O
+O O O O O O O
+O O O O O O O
+
+We put the signs like this:
+O O O O O O #
+# O O O O # O
+O # O O # O O
+O # O O O # O
+# O O O O O #
+
+We can divide the grid in 4 parts and then follow some patterns. 
+
+4 parts will be:
+1) top-left (lets call it a)
+2) top-right (lets call it b)
+3) bottom-right (lets call it c)
+4) bottom-left (lets call it d)
+
+So 6 * 6 grid will be divided like:
+
+a a a b b b
+a a a b b b
+a a a b b b
+d d d c c c
+d d d c c c
+d d d c c c
+
+Now for most of the points we can easily decide in which part they will fall, except points which are horizontally centered or vertically centered.
+
+Horizontally centered points: Consider them in top parts.
+Vertically centered points: Consider them in right parts.
+
+So 5 * 7 grid will be divided like:
+
+a a a b b b b
+a a a b b b b
+a a a b b b b
+d d d c c c c
+d d d c c c c
+
+Now again look at the grid:
+
+O O O O O O #
+# O O O O # O
+O # O O # O O
+O # O O O # O
+# O O O O O #
+
+and try to find patterns from parts:
+
+O O O	 O O O #
+# O O	 O O # O
+O # O	 O # O O
+
+O # O	 O O # O
+# O O	 O O O #
+
+ 
+For top-right, bottom-right and bottom-left pattern is same!
+
+If matrix size is rows * cols then for any point (at position cur_row and cur_col) if we want to check if there is a sign or not simply check:
+
+1) top-right: cur_row == cols - 1 - cur_col
+2) bottom-right: rows - 1 - cur_row == cols - 1 - cur_col
+3) bottom-left: rows - 1 - cur_row == cur_col
+
+We can write conditions separately or combine them as:
+
+min(cur_row, rows - 1 - cur_row) == min(cur_col, cols - 1 - cur_col)	......(1)
+
+Now for the top-left part we need to check:
+
+cur_row == cur_col + 1	......(2)
+
+Now you know where to put the signs! 
+
+How to check if point is in top-left or other parts?
+
+/*
+Consider these grids to understand what the below code does. 
+
+O O O O O O #
+# O O O O # O
+O # O O # O O
+O # O O O # O
+# O O O O O #
+
+=
+
+O O O	 O O O #
+# O O	 O O # O
+O # O	 O # O O
+
+O # O	 O O # O
+# O O	 O O O #
+
+
+
+< (rows + 1) / 2 will give priority to top part when current position is horizontally centered. 
+< cols / 2 will give priority to right part when current position is vertically centered.
+
+*/
+if ((cur_row < (rows + 1) / 2) && (cur_col < cols / 2))
+{
+	// Condition to turn when current position is in top-left part.
+}
+else
+{
+	// Condition to turn when current position in other parts.
+}
+
+
+So that is it! Now have a look at the solution provided by us.
+
+
+
+
+
+
+
+Time Complexity:
+
+O(rows * cols)
+We are traversing the whole vector once.
+
+
+Auxiliary Space Used:
+
+O(1).
+
+
+Space Complexity:
+
+O(rows * cols).
+As space complexity includes the input size also.
+Note that generally we use Auxiliary Space Used = Space Complexity, but there is a different. Auxiliary space does not count the input size but space complexity does. 
+
+
+
+
+
+
+

@@ -1,0 +1,127 @@
+16
+
+1
+1
+a
+
+1
+2
+a B
+
+2
+1
+x
+X
+
+1
+2
+E e
+
+2
+1
+o
+o
+
+1
+7
+p O I U Y e W
+
+6
+1
+q
+W
+e
+r
+t
+Y
+
+2
+2
+C v
+B n
+
+2
+2
+a A
+A a
+
+2
+7
+a A c C e E g
+h i j k l m n
+
+2
+8
+p o i u y t r e
+a s d f g h j k
+
+9
+2
+q w
+e r
+t y
+u i
+o p
+a s
+d f
+g h
+j k
+
+10
+2
+m n
+b v
+c x
+l k
+j h
+g f
+d s
+p o
+i u
+y t
+
+
+3
+3
+S D S
+D S D
+S D S
+
+7
+5
+a A b B c
+C d D e E
+f F g G h
+H i I j J
+k K l L m
+M n N o O
+p P q Q r
+
+7
+3
+a A b
+C d D
+f F g
+H i I
+k K l
+M n N
+p P q
+
+----------------------------------------------
+
+a
+aB
+xX
+Ee
+oo
+pOIUYeW
+qWertY
+CvnB
+aAaA
+aAcCeEgnmlkjih
+poiuytrekjhgfdsa
+qwryipsfhkjgdaoute
+mnvxkhfsoutyipdgjlcb
+SDSDSDSDS
+aAbBcEhJmOrQqPpMkHfCdDeGjLoNnKiFgIl
+aAbDgIlNqPpMkHfCdFiKn
