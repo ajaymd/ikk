@@ -1,0 +1,39 @@
+
+This is an easy question presented with fancy words.
+
+
+
+
+
+
+Look at the solution provided by us.
+
+
+
+
+
+
+Time Complexity:
+
+O(|s|).
+As we are traversing through the string.
+
+
+Auxiliary Space Used:
+
+O(1).
+
+
+Space Complexity:
+
+O(|s|).
+As space complexity includes the input size also.
+Note that generally we use Auxiliary Space Used = Space Complexity, but there is a different. Auxiliary space does not count the input size but space complexity does. 
+
+
+
+
+
+
+
+
