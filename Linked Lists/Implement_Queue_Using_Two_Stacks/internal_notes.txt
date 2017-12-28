@@ -1,0 +1,16 @@
+Our Solution:
+https://github.com/InterviewKickstart/CodingProblemsIK/tree/master/Linked%20Lists/Implement_Queue_Using_Two_Stacks
+ 
+Helpful Article:
+http://stackoverflow.com/questions/69192/how-to-implement-a-queue-using-two-stacks
+
+Problem type:
+1) We handle the input/output and user only needs to complete the given funciton.
+or
+2) User writes code from the scratch. Nothing is provided by us. 
+This problem is of type: 1
+
+Here problem is of type 1 hence the input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
+ 
+First line contains N number of nodes in linked list.
+Next N lines contains value of each node in linked list. 

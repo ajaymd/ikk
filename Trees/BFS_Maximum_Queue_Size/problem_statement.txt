@@ -1,0 +1,7 @@
+Considering BFS (breath first search) on tree, what is the tightest upper bound on maximum number of nodes present in queue at any point of time? 
+ 
+Pick one of the choices
+1) O(Height of the tree)
+2) O(Number of nodes in the tree)
+3) O(Minimum nodes at any level)
+4) O(Maximum nodes at any level)

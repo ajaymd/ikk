@@ -1,0 +1,28 @@
+
+
+We are allowed to use only constant extra space. 
+
+We can start merging from the end. (Or we can first create empty space at the beginning instead of the end by copying arr2[i] to arr2[n + i] for i from 0 to n - 1, and then start merging from the beginning. But this will add one more loop unnecessarily.)
+
+Have a look at the solution provided by us. 
+
+
+
+
+
+
+Time Complexity:
+
+O(n) as we are traversing through the arr1 and arr2 only once.
+
+Auxiliary Space Used:
+
+O(1).
+
+Space Complexity:
+
+O(n) due to input size.
+
+
+
+

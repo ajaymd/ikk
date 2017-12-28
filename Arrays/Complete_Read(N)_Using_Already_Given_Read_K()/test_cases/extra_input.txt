@@ -1,0 +1,11 @@
+"I like competitive programming."
+25
+3
+8
+15
+12
+
+---------------------------------
+"I like 
+competitive pro
+gramming."

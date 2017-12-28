@@ -1,0 +1,104 @@
+
+Complete Read(N) Using Already Given Read_K()
+
+
+Problem Statement:
+
+You are already given Read_K() function, which reads some bytes (characters) from an underlying file and returns them as a string. More specifically when >= K bytes are available in the file, it reads and returns exactly K bytes. But when < K bytes are available in the file then it reads and returns that many available bytes. 
+
+Using the given function Read_K(), you have to implement Read(N) function which does exactly the same thing for N bytes.
+
+Read(N) function can be called many times with different values of N. So, our Read(N) function should be consistent. It should return bytes from where we left. For example if our file contains "Let's read something!" then first call to Read(N) with N = 2 should return "Le" and then second call to Read(N) with N = 3 should return "t's" regardless the value of K.  
+
+Note that in only C++ you are given Read_K(). In other languages you are supposed to write Read_K() function also. As a template code in C++ is given. 
+
+You are given template of function read_function_caller which takes three arguments. First argument is a string denoting the file we are going to read, second argument is an integer denoting K and third argument is value_of_n denoting an array of integers.
+
+From function read_function_caller, first you have to create global copy of variables file and K so that function Read_K() can use it. For more clarity see the C++ code. 
+
+After that from function read_function_caller, for each element in value_of_n array you have to call Read(value_of_n[i]). Each call to Read(value_of_n[i]) will return one string as discussed earlier. Function read_function_caller will store each string and will eventually return array of strings containing answers for each call to Read(value_of_n[i]) function. You have to complete read_function_caller and implement Read(N) function. For more clarity see the notes.
+
+Read_K() will start reading from the beginning of the file and will remember the point where it left in its last call.
+
+Input Format:
+
+There are three arguments denoting file, K and value_of_n.
+
+Output Format:
+
+Return vector of strings.  
+
+Constraints:
+
+1 <= K <= 10^5
+0 <= N <= 10^5 
+Consider all cases. K < N or K = N or K > N
+0 <= size of file <= 10^5
+You are not given the value of K.
+K will be a constant.
+Read(N) can call itself.
+Read_K() can be called multiple times (by your Read(N) function).
+Read(N) can be called multiple times (by driver function to test your function).
+Assume that nobody else is touching the underlying file. Only you are accessing it using Read_K() function.
+You can not read the file in any other way except the Read_K() function.
+File will not contains new line ('\n') character (just for our simplicity to handle input output).
+Sum of numbers in value_of_n will be <= 10^5. Which means Sum of N over all calls to Read(N) will be <= 10^5. Which means total number of bytes read will be <= 10^5. 
+
+Sample Test Case:
+
+Sample Input:
+
+Suppose our file contains "Let's read something!", K = 5 and value_of_n = [7, 1].
+
+Sample Output:
+
+["Let's r", "e"]
+
+Explanation:
+
+First call to Read(N) with N = 7 should return "Let's r". Here note that " " (space) will also be occupying one byte. 
+After that second call to Read(N) with N = 1 should return "e". 
+
+Notes:
+
+Maximum time allowed in interview: 20 Minutes.
+
+Consider the below C++ code. You need to implement like this in your preferable language. 
+
+string file;			// You need to declare this. Global scope so that read_K function can use it.
+int K;				// You need to declare this. Global scope so that read_K function can use it.
+
+string read_K()			// You need to implement this in language you are using in exactly the same manner given here. 
+{
+	static int ptr = 0;						// Used static because we want to read from where we left in previous read
+	int len = min(K, (int)file.length() - ptr);			// Handle the case when remaining bytes < requested bytes
+	string ans (len, '0');						// It is always better if we don't use concatinatin each time. like ans = ans + (some char)
+	for (int i = 0; i < len; i++)
+	{
+		ans[i] = file[ptr++];
+	}
+	return ans;
+}
+
+string read(int N)		// You need to implement and complete this. 
+{
+	return string;
+}
+
+vector<string> read_function_caller(string file, int K, vector<int> value_of_n)
+{
+	::file = file;		// Initialize the global variables.
+	::K = K;													
+
+	int queries = value_of_n.size();
+	vector<string> ans;
+	for (int i = 0; i < queries; i++)
+	{
+		ans.push_back(read(value_of_n[i]));
+	}
+	return ans;
+}
+
+Here we are passing strings around which will be costly and in real systems we don't do that. In real systems we use some fixed length char array(buffer) and pass the pointer to function. Function stores available bytes in that array and returns number of bytes stored. But here for simplicity we preferred this.
+Maximum time allowed in interview: 20 Minutes. 
+

@@ -1,0 +1,28 @@
+Our Solution:
+https://github.com/InterviewKickstart/CodingProblemsIK/tree/master/Linked%20Lists/Find_Median_Of_Sorted_Circular_Singly_Linked_List
+ 
+Helpful Article:
+https://knaidu.gitbooks.io/problem-solving/content/linked_lists/median_in_a_circular_list.html
+
+
+Problem type:
+1) We handle the input/output and user only needs to complete the given funciton.
+or
+2) User writes code from the scratch. Nothing is provided by us. 
+This problem is of type: 1
+
+Here problem is of type 1 hence the input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
+ 
+First line contains N, number of nodes in linked list.
+Next N lines contains value of each node. 
+Next line contains shift value in range [0, ptr_size). 
+For example:
+Our sample test case actual input can be described as:
+5
+2
+4
+6
+8
+10 (L: 2 -> 4 -> 6 -> 8 -> 10 -> NULL then you need to make it circular using tail->next = head. Now L will become circular.)
+1  (Initially our pointer will be at the beginning of the linked list pointing at 2, but We need to give arbitrary node. So we do ptr = ptr->next 1 times hence not ptr will be pointing at 4 and we pass this to the function.)
+

@@ -1,0 +1,40 @@
+Our Solution:
+https://github.com/InterviewKickstart/CodingProblemsIK/tree/master/Linked%20Lists/Find_Intersection_Of_Two_Singly_Linked_Lists
+ 
+Helpful Article:
+http://www.geeksforgeeks.org/write-a-function-to-get-the-intersection-point-of-two-linked-lists/
+
+test_cases_parser_for_hackerrank.cpp is parsing wrong output for big_test_cases_input.txt's both test cases, so check them manually. 
+
+Problem type:
+1) We handle the input/output and user only needs to complete the given funciton.
+or
+2) User writes code from the scratch. Nothing is provided by us. 
+This problem is of type: 1
+
+Here problem is of type 1 hence the input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
+
+(To generate test cases I have generated linked list L1, then I generate some part of L2 and then merge it with L1 at some position (0-indexed).)
+
+First line contains N1, size of linked list L1.
+Next N1 lines contains value of each node in L1.
+Next line contains X, size of linked list L2 before we merge it with L1.
+Next X lines contains value of first X nodes in L2.
+Next line contains one integer denoting position at which we merge L2 with L1. (position will be in range [0, N1] (inclusive) and we take 0 indexed position. 0 means L2 gets merged with L1's head, N1 means L2 gets merged with L1's NULL) 
+For example:
+Our sample test case actual input can be described as:
+7
+1
+2
+3
+4
+7
+8
+9  (L1: 1 -> 2 -> 3 -> 4 -> 7 -> 8 -> 9 -> NULL)
+2
+5
+6 (L2: 5 -> 6 -> NULL)
+3 (Merge L2 with L1 at 3rd position (0-indexed) of L1. Now L2: 5 -> 6 -> 4 -> 7 -> 8 -> 9 -> NULL)
+
+
+

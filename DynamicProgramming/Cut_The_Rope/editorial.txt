@@ -1,0 +1,77 @@
+
+If getting wrong answer then first check if you are using appropriate data type in intermediate calculations. (For the given constraints integer will overflow.)
+
+
+
+
+
+
+We have provided two solutions:
+1) other_solution.cpp: dp solution.
+2) optimal_solution.cpp: solution from observing fixed pattern. (Even though if you are able to directly come to this solution, we expect you to write dp solution once.) 
+
+Have a look at both the solutions. Both contains detailed comments.
+
+
+
+
+
+
+DP solution:
+
+Time Complexity:
+
+O(n^2). 
+We are finding maximum product for all the rope lengths, from 1 to n. 
+And to find maximum product for each rope length we are iterating over all previous rope lengths. 
+So that is O(1 + 2 + 3 + ... + (n - 1)) = O(n^2).
+
+
+Auxiliary Space Used:
+
+O(n).
+Because we are using array of length n + 1.
+
+
+Space Complexity:
+
+O(n).
+Because auxiliary space used is O(n). 
+
+
+
+Solution From Observing Fixed Pattern:
+
+Time Complexity:
+
+O(log(n)). (or more specifically O(log(n / 3)).)
+Because we are using power function.
+
+
+Auxiliary Space Used:
+
+O(log(n)).
+YES IT IS NOT O(1). 
+Power function is recursive hence due to recursive function call stack it will be O(log(n)).
+Note that here we can use iterative power function to reduce the auxiliary space used to O(1). 
+But for readability purpose we have used recursive power function.  
+
+
+Space Complexity:
+
+O(log(n)). 
+Because auxiliary space used is O(log(n)).
+
+
+Other Note:
+
+We can use direct multiplication instead of power function but its time complexity will be O(n / 3) instead of O(log(n / 3)).
+
+
+
+
+
+
+
+
+

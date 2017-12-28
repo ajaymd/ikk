@@ -1,0 +1,65 @@
+When we are dealing with binary tree, our node struture looks like:
+
+struct node
+{
+	int val;
+	node *left_child;
+	node *right_child;
+};
+
+But when we are given k-ary tree then it is not a good idea to manage each pointer separately. (when k = 500 should we define 500 pointers?) 
+
+When we are dealing with k-ary tree, our node structure should look like:
+struct node
+{
+	int val;
+	vector<node*> children;
+};
+
+
+
+
+
+
+Here we only need to find the height hence what value each node is storing does not matter, only thing that matters is how nodes are connected to each other. So in input also we are just given how nodes are connected to each other. 
+
+
+
+
+
+
+Height of the tree = Number of edges in longest path from root to any node = Number of nodes in longest path from root to any node - 1.
+
+We can find height of tree using height of its subtrees. 
+
+More specifically,
+
+height(parent) = max(height(children)) + 1 	: when parent is not a leaf node. 
+0 						: when parent is a leaf node. 
+
+We can use algorithm similar to dfs to do all these calculations. 
+
+
+
+
+
+
+
+Now have a look at the code provided by us.
+
+Time complexity of the solution is O(N) because our solution is similar to dfs. (Here we have assumed that addition and lookup on random data in unordered_map is O(1))
+
+Auxiliary space used and space complexity of our programme is O(N) because we have used unordered_map to store N addresses and created the k-ary tree of size N. 
+
+
+
+
+
+
+As mentioned in the problem statement, some languages like javascript and python might not pass one testcase. The reason is given tree in that testcase is degenerate tree and we are using algorithm similar to dfs. Hence there will be ~10^5 recursive calls to reach the base case and some languages don't allow that many recursive calls.  
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+Answer:
+False
+
+Inorder traversal of BST produces elements in sorted order, pre order does not. 
+
+Counter example:
+Consider 2 as the root of BST and 1 as 2's left child and 3 as 2's right child.
+Now pre-order of that tree will produce [2 1 3] which is not sorted. 

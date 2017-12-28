@@ -1,0 +1,4 @@
+Answer:
+O(Log(N))
+
+We are given "balanced" binary search tree hence insert, search and delete will be O(height) = O(Log(N)). But when we are not given "balanced" then insert, search and delete will be O(height) = O(N). 

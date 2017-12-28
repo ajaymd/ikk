@@ -1,0 +1,7 @@
+What data structure does not make sense to be used to build a heap?
+
+1) Stack
+2) Array
+3) Tree
+
+

@@ -1,0 +1,33 @@
+Take 2 stacks, s1 and s2.
+
+First solution comes to our mind is:
+1) Enqueue operation: Add element at the top of s1.
+2) Dequeue operation: Transfer all elements from s1 to s2, return top element of s2 and again we transfer all elements from s2 to s1 to bring stacks in the original position.
+
+Time complexity of the above solution will be O(N^2). 
+
+Space complexity as well as auxiliary space used will be O(N) because we are using two stacks.  
+ 
+But see that there is no need of transfering elements from s2 to s1 again!
+
+Try one example:
+[1 2 3 -1 4 -1 -1 5 -1 6 7 -1 -1] 
+
+s1 = [1], s2 = []
+s1 = [1 2], s2 = []
+s1 = [1 2 3], s2 = []
+s1 = [], s2 = [3 2 1] and we return 1. 
+Now we can see that next element that should be returned when dequeue operation comes will be 2 and then 3, so we should not transfer them again to s1. 
+
+Solution:
+1) Enqeue operation: push the value on s1.
+2) Dequeue operation:
+if s2 is empty:
+{
+	Transfer all elements from s1 to s2. 
+}
+return element on the top of s2.  
+
+Here push operation will be O(N) in some cases (when we transfer values from s1 to s2), but on an average it will be constant (because more frequent operation will be to return element on the top of s2). So we can use amortized time complexity. Amortized time complexity of both enqueue and dequeue operation will be constant. Hence overall time complexity will be O(N). 
+
+Space complexity as well as auxiliary space used will be O(N) because we are using two stacks.

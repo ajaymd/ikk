@@ -1,0 +1,6 @@
+Which of the following sorts is (are) unstable?
+   
+1) Heap Sort
+2) Merge Sort
+3) Quick Sort
+

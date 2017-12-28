@@ -1,0 +1,7 @@
+Given a balanced binary search tree containing N nodes, what is the complexity of a delete operation in such a tree?
+ 
+Pick one of the choices
+1) O(N)
+2) O(Log(N))
+3) O(1)
+4) O(N Log(N))

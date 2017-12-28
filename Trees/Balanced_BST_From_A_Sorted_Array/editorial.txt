@@ -1,0 +1,123 @@
+Balanced tree has two definitions:
+1) weight-balanced: here we focus on difference in number of nodes in left and right subtree. (Perfect tree)
+2) height-balanced: here we focus on difference in height of left and right subtree. (AVL tree, Red-Black tree)
+
+
+
+
+
+In this problem we need to consider weight-balanced tree.
+
+Only thing we need to know in order to solve the problem is what should be the root of the tree.
+We need to choose middle element as the root and this is enough to solve the problem. 
+
+
+
+
+
+Now lets see why middle element? 
+
+Suppose in our balanced BST, left subtree of the root contains l nodes and right subtree of the root contains r nodes.
+Then we can write it as:
+
+number of nodes in left subtree + 1 (root) + number of nodes in right subtree = total number of nodes in tree. 
+
+l + 1 + r = N.
+with |l - r| <= 1.
+
+so we can write it as:
+
+l + r = N - 1,
+and |l - r| <= 1 has 3 possibilities,
+1) l = r 
+or
+2) l = r + 1
+or
+3) l = r - 1
+
+
+
+
+
+Now let's think what should be l and r when:
+1) N is odd: 
+
+try first option l = r, 
+
+r + r = N - 1
+2 * r = N - 1
+r = (N - 1) / 2 is possible because N is odd hence N - 1 is even!
+
+try second option l = r + 1,
+
+r + 1 + r = N - 1
+r + r = N - 2
+2 * r = N - 2 
+r = (N - 2) / 2 is not possible because N is odd hence N - 2 is also odd hence r will not be an integer!
+
+try third option l = r - 1,
+
+r - 1 + r = N - 1
+2 * r = N
+r = N / 2 is not possible because N is odd hence r will not be an integer!
+
+
+
+
+
+
+2) when N is even:
+
+try first option l = r,
+
+r + r = N - 1
+2 * r = N - 1
+r = (N - 1) / 2 is not possible because N is even hence N - 1 is odd hence r will not be an integer!
+
+try second option l = r + 1,
+
+r + 1 + r = N - 1
+r + r = N - 2
+2 * r = N - 2 
+r = (N - 2) / 2 is possible because N is even hence N - 2 is also even!
+
+try third option l = r - 1,
+
+r - 1 + r = N - 1
+2 * r = N
+r = N / 2 is possible because N is even hence N - 2 is also even!
+
+
+
+
+
+
+When N is odd we need to select (N - 1) / 2 th element (the middle element, 0-indexed) as the root of the tree. Both left and right subtree will receive same number of nodes.
+
+When N is even then we need to select 
+1) (N - 1) / 2 th element (left middle element, 0-indexed) as the root of the tree. In this case right subtree will receive one more node than left subtree.
+or
+2) N / 2 th element (right middle element, 0-indexed) as the root of the tree. In this case left subtree will receive one more node than right subtree.  
+
+
+
+
+
+Problem we are solving is, given N elements build a balanced BST. Now once we have fixed our root we need to solve the same problem again with smaller constrains hence we can use the same function by recursive calls! 
+
+Now check out solution provided by us for implementation details.
+
+
+
+
+
+Time complexity:
+T(N) = 2 * T(N / 2) + O(1) which will be O(N). 
+
+More intuitive explanation is: function is just creating new node and assigning value to that node, that is O(1) computation. And in our tree we will create exactly N nodes! 
+
+Auxiliary space and Space complexity:
+O(N) because we are creating a tree containing N nodes.
+
+
+

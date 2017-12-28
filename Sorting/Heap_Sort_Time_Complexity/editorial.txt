@@ -1,0 +1,14 @@
+Ans:
+
+O(N * Log(N)).
+
+In heap sort we first build max heap(or min heap). This will take O(N) time. (Yes, O(N) not O(N * Log(N))!)
+
+Then O(N) times we will extract max element(or min element) and call max heapify(or min heapify) functin that is O(Log N). So, this step will take O(N * Log(N)) time.
+
+So, overall time complexity will be O(N + N Log(N)) that is O(N * Log(N)). 
+
+
+
+
+ 

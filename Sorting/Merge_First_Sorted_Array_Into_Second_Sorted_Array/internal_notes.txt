@@ -1,0 +1,6 @@
+Input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
+ 
+First line contains value of n.
+Next n line contains arr1[i].
+Next line contains value of n + n.
+Next n + n lines contains arr2[i] where last n arr2[i] will be 0.

@@ -1,0 +1,20 @@
+If you are thinking that your code is correct and still you are getting wrong answer in some test cases then I would suggest you to 1) read problem statement again. Sorted can be "non-increasing" or "non-decreasing" 2) read constraints once again. You are missing some special testcases. In case of even number of elements, we do (l + r) / 2. Here numbers can be upto 2*10^9 so signle number can be stored in int but l + r will overflow! Use long long int and then try!! Try to figure out why it overflows. 
+
+We can handle non-increasing and non-decreasing separately. 
+
+Now coming to actual solution,
+Linked list will be one of these 3 types
+1) (2 -> 2 -> 2 -> 2 -> 2 -> 2)
+2) (2 -> 2 -> 4 -> 6 -> 8 -> 8)
+3) (8 -> 8 -> 4 -> 6 -> 2 -> 2)
+First case is trivial.
+In 2nd case if we can find first smallest element (call it head) then finding median will be easy (Just find middle element/elements). 
+(2 -> 2 -> 4 -> 6 -> 8 -> 8) then head will be ([2]head -> 2 -> 4 -> 6 -> 8 -> 8)
+In 3rd case if we can find first largest element (call it head) then finding median will be easy (Just find middle element/elements).
+(8 -> 8 -> 4 -> 6 -> 2 -> 2) then head will be ([8]head -> 8 -> 4 -> 6 -> 2 -> 2)
+
+Time compleity of the solution will be O(N) because we are going to traverse linked list to find head and then to find the median. 
+
+Space complexity of the solution will be O(N) because of the input size, but auliliary space used will be O(1). 
+
+Now have a look at the code provided by us. 

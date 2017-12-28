@@ -1,0 +1,4 @@
+Input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
+ 
+First line contains number of words (lets call it n).
+Next n lines contains one string denoting one word. 

@@ -1,0 +1,20 @@
+Our Solution:
+https://github.com/InterviewKickstart/CodingProblemsIK/blob/master/Arrays/Complete_Read(N)_Using_Already_Given_Read_K()
+
+
+Helpful Article:
+https://leetcode.com/discuss/21219/a-simple-java-code
+
+
+Problem type:
+1) We handle the input/output and user only needs to complete the given funciton.
+or
+2) User writes code from the scratch. Nothing is provided by us. 
+This problem is of type: 1
+
+Here problem is of type 1 hence the input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
+
+First line contains string denoting the file.
+Next line contains value of K.
+Next line contains number of times (queries) we are going to call Read(N) function.
+Next queries lines contains value of N for which Read(N) function to be called. 

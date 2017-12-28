@@ -1,0 +1,25 @@
+Answer: Heap Sort and Quick Sort.
+
+Suppose our data is in terms of {key, value} pair and we want to sort only on the basic of key.
+
+Consider the below example:
+
+[{2, c}, {1, b}, {1, a}]
+
+Then merge is gauranteed to return 
+
+[{1, b}, {1, a}, {2, c}]
+
+Note that in input array {1, b} comes before {1, a} and in the output array also the "order is preserved" when key value is same!
+
+But in standard implementation of Quick Sort and Heap Sort it is not guaranteed!
+
+Quick Sort and Heap Sort may return: 
+
+[{1, a}, {1, b}, {2, c}]
+
+With some modifications we can make Quick Sort and Heap Sort stable! 
+
+
+
+

@@ -1,0 +1,34 @@
+For any string of length N, number of different string obtained by rotating it will be <= N (in some cases it can be < N, due to duplicates). Initially we might think that there are many ways to apply rotations like (left rotation -> left rotation -> left rotation -> right rotation...). But left rotation and right rotation cancel out each other. Also applying left shift x times is same as applying left shift by x % N times and applying right shift x times is same as applying right shift by x % N times. For better inderstanding try some examples.
+
+If any string x is rotations of some palindromic string p, then at least one rotation of x will be p. So we can try all N rotations of given string and check if resulting string is palindrome or not.   
+
+
+
+Finding if a given string is palindrome or not is O(N). So, overall time complexity will be O(N) * O(N) = O(N ^ 2).
+
+
+
+Space complexity of the programme will be O(N) because space complexity includes the input space also. Auxiliary space used by programme will depend on our implementation. It can be O(N) or (1). Solution provided by us is using O(1) auxiliary space.   
+
+
+
+
+
+Just for information: 
+
+
+
+More efficient solution like O(N logN) possible using suffix array and LCP array.
+
+Link for suffix array: 
+http://www.geeksforgeeks.org/suffix-array-set-2-a-nlognlogn-algorithm/
+Link for LCP array:
+http://www.geeksforgeeks.org/%C2%AD%C2%ADkasais-algorithm-for-construction-of-lcp-array-from-suffix-array/
+
+
+
+Also more efficient solution like O(N) possible using longest palindromic substring. 
+
+Link for longest palindromic substring:
+https://en.wikipedia.org/wiki/Longest_palindromic_substring
+

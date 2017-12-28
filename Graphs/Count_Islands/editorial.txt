@@ -1,0 +1,93 @@
+
+Problem is very easy but there is one very imp thing to learn! Go through the whole tutorial even if your code is accepted! 
+
+
+
+
+
+Solution is simple, treat the matrix like a graph and do a simple DFS or BFS. 
+
+We are not allowed to use visited matrix, for that we can modify the input matrix itself! When node is visited change 1 to 0. 
+
+Have a look at the code provided by us, other_solution.cpp uses dfs and optimal_solution.cpp uses bfs.
+
+
+
+
+
+
+Time Complexity:
+
+Time complexity of BFS or DFS is O(V + E), in our case it will be O(n * m + 8 * n * m) that is O(n * m).
+
+
+
+
+
+Auxiliary Space used:
+
+O(1) as we are using only constant extra space. 
+
+Is this correct? 
+
+No!! 
+
+We have used recursive DFS! Recursive DFS uses function call stack! So do not get cheated! 
+
+Whenever we encounter a recursive function, we should always think about the memory used by function call stack!
+
+So auxiliary space used will be O(n * m)! Why?
+
+Consider the following input(worst case for DFS) and then think:
+
+9
+10
+1 1 1 1 1 1 1 1 1 1
+0 0 0 0 0 0 0 0 0 1
+1 1 1 1 1 1 1 1 0 1
+1 0 0 0 0 0 0 1 0 1
+1 0 1 1 1 1 0 1 0 1
+1 0 1 0 0 0 0 1 0 1
+1 0 1 1 1 1 1 1 0 1
+1 0 0 0 0 0 0 0 0 1
+1 1 1 1 1 1 1 1 1 1
+
+DFS will have too many recursive calls right? Almost (n * m) / 2. That is O(n * m)! 
+
+What if we have used iterative DFS? Then also we will need to use extra stack and things will be the same.
+
+What if we have used BFS? Have your heard that BFS is better than DFS in terms of space complexity? Space complexity of BFS will be O(max(n, m)). 
+
+Consider the following input(worst case for BFS) and then think:
+
+10
+10
+1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+
+At some point of time all the nodes of last row and last column will be in queue! So, auxiliary space used when we use queue is O(n + m) which is O(max(n, m)). 
+
+Now you see the difference? DFS uses O(n * m) extra space and BFS uses O(max(n, m)). This difference can effect the performance in some cases! 
+
+
+
+   
+
+Space Complexity:
+
+O(n * m) due to input size and auxiliary space. 
+
+
+
+
+
+
+

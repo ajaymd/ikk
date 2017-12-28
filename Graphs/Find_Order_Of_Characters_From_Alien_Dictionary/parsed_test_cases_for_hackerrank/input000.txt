@@ -1,0 +1,6 @@
+5
+baa
+abcd
+abca
+cab
+cad

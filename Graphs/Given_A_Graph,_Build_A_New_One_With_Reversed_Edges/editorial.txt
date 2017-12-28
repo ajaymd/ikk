@@ -1,0 +1,15 @@
+To solve this problem simple DFS will work! 
+
+Code provided by will be enough to understand the idea.
+
+Time Complexity:
+
+As we are doing normal DFS time complexity of our solution will be O(V + E). We are given n nodes and also given that it does not contain multiple edges and self loops hence maximum number of edges possible is n * (n - 1). So time complexity will be O(n + n^2) that is O(n^2).
+
+Space complexity:
+
+Given input contains O(n^2) edges and we are also creating new graph with O(n^2) edges hence space complexity will be O(n^2). 
+
+
+
+

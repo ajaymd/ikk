@@ -1,0 +1,24 @@
+
+
+
+Answer: return last + reversed
+
+If we have a string: 
+
+"abcdef"
+
+Then to reverse that we can do:
+
+'f' + reverse the 'abcd'
+
+And that will give:
+
+'f' + 'dcba'
+
+That is the reversed string:
+
+'fdcba'
+
+
+
+

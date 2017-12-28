@@ -1,0 +1,133 @@
+
+
+As mentioned in the notes:
+
+A naive solution to this problem, is to simply count how many balls of each color, and then overwrite the array with that many balls in the expected order of colors. However, realize that that is not how it's ""practically"" feasible to do ""with actual balls"". i.e. you can overwrite variables in a program, but there is no way to "overwrite" a ball of a certain color with another color. i.e. that is an invalid solution.
+
+
+
+
+
+
+To solve the problem, taking one example will help.
+
+Try to play with:
+
+[R G G R G B G B R R R G]
+[0 1 2 3 4 5 6 7 8 9 10 11]
+
+
+
+
+
+Suppose our initial string is:
+
+[string to process]
+
+----
+
+Now ""suppose"" after processing some part of the given string, we are able to maintain its structure like:
+
+(RR..RR)(GG..GG)[remaining string to process](BB..BB)
+
+Currently just assume that we are able to maintain this structure somehow, currently do not worry about how! 
+
+----
+
+If we can maintain the same structure after processing the first ball of "remaining string to process" in O(1) time, then it means now we have to solve the same problem with reduced size of "remaining string to process". 
+
+After we have processed the first ball, we repeat the process for the next ball that is take O(1) time and maintain the same structure!
+
+So at the end we will be able to maintain the same structure and that will be the sorted string! 
+
+We are taking O(1) time to process each character hence the time compelxity will also be n * O(1) that is O(n)! 
+
+Let's think how can we maintain the same structure when first letter in the "remaining string to process" is:
+
+----
+
+'R', which means string is:
+
+(RR..RR)('G'G..GG)['R' + other remaining string to process](BB..BB)
+
+What should we do with 'R' to maintain the same structure? 
+
+Swapping it with left most 'G'? 
+
+Yes that is possible and that will maintain the structure with only one swap, ""assuming that we have the index of left most G"".
+
+So now our string will look like:
+
+(RR..RR'R')(G..GG'G')[other remaining string to process](BB..BB)
+
+---- 
+
+'G' which means string is:
+
+(RR..RR)(GG..GG)['G' + other remaining string to process](BB..BB)
+
+What should we do with 'G' to maintain the same structure? 
+
+Nothing to do, just go to the next character!
+
+So now our string will look like:
+
+(RR..RR)(GG..GG'G')[other remaining string to process](BB..BB)
+
+----
+
+'B' which means string is:
+
+(RR..RR)(GG..GG)['B' + other remaining string to process + 'last character'](BB..BB)
+
+What should we do with 'B' to maintain the same structure? 
+
+Swap 'B' with the 'last character' of the "remaining string to process"! 
+
+Yes that is possible and that will maintain the structure with only one swap ""assuming that we have the index of last character"".
+
+So now our string will look like:
+
+(RR..RR)(GG..GG)['last character' + other remaining string to process]('B'BB..BB)
+
+----
+
+We have made some assumptions:
+
+1) When first character is 'R' we assumed that, ""we have the index of left most G"" and
+2) When first character is 'B' we assumed that, ""we have the index of last character"".
+
+So somehow we need to maintain these two indices and we will be able to solve the problem by following the steps above. 
+
+Also when we are starting we can take,
+
+(RR..RR), (GG..GG) and (BB.BB) parts = "". And then start our solution! 
+
+The idea looks like complex but code is very simple! 
+
+Have a look at the solution provided by us, it uses the same idea explained above. 
+
+
+
+
+
+
+
+
+Time Complexity:
+
+O(length of the string) as we are passing through the string only once.
+
+Auxiliary Space Used:
+
+O(1) as we are using only constant extra space.
+
+Space Complexity:
+
+O(length of the string) due to input string balls.
+
+
+
+
+
+ 

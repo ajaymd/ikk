@@ -1,0 +1,6 @@
+Answer:
+Stack
+
+In recursion, function calls are stacked. 
+
+Consider Tree 1 -> 2 -> 3 -> 4 -> 5. When we do dfs, first dfs will be called for 1 then "from that function" it will be called for 2, but before that some information will be stacked so that after finishing dfs(2) computer can know what to do next!  

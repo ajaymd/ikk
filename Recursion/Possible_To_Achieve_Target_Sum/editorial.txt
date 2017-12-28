@@ -1,0 +1,198 @@
+
+
+If you are passing all the testcases except 2, then you are missing one special case. Case when k = 0 and none of the arr numbers are 0. In this case answer should be false! This is a very common mistake we have seen in most of the solutions. ""Even most of the solutions you will find in popular websites will fail"" this testcase!  
+
+
+
+
+
+
+Now let's think about the actual solution.
+
+Observe that arr size is too small. (1 <= n <= 18). So brute force solution is expected.
+
+Try to generate all the possible groups (subsets) and see if sum of elements in current group (subset) equals to k. (Of course do not forget to remove empty subset! Otherwise above mentioned testcases will fail!)
+
+
+
+
+
+
+When we try to generate all the possible subsets when:
+
+n = 1
+total number of subsets = 2
+
+n = 2
+total number of subsets = 4
+
+n = 3
+total number of subsets = 8
+
+n = 4
+total number of subsets = 16
+
+...
+
+Now it is easy to observe that number of different subsets we can get from n numbers is 2^n. 
+
+
+
+
+
+
+
+Now manually try to write down all the possible subsets for n = 3.
+
+Now use bit mask to represent each subset. If we have taken second and third element and not taken first element then bitmask should be 011.
+
+Write down all the bitmasks and ""sort them""!
+
+They will look like:
+
+000
+001
+010
+011
+100
+101
+110
+111
+
+This pattern can be helpful to solve the problem!
+
+Lets take n = 4: 
+
+0000 
+0001 
+0010
+0011
+0100
+0101
+0110
+0111
+1000
+1001
+1010
+1011
+1100
+1101
+1110
+1111
+
+Look at the first 8 and second 8 masks differently.
+
+First 8 are:
+
+0000 
+0001 
+0010
+0011
+0100
+0101
+0110
+0111
+
+From first 8 remove the left most bit 0,
+
+000
+001
+010
+011
+100
+101
+110
+111
+
+Ohh! This is the same pattern we got from n = 3!
+
+Second 8 are:
+
+1000
+1001
+1010
+1011
+1100
+1101
+1110
+1111
+
+From second part remove the left most bit 1,
+
+000
+001
+010
+011
+100
+101
+110
+111
+
+Ohh! This is the same pattern we got from n = 3!
+
+So it means we will not include 1st element and then generate all possible subsets for smaller size (3). Then we will include 1st element and then generate all possible subsets for smaller size (3). 
+
+Now have a look at the solution provided by us. It uses the same idea mentioned above. 
+
+
+
+
+
+
+
+Time Complexity:
+
+O(2^n) as we are generating and processing all the possible groups (subsets). 
+
+Next few lines will confuse you but try to understand it. It will surely help you to get better idea about finding time complexity of algorithms. 
+
+We are generating 2^n subsets,
+
+For n = 3, 
+
+000
+001
+010
+011
+100
+101
+110
+111
+
+Consider above as table of 2^n rows and n cols. 
+
+O(2^n) is the cost of iterating over rows in above table, now question may arise what about the cost of iterating over cols? Should not the time complexity be O(n * 2^n)? 
+
+Answer is NO. To get the answer better to read some articles on "Amortized Analysis of a Binary Counter". In this problem same idea applies and bound is O(2^n) tighter than O(n * 2^n)! 
+
+Auxiliary Space Used:
+
+O(n) due to function call stack (recursion depth).
+
+Space complexity:
+
+O(n) due to input and auxiliary space used.
+ 
+
+
+
+
+
+
+Also other solution using dp is possible. Very similar to 0-1 knapsack problem having time complexity O(n * k). But value stored in arr[i] and k is very large. So this is not the expected solution for the given constraints. Brute force solution will perform much much better than this dp solution!
+
+Let's change the constraints:
+
+-100 <= arr[i], k <= 10
+1 <= n <= 10^5
+
+Now solution similar to 0-1 knapsack will perform much much better than the brute force solution!
+
+See how changing constraints changes the choice of the algorithm!
+
+
+
+
+
+
+

@@ -1,0 +1,5 @@
+First let's try to solve simpler version where both linked list are of same size. We start comparing from the first nodes. If they are having same address then it is the intersection node else we advance both the pointers to their next nodes and again compare and so on. If we reach end of linked lists then it means they do not intersect. Here due to same size we directly start comparing nodes. 
+
+Now suppose size of first linked list is N1, second is N2 and N1 > N2 then we know that (N1 - N2) nodes in the beginning of the first list will never be the intersection node! So first we find the size of both the linked lists. Then we advance pointer of linked list having larger size till both of them becomes same. Now it is the simpler version we solved previously! 
+
+First we iterate over both linked lists to find the size and then again iterate over them to compare addresses. So, time complexity will be O(N1 + N2). Auxiliary space used will be O(1) because we will only store two numbers N1 and N2.  

@@ -1,0 +1,5 @@
+Pre order traversal of a BST (binary search tree) produces elements in sorted order?
+
+Pick one of the choices
+1) True
+2) False
