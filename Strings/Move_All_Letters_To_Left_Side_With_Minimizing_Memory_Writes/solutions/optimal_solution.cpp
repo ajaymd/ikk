@@ -19,7 +19,7 @@ string move_letters_to_left_side_with_minimizing_memory_writes(string s)
 			/* 
 			We want to minimize write operations, so writes like s[same position]=s[same position] having no effect can be avoided.
 
-			Consider s = "ABCD234efg". When i = 0, write_here will also be 0, so it will try to do s[0] = s[0] but this has no effect and can be avoided to reduce the memory writes. 
+			Consider s = "ABCD234efg" -> "ABCDefgefg". When i = 0, write_here will also be 0, so it will try to do s[0] = s[0] but this has no effect and can be avoided to reduce the memory writes. 
 			*/
 			if (i != write_here)
 			{

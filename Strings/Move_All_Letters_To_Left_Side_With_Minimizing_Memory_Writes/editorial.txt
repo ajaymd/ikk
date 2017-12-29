@@ -5,8 +5,31 @@ This is an easy question presented with fancy words.
 
 
 
+Solution is to iterate over the whole string from left to right and if it is a letter copy it to appropriate place. 
 
-Look at the solution provided by us.
+Consider s = "1a2b",
+1) '1' -> digit -> skip it -> s = "1a2b".
+2) 'a' -> letter -> copy it to appropriate place -> s = "aa2b". (Memory write.)
+3) '2' -> digit -> skip it -> s = "aa2b".
+4) 'b' -> letter -> copy it to appropriate place -> s = "ab2b". (Memory write.)
+
+Here we have done two memory writes.
+
+
+We will copy first letter to s[0], second letter to s[1], third letter to s[2] ... So keeping one variable will be enough to know where we should copy the letter. 
+
+
+Also consider s = "a1b".
+1) 'a' -> letter -> copy it to apropriate place -> s = "a1b". (Note that here we will be doing copy s[0] = s[0] but this has no effect, so we can avoid that and save one memory write!)
+2) '1' -> digit -> skit it -> s = "a1b"
+3) 'b' -> letter -> copy it to appropriate place -> s = "abb". (Memory write.)
+
+Here we have done only one memory write.  
+
+
+If s has x letters and y digits then answer will be, x letters on the left side (in the same order they appeared in input) followed by y characters same as in input. ("1a2b" -> "ab2b", "a1b" -> "abb")
+
+Now look at the solution provided by us.
 
 
 

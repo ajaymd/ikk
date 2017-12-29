@@ -1,0 +1,26 @@
+
+
+There are many possible solutions for this problem.
+
+Have a look at the solution provided by us.
+
+
+
+
+
+
+Time Complexity:
+
+O(2n * catalan number(2n)).
+
+
+Auxiliary Space Used:
+
+O(2n * catalan number(2n)).
+
+
+Space Complexity:
+
+O(2n * catalan number(2n)).
+
+
