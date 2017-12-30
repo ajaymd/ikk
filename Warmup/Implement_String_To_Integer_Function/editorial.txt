@@ -1,0 +1,33 @@
+
+Have a look at the solution provided by us.
+
+
+
+
+
+
+
+Time Complexity:
+
+O(|s|).
+As in worst case (when integer is not present in the string or present at the end of string) we need to iterate over the whole string. 
+
+
+Auxiliary Space Used:
+
+O(1).
+
+
+Space Complexity:
+
+O(|s|).
+As space complexity includes the input size also.
+Note that generally we use Auxiliary Space Used = Space Complexity, but there is a different. Auxiliary space does not count the input size but space complexity does. 
+
+
+
+
+
+
+
+

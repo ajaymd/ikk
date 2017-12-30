@@ -4,9 +4,9 @@ Move All Letters To Left Side With Minimizing Memory Writes
 
 Problem Statement:
 
-You're given a string s, which may contain alphabet letters (a to z or A to Z) as well as numbers (0 to 9, represented as characters), in random order.
+You're given a string s, which may contain alphabet letters ('a' - 'z' or 'A' - 'Z') as well as numerical characters ('0' - '9'), in random order.
 
-Numerical characters (0 to 9) are garbage characters and we don't care about them. 
+Numerical characters are garbage characters and we don't care about them. 
 
 Inside the same string, you have to make alphabet letters appear on left side, in the same order they appeared in given s.
 
@@ -27,7 +27,7 @@ Return s after moving all the letters to left side, using minimum number of memo
 Constraints:
 
 1 <= |s| <= 10^5
-s will contain characters from only a to z, A to Z or 0 to 9.
+s will contain characters from only 'a' - 'z', 'A' - 'Z' or '0' - '9'.
 Original order of letters needs to be preserved.
 Numbers need not to be preserved. 
 An in-place linear solution is expected.

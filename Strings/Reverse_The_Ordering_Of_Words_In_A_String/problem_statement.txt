@@ -17,7 +17,7 @@ Return a string containing your answer.
 Constraints:
 
 1 <= |s| <= 10^5
-s will contain letters from only a to z, A to Z, space or punctuation marks.
+s will contain characters only from lowercase alphabetical letters, uppercase alphabetical letters, space or punctuation marks.
 More specifically s will be made from " .,?!':;-aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ". (s will be made from characters inside "".)
 Punctuation mark is part of the word.
 Usage of inbuilt string functions isn't allowed.
@@ -52,7 +52,6 @@ Sample Output 3:
 
 
 [Trivia: This is a very old interview question, which Google used last year as one of their qualifier questions in Google CodeJam)
-
 
 
 

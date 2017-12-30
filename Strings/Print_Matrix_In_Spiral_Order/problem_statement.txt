@@ -18,7 +18,7 @@ Constraints:
 
 1 <= rows, cols
 1 <= rows * cols <= 10^5
-Any character in matrix will be either uppercase letter (A - Z) or lowercase letter (a-z).
+Any character in matrix will be either uppercase letter ('A' - 'Z') or lowercase letter ('a' - 'z').
 Avoid recursion. 
 
 Sample Test Case:
@@ -26,18 +26,18 @@ Sample Test Case:
 Sample Input:
 
 [
-[X Y A] 
-[M B C]
-[P Q R]
+['X' 'Y' 'A'] 
+['M' 'B' 'C']
+['P' 'Q' 'R']
 ]
 
 Sample Output:
 
-XYACRQPMB 
+"XYACRQPMB" 
 
 Explanation:
 
-For the given matrix rows = 3 and cols = 3. Spiral order is X -> Y -> A -> C -> R -> Q -> P -> M -> B. So return string "XYACRQPMB" of length rows * cols = 9.
+For the given matrix rows = 3 and cols = 3. Spiral order is 'X' -> 'Y' -> 'A' -> 'C' -> 'R' -> 'Q' -> 'P' -> 'M' -> 'B'. So return string "XYACRQPMB" of length rows * cols = 9.
 
 Notes:
 
