@@ -1,0 +1,80 @@
+
+
+There are many solutions possible for this problem. 
+
+We will discuss two solutions here.
+
+
+1) Solution Using Sum:
+
+We are given distinct numbers with only one missing number in range 1 to n (inclusive).
+
+So we can write,
+
+sum of numbers in given array + missing number = (1 + 2 + ... + (n - 1) + n) = (n * (n + 1)) / 2.
+
+hence,
+
+missing number = (n * (n + 1)) / 2 - sum of numbers in given array.
+
+Now have a look at other_solution.cpp.
+
+
+2) Solution Using XOR:
+
+We are given distinct numbers with only one missing number in range 1 to n (inclusive).
+
+So we can write,
+
+xor of numbers given in array ^ missing number = (1 ^ 2 ^ ... ^ (n - 1) ^ n). 
+
+hence,
+ 
+missing number = (1 ^ 2 ^ ... ^ (n - 1) ^ n) ^ xor of numbers given in array.
+
+Now there is a shortcut to find (1 ^ 2 ^ ... ^ (n - 1) ^ n).
+xor of all numbers from 1 to n = 
+	- n%4 == 0 ---> n
+	- n%4 == 1 ---> 1
+	- n%4 == 2 ---> n + 1
+	- n%4 == 3 ---> 0
+(Try some examples and will get the pattern!)
+
+Now have a look at optimal_solution.cpp.
+
+
+
+
+
+
+
+Finding xor of numbers given in array is a bit faster than finding sum of numbers in given array (sum needs to handle carry bit but xor doesn't).
+
+But still time complexity, auxiliary space used and space complexity of both the solutions will remain same.
+
+Only constant in time complexity of solution using sum will be a bit higher than the solution using XOR.
+
+
+Time Complexity:
+
+O(n).
+As we need to traverse the given array.
+
+
+Auxiliary Space Used:
+
+O(1).
+
+
+Space Complexity:
+
+O(n).
+As space complexity includes the input size also.
+Note that generally we use Auxiliary Space Used = Space Complexity, but there is a different. Auxiliary space used does not count the input size but space complexity does. 
+
+
+
+
+
+
+

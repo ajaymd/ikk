@@ -1,0 +1,42 @@
+
+Find The Missing Number
+
+
+Problem Statement:
+
+You are given an array named nos, containing distinct numbers from 1 to n, except one missing number i.e. size of nos is n - 1. Also given array need not to be sorted. 
+
+You have to find the missing number.
+
+Input Format:
+
+There is only one argument denoting array nos of size n - 1.
+
+Output Format:
+
+Return an integer containing missing number.
+
+Constraints:
+
+1 <= n <= 10^5
+Given array need not to be sorted.
+Given array contains distinct numbers.
+Assume that input can not be edited/mutated.
+Solution with linear time complexity and constant auxiliary space is expected.
+
+Sample Test Case:
+
+Sample Input:
+
+[4, 1, 2, 6, 5]
+
+Sample Output:
+
+3
+
+Explanation:
+
+Size of given array is 5, hence n = 6.
+Numbers from 1 to 6 is present except number 3. So missing number is 3. 
+
+
