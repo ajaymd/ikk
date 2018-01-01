@@ -1,0 +1,61 @@
+
+Have a look at the solution provided by us, it contains detailed comments to understand the solution approach.
+
+
+
+
+
+
+Time Complexity:
+
+O(|s|).
+
+Because in worst case we need to traverse the whole string. 
+
+(Worst case for time complexity will be when input string contains only punctuation marks.)
+
+
+Auxiliary Space Used:
+
+By looking at the code, at first glance it might look like it uses O(1) extra space but it is not O(1)!
+
+It is,
+
+O(|s|).
+
+Because recursive function uses the function call stack! (Local variables and some other details will be stored before making another function call.)
+
+Worst case for auxiliary space used will also be when input string contains only punctuation marks. 
+
+Suppose s = ".........." that is 10 dots, then our check for palindrome will go like,
+
+recursive_palindrome_check(s, 0, 9) ->
+recursive_palindrome_check(s, 1, 9) ->
+recursive_palindrome_check(s, 2, 9) ->
+recursive_palindrome_check(s, 3, 9) ->
+recursive_palindrome_check(s, 4, 9) ->
+recursive_palindrome_check(s, 5, 9) ->
+recursive_palindrome_check(s, 6, 9) ->
+recursive_palindrome_check(s, 7, 9) ->
+recursive_palindrome_check(s, 8, 9) ->
+recursive_palindrome_check(s, 9, 9).
+
+So we will be making total 10 calls (that is |s|) to the same function.
+
+When we will reach last function call that is recursive_palindrome_check(s, 9, 9), we will have information of all previous functions stored on function call stack.
+
+
+Space Complexity:
+
+O(|s|).
+
+As auxiliary space used and input size both are O(|s|).
+
+Note that generally we use Auxiliary Space Used = Space Complexity, but there is a different. Auxiliary space does not count the input size but space complexity does. 
+
+
+
+
+
+
+

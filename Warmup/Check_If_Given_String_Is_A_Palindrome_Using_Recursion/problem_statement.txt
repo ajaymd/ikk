@@ -1,0 +1,61 @@
+
+Check If Given String Is A Palindrome Using Recursion
+
+
+Problem Statement:
+
+Check if given string s, is a palindrome or not, using recursion.
+
+Ignore punctuation marks, spaces and case of letters.
+
+Consider any character s[i] as a punctuation character if (s[i] == '.' || s[i] == ',' || s[i] == '!' || s[i] == '-' || s[i] == ';' || s[i] == ':' || s[i]== '\'' || s[i] == '"'). 
+
+Input Format:
+
+There is only one argument denoting string s.
+
+Output Format:
+
+Return a boolean, whether it's a palindrome or not, ignoring punctuation marks, spaces and case of letters.
+
+Constraints:
+
+1 <= |s| <= 100000
+s contains letters only from uppercase letters ('A' - 'Z'), lowercase letters ('a' - 'z'), spaces or above mentioned punctuation marks.
+Only the checking of palindrome part needs to be done recursively. Other things e.g. finding length of the input etc. can be done iteratively.
+Assume that you are not allowed to modify the string. 
+Solution with linear time complexity is expected.
+
+Sample Test Cases:
+
+Sample Input 0:
+ 
+"racecar"
+
+Sample Output 0:
+
+1
+
+Sample Input 1:
+
+"Never a foot too far, even."
+
+Sample Output 1:
+
+1
+
+Sample Input 2:
+
+"test"
+
+Sample Output 2:
+
+0
+
+Why is this problem here?
+
+1. To make sure that you have a basic idea of what recursion is. Recursion is going to be pervasive in your practice.
+2. To make sure you implement string recursion the correct way.
+3. To get you a bit more familiar with HackerRank.
+
+
