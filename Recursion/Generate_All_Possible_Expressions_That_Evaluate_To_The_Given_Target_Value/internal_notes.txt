@@ -1,0 +1,6 @@
+Input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
+ 
+There are two lines in the input.
+First line contains string s.
+Second line contains long long int target.
+ 

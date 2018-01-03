@@ -1,0 +1,66 @@
+
+Have a look at the solution provided by us, it contains detailed comments.
+
+
+
+
+
+
+Time Complexity:
+
+O((3^(n - 1)) * n).
+
+To solve the problem we just have to use brute force. 
+
+Generate all possible expressions and evaluate them. 
+
+Store the expressions that evaluates to the target.
+
+
+Now, first let's find how many different expressions possible to generate by putting either of 3 operators in between each pair of characters.
+
+We have 3 operators to put in n - 1 places (we have n characters in the given string hence n - 1 places between them). 
+
+So simply it is 3^(n - 1). It means for given string of length n, we will have 3^(n - 1) different expressions to check.
+
+
+What will be the length of expressions?
+
+If we only put "" (join) operator then length of expression will be minimum and that will be n.
+
+Else if we put one of "+" or "*" operators at each of the n - 1 places, then length of the string will be maximum and that is 2 * n - 1.
+
+So in general we can write that length of any expression will be O(n). 
+
+
+So, we have 3^(n - 1) different expressions with O(n) length. So, time compleity will be O((3^(n - 1)) * n).
+
+
+
+Auxiliary Space Used:
+
+O((3^(n - 1)) * n).
+
+In worst case all the generated expressions will evaluate to the given target. 
+
+Try:
+s = "0000000000000"
+target = 0
+
+So in our answer we will store all 3^(n - 1) expressions of length O(n).
+
+
+
+Space Complexity:
+
+O((3^(n - 1)) * n).
+
+Auxiliary space used is O((3^(n - 1)) * n) and input size is O(n) hence O((3^(n - 1)) * n) + O(n) -> O((3^(n - 1)) * n).
+
+
+
+
+
+
+
+
