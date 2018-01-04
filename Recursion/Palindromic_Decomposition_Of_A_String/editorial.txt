@@ -1,0 +1,53 @@
+
+
+We have provided two solutions:
+
+1) Solution Using Recursion: other_solution.cpp
+2) Solution Using Dynamic Programming: optimal_solution.cpp
+
+Try to solve the problem using both the approaches.
+
+First look at the solution using recursion and then solution using dynamic programming.
+
+In solution using dynamic programming we have pre-calculated is_palindrome array, but in solution using recursion we have not. But you should do it in recursive solution also. (To make code readable and easy to understand, we have not pre-calculated in recursive solution.) 
+
+
+
+
+
+
+Time Complexity Of The Optimal Solution:
+
+O((2^(n - 1)) * n).
+
+Consider input s = "aaaaaaaaaaaaaaaaaaaa" (20 times.)
+
+For strings like this, every substring will be a palindrome, hence total number of palindromic decompositions in worst case will be 2^(n - 1). 
+
+(Try s = "aaa" and it will be more clear why 2^(n - 1).)
+
+We will store 2^(n - 1) palindromic decompositions and length of each will be O(n) hence time complexity will be O((2^(n - 1)) * n).
+
+
+
+Auxiliary Space Used Of The Optimal Solution:
+
+O((2^(n - 1)) * n).
+
+In answer array we will store all 2^(n - 1) palindromic decompositions of length O(n). 
+
+Also is_palindrome array is O(n ^ 2) so O((2^(n - 1)) * n) + O(n ^ 2) -> O((2^(n - 1)) * n).
+
+
+
+Space Complexity Of The Optimal Solution:
+
+O((2^(n - 1)) * n).
+
+Auxiliary space used is O((2^(n - 1)) * n) and input size is O(n) hence O((2^(n - 1)) * n) + O(n) -> O((2^(n - 1)) * n).
+
+
+
+
+
+

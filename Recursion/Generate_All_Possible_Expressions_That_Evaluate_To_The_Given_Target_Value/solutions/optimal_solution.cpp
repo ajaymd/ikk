@@ -46,7 +46,7 @@ Suppose cur_expr = 52 + 3 * 4 * 2 then cur_expr_val_after_rightmost_addition_sig
 Suppose cur_expr = 52 + 3 * 4 * 2 + 78 then cur_expr_val_after_rightmost_addition_sign = 78.
 (Will be explained in detail, why it is needed, when it will be used in code, now don't worry about it.)
 */
-void generate_all_expressions_util(vector<string> &all_expressions_container, string cur_expr, string s, long long int target, int pos, long long int cur_expr_val, long long int cur_expr_val_after_rightmost_addition_sign)
+void generate_all_expressions_util(vector<string> &all_expressions_container, string cur_expr, string &s, long long int target, int pos, long long int cur_expr_val, long long int cur_expr_val_after_rightmost_addition_sign)
 {
 	// If processed the whole string.
 	if (pos == n)
