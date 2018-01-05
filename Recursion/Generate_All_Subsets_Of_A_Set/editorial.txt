@@ -1,0 +1,47 @@
+
+
+We have provided 2 solutions:
+1) Recursive Solution : other_solution.cpp.
+2) Iterative Solution : optimal_solution.cpp.
+
+Have a look at both the solutions. 
+
+Both solutions are valid, but recursive solution is slightly slower because of function calls and variable passing.
+
+Also you should observe that number of subsets will always be power of 2.
+
+If size of set is n, then number of subsets will always be 2^n.
+
+
+
+
+
+
+Time Complexity:
+
+O(2^n * n).
+
+As we will generate 2^n strings of length O(n).
+
+
+
+Auxiliary Space Used:
+
+O(2^n * n).
+
+As we will store 2^n strings of length O(n) in output array to be returned.
+
+
+
+Space Complexity:
+
+O(2^n * n).
+
+As auxiliary space used is O(2^n * n) and input is O(n) hence O(2^n * n) + O(n) -> O(2^n * n).
+
+
+
+
+
+
+

@@ -18,7 +18,7 @@ Try to find prime numbers till 30 and you will get more clear idea.
 
 
 
-Still there can be some optimizations. When we find any prime number like 11, then we visit 22, 33, 44, 55… and mark them as non-prime but 22, 33, 44, 55 are already visited by smaller prime number 5, because 55 = 5 * 11. So instead of start marking non prime from x + x, we can start from x * x. 
+Still there can be some optimizations. When we find any prime number like 11, then we visit 22, 33, 44, 55… and mark them as non-prime but 22, 33, 44, 55 are already visited by smaller prime numbers. Like 55 is already visited and marked as non prime by 5, because 55 = 5 * 11. So instead of start marking non prime from x + x, we can start from x * x. 
 
 This solution will be O(N * log(log A)). 
 
