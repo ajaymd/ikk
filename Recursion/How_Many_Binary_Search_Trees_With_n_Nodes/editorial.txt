@@ -2,18 +2,20 @@
 
 If getting wrong answer then first question to ask, are you using appropriate data type to avoid overflow? (For the given constraints int will overflow.)
 
-If getting terminated due to timeout then it is time to learn about "Memorization Technique" in recursion. (Adding few lines of code will speedup a lot!)
+If getting terminated due to timeout then it is time to learn about "Memorization Technique" with recursion. (Adding few lines of code will speed-up a lot!)
 
 
 
 
 
 
-We have provided 3 solutions:
+We have provided 4 solutions:
 
-1) Recursive Solution : brute_force_solution.cpp
-2) Recursive Solution With Memorization : other_solution.cpp
-3) Iterative Solution : optimal_solution.cpp
+1) Catalan Number Solution: catalan_number_solution.cpp (If you will simply provide this solution in interview, without explaining the intuition,
+	then it will not be accepted. Solution using recursion with memorization, is preferable.)
+2) Recursive Solution : brute_force_solution.cpp
+3) Recursive Solution With Memorization : other_solution.cpp
+4) Iterative Solution : optimal_solution.cpp
 
 
 First look at the Recursive Solution then Recursive Solution With Memorization and then Iterative Solution.
@@ -57,10 +59,6 @@ In Recursive Solution With Memorization, a few lines of code addition will impro
 For n = 35, catalan number(35) = 3116285494907301262, while 35^2 = 1225. Now you see the difference of memorization!! 
 
 Once you use memorization in your recursive implementation, time complexity, auxiliary space used and space complexity of Iterative Solution and Recursive Solution With Memorization will become same.
-
-
-
-
 
 
 Time Complexity:
