@@ -1,0 +1,71 @@
+
+How Many Binary Search Trees With n Nodes?
+
+
+Problem Statement: 
+
+Write a function that will return the number of binary search trees that can be constructed, with n nodes.
+
+Input Format:
+
+There is only one argument denoting integer n.
+
+Output Format:
+
+Return number of binary search trees that can be constructed, with n nodes.
+
+Constraints:
+
+1 <= n <= 35
+
+Sample Test Cases:
+
+Sample Input 1:
+
+1
+
+Sample Output 1:
+
+1
+
+Explanation 1:
+
+1) root
+
+Sample Input 2:
+
+2
+
+Sample Output 2:
+
+2
+
+Explanation 2:
+
+1) root, root->left
+2) root, root->right
+
+Sample Input 3:
+
+3
+
+Sample Output 3:
+
+5
+
+Explanation 3:
+
+1) root, root->left, root->left->left
+2) root, root->left, root->left->right
+3) root, root->right, root->right->right
+4) root, root->right, root->right->left
+5) root, root->left, root->right
+
+If you keep doing this, it will form a series called Catalan numbers. One can simply lookup the formula for Catalan numbers and write code for it. But that's not how we want to do this. We want to do this by understanding the underlying recursion. The recursion is based on tree-topology only, as you can see by examples above, contents of the nodes of the tree do not matter.
+
+Notes:
+
+Suggested time in interview: 20 minutes
+The “Suggested Time” is the time expected to complete this question during a real-life interview, not now in homework i.e. For the first attempt of a given homework problem, the focus should be to understand what the problem is asking, what approach you are using, coding it, as well as identifying any gaps that you can discuss during a TA session. Take your time, but limit yourself to 2 one hour sessions for most problems.
+
+
