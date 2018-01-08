@@ -20,6 +20,7 @@ We have provided 4 solutions:
 
 First look at the Recursive Solution then Recursive Solution With Memorization and then Iterative Solution.
 
+We expect you to implement recursive solution with memorization at least once. 
 
 
 For Recursive Solution (brute_force_solution.cpp):

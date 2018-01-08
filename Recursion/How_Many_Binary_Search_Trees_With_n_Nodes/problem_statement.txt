@@ -2,9 +2,11 @@
 How Many Binary Search Trees With n Nodes?
 
 
-Problem Statement: 
+Problem Statement:
 
 Write a function that will return the number of binary search trees that can be constructed, with n nodes.
+
+You have to solve this problem using recursion. (There may be other ways of solving this problem, but for the purpose of this exercise, please use recursion only).
 
 Input Format:
 

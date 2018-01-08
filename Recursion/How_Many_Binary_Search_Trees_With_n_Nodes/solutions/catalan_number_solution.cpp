@@ -8,7 +8,7 @@ const int MAX_N = 35;
 
 
 /* -------- 
-THIS SOLUTION WILL FAIL SOME OF THE TEST CASES DUE TO OVERFLOW ISSUE IN n_choose_r FUNCTION. 
+THIS SOLUTION WILL FAIL SOME OF THE TEST CASES DUE TO OVERFLOW (of long long int) ISSUE IN n_choose_r FUNCTION. 
 
 Also if you will simply provide solution using Catalan numbers in interview, without explaining the intuition,
 then it will not be accepted.
