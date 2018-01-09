@@ -1,6 +1,6 @@
 
 
-We have provided two solutions for the problem (other_solution.cpp and optimal_solution.cpp), both the solutions uses backtracking. 
+We have provided 3 solutions for the problem (other_solution.cpp, optimal_solution.cpp and optimal_solution2.cpp), all of them uses backtracking. 
 
 optimal_solution.cpp is an improvement over other_solution.cpp.
 
@@ -80,7 +80,52 @@ Now in is_safe function instead of looping, we only need to check if any of the 
 
 Have a look at the optimal_solution.cpp and it will be more clear.
 
-For both the solutions:
+
+
+
+
+
+
+Now let's discuss optimal_solution2.cpp. 
+
+We know that in one row we will have only one queen (and total n queens), so instead of 2-D grid we can store the information of queens' position in 1D array.
+
+Grid: 
+
+--q-
+q---
+---q
+-q--
+
+has queens at positions, 
+row -> col 
+
+0 -> 2, 
+1 -> 0,
+2 -> 3,
+3 -> 1
+
+In a 1D array it can be represented as:
+
+arrangement[0] = 2,
+arrangement[1] = 0,
+arrangement[2] = 3,
+arrangement[3] = 1
+
+So we have the same information now stored in 1D array (space O(n)) instead of 2D array (space O(n^2)).  
+
+In this problem, we are asked to return actual grids as answer. So, in this solution what we are doing is that first generate all arrangements in 1D and then generate 2D arrangements from 1D arrangements. But in optimal_solution.cpp, we are directly generating it. So when we are asked to return the actual grids, this solution is not the best. optimal_solution.cpp is better.
+
+But think about the similar question where we are asked to return positions of the n queens as answer (not the actual grids). Here optimal_solution2.cpp will be better than both other_solution.cpp and optimal_solution.cpp! Because other_solution.cpp and optimal_solution.cpp will first generate 2D grids and then convert to positions, but optimal_solution2.cpp will directly find positions, avoiding 2d grids (of O(n^2) space)! 
+
+
+
+
+
+
+
+
+For all three solutions:
 
 Time Complexity is exponential. (Exact bound is complex to derive and explain.)
 
