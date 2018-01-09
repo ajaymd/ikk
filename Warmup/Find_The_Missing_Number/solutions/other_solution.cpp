@@ -39,12 +39,12 @@ int main()
 {
 	//freopen("..//test_cases//sample_test_cases_input.txt", "r", stdin);
 	//freopen("..//test_cases//sample_test_cases_expected_output.txt", "w", stdout);
-	freopen("..//test_cases//handmade_test_cases_input.txt", "r", stdin);
-	freopen("..//test_cases//handmade_test_cases_expected_output.txt", "w", stdout);
+	//freopen("..//test_cases//handmade_test_cases_input.txt", "r", stdin);
+	//freopen("..//test_cases//handmade_test_cases_expected_output.txt", "w", stdout);
 	//freopen("..//test_cases//generated_small_test_cases_input.txt", "r", stdin);
 	//freopen("..//test_cases//generated_small_test_cases_expected_output.txt", "w", stdout);
-	//freopen("..//test_cases//generated_big_test_cases_input.txt", "r", stdin);
-	//freopen("..//test_cases//generated_big_test_cases_expected_output.txt", "w", stdout);
+	freopen("..//test_cases//generated_big_test_cases_input.txt", "r", stdin);
+	freopen("..//test_cases//generated_big_test_cases_expected_output.txt", "w", stdout);
 	//freopen("..//test_cases//ignore.txt", "w", stdout);
 
 	int test_cases;

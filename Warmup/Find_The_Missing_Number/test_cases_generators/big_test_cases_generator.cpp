@@ -66,8 +66,15 @@ int main()
 	generate_test_case(test_cases, MAX_N, 1);
 	generate_test_case(test_cases, MAX_N, MAX_N);
 	generate_test_case(test_cases, MAX_N, MAX_N / 2);
-	generate_test_case(test_cases, MAX_N - 1, random_number(MAX_N - 1) + 1);
-	generate_test_case(test_cases, MAX_N - 2, random_number(MAX_N - 2) + 1);
+	/*
+	65536 is a special number. 
+	Try to find sum from 1 to 65536. 
+	It is the first number for which sum of 1 to n will overflow int.
+	Now in previous test cases (n * (n + 1)) / 2 as well as the sum of array (sum of 1 to n, except the missing number), both will overflow, hence solution using int with summation will get accepted! 
+	Now in these test cases (n * (n + 1)) / 2 will overflow, but sum of array (sum of 1 to n, except the missing number) will not overflow! hence solution using int with summation will get wrong answer! 
+	*/ 
+	generate_test_case(test_cases, 65536, 33769);
+	generate_test_case(test_cases, 65536, 43210);
 	assert(test_cases == 0);
 
 	return 0;
