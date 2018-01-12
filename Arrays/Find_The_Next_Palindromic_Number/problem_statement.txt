@@ -1,0 +1,23 @@
+Find The Next Palindromic Number
+Problem Statement:
+Given a number n, you have to find the next smallest palindromic number, larger than it.
+Input Format:
+There is only one argument denoting integer n.
+Output Format:
+Return next smallest palindromic number, larger than given number.
+Constraints:
+0 <= n <= 2147483647
+Sample Test Cases:
+Sample Input 1:
+5
+Sample Output 1:
+6
+Explanation 1:
+6 is a palindromic number, and bigger than 5. There is no palindromic number less than 6 and bigger than 5.
+Sample Input 2:
+10
+Sample Output 2:
+11
+Notes:
+Suggested time in interview: 30 minutes.
+The “Suggested Time” is the time expected to complete this question during a real-life interview, not now in homework i.e. For the first attempt of a given homework problem, the focus should be to understand what the problem is asking, what approach you are using, coding it, as well as identifying any gaps that you can discuss during a TA session. Take your time, but limit yourself to 2 one hour sessions for most problems.

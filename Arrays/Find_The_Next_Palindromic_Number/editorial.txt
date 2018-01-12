@@ -1,0 +1,42 @@
+
+
+If you are getting wrong answer, then first thing you should make sure is to use appropriate data type. (using int will not work, it will overflow for given constratins!)
+
+
+
+
+
+
+We have provided two solutions, optimal_solution1.cpp and optimal_solution2.cpp.
+
+First have a look at optimal_solution1.cpp (it might look lengthy, but we have focused on readability of the code) and then look at optimal_solution2.cpp. Try some examples to understand the solutions clearly. 
+
+optimal_solution2.cpp is different from most of the solutions you will see online. It will take some time to understand initially, but after that in interviews it will be less error prone to write the solution. 
+
+In optimal_solution1.cpp we can use int array instead of strings to simplify some of the steps, but it will take more memory. int is 4 bytes while char is only 1 byte. So 3 times more memory!
+
+
+
+
+
+
+For both the solutions:
+
+Time Complexity:
+
+O(n).
+
+Auxiliary Space Used
+
+O(n). 
+
+Space Complexity:
+
+O(n).
+
+
+
+
+
+
+

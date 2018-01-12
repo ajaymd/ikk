@@ -28,7 +28,7 @@ q * b = q
 (q31q30...q0) * b = a (in binary representation) 
 (2^31 * q31 + 2^30 * q30 + ... + 2^0 * q0) * b = a 
 To find value of each bit we can start from left side. 
-First we try to set q31 = 1, if 2^31 * a <= a then we set q31 = 1, but if 2^31 * b > a then we set q31 = 0. 
+First we try to set q31 = 1, if 2^31 * b <= a then we set q31 = 1, but if 2^31 * b > a then we set q31 = 0. 
 When we set q31 = 0 then we have to solve 
 (2^30 * q30 + ... + 2^0 * q0) * b = a
 and when we set q31 = 1 then we have to solve 

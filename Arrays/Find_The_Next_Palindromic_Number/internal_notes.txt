@@ -1,0 +1,3 @@
+Input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
+ 
+First and only line in input contains one integer denoting value of n.

@@ -11,7 +11,7 @@ Two integers a and b.
 
 Output Format:
 
-Quotient q of a/b.
+Quotient q of a / b.
 
 Constraints:
 
