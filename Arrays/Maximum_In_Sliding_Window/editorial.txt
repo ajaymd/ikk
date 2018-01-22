@@ -1,0 +1,56 @@
+
+Input:
+arr = [1 3 -1 -3 5 3 6 7] (n = 8)
+w = 3
+
+Output:
+ans = [3, 3, 5, 5, 6, 7] (size = 6)
+	
+Size of the ans = (n - w + 1) = 8 - 3 + 1 = 6.
+
+
+
+
+
+We can go through window of size w, (n - w + 1) times. So this brute force solution will be of time complexity O((n - w + 1) * w).
+
+First time we will find maximum number in arr[0, w - 1].
+Second time we will find maximum number in arr[1, w] and so on. 
+Here we can clearly see that finding maximum number of arr[1, w - 1] is common in first and second time.
+So we can remove this recomputation and speedup! 
+
+
+
+
+We can use data structures like heap, priority queue or balanced BST, and speedup to O(n * log(w)).
+
+
+
+
+
+Now still it can be improved to O(n). 
+Trick is to find a way such that the largest element in the window would always appear in the front of the queue.
+Have a look at the solution provided by us for O(n) solution. 
+
+
+Time Complexity:
+
+O(n).
+As we are adding each element in deque once and removing each element at most once.
+
+
+Auxiliary Space Used:
+
+O(k).
+As we are using deque and it can be maximum of size k.
+
+
+Space Complexity: 
+
+O(n).
+Input is of size O(n) and auxiliary space used is O(k) hence O(k) + O(n) -> O(k + n) -> given that k <= n -> O(n + n) -> O(n). 
+
+
+
+
+
