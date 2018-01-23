@@ -1,0 +1,30 @@
+
+A typical solution involves computing the length of the list and then traversing exactly half of that. 
+A faster approach is to use a slow pointer and a fast pointer, with the faster one traversing twice as fast. 
+By the time the fast one reaches the end of the list, the slower one is at the mid-point. This is still O(n) but is faster than previous one.
+
+Have a look at the solution provided by us.
+
+
+
+
+
+Time Complexity:
+
+O(n).
+
+
+Auxiliary Space Used:
+
+O(1).
+
+
+Space Complexity:
+
+O(n).
+As input is O(n) and auxiliary space used is O(1). So O(n) + O(1) -> O(n).
+
+
+
+
+

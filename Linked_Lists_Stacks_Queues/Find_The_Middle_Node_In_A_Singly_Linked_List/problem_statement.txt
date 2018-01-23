@@ -1,0 +1,46 @@
+Find The Middle Node In A Singly Linked List
+ 
+Problem Statement:
+
+Given an integer singly linked list, you have to find the middle node of it.
+
+If it has even number of nodes, then consider the 2nd of the middle two nodes as the middle node.
+
+Input Format:
+
+There is only one argument in input, denting integer singly linked list.
+
+Output Format:
+
+Return the middle node of the given integer singly linked list.
+
+Constraints:
+
+0 <= number of elements in given linked list <= 10^5
+-2 * 10^9 <= value contained in any node <= 2 * 10^9
+Do it in one pass over the linked list.
+If given linked list is empty then return null.
+
+Sample Test Cases:
+
+Sample Input 1:
+
+1 -> 2 -> 3 -> 4 -> 5 -> NULL
+
+Sample Output 1:
+
+Node containing value 3.
+
+Sample Input 2:
+
+1 -> 2 -> 3 -> 4 -> NULL
+
+Sample Output 2:
+
+Node containing value 3.
+
+Notes:
+
+Suggested time in interview: 20 minutes.
+The “Suggested Time” is the time expected to complete this question during a real-life interview, not now in homework i.e. For the first attempt of a given homework problem, the focus should be to understand what the problem is asking, what approach you are using, coding it, as well as identifying any gaps that you can discuss during a TA session. Take your time, but limit yourself to 2 one hour sessions for most problems.
+
