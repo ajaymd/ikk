@@ -11,7 +11,10 @@ class LRU_cache
 public:
 	// Maximum size of the cache.
 	int capacity;
-	// Stores the {key, value} pair.
+	/*
+	Stores the {key, value} pair.
+	Implementing own linked list will give some speedup than using built-in list, but it will affect the readibility of the code, hence we have used built in list.
+	*/
 	list<pair<int, int>> actual_storage;
 	// key -> pointer to where it is stored in actual storage.
 	unordered_map<int, list<pair<int, int>>::iterator> key_to_actual_storage_mapping;
