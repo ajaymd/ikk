@@ -1,0 +1,53 @@
+
+
+First let's think how we can use single array (or linked list etc.), which will store {key, value} pairs to design LRU cache:
+
+When cache is full we want to remove the least recently used {key, pair}. To keep track of new and old pairs, always we will add new/recently used value at the beginning of the array. Hence {key, value} at the end of the array will be least recently used.
+
+When any set query comes:
+Go through the array and search for the key.
+1) If key is already present with some value: Remove already present {key, value} from the array. Add {key, new value} at the front of the array.
+2) If key is not present: If cache is full then remove one least recently used {key, value} i.e. remove last {key, value} pair. Now add {key, value} at the front of the array.  
+
+When any get query comes:
+Go through the array and search for the key.
+1) If key is already present with some value: Move {key, value} pair to the front of the array (don't forget this!), then return its value.
+2) If key is not present: return -1. 
+
+This will give correct answer, but time complexity of the set and get will be O(capacity). So time complexity of the code will be O(n * capacity). 
+
+Problem with this approarch is, in each query we have to traverse the array to find the key. Search can be reduced from O(capacity) to O(1) if we use hash map to store the positon of the key in array!
+
+Now we can use linked list with hash map to speed up the process. Linked list to maintain the order of least recently used {key, value} pairs, and hash map for quick search!
+
+Have a look at the solution provided by us.
+
+
+
+
+
+
+
+Time Complexity:
+
+O(n).
+As each get and set query is O(1), and we have total n queries.
+
+
+Auxiliary Space Used:
+
+O(min(capacity, number of set queries)).
+As each set query will increate the size of hash map and list, till we have reached the capacity of the cache. 
+
+
+Space Complexity: 
+
+O(n).
+Input is O(n) and auxiliary space used is O(min(capacity, number of set queries)).
+Now number of set queries <= number of total queries. So number of set queries <= n.
+So O(n) + O(min(capacity, number of set queries)) -> O(n) + O(min(capacity, n)) -> O(n). 
+
+
+
+
+

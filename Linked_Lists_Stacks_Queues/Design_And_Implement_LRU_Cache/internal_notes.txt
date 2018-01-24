@@ -1,0 +1,9 @@
+Input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
+ 
+First line contains one integer denoting the maximum size of the cache.
+Next line contains value of n.
+Next n lines contains one integer each, together denoting the query_type array.
+Next line contains value of n.
+Next n lines contains one integer each, together denoting the key array.
+Next line contains value of n.
+Next n lines contains one integer each, together denoting the value array.
