@@ -26,7 +26,7 @@ Problem with this approarch is, in each query we have to traverse the array to f
 
 Now we can use linked list with hash map to speed up the process. Linked list to maintain the order of least recently used {key, value} pairs, and hash map for quick search!
 
-Have a look at the solution provided by us.
+Have a look at the optimal_solution.cpp.
 
 
 
@@ -57,25 +57,54 @@ So O(n) + O(min(capacity, number of set queries)) -> O(n) + O(min(capacity, n)) 
 
 
 
-Slightly slower solution using hash map + min heap is also possible.
-In hash map we can store {key, {time stamp, value}} pairs. And in min heap we can store {time stamp, key} pair. {time stamp, key} having smallest time stamp will be at the root of the heap.
+Slightly slower solution using hash map + max heap is also possible.
+In hash map we can store {key, {time stamp, value}} pairs. And in max heap we can store {time stamp, key} pair. {time stamp, key} having largest time stamp will be at the root of the max heap.
 
-We will start with time stamp = 0 and in each query it will be incremented by 1.
+We will start with time stamp = 0 and in each query it will be decremented it by 1. (Generally we should increment it, but in C++ built in heap is max heap so we are decrementing time stamp. Suppose one key has time stamp = -5 and other has time stamp = -10, then least recently used key will be the key having larger value (-5) and it should be removed.)
 
 When get query comes:
 Check if key is present in hash map or not.
 1) If key is not present: return -1.
-2) If key is present: Update the time stamp in hash map. Return the value using hash map. (We are not making any changes in heap, not even time stamp! Time stamp in hash map will be updated but in heap it will be the older one.)
+2) If key is present: Update the time stamp in hash map. Return the value of the key present in hash map. (We are not making any changes in max heap, not even time stamp! Time stamp in hash map will be updated but in max heap it will be the older one. We will do lazy updates when cache is full!)
 
 When set query comes:
 Check if key is present in hash map or not.
-1) If key is not present: If cache is full then remove least recently used element from hash map and min heap. To find which element to be removed we will use min heap. We will start looking at the root of the min heap i.e. elements having least time stamp. We will check if time stamp in min heap and in hash map are same or not. If they are not same then it means the element was accessed, so remove it from top and insert with new time stamp that is in hash map. If time stamps are same then that element is least recently used and it should be removed. (Try some examples to understand it more clearly.)  
-Now add {key,{time stamp, value} in hash map. Also add {time stamp, key} in min heap.
-2) If key is present: Set the new value in hash map. Update the time stamp in hash map. (We are not making any changes in heap, not even time stamp! Time stamp in hash map will be updated but in heap it will be the older one.)
+1) If key is not present: If cache is full then remove least recently used element from hash map and max heap. To find which element to be removed we will use the max heap. We will start looking at the root of the max heap i.e. elements having largest time stamp. We will check if time stamp in max heap and in hash map are same or not. If they are not same then it means the element was accessed, so remove it from top of max heap and insert again with new time stamp that is in hash map. If time stamps are same then that element is least recently used and it should be removed. (Try some examples to understand it more clearly.)  
+Now add {key, {time stamp, value} in hash map. Also add {time stamp, key} in max heap.
+2) If key is present: Update the new value in hash map. Update the time stamp in hash map. (We are not making any changes in max heap, not even time stamp! Time stamp in hash map will be updated but in max heap it will be the older one. We will do lazy updates when cache is full!)
 
 
 
-This solution uses min heap's insert and delete operations, both having time complexity O(log(size of the heap)), hence time complexity of the solution will become O(n * log(capacity)).
+
+
+
+Have a look at other_solution.cpp for solution using hash map + max heap.
+
+
+
+
+
+
+Time Complexity:
+
+O(n * log(capacity)).
+This solution uses max heap's insert and delete operations, both having time complexity O(log(size of the max heap)), hence time complexity of the solution will become O(n * log(capacity)).
+
+
+
+Auxiliary Space Used:
+
+O(min(capacity, number of set queries)).
+As each set query will increate the size of hash map and list, till we have reached the capacity of the cache. 
+
+
+
+Space Complexity: 
+
+O(n).
+Input is O(n) and auxiliary space used is O(min(capacity, number of set queries)).
+Now number of set queries <= number of total queries. So number of set queries <= n.
+So O(n) + O(min(capacity, number of set queries)) -> O(n) + O(min(capacity, n)) -> O(n). 
 
 
 
