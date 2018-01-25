@@ -37,8 +37,8 @@ Constraints:
 1 <= n <= 10^5
 1 <= capacity <= 10^5
 0 <= query_type[i] <= 1
-1 <= key[i] <= 10^4
-1 <= value[i] <= 10^4
+1 <= key[i] <= 10^5
+1 <= value[i] <= 10^5
 
 Sample Test Case:
 

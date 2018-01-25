@@ -35,6 +35,43 @@ long long int random_number(long long int mod)
 
 const int MAX_CAPACITY = 100000, MAX_N = 100000, MAX_KEY = 10000, MAX_VAL = 10000;
 
+void special_test_case(int &test_cases, int n, int max_capacity, int max_key, int max_val)
+{
+	test_cases--;
+	cout << endl;
+	int capacity = max_capacity;
+	cout << capacity << endl;
+	cout << n << endl;
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < n / 10; j++)
+		{
+			cout << 1 << endl;
+		}
+		for (int j = 0; j < n / 10; j++)
+		{
+			cout << 0 << endl;
+		}
+	}
+	cout << n << endl;
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < n / 10; j++)
+		{
+			cout << (i * n / 10) + j + 1 << endl;
+		}
+		for (int j = 0; j < n / 10; j++)
+		{
+			cout << (i * n / 10) + (n / 10 - j) << endl;
+		}
+	}
+	cout << n << endl;
+	for (int i = 0; i < n; i++)
+	{
+		cout << random_number(max_val) + 1 << endl;
+	}
+}
+
 void generate_test_case(int &test_cases, int n = MAX_N, int max_capacity = MAX_CAPACITY, int max_key = MAX_KEY, int max_val = MAX_VAL)
 {
 	test_cases--;
@@ -69,12 +106,13 @@ int main()
 	cout << test_cases << endl;
 	generate_test_case(test_cases, 15, 3, 5, 5);
 	generate_test_case(test_cases, 18, 3, 5, 5);
-	for (int i = 0; i < 23; i++)
+	for (int i = 0; i < 22; i++)
 	{
 		generate_test_case(test_cases, 500 + i, 50 + i, 50 + i, 50 + i);
 	}
 	generate_test_case(test_cases);
-	generate_test_case(test_cases);
+	generate_test_case(test_cases, MAX_N, 100, MAX_KEY, MAX_VAL);
+	special_test_case(test_cases, MAX_N, 10000, 100000, 10000);
 
 	assert(test_cases == 0);
 

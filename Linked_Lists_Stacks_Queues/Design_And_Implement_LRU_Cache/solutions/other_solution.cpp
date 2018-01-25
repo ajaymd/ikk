@@ -2,7 +2,7 @@
 
 using namespace std;
 
-const int MAX_CAPACITY = 100000, MAX_N = 100000, MAX_KEY = 10000, MAX_VAL = 10000;
+const int MAX_CAPACITY = 100000, MAX_N = 100000, MAX_KEY = 100000, MAX_VAL = 100000;
 
 // -------------------------- START --------------------------
 
@@ -109,14 +109,17 @@ vector<int> implement_LRU_cache(int capacity, vector<int> query_type, vector<int
 
 int main()
 {
-	freopen("..//test_cases//sample_test_cases_input.txt", "r", stdin);
-	freopen("..//test_cases//sample_test_cases_expected_output.txt", "w", stdout);
+	clock_t start, end;
+	start = clock();
+
+	//freopen("..//test_cases//sample_test_cases_input.txt", "r", stdin);
+	//freopen("..//test_cases//sample_test_cases_expected_output.txt", "w", stdout);
 	//freopen("..//test_cases//handmade_test_cases_input.txt", "r", stdin);
 	//freopen("..//test_cases//handmade_test_cases_expected_output.txt", "w", stdout);
 	//freopen("..//test_cases//generated_small_test_cases_input.txt", "r", stdin);
 	//freopen("..//test_cases//generated_small_test_cases_expected_output.txt", "w", stdout);
-	//freopen("..//test_cases//generated_big_test_cases_input.txt", "r", stdin);
-	//freopen("..//test_cases//generated_big_test_cases_expected_output.txt", "w", stdout);
+	freopen("..//test_cases//generated_big_test_cases_input.txt", "r", stdin);
+	freopen("..//test_cases//generated_big_test_cases_expected_output.txt", "w", stdout);
 	//freopen("..//test_cases//ignore.txt", "w", stdout);
 
 	int test_cases;
@@ -172,6 +175,9 @@ int main()
 		}
 		cout << endl;
 	}
+
+	end = clock();
+    cout << ((double) (end - start)) / CLOCKS_PER_SEC << endl;
 
 	return 0;
 }
