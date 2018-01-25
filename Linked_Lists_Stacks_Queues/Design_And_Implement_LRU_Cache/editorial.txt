@@ -116,7 +116,7 @@ Time complexity of solution using (linked list + hash map) is O(n) and time comp
 
 When we tried to run some test cases together, first solution was taking 3.7 seconds, but second solution was taking only 1.8 seconds!
 
-Some of the reasons together causing this behaviour are:
+Some of the reasons together causing this behavior are:
 1) In the code for first solution we have used built-in list instead of linked list. Own implementation of linked list will supped up a bit, but we have prefered the readability of the code.
 2) Caching. This is the most imp thing, affecting the run time. In heap we are using array and hence elements will be stored in continuous memory, but in linked list it will not be the case. Hence second solution will better use the caching. 
 3) Limitations of input size. If we run code on too many queries (much more than 10^5) with appropriate cache capacity, then in worst case first solution will be faster (as expected)! (If we can provide too many queries with appropriate cache capacity, then we can design input such that second solution can not use the caching well, leading first solution to be faster.)

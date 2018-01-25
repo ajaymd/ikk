@@ -1,0 +1,44 @@
+
+
+A brute force solution is to find all substrings and check if they have matching parentheses. This will be a solution with O(n*n*n) time complexity, (n*(n-1)/2) substrings with O(n) check for matching.
+
+
+
+
+
+
+Now observation to make is that, if a matching '(' isn’t found for any ')', then string till ')' can no longer be part of the substring we are looking for. i.e. "(()))()()" now at 4th position no maching '(' is found for ')', hence part "(()))" is not needed in further calculations!
+
+So if we end with a non-matching closing paranthesis i, we can just jump to the string starting after i. 
+
+Now have a look at the code provided by us.
+
+
+
+
+
+
+Time Complexity:
+
+O(n).
+
+
+
+Auxiliary Space Used:
+
+O(n).
+As we are using stack to store the indices of the opening brackets.
+
+
+
+Space Complexity:
+
+O(n).
+As input is O(n) and auxiliary space used is also O(n). So, O(n) + O(n) -> O(n).
+
+
+
+
+
+
+ 
