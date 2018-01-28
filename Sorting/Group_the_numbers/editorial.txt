@@ -1,0 +1,21 @@
+Keep track of left and right pointer. Left pointer will point to the next pointer which needs to be swapped when we encounter an even number from the right. If we encounter an odd number, we simply reduce right. If we encounter even number, we swap it and move left. We do not move right as the swapped number might be even.
+
+Time Complexity: O(n)
+Space Complexity: O(1) 
+
+static int[] solve(int[] arr) {
+        int n = arr.length;
+        int left = 0, right = n-1;
+        while(right>=left){
+            if(arr[right]%2==0){
+                int tmp = arr[right];
+                arr[right] = arr[left];
+                arr[left] = tmp;
+                left++;
+            }
+            else{
+                right--;
+            }
+        }
+        return arr;
+    }
