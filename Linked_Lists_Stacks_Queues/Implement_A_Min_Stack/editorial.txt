@@ -1,0 +1,50 @@
+
+We have provided two solutions and both solutions contain necessary comments to understand the approach used:
+
+1) brute_force.cpp
+
+Time Complexity:
+
+O(n ^ 2).
+As we are transfering all elements of the stack while finding minimum value. 
+
+
+
+Auxiliary Space Used:
+
+O(n).
+As we are using two extra stacks and one extra vector to store values.  
+
+
+
+Space Complexity:
+
+O(n).
+As input is O(n) and aixiliary space used is also O(n). So, O(n) + O(n) -> O(n). 
+
+
+
+2) optimal_solution.cpp
+
+Time Complexity: 
+
+O(n).
+As each operation is performed in constant time and there are total n operations.
+
+
+
+Auxiliary Space Used:
+
+O(n). 
+As we are using two extra stacks and one extra vector to store values.
+
+
+Space Compelxity:
+
+O(n).
+As input is O(n) and aixiliary space used is also O(n). So, O(n) + O(n) -> O(n). 
+
+
+
+
+
