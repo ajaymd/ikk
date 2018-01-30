@@ -10,14 +10,26 @@ class LRU_cache
 {
 	// Maximum size of the cache.
 	int capacity;
-	/*
-	Stores the {key, value} pair.
-	Implementing own linked list will give some speedup than using built-in list, but it will affect the readibility of the code, hence we have used built in list.
-	If you are getting time limit exceeded, than try to use linked list instead of built in list.
-	*/
-	list<pair<int, int>> actual_storage;
-	// key -> pointer to where it is stored in actual storage.
-	unordered_map<int, list<pair<int, int>>::iterator> key_to_actual_storage_mapping;
+	class ListNode
+	{
+	public:
+		int key;
+		int value;
+		ListNode *prev;
+		ListNode *next;
+
+		ListNode(int _key = 0, int _value = 0)
+		{
+			key = _key;
+			value = _value;
+			prev = NULL;
+			next = NULL;
+		}
+	};
+	// Linked list whose nodes store {key, value}.
+	ListNode *head = NULL, *tail = NULL;
+	// key -> pointer to where it is stored in linked list.
+	unordered_map<int, ListNode *> key_to_actual_storage_mapping;
 
 public:
 
@@ -28,43 +40,94 @@ public:
 	}
 
 	/*
-	Add {key, value} pair at the front of actual_storage. 
-	Also add the mapping (key -> pointer to where it is stored in actual storage).
-	That is (key -> beginning of the actual_storage).
+	Add {key, value} at the front of linked list. 
+	Also add the mapping (key -> pointer to where it is stored in linked list).
+	That is (key -> head of the linked list).
 	*/
 	void add_to_front(int key, int value)
 	{
-		actual_storage.push_front({key, value});
-		key_to_actual_storage_mapping[key] = actual_storage.begin();
+		ListNode *temp = new ListNode(key, value);
+		// If linked list is empty, set head and tail.
+		if (head == NULL)
+		{
+			head = temp;
+			tail = temp;
+		}
+		else
+		{
+			temp->next = head;
+			head->prev = temp;
+			head = temp;
+		}
+		key_to_actual_storage_mapping[key] = head;
 	}
 
 	/*
-	Remove one {key, value} pair from the end of actual_storage.
-	Also remove the mapping (key -> pointer to where it is stored in actual storage).
+	Remove one {key, value} from the end of linked list.
+	Also remove the mapping (key -> pointer to where it is stored in linked list).
 	*/
 	void remove_least_recently_used()
 	{
-		int key = actual_storage.back().first;
+		int key = tail->key;
 		key_to_actual_storage_mapping.erase(key);
-		actual_storage.pop_back();
+		// If only one node, set head and tail. 
+		if (head == tail)
+		{
+			delete tail;
+			head = tail = NULL;
+			return;
+		}
+		// Set tail.
+		tail = tail->prev;
+		delete tail->next;
+		tail->next = NULL;
+	}
+
+	// Remove node from linked list.
+	void erase_node(ListNode *cur_node)
+	{
+		ListNode *prev_node = cur_node->prev;
+		ListNode *next_node = cur_node->next;
+		// Connect previous node with next node.
+		if (prev_node != NULL)
+		{
+			prev_node->next = next_node;
+		}
+		if (next_node != NULL)
+		{
+			next_node->prev = prev_node;
+		}
+		// If node to be removed is the only node in linked list, set head and tail.
+		if (head == tail)
+		{
+			head = tail = NULL;
+		}
+		// If node to be removed is head, set head.
+		else if (head == cur_node)
+		{
+			head = next_node;
+		}
+		// If node to be removed is tail, set tail.
+		else if (tail == cur_node)
+		{
+			tail = prev_node;
+		}
+		delete cur_node;
 	}
 
 	// Return value of the key, if key is present, else return -1.
 	int get(int key)
 	{
-		unordered_map<int, list<pair<int, int>>::iterator>::iterator it = key_to_actual_storage_mapping.find(key);
+		unordered_map<int, ListNode *>::iterator it = key_to_actual_storage_mapping.find(key);
 		// If key is not present in mapping then return -1.
 		if (it == key_to_actual_storage_mapping.end())
 		{
 			return -1;
 		}
-		/*
-		it->second points to {key, value} in the actual_storage.
-		So it->second->second will give value.
-		*/
-		int value = it->second->second;
+		// it->second points to node in the linked list.
+		int value = it->second->value;
 		// Remove from the original position.
-		actual_storage.erase(it->second);
+		erase_node(it->second);
 		// Add to the front.
 		add_to_front(key, value);
 		return value;
@@ -73,12 +136,12 @@ public:
 	// If key is present in cache then updates its values, else add {key, value} pair in cache.
 	void set(int key, int value)
 	{
-		unordered_map<int, list<pair<int, int>>::iterator>::iterator it = key_to_actual_storage_mapping.find(key);
+		unordered_map<int, ListNode*>::iterator it = key_to_actual_storage_mapping.find(key);
 		// If key is not present in mapping then add {key, value} and setup the mapping.
 		if (it == key_to_actual_storage_mapping.end())
 		{
 			// If cache is full then remove the least recently used {key, value}.
-			if (actual_storage.size() == capacity)
+			if (key_to_actual_storage_mapping.size() == capacity)
 			{
 				remove_least_recently_used();
 			}
@@ -87,7 +150,7 @@ public:
 			return;
 		}
 		// Remove from the original position.
-		actual_storage.erase(it->second);
+		erase_node(it->second);
 		// Add to the front.
 		add_to_front(key, value);
 	}

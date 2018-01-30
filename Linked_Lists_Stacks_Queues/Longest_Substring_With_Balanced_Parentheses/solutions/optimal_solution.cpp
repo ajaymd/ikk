@@ -10,7 +10,7 @@ int find_max_length_of_matching_parentheses(string brackets)
 {
 	int n = brackets.length();
 	/*
-	observation to make is that, if a matching '(' isn’t found for any ')', then string till ')' can no longer be part of the substring we are looking for. i.e. "(()))()()" now at 4th position no maching '(' is found for ')', hence part "(()))" is not needed in further calculations!
+	One observation to make is that, if a matching '(' isn’t found for any ')', then string till ')' can no longer be part of the substring we are looking for. i.e. "(()))()()" now at 4th position no maching '(' is found for ')', hence part "(()))" is not needed in further calculations!
 	valid_from variable keeps track of that. 
 	*/
 	int max_len = 0, valid_from = 0;

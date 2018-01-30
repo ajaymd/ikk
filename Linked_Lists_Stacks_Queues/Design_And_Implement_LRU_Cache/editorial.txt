@@ -26,7 +26,7 @@ Problem with this approarch is, in each query we have to traverse the array to f
 
 Now we can use linked list with hash map to speed up the process. Linked list to maintain the order of least recently used {key, value} pairs, and hash map for quick search!
 
-Have a look at the optimal_solution.cpp.
+Have a look at the optimal_solution1.cpp (solution using built in list) and optimal_solution2.cpp (solution using custom linked list).
 
 
 
@@ -112,14 +112,36 @@ So O(n) + O(min(capacity, number of set queries)) -> O(n) + O(min(capacity, n)) 
 
 
 
-Time complexity of solution using (linked list + hash map) is O(n) and time complexity of solution using (max heap + hash map) is O(n * log(capacity)), but when you will run the code, second one will be faster! 
+Time complexity of solution using (linked list + hash map) is O(n) and time complexity of solution using (max heap + hash map) is O(n * log(capacity)), but when you will run the code, you will not observe the running time difference! 
 
-When we tried to run some test cases together, first solution was taking 3.7 seconds, but second solution was taking only 1.8 seconds!
+When we ran solutions on some test cases, optimal_solution1.cpp was taking 1.81 seconds, optimal_solution2.cpp was taking 1.80 second and other_solution.cpp was taking 1.81 seconds.
 
-Some of the reasons together causing this behavior are:
-1) In the code for first solution we have used built-in list instead of linked list. Own implementation of linked list will supped up a bit, but we have prefered the readability of the code.
-2) Caching. This is the most imp thing, affecting the run time. In heap we are using array and hence elements will be stored in continuous memory, but in linked list it will not be the case. Hence second solution will better use the caching. 
-3) Limitations of input size. If we run code on too many queries (much more than 10^5) with appropriate cache capacity, then in worst case first solution will be faster (as expected)! (If we can provide too many queries with appropriate cache capacity, then we can design input such that second solution can not use the caching well, leading first solution to be faster.)
+We can see that there is not much difference in optimal_solution1.cpp (built-in linked list) and optimal_solution2.cpp (custom implementation of linked list), but code for optimal_solution2.cpp is complex, so better to use built-in list than implementing own linked list to reduce unnecessary errors. 
+
+Some of the reasons together, why other_solution.cpp was not slower are:
+1) Caching. This is the most imp thing, affecting the run time. In heap we are using array and hence elements will be stored in continuous memory, but in linked list it will not be the case. Hence other_solution.cpp will better use the caching. 
+2) Limitations of input size. If we can run code on too many queries (much more than 10^5) with appropriate cache capacity in input, then in worst case optimal_solution1.cpp and optimal_solution2.cpp will be faster (as expected)! (If we can provide too many queries with appropriate cache capacity in input, then we can design input such that other_solution.cpp can not use the caching well, leading optimal_solution1.cpp and optimal_solution2.cpp to be faster.)
+
+There are some limitations ( https://docs.google.com/document/d/1LY31OCgeVpez2k7EcvGO1SyTqcpTljyRoN19n8QK38A/edit?ts=5a4f2404#heading=h.g3c5yh5a2aoo ) of online judges, hence we can given ~ 10^5 queries in one test case. (You will see many times that constraints has something like 1 <= n <= 10^5.) There are some reasons for that 1) Time: Online judges also have limitied resources and hence allow only few seconds for one submission, hence we can not give input that takes minutes to run.  2) Memory: Input having array of size 10^5 will be ~1 MB, now if we give 10^8 in one test case then input file will be ~ 1 GB for one test case! And for one problem we want to test your solution over multiple test cases (to take care of all corner cases and worst cases). Hence generating input files in GBs and uploading it on online judge is not feasible. Also many languages like python are slow to read files, hence it will take more time to read input!
+
+We suggest you to implement both type of solutions and experiment with different inputs.
+
+
+
+
+For other_solution.cpp worst case example with n = 15: 
+
+capacity: 7 
+n = 15
+query_type = [1 1 1 1 1 1 1 0 0 0 0 0 0 0 1]
+key = [1 2 3 4 5 6 7 1 2 3 4 5 6 7 8]
+val = [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15]
+
+First we will add 7 key with values. After this cache will be full. 
+Then we will access all of them hence time stamp will be updated for all keys. 
+Now we will add one new key. We have accessed all 7 keys, hence in set function call for {8 -> 15}, while lopp will run 7 times (all previous keys), with each taking log(capacity) = log(7) time to run. Hence we will get overall O(n * log(k)) time complexity. 
+
+In optimal_solution1.cpp and optimal_solution2.cpp each query will be O(1), but constant hidden is large due to linked list, but with variable change it will not change more, but here with variable change log(k) can change, hence with large number of queries and appropriate cache capacity in input, other_solution.cpp can be made slower than optimal_solution1.cpp and optimal_solution2.cpp. (But it is not possible to provide such large input on online judges, so you will never encounter that other_solution.cpp is much slower!) 
 
 
 
