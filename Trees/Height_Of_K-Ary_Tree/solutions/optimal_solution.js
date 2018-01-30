@@ -11,7 +11,8 @@ process.stdin.on('data', function(data) {
 
 function TreeNode()
 {
-    //this.val = 0;														// To find height of tree, value stored in nodes does not matter. So in input also we are not given this field. 
+    // To find height of tree, value stored in nodes does not matter. So in input also we are not given this field. 
+    //this.val = 0;														
     this.children = [];
 }
 
@@ -32,7 +33,8 @@ function TreeNode()
 
 function find_height(k, root) 
 {
-    if (root.children.length == 0)									// Handle base case when root is a leaf node.
+    // Handle base case when root is a leaf node.
+    if (root.children.length == 0)									
     {
         return 0;
     }
@@ -40,7 +42,8 @@ function find_height(k, root)
     for (var i = 0; i < root.children.length; i++)
     {
         var temp = root.children[i];
-        h = Math.max(h, find_height(k, temp));				       // Find height of each children and store the maximum height of children. 
+        // Find height of each children and store the maximum height of children. 
+        h = Math.max(h, find_height(k, temp));				       
     }
     return h + 1;	
 }
@@ -51,14 +54,17 @@ var address = {};
 
 function build_tree(from, to) {
     var N = from.length + 1;
-    address = {};												    // Clear the global variable. 
+    // Clear the global variable. 
+    address = {};												    
     for (var i = 1; i <= N; i++)
     {
-        address[i] = new TreeNode();								// Create N nodes. 
+        // Create N nodes. 
+        address[i] = new TreeNode();								
     }
     for (var i = 0; i < N - 1; i++)								  
     {
-        address[from[i]].children.push(address[to[i]]);		        // Link the nodes. (Build the k-ary tree.)
+        // Link the nodes. (Build the k-ary tree.)
+        address[from[i]].children.push(address[to[i]]);		        
     }
     return address[1];	
 }

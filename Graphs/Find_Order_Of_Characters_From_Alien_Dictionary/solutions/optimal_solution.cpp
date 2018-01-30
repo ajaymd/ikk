@@ -5,9 +5,11 @@ using namespace std;
 int MAX_CHARS = 100000;
 
 // ---- START ----
-
+/*
+Note that we are passing adj_list, topological_order and visited by reference. Either use pass by reference or use global variables. 
+*/
 void dfs(char from, unordered_map<char, vector<char>> &adj_list, string &topological_order, unordered_set<char> &visited)
-{	// Note that we are passing adj_list, topological_order and visited by reference. Either use pass by reference or use global variables. 
+{	
 	visited.insert(from);
 	for (auto it = adj_list[from].begin(); it != adj_list[from].end(); it++)
 	{
@@ -99,7 +101,9 @@ void make_sure_unique_ordering_possible_topological_sort(unordered_map<char, vec
 		}
 	}
 
-	// If we want to get order uniquely then from starting node, each node will be at unique distance (0, 1, ..., n - 1). It is not possible that two nodes are at same distance, because if it is the case then we can change their order in output (not unique)! 
+	/*
+	If we want to get order uniquely then from starting node, each node will be at unique distance (0, 1, ..., n - 1). It is not possible that two nodes are at same distance, because if it is the case then we can change their order in output (not unique)! 
+	*/
 	unordered_map<char, int> dist;
 
 	dist[topological_order[0]] = 0;

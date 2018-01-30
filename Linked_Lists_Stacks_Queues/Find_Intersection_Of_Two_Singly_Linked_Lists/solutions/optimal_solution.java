@@ -44,8 +44,10 @@ public class Solution {
 
     static int find_intersection(LinkedListNode l1, LinkedListNode l2)
     {
-        int N1 = get_size(l1);                                  	// Size of first linked list
-        int N2 = get_size(l2);                                  	// Size of second linked list   
+        // Size of first linked list.
+        int N1 = get_size(l1);                                  	
+        // Size of second linked list.
+        int N2 = get_size(l2);                                  	
         while (N1 > N2)                                     
         {
             l1 = l1.next;
@@ -56,16 +58,19 @@ public class Solution {
             l2 = l2.next;
             N2--;
         }
-        while (l1 != null && l1 != l2)                              // Comparing address 
+        // Comparing address.
+        while (l1 != null && l1 != l2)                              
         {
             l1 = l1.next;
             l2 = l2.next;
         }
-        if (l1 == null)                                             // If we have reached end 
+        // If we have reached end.
+        if (l1 == null)                                             
         {
             return -1;
         }
-        return l1.val;                                          	// Intersection at node pointed by current value of l1 
+        // Intersection at node pointed by current value of l1.
+        return l1.val;                                          	
     }
 
     /*

@@ -6,14 +6,20 @@ const int MAX_N = 100000, MAX_K = 100000, MAX_FILE = 100000, MAX_SUM_N = 100000;
 
 //--------------------------------------START-----------------------------------------
 
-string file;													// You need to declare this. Global scope so that read_K function can use it.
-int K;															// You need to declare this. Global scope so that read_K function can use it.
+// You need to declare this. Global scope so that read_K function can use it.
+string file;													
+// You need to declare this. Global scope so that read_K function can use it.
+int K;															
 
-string read_K()													// You need to implement this in language you are using in exactly the same manner given here. 
+// You need to implement this in language you are using in exactly the same manner given here. 
+string read_K()													
 {
-	static int ptr = 0;											// Used static because we want to read from where we left in previous read
-	int len = min(K, (int)file.length() - ptr);					// Handle the case when remaining bytes < requested bytes
-	string ans (len, '0');										// It is always better if we don't use concatinatin each time. like ans = ans + (some char)
+	// Used static because we want to read from where we left in previous read
+	static int ptr = 0;											
+	// Handle the case when remaining bytes < requested bytes
+	int len = min(K, (int)file.length() - ptr);					
+	// It is always better if we don't use concatinatin each time. like ans = ans + (some char)
+	string ans (len, '0');										
 	for (int i = 0; i < len; i++)
 	{
 		ans[i] = file[ptr++];
@@ -21,22 +27,28 @@ string read_K()													// You need to implement this in language you are us
 	return ans;
 }
 
-string read(int N)												// You need to implement and complete this. 
+// You need to implement and complete this. 
+string read(int N)												
 {
-	static string buffer = "";									// Use static because out read should be consistent, it might be possible that read_K returns more bytes than we needed. 
-	static int buffer_ptr = 0;									// Some bytes might be remaining in buffer, so keep track of them.
-	string ans = "";											// Here also we could have first find the length of the answer so that we do not need to use concatination each time, but for better readibility of code we preferred to do this way. 
+	// Use static because out read should be consistent, it might be possible that read_K returns more bytes than we needed.
+	static string buffer = "";									
+	// Some bytes might be remaining in buffer, so keep track of them. 
+	static int buffer_ptr = 0;									
+	// Here also we could have first find the length of the answer so that we do not need to use concatination each time, but for better readibility of code we preferred to do this way. 
+	string ans = "";											
 	while (ans.length() < N)
 	{
 		if (buffer_ptr < buffer.length())
 		{
 			ans = ans + buffer[buffer_ptr++];				
 		}
-		else													// Nothing in buffer is left, read something new 
+		else													
 		{	
+			// Nothing in buffer is left, read something new 
 			buffer = read_K();
 			buffer_ptr = 0;
-			if (buffer == "")									// If we have read the whole file. 
+			// If we have read the whole file. 
+			if (buffer == "")									
 			{
 				return ans;
 			}
@@ -47,7 +59,8 @@ string read(int N)												// You need to implement and complete this.
 
 vector<string> read_function_caller(string file, int K, vector<int> value_of_n)
 {
-	::file = file;												// Initialize the global variables.
+	// Initialize the global variables.
+	::file = file;												
 	::K = K;													
 
 	int queries = value_of_n.size();

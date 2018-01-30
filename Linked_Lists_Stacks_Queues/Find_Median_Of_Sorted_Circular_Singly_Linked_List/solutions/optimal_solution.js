@@ -80,7 +80,8 @@ function find_first_small(ptr)
     return null;
 }
 
-function find_size(ptr)                                                  // Finds size of the linked list
+// Finds size of the linked list
+function find_size(ptr)                                                  
 {
     var N = 1;
     var cur = ptr.next;
@@ -111,26 +112,31 @@ function find_median(ptr)
     */
 
     var N = find_size(ptr);
-    var first_small = find_first_small(ptr);                                    // We do not know if given linked list is non-increasing or non-decreasing. If it is non_decreasing (2.4.6.8) then there will be <= 1 pair big.small (8.2). If it is non_increasing (8.6.4.2) then there will be many pair big.small (8.6, 6.4, 4.2). When both non-increasing and non-decreasing (2.2.2) then there will be no small.big. This function returns pointer to small. For non-decreasing case it will be unique. For (2 . 2 . 2) it will be NULL. For non-increasing it will be any one of the valid pairs. 
+    // We do not know if given linked list is non-increasing or non-decreasing. If it is non_decreasing (2.4.6.8) then there will be <= 1 pair big.small (8.2). If it is non_increasing (8.6.4.2) then there will be many pair big.small (8.6, 6.4, 4.2). When both non-increasing and non-decreasing (2.2.2) then there will be no small.big. This function returns pointer to small. For non-decreasing case it will be unique. For (2 . 2 . 2) it will be NULL. For non-increasing it will be any one of the valid pairs. 
+    var first_small = find_first_small(ptr);                                    
 
-    if (first_small == null)                                                    // When all elements are same (2.2.2) then return any element.
+    // When all elements are same (2.2.2) then return any element.
+    if (first_small == null)                                                    
     {
         return ptr.val;
     }
 
     var head = null;
-    if (is_non_decreasing(first_small))                                         // Take pointer to small that we got previously, as head and check if linked list is non-decreasing or not.
+    // Take pointer to small that we got previously, as head and check if linked list is non-decreasing or not.
+    if (is_non_decreasing(first_small))                                         
     {
-        head = first_small;                                                     // If it is non-decreasing then we have found our head
+        // If it is non-decreasing then we have found our head
+        head = first_small;                                                     
     }
     else
-    {                                                                           // Non-increasing
+    {   
+        // Non-increasing                                                                        
         head = find_first_big(ptr);
     }
 
     // Till now we have found our head.     
-    
-    for (var i = 0; i < Math.floor((N - 1) / 2); i++)                           // Exact middle element in case of odd N and middle left element in case of even N.
+    // Exact middle element in case of odd N and middle left element in case of even N.
+    for (var i = 0; i < Math.floor((N - 1) / 2); i++)                           
     {
         head = head.next;
     }
@@ -170,7 +176,8 @@ process.stdin.on('end', function() {
     }
 
     //----added manually----
-    ptr_tail.next = ptr;                                                            // Till now it was linear, now join tail to head and make it circular. 
+    // Till now it was linear, now join tail to head and make it circular. 
+    ptr_tail.next = ptr;                                                            
     // Now we have got circular linked list but ptr will be the first element, but we need to give arbitrary node. 
     // Value of arbitrary_shift will be [0, ptr_size). 
     var arbitrary_shift = parseInt(__input_stdin_array[__input_currentline].trim(), 10);

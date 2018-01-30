@@ -42,38 +42,46 @@ struct TreeNode
     };
 */
 
-TreeNode * build_balanced_bst_helper(int l, int r, vector<int> &a)					// build tree using values (a[l], a[l+1], ..., a[r]).
+// build tree using values (a[l], a[l+1], ..., a[r]).
+TreeNode * build_balanced_bst_helper(int l, int r, vector<int> &a)					
 {
 	if (l > r)	
 	{
 		return NULL;
 	}
 	int m = l + (r - l) / 2;
-	TreeNode *temp = new TreeNode(a[m]);											// to build balanced tree we need to choose the middle element as the root 
-	temp->left_ptr = build_balanced_bst_helper(l, m - 1, a);						// recursively create subtree and add it as left child
-	temp->right_ptr = build_balanced_bst_helper(m + 1, r, a);						// recursively create subtree and add it as right child 
+	// to build balanced tree we need to choose the middle element as the root 
+	TreeNode *temp = new TreeNode(a[m]);											
+	// recursively create subtree and add it as left child
+	temp->left_ptr = build_balanced_bst_helper(l, m - 1, a);						
+	// recursively create subtree and add it as right child 
+	temp->right_ptr = build_balanced_bst_helper(m + 1, r, a);						
 	return temp;
 }
 
 TreeNode * build_balanced_bst(vector<int> a)
 {
 	int N = a.size();
-	return build_balanced_bst_helper(0, N - 1, a);									// build balanced BST
+	// build balanced BST
+	return build_balanced_bst_helper(0, N - 1, a);									
 }
 
 //-----------------------------------STOP----------------------------------------
 
 bool check_balanced_bst(TreeNode *root, int l, int r, vector<int>& a)
 {
-    if (l > r && root == NULL)                              // If no value in [l, r] and tree is also empty.
+	// If no value in [l, r] and tree is also empty.
+    if (l > r && root == NULL)                              
     {
         return true;
     }
-    else if (l > r && root != NULL)                         // If no value in [l, r] but tree contains something. 
+    // If no value in [l, r] but tree contains something. 
+    else if (l > r && root != NULL)                         
     {
         return false;
     }
-    if (root == NULL)                                       // If some values in [l, r] but tree is empty.
+    // If some values in [l, r] but tree is empty.
+    if (root == NULL)                                       
     {
         return false;
     }
@@ -82,11 +90,13 @@ bool check_balanced_bst(TreeNode *root, int l, int r, vector<int>& a)
     int mid2 = l + (r - l + 1) / 2;
     
     bool valid1 = (root->val == a[mid1] && check_balanced_bst(root->left_ptr, l, mid1 - 1, a) && check_balanced_bst(root->right_ptr, mid1 + 1, r, a));
-    if (valid1)                                             // actually we are doing valid1 || valid2 but when valid1 is true then no need to find valid2
+    // actually we are doing valid1 || valid2 but when valid1 is true then no need to find valid2
+    if (valid1)                                             
     {
         return true;        
     }
-    if (mid1 == mid2)                                       // when odd no of elements in [l, r] then mid1 = mid2 so valid1 = valid2 and no need to find valid2.  
+    // when odd no of elements in [l, r] then mid1 = mid2 so valid1 = valid2 and no need to find valid2.  
+    if (mid1 == mid2)                                       
     {
         return false;        
     }

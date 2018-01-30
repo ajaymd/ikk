@@ -10,14 +10,16 @@ vector<vector<int>> kary(MAX_N + 1);
 
 int find_max_height(int root)
 {
-	if (kary[root].size() == 0)									// Handle base case when root is a leaf node.
+	// Handle base case when root is a leaf node.
+	if (kary[root].size() == 0)									
 	{
 		return 0;
 	}
 	int h = 0;
 	for (int i = 0; i < kary[root].size(); i++)
 	{
-		h = max(h, find_max_height(kary[root][i]));				// Find height of each children and store the maximum height of children. 
+		// Find height of each children and store the maximum height of children. 
+		h = max(h, find_max_height(kary[root][i]));				
 	}
 	return h + 1;			
 }
@@ -27,14 +29,19 @@ int find_height(int k, vector<int> from, vector<int> to)
 	int edges = from.size();
 	for (int i = 1; i <= edges + 1; i++)
 	{
-		kary[i].clear();										// Just clear the global variable. 
+		// Just clear the global variable. 
+		kary[i].clear();										
 	}
-	for (int i = 0; i < edges; i++)								// It is not a good idea to iterate over from array for each node, hence we iterate over from array once and store children of each node separately in kary[node].  
+	// It is not a good idea to iterate over from array for each node, hence we iterate over from array once and store children of each node separately in kary[node].  
+	for (int i = 0; i < edges; i++)								
 	{
-		kary[from[i]].push_back(to[i]);							// Array kary[node] will store all the children of node. 
-		assert(kary[from[i]].size() <= k);						// Ignore this. This is just for validation of input.
+		// Array kary[node] will store all the children of node. 
+		kary[from[i]].push_back(to[i]);							
+		// Ignore this. This is just for validation of input.
+		assert(kary[from[i]].size() <= k);						
 	}
-	return find_max_height(1);									// Till now we have separated and stored children of each node in kary[node] array. Now we can do dfs and find the height of the tree. 
+	// Till now we have separated and stored children of each node in kary[node] array. Now we can do dfs and find the height of the tree. 
+	return find_max_height(1);									
 }
 
 //--------------------------------STOP------------------------------------

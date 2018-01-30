@@ -22,17 +22,22 @@ public class Solution {
 
     static TreeNode bst_insert(TreeNode root, int val)
     {
-        if (root == null)												// destination.
+        // destination.
+        if (root == null)												
         {
             return new TreeNode(val);
         }
-        if (val <= root.val)											// element is <= hence insert it in left subtree.
+        // element is <= hence insert it in left subtree.
+        if (val <= root.val)											
         {
-            root.left_ptr = bst_insert(root.left_ptr, val);			      // if root.left_ptr is null then new TreeNode will be created and root.left_ptr is assigned, else it will be assigned to the same value as previouly stored.
+            // if root.left_ptr is null then new TreeNode will be created and root.left_ptr is assigned, else it will be assigned to the same value as previouly stored.
+            root.left_ptr = bst_insert(root.left_ptr, val);			      
         }
-        else  															// element is > hence insert it in right subtree.
+        // element is > hence insert it in right subtree.
+        else  															
         {
-            root.right_ptr = bst_insert(root.right_ptr, val);			// if root.right_ptr is null then new TreeNode will be created and root.right_ptr is assigned, else it will be assigned to the same value as previouly stored.
+            // if root.right_ptr is null then new TreeNode will be created and root.right_ptr is assigned, else it will be assigned to the same value as previouly stored.
+            root.right_ptr = bst_insert(root.right_ptr, val);			
         }
         return root;
     }
@@ -57,37 +62,42 @@ public class Solution {
 
     //-------------------------------START-----------------------------------
 
-    static int kth_element;                                                 // kth smallest element is stored in this variable. 
-    //int counter = 0;                                                  // when running more than one testcases then dont use static in counter = 0 use this and initialize counter = 0 at the beginning of each testcase. 
+    // kth smallest element is stored in this variable. 
+    static int kth_element;                                             
+    // when running more than one testcases then dont use static in counter = 0 use this and initialize counter = 0 at the beginning of each testcase.     
+    //int counter = 0;                                                  
 
     static int counter = 0;
 
     static void get_k_th_element(TreeNode root, int k)
     {
-        /*
-            this function uses the idea of inorder_traversal. 
-        */
-        
-        if (root == null || counter >= k)                               // either root is null or we have already found the answer.             
+        // This function uses the idea of inorder_traversal. 
+        // either root is null or we have already found the answer.             
+        if (root == null || counter >= k)                               
         {
             return;
         }
-        get_k_th_element(root.left_ptr, k);                             // first try to find from left subtree, because elements in left suubtree will be smaller than the root.
-        if (counter < k)                                                // if we have not found the answer till now.        
+        // first try to find from left subtree, because elements in left suubtree will be smaller than the root.
+        get_k_th_element(root.left_ptr, k);                             
+        // if we have not found the answer till now.        
+        if (counter < k)                                                
         {
             counter++;
-            if (counter == k)                                           // if current node is the kth node.
+            // if current node is the kth node.
+            if (counter == k)                                           
             {
                 kth_element = root.val;
                 return;
             }
-            get_k_th_element(root.right_ptr, k);                        // we have explored left subtree and the root now explore right subtree. 
+            // we have explored left subtree and the root now explore right subtree. 
+            get_k_th_element(root.right_ptr, k);                        
         }
     }
 
     static int kth_smallest_element(TreeNode root, int k)
     {
-        get_k_th_element(root, k);                                      // find kth smallest element
+        // find kth smallest element
+        get_k_th_element(root, k);                                      
         return kth_element;
     }
 

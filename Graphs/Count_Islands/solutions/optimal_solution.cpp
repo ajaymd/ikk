@@ -36,7 +36,9 @@ void bfs(int r, int c, vector<vector<int>> &matrix)
 
 			if (matrix[new_r][new_c])
 			{
-				// We could have marked as 0 when we pop-up the element from the queue and not here. This will also give correct answer, but that is not the correct way! If we do that, same element will be pushed multiple times in the queue (that will increase running time and queue size unnecessarily)! Take some examples and try to figure it out. 
+				/*
+				We could have marked as 0 when we pop-up the element from the queue and not here. This will also give correct answer, but that is not the correct way! If we do that, same element will be pushed multiple times in the queue (that will increase running time and queue size unnecessarily)! Take some examples and try to figure it out. 
+				*/
 				matrix[new_r][new_c] = 0;
 				q.push({new_r, new_c});
 			}

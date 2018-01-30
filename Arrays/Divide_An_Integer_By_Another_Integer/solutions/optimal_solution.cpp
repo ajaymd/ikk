@@ -9,25 +9,32 @@ const long long int MAX_AB = 1000000000000000000LL;
 
 long long int divide(long long int a, long long int b)
 {
-	if (a == 0)											// 0 / non_zero = 0
+	// 0 / non_zero = 0
+	if (a == 0)											
 	{
 		return 0;
 	}
-	if ((a < 0 && b > 0) || (a > 0 && b < 0))			// neg / pos or pos / neg
+	// neg / pos or pos / neg
+	if ((a < 0 && b > 0) || (a > 0 && b < 0))			
 	{
 		return -divide(abs(a), abs(b));
 	}
-	if (a < 0 && b < 0)									// neg / neg
+	// neg / neg
+	if (a < 0 && b < 0)									
 	{
 		return divide(-a, -b);
 	}
-	if (a < b)											// like 2 / 5
+	// like 2 / 5
+	if (a < b)											
 	{
 		return 0;
 	}
-	long long int q = 1;								// long long int is imp
-	long long int b_copy = b;							// long long int is imp
-	while ((b_copy << 1) <= a)							// 37 / 3 can be written as 8 * (37 / (3 * 8)) + (37 - (3 * 8)) / 3
+	// long long int is imp
+	long long int q = 1;								
+	// long long int is imp
+	long long int b_copy = b;							
+	// 37 / 3 can be written as 8 * (37 / (3 * 8)) + (37 - (3 * 8)) / 3
+	while ((b_copy << 1) <= a)							
 	{
 		b_copy <<= 1;
 		q <<= 1;

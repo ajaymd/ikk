@@ -81,7 +81,8 @@ public class Solution {
         return null;
     }
 
-    static int find_size(LinkedListNode ptr)                                                  // Finds size of the linked list
+    // Finds size of the linked list
+    static int find_size(LinkedListNode ptr)                                                  
     {
         int N = 1;
         LinkedListNode cur = ptr.next;
@@ -112,26 +113,31 @@ public class Solution {
         */
 
         int N = find_size(ptr);
-        LinkedListNode first_small = find_first_small(ptr);                        // We do not know if given linked list is non-increasing or non-decreasing. If it is non_decreasing (2.4.6.8) then there will be <= 1 pair big.small (8.2). If it is non_increasing (8.6.4.2) then there will be many pair big.small (8.6, 6.4, 4.2). When both non-increasing and non-decreasing (2.2.2) then there will be no small.big. This function returns pointer to small. For non-decreasing case it will be unique. For (2 . 2 . 2) it will be NULL. For non-increasing it will be any one of the valid pairs. 
+        // We do not know if given linked list is non-increasing or non-decreasing. If it is non_decreasing (2.4.6.8) then there will be <= 1 pair big.small (8.2). If it is non_increasing (8.6.4.2) then there will be many pair big.small (8.6, 6.4, 4.2). When both non-increasing and non-decreasing (2.2.2) then there will be no small.big. This function returns pointer to small. For non-decreasing case it will be unique. For (2 . 2 . 2) it will be NULL. For non-increasing it will be any one of the valid pairs. 
+        LinkedListNode first_small = find_first_small(ptr);                        
 
-        if (first_small == null)                                                    // When all elements are same (2.2.2) then return any element.
+        // When all elements are same (2.2.2) then return any element.
+        if (first_small == null)                                                    
         {
             return ptr.val;
         }
 
         LinkedListNode head = null;
-        if (is_non_decreasing(first_small))                                         // Take pointer to small that we got previously, as head and check if linked list is non-decreasing or not.
+        // Take pointer to small that we got previously, as head and check if linked list is non-decreasing or not.
+        if (is_non_decreasing(first_small))                                         
         {
-            head = first_small;                                                     // If it is non-decreasing then we have found our head
+            // If it is non-decreasing then we have found our head
+            head = first_small;                                                     
         }
         else
-        {                                                                           // Non-increasing
+        {   
+            // Non-increasing                                                                        
             head = find_first_big(ptr);
         }
 
         // Till now we have found our head.     
-
-        for (int i = 0; i < (N - 1) / 2; i++)                                      // Exact middle element in case of odd N and middle left element in case of even N.
+        // Exact middle element in case of odd N and middle left element in case of even N.
+        for (int i = 0; i < (N - 1) / 2; i++)                                      
         {
             head = head.next;
         }
@@ -139,7 +145,8 @@ public class Solution {
         {
             return head.val;
         }
-        return (int)(((long)head.val + (long)head.next.val) / (long)2);             // take care of overflow
+        // take care of overflow
+        return (int)(((long)head.val + (long)head.next.val) / (long)2);             
     }
 
     /*

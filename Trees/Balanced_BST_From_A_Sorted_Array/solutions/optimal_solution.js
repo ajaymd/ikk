@@ -35,23 +35,28 @@ function TreeNode(node_value) {
     }
 */
 
-function build_balanced_bst_helper(l, r, a)                    // build tree using values (a[l], a[l+1], ..., a[r]).
+// build tree using values (a[l], a[l+1], ..., a[r]).
+function build_balanced_bst_helper(l, r, a)                    
 {
     if (l > r)  
     {
         return null;
     }
     var m = l + (r - l + 1) / 2;
-    var temp = new TreeNode(a[m]);                                         // to build balanced tree we need to choose the middle element as the root 
-    temp.left_ptr = build_balanced_bst_helper(l, m - 1, a);                     // recursively create subtree and add it as left child
-    temp.right_ptr = build_balanced_bst_helper(m + 1, r, a);                        // recursively create subtree and add it as right child 
+    // to build balanced tree we need to choose the middle element as the root 
+    var temp = new TreeNode(a[m]);                                         
+    // recursively create subtree and add it as left child
+    temp.left_ptr = build_balanced_bst_helper(l, m - 1, a);                     
+    // recursively create subtree and add it as right child 
+    temp.right_ptr = build_balanced_bst_helper(m + 1, r, a);                        
     return temp;
 }
 
 function build_balanced_bst(a) 
 {
     var N = a.length;
-    return build_balanced_bst_helper(0, N - 1, a);                                  // build balanced BST
+    // build balanced BST
+    return build_balanced_bst_helper(0, N - 1, a);                                  
 }
 
 //-----------------------------------STOP----------------------------------------
@@ -60,15 +65,18 @@ function build_balanced_bst(a)
 
 function check_balanced_bst(root, l, r, a)
 {
-    if (l > r && root == null)                              // If no value in [l, r] and tree is also empty.
+    // If no value in [l, r] and tree is also empty.
+    if (l > r && root == null)                              
     {
         return true;
     }
-    else if (l > r && root != null)                         // If no value in [l, r] but tree contains something. 
+    // If no value in [l, r] but tree contains something. 
+    else if (l > r && root != null)                         
     {
         return false;
     }
-    if (root == null)                                       // If some values in [l, r] but tree is empty.
+    // If some values in [l, r] but tree is empty.
+    if (root == null)                                       
     {
         return false;
     }
@@ -77,11 +85,13 @@ function check_balanced_bst(root, l, r, a)
     var mid2 = l + (r - l + 1) / 2;
 
     var valid1 = (root.val == a[mid1] && check_balanced_bst(root.left_ptr, l, mid1 - 1, a) && check_balanced_bst(root.right_ptr, mid1 + 1, r, a));
-    if (valid1)                                             // actually we are doing valid1 || valid2 but when valid1 is true then no need to find valid2
+    // actually we are doing valid1 || valid2 but when valid1 is true then no need to find valid2
+    if (valid1)                                             
     {
         return true;        
     }
-    if (mid1 == mid2)                                       // when odd no of elements in [l, r] then mid1 = mid2 so valid1 = valid2 and no need to find valid2.  
+    // when odd no of elements in [l, r] then mid1 = mid2 so valid1 = valid2 and no need to find valid2.  
+    if (mid1 == mid2)                                       
     {
         return false;        
     }
