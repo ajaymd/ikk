@@ -1,0 +1,39 @@
+
+Swap kth Nodes In Given Linked List
+
+
+Problem Statement:
+
+Given an integer singly linked list of size n, you have to swap kth (1-indexed) node from the beginning, with kth node from the end. You have to swap the nodes themselves, not just the contents.
+
+Input Format:
+
+There are two arguments in input. First is an integer singly linked list and second is an integer k. 
+
+Output Format:
+
+Return linked list after swapping kth nodes. 
+
+Constraints:
+
+1 <= n <= 100000
+-2 * 10^9 <= value stored in any node <= 2 * 10^9
+1 <= k <= n
+Try to access linked list nodes minimum number of times. 
+
+Sample Test Case:
+
+Sample Input:
+
+list: 1 -> 2 -> 3 -> 4 -> 7 -> 0 -> NULL
+k: 2
+
+Sample Output:  
+
+1 -> 7 -> 3 -> 4 -> 2 -> 0 -> NULL
+
+Notes:
+
+Suggested time in interview: 30 minutes.
+The “Suggested Time” is the time expected to complete this question during a real-life interview, not now in homework i.e. For the first attempt of a given homework problem, the focus should be to understand what the problem is asking, what approach you are using, coding it, as well as identifying any gaps that you can discuss during a TA session. Take your time, but limit yourself to 2 one hour sessions for most problems.
+
