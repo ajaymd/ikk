@@ -33,7 +33,7 @@ long long int random_number(long long int mod)
 
 // --------------------------------------------------------------------------
 
-const int MIN_N = 0, MAX_N = 100000, MIN_VAL = -2000000000, MAX_VAL = 2000000000;
+const int MIN_N = 1, MAX_N = 100000, MIN_VAL = -2000000000, MAX_VAL = 2000000000;
 
 void generate_test_case(int &test_cases, int k)
 {
