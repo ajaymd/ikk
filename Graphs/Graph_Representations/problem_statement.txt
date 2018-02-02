@@ -1,0 +1,26 @@
+
+Graph Representations
+
+
+Problem Statement:
+
+Select options which can be used to represent a graph. 
+
+Notes:
+
+Suggested time in interview: 5 minutes.
+The “Suggested Time” is the time expected to complete this question during a real-life interview, not now in homework i.e. For the first attempt of a given homework problem, the focus should be to understand what the problem is asking, what approach you are using, coding it, as well as identifying any gaps that you can discuss during a TA session. Take your time, but limit yourself to 2 one hour sessions for most problems.
+
+
+
+
+Pick the correct choices:
+
+A) Adjacency List
+B) Matrix
+C) One Variable Per Node
+D) Neighbor List
+
+
+
+

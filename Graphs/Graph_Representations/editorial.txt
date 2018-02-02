@@ -1,0 +1,9 @@
+
+Answer:
+
+Adjacency List, Matrix and Neighbor List.
+
+
+
+
+
