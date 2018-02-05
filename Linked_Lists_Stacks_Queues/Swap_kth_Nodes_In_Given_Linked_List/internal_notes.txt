@@ -1,0 +1,5 @@
+Input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
+ 
+First line contains one integer denoting integer n.
+Next n lines contain one integer, together denoting values to be stored in linked list.
+Last line contains one integer denoting integer k.

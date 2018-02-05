@@ -36,7 +36,10 @@ int increment_index(int idx, int N)
 int check_if_rotated(string s)			
 {
 	int N = s.length();
-	int steps = (N + 1) / 2;							// When we start from the middle element/elements checking for palindrome, how many pairs we need to check. Take example of both odd and even and will get it. 
+	/* 
+	When we start from the middle element/elements checking for palindrome, how many pairs we need to check. Take example of both odd and even and will get it. 
+	*/
+	int steps = (N + 1) / 2;							
 
 	for (int i = 0; i < N; i++)
 	{
@@ -44,7 +47,8 @@ int check_if_rotated(string s)
 		int r = i;
 		if (N % 2 == 0)
 		{
-			r = increment_index(r, N);					// N is even then two elements! 
+			// N is even then two elements! 
+			r = increment_index(r, N);					
 		}
 		bool valid = true;
 
@@ -69,10 +73,6 @@ int check_if_rotated(string s)
 }
 
 // ---------------------------------- END ------------------------------------
-
-
-
-
 
 int main()
 {

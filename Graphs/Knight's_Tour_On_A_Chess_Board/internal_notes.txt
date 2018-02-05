@@ -1,0 +1,5 @@
+Input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
+ 
+There are 6 lines and each line contains one integer.
+1) rows 2) cols 3) start_row 4) start_col 5) end_row 6) end_col.
+

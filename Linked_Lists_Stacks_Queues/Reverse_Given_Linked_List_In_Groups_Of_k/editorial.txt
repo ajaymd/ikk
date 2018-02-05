@@ -1,0 +1,29 @@
+
+Have you considered "Solve it with constant extra space."?
+
+If you are using recursion, then it will be O(n / k) extra space due to recursion depth and when k = 1 it will be O(n) extra space!
+
+Have a look at optimal_solution.cpp, it contains necessary comments to understand the solution. 
+
+
+
+
+
+Time Complexity:
+
+O(n).
+
+
+Auxiliary Space Used:
+
+O(1).
+
+
+Space Complexity:
+
+O(n).
+As input is O(n) and auxiliary space used is O(1). So, O(n) + O(1) -> O(n).
+
+
+
+

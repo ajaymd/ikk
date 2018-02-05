@@ -11,14 +11,19 @@ bool is_prime[MAX_A + 1];
 void pre_process(int N, int max_value)
 {
 	fill_n(&is_prime[0], max_value + 1, true);
-	is_prime[1] = false;														// IMP. 1 is not a prime no. 
-
-	for (int i = 2; i * i <= max_value; i++)									// i <= max_value is also correct but this more efficient. 
+	// IMP. 1 is not a prime no. 
+	is_prime[1] = false;														
+	// i <= max_value is also correct but this more efficient. 
+	for (int i = 2; i * i <= max_value; i++)									
 	{
-		long long int start = (long long int)i * (long long int)i;				// Using int will overflow. Consider max_value = 10^6 now start = (10^6 * 10^6) > INT_MAX! 
+		// Using int will overflow. Consider max_value = 10^6 now start = (10^6 * 10^6) > INT_MAX! 
+		long long int start = (long long int)i * (long long int)i;				
 		if (start <= max_value)
 		{
-			for (int j = start; j <= max_value; j += i)							// In most of the implementations people start from j = i + i, but this will be just waste of time. Think when i = 5 now we can visit like 10, 15, 20, 25, 30, 35... but here note that 10 = 2 * 5 so when i = 2 we have already marked it, same for 15 = 3 * 5 so when i = 3 we have already marked it! So it is same as starting from i * i. But directly starting from i * i will save time! 
+			/*
+			In most of the implementations people start from j = i + i, but this will be just waste of time. Think when i = 5 now we can visit like 10, 15, 20, 25, 30, 35... but here note that 10 = 2 * 5 so when i = 2 we have already marked it, same for 15 = 3 * 5 so when i = 3 we have already marked it! So it is same as starting from i * i. But directly starting from i * i will save time! 
+			*/
+			for (int j = start; j <= max_value; j += i)							
 			{
 				is_prime[j] = false;
 			}

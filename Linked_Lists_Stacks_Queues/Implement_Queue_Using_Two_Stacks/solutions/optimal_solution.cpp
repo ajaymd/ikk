@@ -53,25 +53,30 @@ void print_linked_list(LinkedListNode* head)
 
 int dequeue(stack<int> &s1, stack<int> &s2)					
 {
-	if (s1.empty() && s2.empty())							// When both stacks are empty then return -1
+	// When both stacks are empty then return -1
+	if (s1.empty() && s2.empty())							
 	{
 		return -1;
 	}
-	if (s2.empty() == false)								// When second stack is non empty then pop and return from it
+	// When second stack is non empty then pop and return from it
+	if (s2.empty() == false)								
 	{
 		int val = s2.top();
 		s2.pop();
 		return val;
 	}
-	while (s1.empty() == false)								// When second stack is empty then transfer all elements from first stack to second stack 
+	// When second stack is empty then transfer all elements from first stack to second stack 
+	while (s1.empty() == false)								
 	{
 		s2.push(s1.top());
 		s1.pop();
 	}
-	return dequeue(s1, s2);									// int val = s2.top(); s2.pop(); return val; will be the same. 
+	// int val = s2.top(); s2.pop(); return val; will be the same. 
+	return dequeue(s1, s2);									
 }
 
-void enqueue(stack<int> &s, int val)						// Always push in first stack
+// Always push in first stack
+void enqueue(stack<int> &s, int val)						
 {
 	s.push(val);
 }

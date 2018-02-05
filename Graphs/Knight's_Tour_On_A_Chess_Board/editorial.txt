@@ -1,0 +1,28 @@
+
+This is a simple BFS problem.
+
+Have a look at the solution provided by us, it contains necessary comments to understand the solution.
+
+
+
+
+
+Time Complexity:
+
+O(rows * cols).
+
+
+Auxiliary Space Used:
+
+O(rows * cols).
+
+
+Space Complexity:
+
+O(rows * cols). 
+Input is O(1) and auxiliary space used is O(rows * cols). So, O(1) + O(rows * cols) -> O(rows * cols).
+
+
+
+
+

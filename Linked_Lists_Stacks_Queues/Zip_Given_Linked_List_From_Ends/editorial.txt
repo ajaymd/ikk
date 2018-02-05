@@ -1,0 +1,40 @@
+
+Suppose given a linked list is 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> NULL. So zip of this linked list is defined as 1 -> 6 -> 2 -> 5 -> 3 -> 4 -> NULL. 
+
+The task is to achieve desired linked list using O(1) space.
+ 
+This can be performed by a simple algorithm:
+
+Split the list from the middle into two lists. We are splitting the list into two and not creating a new linked list hence maintaining O(1) space.
+
+Now we have two lists : list1: 1 -> 2 -> 3 -> NULL and list2: 4 -> 5 -> 6 -> NULL. 
+
+Reverse the second list.
+
+This gives us two lists list1: 1 -> 2 -> 3 -> NULL and list2: 6 -> 5 -> 4 -> NULL.
+
+Now merge the lists picking one node from each list as a time, merged: 1 -> 6 -> 2 -> 5 -> 3 -> 4 -> NULL.
+
+
+
+
+
+Time Complexity:
+
+O(n).
+
+
+Auxiliary Space Used:
+
+O(1).
+
+
+Space Complexity:
+
+O(n).
+As input is O(n) and auxiliary space used is O(1). So, O(n) + O(1) -> O(n).
+
+
+
+
+

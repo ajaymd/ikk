@@ -46,23 +46,28 @@ public class Solution {
         };
     */
 
-    static TreeNode build_balanced_bst_helper(int l, int r, int[] a)                    // build tree using values (a[l], a[l+1], ..., a[r]).
+    // build tree using values (a[l], a[l+1], ..., a[r]).
+    static TreeNode build_balanced_bst_helper(int l, int r, int[] a)                    
     {
         if (l > r)  
         {
             return null;
         }
         int m = l + (r - l) / 2;
-        TreeNode temp = new TreeNode(a[m]);                                         // to build balanced tree we need to choose the middle element as the root 
-        temp.left_ptr = build_balanced_bst_helper(l, m - 1, a);                     // recursively create subtree and add it as left child
-        temp.right_ptr = build_balanced_bst_helper(m + 1, r, a);                        // recursively create subtree and add it as right child 
+        // to build balanced tree we need to choose the middle element as the root 
+        TreeNode temp = new TreeNode(a[m]);                                         
+        // recursively create subtree and add it as left child
+        temp.left_ptr = build_balanced_bst_helper(l, m - 1, a);                     
+        // recursively create subtree and add it as right child 
+        temp.right_ptr = build_balanced_bst_helper(m + 1, r, a);                        
         return temp;
     }
 
     static TreeNode build_balanced_bst(int[] a) 
     {
         int N = a.length;
-        return build_balanced_bst_helper(0, N - 1, a);                                  // build balanced BST
+        // build balanced BST
+        return build_balanced_bst_helper(0, N - 1, a);                                  
     }
 
     //-----------------------------------STOP----------------------------------------
@@ -71,15 +76,18 @@ public class Solution {
 
     static boolean check_balanced_bst(TreeNode root, int l, int r, int[] a)
     {
-        if (l > r && root == null)                              // If no value in [l, r] and tree is also empty.
+        // If no value in [l, r] and tree is also empty.
+        if (l > r && root == null)                              
         {
             return true;
         }
-        else if (l > r && root != null)                         // If no value in [l, r] but tree contains something. 
+        // If no value in [l, r] but tree contains something. 
+        else if (l > r && root != null)                         
         {
             return false;
         }
-        if (root == null)                                       // If some values in [l, r] but tree is empty.
+        // If some values in [l, r] but tree is empty.
+        if (root == null)                                       
         {
             return false;
         }
@@ -88,11 +96,13 @@ public class Solution {
         int mid2 = l + (r - l + 1) / 2;
 
         boolean valid1 = (root.val == a[mid1] && check_balanced_bst(root.left_ptr, l, mid1 - 1, a) && check_balanced_bst(root.right_ptr, mid1 + 1, r, a));
-        if (valid1)                                             // actually we are doing valid1 || valid2 but when valid1 is true then no need to find valid2
+        // actually we are doing valid1 || valid2 but when valid1 is true then no need to find valid2
+        if (valid1)                                             
         {
             return true;        
         }
-        if (mid1 == mid2)                                       // when odd no of elements in [l, r] then mid1 = mid2 so valid1 = valid2 and no need to find valid2.  
+        // when odd no of elements in [l, r] then mid1 = mid2 so valid1 = valid2 and no need to find valid2.  
+        if (mid1 == mid2)                                       
         {
             return false;        
         }

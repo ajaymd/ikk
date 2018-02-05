@@ -1,0 +1,44 @@
+
+This problem can be solved using BFS.
+
+
+From current string, when we want to update neighbour strings (strings having different character at exactly one positon), there are two methods possible:
+
+1) Visit every string in words array and check. 
+
+There are no_of_words strings in words array and each having length len. So, for one string to find neighbour strings, time taken will be O(no_of_words * len). And we will find neighbours for O(no_of_words) strings, hence time complexity of this solution will be O(no_of_words ^ 2 * len). Now when value of no_of_words is high, this solution will timeout.
+
+2) For current string we will generate all possible strings having different character at exactly one positon, and we will update strings that are in words array i.e. they are neighbours. We can use hashmap to check if any string is in words array or not in O(len) time, instead of O(no_of_words * len) time using simple array search. 
+
+Now there can be O(26 * len) different strings having different character at exactly one position. And for each string we will spend O(len) time to check if it is in words array or not. We will find neighbours for O(no_of_words) strings, hence time complexity of this solution will be O(no_of_words * len^2 * 26). Now when string length is high, this solution will timeout. 
+
+So, we can combine both methods in one solution to bring down time complexity to O((no_of_words * len * min((no_of_words, 26 * len)). When (no_of_words <= 26 * len) use first method and when (no_of_words > 26 * len) use second method!
+
+Have a look at the solution provided by us, it contains necessary comments to understand the solution. 
+
+
+
+
+
+
+Time Complexity:
+
+O(no_of_words * len * min(no_of_words, 26 * len)).
+
+
+
+Auxiliary Space Used:
+
+O(no_of_words * len).
+
+
+
+Space Complexity:
+
+O(no_of_words  * len).
+As input is O(no_of_words  * len) and auxiliary space used is also O(no_of_words  * len). So, O(no_of_words  * len) + O(no_of_words  * len) -> O(no_of_words  * len).
+
+
+
+
+

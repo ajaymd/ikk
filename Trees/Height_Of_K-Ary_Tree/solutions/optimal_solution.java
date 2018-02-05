@@ -8,7 +8,8 @@ public class Solution {
 
 	static class TreeNode
 	{
-		//int val;														// To find height of tree, value stored in nodes does not matter. So in input also we are not given this field. 
+        // To find height of tree, value stored in nodes does not matter. So in input also we are not given this field. 
+		//int val;														
 		Vector<TreeNode> children = new Vector<TreeNode>(0);
 		TreeNode()
 		{
@@ -34,7 +35,8 @@ public class Solution {
 
     static int find_height(int k, TreeNode root)
     {
-        if (root.children.size() == 0)									// Handle base case when root is a leaf node.
+        // Handle base case when root is a leaf node.
+        if (root.children.size() == 0)									
         {
             return 0;
         }
@@ -42,7 +44,8 @@ public class Solution {
         for (int i = 0; i < root.children.size(); i++)
         {
             TreeNode temp = root.children.get(i);
-            h = Math.max(h, find_height(k, temp));						// Find height of each children and store the maximum height of children. 
+            // Find height of each children and store the maximum height of children. 
+            h = Math.max(h, find_height(k, temp));						
         }
         return h + 1;			
     }
@@ -53,14 +56,17 @@ public class Solution {
 
     static TreeNode build_tree(int[] from, int[] to) {
     	int N = from.length + 1;
-		address.clear();												// Clear the variable. 
+        // Clear the variable. 
+		address.clear();												
 		for (int i = 1; i <= N; i++)
 		{
-			address.put(i, new TreeNode());								// Create N nodes. 
+            // Create N nodes. 
+			address.put(i, new TreeNode());								
 		}
 		for (int i = 0; i < N - 1; i++)								  
 		{
-			address.get(from[i]).children.add(address.get(to[i]));		// Link the nodes. (Build the k-ary tree.)
+            // Link the nodes. (Build the k-ary tree.)
+			address.get(from[i]).children.add(address.get(to[i]));		
 		}
 		return address.get(1);	
     }

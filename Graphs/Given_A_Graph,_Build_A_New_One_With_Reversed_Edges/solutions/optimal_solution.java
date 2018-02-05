@@ -20,7 +20,9 @@ public class Solution {
 
 	// ---- START ----
 
-    // In constraints we are given that each node contains distinct values, so we can keep track of node address using that value. {value : node} 
+    /*
+    In constraints we are given that each node contains distinct values, so we can keep track of node address using that value. {value : node} 
+    */
 	static HashMap<Integer, Node> reversed_graph = new HashMap<Integer, Node>();
 
     static void dfs(Node node)

@@ -1,0 +1,41 @@
+
+Have you considered "Try to access linked list nodes minimum number of times."?
+
+If you have done:
+1) First find linked list length n.
+2) Then find k th node.
+3) Then n - k + 1 th node.
+4) Swap nodes. 
+
+Then this is not the optimal solution.
+
+Note that while finding length of linked list we could have found the kth node in the same loop!   
+
+Now this is optimal solution. 
+
+Also there is other optimal solution possible and we have presented that in optimal_solution.cpp.
+
+
+
+
+
+
+Time Complexity:
+
+O(n).
+
+
+Auxiliary Space Used:
+
+O(1). 
+
+
+Space Complexity:
+
+O(n).
+As input is O(n) and auxiliary space used is O(1). So, O(n) + O(1) -> O(n). 
+
+
+
+
+

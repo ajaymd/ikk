@@ -6,8 +6,10 @@ const int MAX_N = 100000;
 
 struct TreeNode
 {
-	//int val;															// To find height of tree, value stored in nodes does not matter. So in input also we are not given this field. 
-	vector<TreeNode*> children;											// Address of children nodes. 
+	// To find height of tree, value stored in nodes does not matter. So in input also we are not given this field. 
+	//int val;															
+	// Address of children nodes. 
+	vector<TreeNode*> children;											
 	TreeNode()
 	{
 		children.clear();
@@ -25,7 +27,8 @@ struct TreeNode
     
     struct TreeNode
     {
-        vector<TreeNode*> children;										// Address of children nodes. 
+    	// Address of children nodes. 
+        vector<TreeNode*> children;										
         TreeNode()
         {
             children.clear();
@@ -35,33 +38,39 @@ struct TreeNode
 
 int find_height(int k, TreeNode* root)
 {
-	if (root->children.size() == 0)										// Handle base case when root is a leaf node.
+	// Handle base case when root is a leaf node.
+	if (root->children.size() == 0)										
 	{
 		return 0;
 	}
 	int h = 0;
 	for (int i = 0; i < root->children.size(); i++)
 	{
-		h = max(h, find_height(k, root->children[i]));					// Find height of each children and store the maximum height of children. 
+		// Find height of each children and store the maximum height of children. 
+		h = max(h, find_height(k, root->children[i]));					
 	}
 	return h + 1;			
 }
 
 //--------------------------------STOP------------------------------------
 
-unordered_map<int, TreeNode*> address; 									// To build k-ary tree use this to speed up the insertion process. 
+// To build k-ary tree use this to speed up the insertion process. 
+unordered_map<int, TreeNode*> address; 									
 
 TreeNode* build_tree(vector<int> from, vector<int> to)
 {
 	int N = from.size() + 1;
-	address.clear();													// Clear the global variable. 
+	// Clear the global variable. 
+	address.clear();													
 	for (int i = 1; i <= N; i++)
 	{
-		address[i] = new TreeNode();									// Create N nodes. 
+		// Create N nodes. 
+		address[i] = new TreeNode();									
 	}
 	for (int i = 0; i < N - 1; i++)								  
 	{
-		address[from[i]]->children.push_back(address[to[i]]);			// Link the nodes. (Build the k-ary tree.)
+		// Link the nodes. (Build the k-ary tree.)
+		address[from[i]]->children.push_back(address[to[i]]);			
 	}
 	return address[1];									
 }
