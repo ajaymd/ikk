@@ -1,21 +1,12 @@
-Keep track of left and right pointer. Left pointer will point to the next pointer which needs to be swapped when we encounter an even number from the right. If we encounter an odd number, we simply reduce right. If we encounter even number, we swap it and move left. We do not move right as the swapped number might be even.
+We will maintain two pointers, left and right pointer. All the values to the left of left pointer are even and all values to the right of right pointer are odd.
+We will keep decrementing right and keep incrementing left till the time they do not cross each other. Left pointer will point to the next pointer which needs to be swapped when we encounter an even number from the right.
+
+Here are two possible scenarios at right pointer
+If we encounter an odd number, we simply reduce right.
+If we encounter even number, we swap it and move left. We do not move right as the swapped number might be even. Although we know that number swapped at left is odd, so we move left by one.
 
 Time Complexity: O(n)
-Space Complexity: O(1) 
+We are either incrementing left or decrementing right. Thus, the time complexity is linear, similar to two pointer approach.
 
-static int[] solve(int[] arr) {
-        int n = arr.length;
-        int left = 0, right = n-1;
-        while(right>=left){
-            if(arr[right]%2==0){
-                int tmp = arr[right];
-                arr[right] = arr[left];
-                arr[left] = tmp;
-                left++;
-            }
-            else{
-                right--;
-            }
-        }
-        return arr;
-    }
+Space Complexity: O(1) 
+We do not use any auxiliary data-structure for storage. We have constant space complexity.
