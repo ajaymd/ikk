@@ -1,0 +1,11 @@
+8
+log
+hot
+hat
+sag
+bag
+dot
+hog
+rat
+cat
+dog

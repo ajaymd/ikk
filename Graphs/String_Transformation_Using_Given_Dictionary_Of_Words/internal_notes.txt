@@ -1,0 +1,6 @@
+Input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
+ 
+First line contains an integer denoting n.
+Next n lines contain one string, together denoting values to be stored in words array.
+Next line contains one string denoting start.
+Last line contains one string denoting stop.

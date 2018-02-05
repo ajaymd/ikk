@@ -7,6 +7,7 @@ sys.setrecursionlimit(101000)
 
 class Node:
     def __init__(self):
+        self.val = 0
         self.neighbours = []
 
 # ---- START ----

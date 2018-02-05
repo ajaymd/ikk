@@ -1,0 +1,64 @@
+
+String Transformation Using Given Dictionary Of Words
+
+
+Problem Statement:
+
+You are given a dictionary of words and two strings named start and stop.
+
+How can you convert string start to string stop, by changing only one character at a time and making sure that 1) all the intermediate words are in the given dictionary of words and 2) minimum number of intermediate words are used?
+
+Input Format:
+
+There are three arguments. First is an array of strings denoting the dictionary of words, second is a string start and third is a string stop.
+
+Output Format:
+
+Return an array of strings.
+
+If transformation is possible then in returned array, first string should be start, last string should be stop and in between strings of given dictionary that you used for transformation, in the same order they are used in your transformation. Suppose name of the returned array is ans and size is ans_size, then for 1 <= i < ans_size, ans[i - 1] and ans[i] should differ at exactly one position.
+
+If transformation is not possible then returned array should contain only one string "-1".
+
+(If there are multiple valid transformations, you are free to return any one of them.)
+
+Constraints:
+
+Input strings contain only lower case alphabetical letters.
+Length of input strings are same.
+Input strings need not to be unique.
+2 <=  total number of characters in input strings <= 10^5
+start and stop strings need not to be present in given dictionary. 
+
+Sample Test Case:
+
+Sample Input:
+
+words = ["cat", "hat", "bad", "had"]
+start = "bat"
+stop = "had"
+?
+Sample Output:
+
+["bat", "bad", "had"]
+
+or 
+
+["bat", "hat", "had"]
+
+Explanation:
+
+From "bat" change character 't' to 'd', so new string will be "bad".
+From "bad" change character 'b' to 'h', so new string will be "had".
+
+or
+
+From "bat" change character 'b' to 'h', so new string will be "hat".
+From "hat" change character 't' to 'd', so new string will be "had".
+
+Notes:
+
+Suggested time in interview: 30 minutes.
+
+The “Suggested Time” is the time expected to complete this question during a real-life interview, not now in homework i.e. For the first attempt of a given homework problem, the focus should be to understand what the problem is asking, what approach you are using, coding it, as well as identifying any gaps that you can discuss during a TA session. Take your time, but limit yourself to 2 one hour sessions for most problems.
+
