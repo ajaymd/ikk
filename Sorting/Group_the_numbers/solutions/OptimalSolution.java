@@ -1,4 +1,4 @@
-public class Main {
+public class OptimalSolution {
 	static int[] solve(int[] arr) {
 		int n = arr.length;
 		// Initialize left pointer to the start of the array and right pointer to the end of the array
