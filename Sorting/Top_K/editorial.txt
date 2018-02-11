@@ -1,17 +1,6 @@
-Maintain a priority queue or a balanced BST. Keep adding new elements to the BST and if the size of the tree increases more than k, remove the smallest element.
+We need to preserve the order of elements in a sorted manner. If we can do that, we can obtain top K elements. Also, if an element is smaller than the last element in top k, then that element can be dropped as we are not deleting elements.
 
-static int[] topK(int[] arr, int k) {
-        TreeSet<Integer> tree =new TreeSet<Integer>();
-        for(int x:arr){
-            tree.add(x);
-            if(tree.size()>k){
-                tree.pollFirst();
-            }
-        }
-        int ans[]=new int[tree.size()];
-        int ptr=0;
-        for(int x:tree){
-            ans[ptr++]=x;   
-        }
-        return ans;   
-    }
+We can maintain a balanced BST or a sorted set collection. Keep adding new elements to the sorted set and if the size of the tree increases more than k, remove the smallest element.
+
+Time Complexity: O(N*log(K))
+Space Complexity: O(K)
