@@ -1,46 +1,10 @@
 Editorial:
-Maintain a min priority queue of the head of all K arrays. Remove the smallest element and add it to the answer array. Add next element from the array whose element was just removed.
+
+First step is to check if the input is in increasing sorted manner or in decreasing sorted manner. Let's solve it for increasingly sorted input.
+
+A naive approach would be to add all elements to one collection and then sort them out. We can build on our solution following the idea of the naive solution. At any given point of time, the smallest element would be from the pool of candidate smallest elements formed by adding the elements at start of all arrays. When we remove the smallest element from the pool, we will add the next element from that array.
+We can maintain a min priority queue to carry out these operations. For decreasingly sorted manner, maintain a max priority queue.
 
 
 Time Complexity: O(NK*Log(K))
 Space Complexity: O(K + NK)
-
-    static int[] mergeArrays(int[][] arr) {
-		PriorityQueue<Pair> pq = new PriorityQueue<>();
-		int k = arr.length;
-		int n = arr[0].length;
-		for (int i = 0; i < k; i++) {
-			pq.add(new Pair(arr[i][0], i, 0));
-		}
-		int ans[] = new int[n * k];
-		int ptr = 0;
-		while (ptr < n * k) {
-			Pair rem = pq.poll();
-			ans[ptr++] = rem.x;
-			if (rem.z + 1 < n) {
-				pq.add(new Pair(arr[rem.y][rem.z + 1], rem.y, rem.z + 1));
-			}
-		}
-		return ans;
-	}
-
-	static class Pair implements Comparable<Pair> {
-		int x;
-		int y;
-		int z;
-
-		Pair(int xx, int yy, int zz) {
-			x = xx;
-			y = yy;
-			z = zz;
-		}
-
-		public String toString() {
-			return "[x=" + this.x + ", y=" + this.y + "]";
-		}
-
-		@Override
-		public int compareTo(Pair o) {
-			return Long.compare(this.x, o.x);
-		}
-	}
