@@ -1,0 +1,15 @@
+Brute force solution
+A simple solution is to use three nested loop and check for each possible combination if their sum is zero. To avoid duplicate answers, we need to hash the triplet and store it in a set. An easy way to hash the triplet is by converting them to string.
+Example: ‘-1,1,0’
+Extra space needed will be the number of unique triplets that contribute to the answer.
+
+Space Complexity: O(n^3)
+Time Complexity: O(n^3)
+
+Optimal solution
+Optimal solution will use the two pointer method. In a two pointer method, we maintain a left and a right pointer to the sorted array. If the sum is more than intended, we decrease the right pointer. Otherwise, we increase the left pointer. Two pointer works in linear time complexity.
+
+First, we will sort the array. Then, for every index, we will apply two pointer technique to find the sum -arr[index]. We will then add unique triplets to the answer.
+
+Space Complexity: O(n^3)
+Time Complexity: O(n^2 + nlog(n))
