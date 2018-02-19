@@ -61,7 +61,8 @@ def find_first_small(ptr):
         cur = cur.next
     return None
 
-def find_size(ptr):                                         # Finds size of the linked list                        
+# Finds size of the linked list                        
+def find_size(ptr):                                         
     N = 1
     cur = ptr.next
     while (cur != ptr):
@@ -76,26 +77,44 @@ def find_median(ptr):
         2) (2 -> 2 -> 4 -> 6 -> 8 -> 8)
         3) (8 -> 8 -> 4 -> 6 -> 2 -> 2)
         Now first case is trivial.
-        In 2nd case if we can find first smallest element (call it head) then finding median will be trivial. Just find middle element/elements.
+        In 2nd case if we can find first smallest element (call it head) then finding median will
+        be trivial. Just find middle element/elements.
         // (2 -> 2 -> 4 -> 6 -> 8 -> 8) then head will be ([2]head -> 2 -> 4 -> 6 -> 8 -> 8)
     
-        In 3rd case if we can find first largest element (call it head) then finding median will be trivial. Just find middle element/elements.
+        In 3rd case if we can find first largest element (call it head) then finding median will 
+        be trivial. Just find middle element/elements.
         // (8 -> 8 -> 4 -> 6 -> 2 -> 2) then head will be ([8]head -> 8 -> 4 -> 6 -> 2 -> 2)
     '''
     N = find_size(ptr)
-    first_small = find_first_small(ptr)                                         # We do not know if given linked list is non-increasing or non-decreasing. If it is non_decreasing (2->4->6->8) then there will be <= 1 pair big->small (8->2). If it is non_increasing (8->6->4->2) then there will be many pair big->small (8->6, 6->4, 4->2). When both non-increasing and non-decreasing (2->2->2) then there will be no small->big. This function returns pointer to small. For non-decreasing case it will be unique. For (2 -> 2 -> 2) it will be NULL. For non-increasing it will be any one of the valid pairs.            
-    if (first_small == None):                                                   # When all elements are same (2->2->2) then return any element.                              
+    '''
+    We do not know if given linked list is non-increasing or non-decreasing. If it is 
+    non_decreasing (2->4->6->8) then there will be <= 1 pair big->small (8->2). If it is 
+    non_increasing (8->6->4->2) then there will be many pair big->small (8->6, 6->4, 4->2). When 
+    both non-increasing and non-decreasing (2->2->2) then there will be no small->big. This 
+    function returns pointer to small. For non-decreasing case it will be unique. For 
+    (2 -> 2 -> 2) it will be NULL. For non-increasing it will be any one of the valid pairs.
+    '''
+    first_small = find_first_small(ptr)                       
+    # When all elements are same (2->2->2) then return any element.
+    if (first_small == None):                                                   
         return ptr.val
     head = None
-    if (is_non_decreasing(first_small)):                                        # Take pointer to small that we got previously, as head and check if linked list is non-decreasing or not.                         
-        head = first_small                                                      # If it is non-decreasing then we have found our head                       
-    else:                                                                         
-        head = find_first_big(ptr)                                              # Non-increasing
+    '''
+    Take pointer to small that we got previously, as head and check if linked list is 
+    non-decreasing or not.       
+    '''
+    if (is_non_decreasing(first_small)):              
+        # If it is non-decreasing then we have found our head
+        head = first_small                                                      
+    else:                                                                       
+        # Non-increasing  
+        head = find_first_big(ptr)                                              
 
     # Till now we have found our head. 
 
     i = 0
-    while i < int(math.floor((N - 1) / 2)):                                                      # Exact middle element in case of odd N and middle left element in case of even N.
+    # Exact middle element in case of odd N and middle left element in case of even N.
+    while i < int(math.floor((N - 1) / 2)):                                                      
         i += 1
         head = head.next
     if ((N % 2) == 1):

@@ -8,7 +8,10 @@ public class Solution {
 
 	static class TreeNode
 	{
-        // To find height of tree, value stored in nodes does not matter. So in input also we are not given this field. 
+        /*
+        To find height of tree, value stored in nodes does not matter. So in input also we are 
+        not given this field. 
+        */
 		//int val;														
 		Vector<TreeNode> children = new Vector<TreeNode>(0);
 		TreeNode()

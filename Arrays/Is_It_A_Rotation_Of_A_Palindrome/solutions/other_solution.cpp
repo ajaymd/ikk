@@ -5,8 +5,10 @@ using namespace std;
 const int MAX_N = 4000;
 
 // Author: Dipen Dadhaniya
-// From GeeksforGeeks http://www.cdn.geeksforgeeks.org/check-given-string-rotation-palindrome/ to verify the solution_optimal.cpp 
-
+/*
+From GeeksforGeeks http://www.cdn.geeksforgeeks.org/check-given-string-rotation-palindrome/ to 
+verify the solution_optimal.cpp 
+*/
 
 
 // A utility function to check if a string str is palindrome

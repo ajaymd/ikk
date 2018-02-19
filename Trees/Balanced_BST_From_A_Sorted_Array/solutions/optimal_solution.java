@@ -95,18 +95,25 @@ public class Solution {
         int mid1 = l + (r - l) / 2;
         int mid2 = l + (r - l + 1) / 2;
 
-        boolean valid1 = (root.val == a[mid1] && check_balanced_bst(root.left_ptr, l, mid1 - 1, a) && check_balanced_bst(root.right_ptr, mid1 + 1, r, a));
-        // actually we are doing valid1 || valid2 but when valid1 is true then no need to find valid2
+        boolean valid1 = (root.val == a[mid1] && check_balanced_bst(root.left_ptr, l, mid1 - 1, a)
+            && check_balanced_bst(root.right_ptr, mid1 + 1, r, a));
+        /*
+        actually we are doing valid1 || valid2 but when valid1 is true then no need to find valid2
+        */
         if (valid1)                                             
         {
             return true;        
         }
-        // when odd no of elements in [l, r] then mid1 = mid2 so valid1 = valid2 and no need to find valid2.  
+        /*
+        when odd no of elements in [l, r] then mid1 = mid2 so valid1 = valid2 and no need to find 
+        valid2. 
+        */ 
         if (mid1 == mid2)                                       
         {
             return false;        
         }
-        return (root.val == a[mid2] && check_balanced_bst(root.left_ptr, l, mid2 - 1, a) && check_balanced_bst(root.right_ptr, mid2 + 1, r, a));  
+        return (root.val == a[mid2] && check_balanced_bst(root.left_ptr, l, mid2 - 1, a) && 
+            check_balanced_bst(root.right_ptr, mid2 + 1, r, a));  
     }
 
 

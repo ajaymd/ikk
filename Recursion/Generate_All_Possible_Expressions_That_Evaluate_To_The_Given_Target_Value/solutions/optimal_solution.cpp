@@ -25,7 +25,8 @@ long long int str_to_ll(string &str)
 Function to generate all valid expressions that evaluates to the given target value.
 all_expressions_container -> will contain answer.
 cur_expr -> will contain the expression build till now. 
-Suppose one of our final expression will look like "n1+n2*n3*n4+n5+n6*n7+n8", then we will build "cur_expr" like: 
+Suppose one of our final expression will look like "n1+n2*n3*n4+n5+n6*n7+n8", then we will build
+"cur_expr" like: 
 	-> n1 (First time we will not add any operator with the number.)
 	-> n1+n2 (Afterwards we will add one operator ('+' or '*') with number.)
 	-> n1+n2*n3
@@ -36,17 +37,22 @@ Suppose one of our final expression will look like "n1+n2*n3*n4+n5+n6*n7+n8", th
 	-> n1+n2*n3*n4+n5+n6*n7+n8
 s -> given string.
 target -> given target value.
-pos -> in cur_expr we have already included digits from s[0, pos - 1] and s[pos, n - 1] is remaining to process.
+pos -> in cur_expr we have already included digits from s[0, pos - 1] and s[pos, n - 1] is 
+remaining to process.
 cur_expr_val -> value of cur_expr. 
-cur_expr_val_after_rightmost_addition_sign -> value of cur_expr after the rightmost addition sign '+'. 
+cur_expr_val_after_rightmost_addition_sign -> value of cur_expr after the rightmost addition sign
+'+'. 
 Suppose cur_expr = 52 then cur_expr_val_after_rightmost_addition_sign = 52.
 Suppose cur_expr = 52 + 47 then cur_expr_val_after_rightmost_addition_sign = 47.
 Suppose cur_expr = 52 + 3 * 4 then cur_expr_val_after_rightmost_addition_sign = 12.
 Suppose cur_expr = 52 + 3 * 4 * 2 then cur_expr_val_after_rightmost_addition_sign = 24.
 Suppose cur_expr = 52 + 3 * 4 * 2 + 78 then cur_expr_val_after_rightmost_addition_sign = 78.
-(Will be explained in detail, why it is needed, when it will be used in code, now don't worry about it.)
+(Will be explained in detail, why it is needed, when it will be used in code, now don't worry 
+about it.)
 */
-void generate_all_expressions_util(vector<string> &all_expressions_container, string cur_expr, string &s, long long int target, int pos, long long int cur_expr_val, long long int cur_expr_val_after_rightmost_addition_sign)
+void generate_all_expressions_util(vector<string> &all_expressions_container, string cur_expr, 
+	string &s, long long int target, int pos, long long int cur_expr_val, 
+	long long int cur_expr_val_after_rightmost_addition_sign)
 {
 	// If processed the whole string.
 	if (pos == n)
@@ -65,7 +71,8 @@ void generate_all_expressions_util(vector<string> &all_expressions_container, st
 		-> n1+n2 (Afterwards we will add one operator ('+' or '*') with number.)
 		-> n1+n2*n3
 		-> .....
-	Now this loop will consider all possible s[pos, i] as a number and will add this number in cur_expr. 
+	Now this loop will consider all possible s[pos, i] as a number and will add this number in 
+	cur_expr. 
 	Note that when we consider s[pos, i] as a number, it means we are using join operation!
 	(Basically we are trying all possibilities!) 
 	*/
@@ -78,42 +85,66 @@ void generate_all_expressions_util(vector<string> &all_expressions_container, st
 		// If we have just started then first we will add number without operator. 
 		if (pos == 0)
 		{
-			generate_all_expressions_util(all_expressions_container, no_to_add_as_str, s, target, i + 1, no_to_add, no_to_add);
+			generate_all_expressions_util(all_expressions_container, no_to_add_as_str, s, target,
+				i + 1, no_to_add, no_to_add);
 		} 
 		else
 		{
 			/*
 			Add number with '+' operator before it. 
 			For the next call variables will be:
-			- cur_expr = cur_expr + '+' + no_to_add_as_str (As we are adding number with '+' operator befor it.)
-			- pos = i + 1 (As we have included s[pos, i] also, now remaining string to add is s[i + 1, n - 1].)
-			- cur_expr_val = cur_expr_val + no_to_add (As we have added number in the cur_expr with '+' operator, value of the cur_expr will be increased by number we are going to add.)
-			- cur_expr_val_after_rightmost_addition_sign = no_to_add (As we have added number in the cur_expr with '+' operator, value of the expression after rightmost addition sign is the number itself.)
+			- cur_expr = cur_expr + '+' + no_to_add_as_str (As we are adding number with '+' 
+			operator befor it.)
+			- pos = i + 1 (As we have included s[pos, i] also, now remaining string to add is 
+			s[i + 1, n - 1].)
+			- cur_expr_val = cur_expr_val + no_to_add (As we have added number in the cur_expr 
+			with '+' operator, value of the cur_expr will be increased by number we are going to 
+			add.)
+			- cur_expr_val_after_rightmost_addition_sign = no_to_add (As we have added number in 
+			the cur_expr with '+' operator, value of the expression after rightmost addition sign
+			is the number itself.)
 			*/
-			generate_all_expressions_util(all_expressions_container, cur_expr + '+' + no_to_add_as_str, s, target, i + 1, cur_expr_val + no_to_add, no_to_add);
+			generate_all_expressions_util(all_expressions_container, cur_expr + '+' + 
+				no_to_add_as_str, s, target, i + 1, cur_expr_val + no_to_add, no_to_add);
 			/*
 			Add number with '*' operator before it. 
 			For the next call variables will be:
-			- cur_expr = cur_expr + '*' + no_to_add_as_str (As we are adding number with '*' operator befor it.)
-			- pos = i + 1 (As we have included s[pos, i] also, now remaining string to add is s[i + 1, n - 1].)
+			- cur_expr = cur_expr + '*' + no_to_add_as_str (As we are adding number with '*' 
+			operator befor it.)
+			- pos = i + 1 (As we have included s[pos, i] also, now remaining string to add is 
+			s[i + 1, n - 1].)
 			Now let's take one example before we mention other variables.
 			Suppose we already have build cur_expr = "1 + 3" then cur_expr_val will be 4 and cur_expr_val_after_rightmost_addition_sign will be 3.
 			Now if we want to add 4 with '*' operator then cur_expr will look like "1 + 3 * 4". 
 			Now how can we find the value of "1 + 3 * 4" using the values for "1 + 3"?
-			Observe that due to higher precedence of '*' over '+', 3 that we have added preciously as addition should be removed and it should be added as multiplication!
-			So to find value of "1 + 3 * 4" from "1 + 3", first subtract the value of expression after the right most '+' sign and then add it with multiplication with new number we are going to add. So we have to do 4 - 3 + (3 * 4) = 13 and that will give the value of the expression.  
+			Observe that due to higher precedence of '*' over '+', 3 that we have added 
+			preciously as addition should be removed and it should be added as multiplication!
+			So to find value of "1 + 3 * 4" from "1 + 3", first subtract the value of expression 
+			after the right most '+' sign and then add it with multiplication with new number we 
+			are going to add. So we have to do 4 - 3 + (3 * 4) = 13 and that will give the value 
+			of the expression.  
 			Also expression value after right most '+' sign will be (3 * 4).
 			- cur_expr_val = cur_expr_val - cur_expr_val_after_rightmost_addition_sign + (cur_expr_val_after_rightmost_addition_sign * no_to_add)
-			- cur_expr_val_after_rightmost_addition_sign = cur_expr_val_after_rightmost_addition_sign * no_to_add
+			- cur_expr_val_after_rightmost_addition_sign = 
+			cur_expr_val_after_rightmost_addition_sign * no_to_add
 			*/
-			generate_all_expressions_util(all_expressions_container, cur_expr + '*' + no_to_add_as_str, s, target, i + 1, cur_expr_val - cur_expr_val_after_rightmost_addition_sign + (cur_expr_val_after_rightmost_addition_sign * no_to_add), cur_expr_val_after_rightmost_addition_sign * no_to_add);
+			generate_all_expressions_util(
+				all_expressions_container, 
+				cur_expr + '*' + no_to_add_as_str, s, target, i + 1, 
+				cur_expr_val - cur_expr_val_after_rightmost_addition_sign + 
+				(cur_expr_val_after_rightmost_addition_sign * no_to_add), 
+				cur_expr_val_after_rightmost_addition_sign * no_to_add
+			);
 		}
 	}
 }
 
 vector<string> generate_all_expressions(string s, long long int target)
 {
-	// Store length of given string in global variable because we will be accessing it lots of time. 
+	/*
+	Store length of given string in global variable because we will be accessing it lots of 
+	time. 
+	*/
 	n = s.length();
 	// This vector will store the answer.
 	vector<string> all_expressions_container;

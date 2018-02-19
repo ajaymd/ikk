@@ -30,11 +30,17 @@ string read_K()
 // You need to implement and complete this. 
 string read(int N)												
 {
-	// Use static because out read should be consistent, it might be possible that read_K returns more bytes than we needed.
+	/*
+	Use static because out read should be consistent, it might be possible that read_K returns 
+	more bytes than we needed.
+	*/
 	static string buffer = "";									
 	// Some bytes might be remaining in buffer, so keep track of them. 
-	static int buffer_ptr = 0;									
-	// Here also we could have first find the length of the answer so that we do not need to use concatination each time, but for better readibility of code we preferred to do this way. 
+	static int buffer_ptr = 0;					
+	/*
+	Here also we could have first find the length of the answer so that we do not need to use 
+	concatination each time, but for better readibility of code we preferred to do this way. 
+	*/				
 	string ans = "";											
 	while (ans.length() < N)
 	{

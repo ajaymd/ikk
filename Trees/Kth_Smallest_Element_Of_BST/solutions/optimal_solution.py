@@ -11,16 +11,19 @@ class TreeNode:
         self.right_ptr = None
 
 def bst_insert(root, val):
-    if (root == None):												# base case
+    # base case
+    if (root == None):												
         return TreeNode(val)
     root_copy = root
     while (1):
-        if (val <= root.val and root.left_ptr != None):             # insert in left subtree
+        # insert in left subtree
+        if (val <= root.val and root.left_ptr != None):             
             root = root.left_ptr
         elif (val <= root.val):
             root.left_ptr = TreeNode(val)
             return root_copy
-        elif (root.right_ptr != None):                              # insert in right subtree
+        # insert in right subtree
+        elif (root.right_ptr != None):                              
             root = root.right_ptr
         else:
             root.right_ptr = TreeNode(val)
@@ -44,17 +47,26 @@ kth_element = 0
 counter = 0
 
 def get_k_th_element(root, k):
-    global counter                                                      # don't forget this
+    # don't forget this
+    global counter                                                      
     global kth_element
-    if (root == None or counter >= k):                                  # either root is null or we have already found the answer.                        
+    # either root is null or we have already found the answer.
+    if (root == None or counter >= k):                                  
         return
-    get_k_th_element(root.left_ptr, k)                                  # first try to find from left subtree, because elements in left suubtree will be smaller than the root.           
-    if (counter < k):                                                   # if we have not found the answer till now. 
+    '''
+    first try to find from left subtree, because elements in left suubtree will be smaller than 
+    the root.           
+    '''
+    get_k_th_element(root.left_ptr, k)                                  
+    # if we have not found the answer till now. 
+    if (counter < k):                                                   
         counter += 1
-        if (counter == k):                                              # if current node is the kth node.
+        # if current node is the kth node.
+        if (counter == k):                                              
             kth_element = root.val
             return
-        get_k_th_element(root.right_ptr, k)                             # we have explored left subtree and the root now explore right subtree. 
+        # we have explored left subtree and the root now explore right subtree. 
+        get_k_th_element(root.right_ptr, k)                             
 
 def kth_smallest_element(root, k):
     get_k_th_element(root, k)                               

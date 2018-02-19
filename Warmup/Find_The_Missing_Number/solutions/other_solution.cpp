@@ -15,7 +15,8 @@ int find_the_missing_number(vector<int> nos)
 {
 	/* 
 	As per the given constraints n can be upto 10^5.
-	So for larger value of n, sum of numbers in given array can easily exceed limit of unsigned integer (2147483647) causing overflow and hence wrong answer.
+	So for larger value of n, sum of numbers in given array can easily exceed limit of unsigned 
+	integer (2147483647) causing overflow and hence wrong answer.
 	So need to use long long int to avoid overflow.
 	*/
 	long long int nos_sum = 0LL;
@@ -26,7 +27,8 @@ int find_the_missing_number(vector<int> nos)
 	}
 	/*
 	As per the given constraints n can be upto 10^5.
-	So for larger value of n, sum of number from 1 to n can easily exceed limit of unsigned integer (2147483647) causing overflow and hence wrong answer.
+	So for larger value of n, sum of number from 1 to n can easily exceed limit of unsigned 
+	integer (2147483647) causing overflow and hence wrong answer.
 	So need to use long long int to avoid overflow.
 	*/
 	long long int n = n_minus_1 + 1LL;

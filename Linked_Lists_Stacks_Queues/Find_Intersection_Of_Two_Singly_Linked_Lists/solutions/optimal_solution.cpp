@@ -9,19 +9,24 @@ typedef struct LinkedListNode LinkedListNode;
 
 const int MAX_N = 100000, MAX_VALUE = 1000000000;
 
-struct LinkedListNode {
+struct LinkedListNode 
+{
     int val;
     LinkedListNode *next;
 };
 
-LinkedListNode* _insert_node_into_singlylinkedlist(LinkedListNode *head, LinkedListNode *tail, int val) {
-    if(head == NULL) {
+LinkedListNode* _insert_node_into_singlylinkedlist(LinkedListNode *head, LinkedListNode *tail, 
+	int val) 
+{
+    if(head == NULL) 
+    {
         head = (LinkedListNode *) (malloc(sizeof(LinkedListNode)));
         head->val = val;
         head->next = NULL;
         tail = head;
     }
-    else {
+    else 
+    {
         LinkedListNode *node = (LinkedListNode *) (malloc(sizeof(LinkedListNode)));
         node->val = val;
         node->next = NULL;

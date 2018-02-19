@@ -17,7 +17,8 @@ long long int string_to_lli(string &no_str)
 }
 
 /*	
-	This function copies digit at position i to position len - 1 - i for i in range 0 to l. If 876555123 and l = 2, r = 6 then this function will return 876555678.   
+	This function copies digit at position i to position len - 1 - i for i in range 0 to l. If 
+	876555123 and l = 2, r = 6 then this function will return 876555678.   
 */
 long long int copy_left_to_right(int len, string &n_str, int l, int r)
 {
@@ -31,7 +32,8 @@ long long int copy_left_to_right(int len, string &n_str, int l, int r)
 }
 
 /*
-	This function adds 1 to lth position and propagates carry if needed. It also copies lth position to rth position i.e if 190 then this function will return 202. 
+	This function adds 1 to lth position and propagates carry if needed. It also copies lth 
+	position to rth position i.e if 190 then this function will return 202. 
 */
 long long int add_to_mid_and_copy_left_to_right(int len, string &n_str, int l, int r)
 {
@@ -65,15 +67,18 @@ long long int solve(int len, string &n_str, int l, int r)
 		l--;
 		r++;
 	}
-	if (l < 0)											// Given no is already palindrome i.e. 12321.
+	// Given no is already palindrome i.e. 12321.
+	if (l < 0)											
 	{
 		return add_to_mid_and_copy_left_to_right(len, n_str, l_copy, r_copy);
 	}
-	if (n_str[l] > n_str[r])									// No is of type 8(7)6(5)4 here 8 > 5 hence next smallest palindrome will be 87678.
+	// No is of type 8(7)6(5)4 here 8 > 5 hence next smallest palindrome will be 87678.
+	if (n_str[l] > n_str[r])									
 	{
 		return copy_left_to_right(len, n_str, l_copy, r_copy);
 	}
-	else												// No is of type 8(7)6(8)9 here 7 < 8 hence next smallest palindrome will be 87778. 
+	// No is of type 8(7)6(8)9 here 7 < 8 hence next smallest palindrome will be 87778. 
+	else												
 	{
 		return add_to_mid_and_copy_left_to_right(len, n_str, l_copy, r_copy);	
 	}
@@ -114,7 +119,8 @@ long long int next_palindrome(int n)
 {
 	string n_str = int_to_string(n);
 	int len = n_str.length();
-	if (all_nine(n_str))									// Only possible case when no of digits will be increased. 
+	// Only possible case when no of digits will be increased. 
+	if (all_nine(n_str))									
 	{
 		long long int ret = 1LL;
 		for (int i = 0; i < len; i++)
@@ -124,7 +130,8 @@ long long int next_palindrome(int n)
 		ret++;
 		return ret;
 	}
-	int l, r;											// 1-indexed. When n = 1234321 then l = 4, r = 4 and when n = 12344321 then l = 4, r = 5.
+	// 1-indexed. When n = 1234321 then l = 4, r = 4 and when n = 12344321 then l = 4, r = 5.
+	int l, r;											
 	if (len % 2)									
 	{
 		l = (len + 1) / 2;
@@ -135,7 +142,8 @@ long long int next_palindrome(int n)
 		l = len / 2;							
 		r = len / 2 + 1;
 	}
-	return solve(len, n_str, l - 1, r - 1);					// It will be easy if l and r are 0 indexed instead of 1 indexed. 
+	// It will be easy if l and r are 0 indexed instead of 1 indexed. 
+	return solve(len, n_str, l - 1, r - 1);					
 }
 
 // -------------------------- STOP ---------------------------

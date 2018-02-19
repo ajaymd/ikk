@@ -7,7 +7,10 @@ sys.setrecursionlimit(101000)
 
 class TreeNode:
     def __init__(self):
-    	# To find height of tree, value stored in nodes does not matter. So in input also we are not given this field. 
+        '''
+    	To find height of tree, value stored in nodes does not matter. So in input also we are not
+        given this field. 
+        '''
     	# self.val = 0 										
         self.children = []
 
@@ -27,12 +30,14 @@ class TreeNode:
 # Complete the function below.
 
 def find_height(k, root):
-    if (len(root.children) == 0):							# Handle base case when root is a leaf node.					
+    # Handle base case when root is a leaf node.                    
+    if (len(root.children) == 0):							
         return 0
     h = 0
     for i in range(0, len(root.children)):
         temp = root.children[i]
-        h = max(h, find_height(k, temp))					# Find height of each children and store the maximum height of children. 
+        # Find height of each children and store the maximum height of children. 
+        h = max(h, find_height(k, temp))					
     return h + 1	
 
 '''
@@ -43,11 +48,14 @@ address = {}
 
 def build_tree(frm, to):
     N = len(frm) + 1
-    address = {}											# Clear the global variable.
+    # Clear the global variable.
+    address = {}											
     for i in range(1, N + 1):
-        address[i] = TreeNode()								# Create N nodes. 
+        # Create N nodes. 
+        address[i] = TreeNode()								
     for i in range(0, N - 1):
-        address[frm[i]].children.append(address[to[i]])		# Link the nodes. (Build the k-ary tree.)
+        # Link the nodes. (Build the k-ary tree.)
+        address[frm[i]].children.append(address[to[i]])		
     return address[1]	
 
 if __name__ == "__main__":

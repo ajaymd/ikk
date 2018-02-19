@@ -12,7 +12,8 @@ class LRU_cache
 	int capacity;
 	/*
 	Stores the {key, value} pair.
-	Implementing own linked list will give some speedup than using built-in list, but it will affect the readibility of the code, hence we have used built in list.
+	Implementing own linked list will give some speedup than using built-in list, but it will 
+	affect the readibility of the code, hence we have used built in list.
 	If you are getting time limit exceeded, than try to use linked list instead of built in list.
 	*/
 	list<pair<int, int>> actual_storage;
@@ -52,7 +53,9 @@ public:
 	// Return value of the key, if key is present, else return -1.
 	int get(int key)
 	{
-		unordered_map<int, list<pair<int, int>>::iterator>::iterator it = key_to_actual_storage_mapping.find(key);
+		unordered_map<int, list<pair<int, int>>::iterator>::iterator it = 
+			key_to_actual_storage_mapping.find(key);
+
 		// If key is not present in mapping then return -1.
 		if (it == key_to_actual_storage_mapping.end())
 		{
@@ -73,7 +76,9 @@ public:
 	// If key is present in cache then updates its values, else add {key, value} pair in cache.
 	void set(int key, int value)
 	{
-		unordered_map<int, list<pair<int, int>>::iterator>::iterator it = key_to_actual_storage_mapping.find(key);
+		unordered_map<int, list<pair<int, int>>::iterator>::iterator it = 
+			key_to_actual_storage_mapping.find(key);
+
 		// If key is not present in mapping then add {key, value} and setup the mapping.
 		if (it == key_to_actual_storage_mapping.end())
 		{
@@ -93,7 +98,8 @@ public:
 	}
 };
 
-vector<int> implement_LRU_cache(int capacity, vector<int> query_type, vector<int> key, vector<int> value)
+vector<int> implement_LRU_cache(int capacity, vector<int> query_type, vector<int> key, 
+	vector<int> value)
 {
 	int n = query_type.size();
 	// Setup cache. 

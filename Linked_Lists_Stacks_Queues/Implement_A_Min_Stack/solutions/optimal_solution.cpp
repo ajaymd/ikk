@@ -10,7 +10,10 @@ vector<int> min_stack(vector<int> operations)
 {
 	int n = operations.size();
 	vector<int> ans;
-	// At any point of time min_till_now.top() will contain minimum of all elements present in stack simple_stack.
+	/*
+	At any point of time min_till_now.top() will contain minimum of all elements present in stack 
+	simple_stack.
+	*/
 	stack<int> simple_stack, min_till_now;
 	for (int i = 0; i < n; i++)
 	{
@@ -18,8 +21,10 @@ vector<int> min_stack(vector<int> operations)
 		{
 			simple_stack.push(operations[i]);
 			/*
-			If stack is empty then after adding operations[i], minimum of entire stack will become operations[i]. 
-			If stack is not empty then after adding operations[i], minimum of entire stack will become min(operations[i], minimum of already present elements in stack).
+			If stack is empty then after adding operations[i], minimum of entire stack will become
+			operations[i]. 
+			If stack is not empty then after adding operations[i], minimum of entire stack will 
+			become min(operations[i], minimum of already present elements in stack).
 			*/
 			int minimum_value = operations[i];
 			if (min_till_now.empty() == false)
@@ -45,7 +50,10 @@ vector<int> min_stack(vector<int> operations)
 			}
 			else
 			{
-				// min_till_now.top() contains the minimum of all elements present in stack simple_stack. 
+				/*
+				min_till_now.top() contains the minimum of all elements present in stack 
+				simple_stack. 
+				*/
 				ans.push_back(min_till_now.top());
 			}
 		}

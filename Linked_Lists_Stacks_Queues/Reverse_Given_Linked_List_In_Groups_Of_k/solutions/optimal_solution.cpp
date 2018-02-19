@@ -65,12 +65,18 @@ LinkedListNode *reverse_linked_list_in_groups_of_k(LinkedListNode *head, int k)
 	while (stop)
 	{
 		count++;
-		// If we have covered k nodes in between start and stop (inclusive) or we are at the last node.
+		/*
+		If we have covered k nodes in between start and stop (inclusive) or we are at the last 
+		node.
+		*/
 		if (count == k || stop->next == NULL)
 		{
 			// Points to next node of start. 
 			LinkedListNode *next_of_stop = stop->next;
-			// We want to reverse start to stop nodes, set stop->next = NULL so we know where to stop.
+			/*
+			We want to reverse start to stop nodes, set stop->next = NULL so we know where to 
+			stop.
+			*/
 			stop->next = NULL;
 			// Reverse start to stop nodes. 
 			reverse_linked_list(start);
@@ -81,10 +87,15 @@ LinkedListNode *reverse_linked_list_in_groups_of_k(LinkedListNode *head, int k)
 			}
 			else
 			{
-				// We have reversed start to stop nodes, hence now stop will be next node of prev_of_start. 
+				/*
+				We have reversed start to stop nodes, hence now stop will be next node of 
+				prev_of_start. 
+				*/
 				prev_of_start->next = stop;
 			}
-			// We have reversed start to stop nodes, hence next_of_stop will be next node of start. 
+			/*
+			We have reversed start to stop nodes, hence next_of_stop will be next node of start. 
+			*/
 			start->next = next_of_stop;
 			/*
 			In the above example, after we have reversed first k nodes list will be:

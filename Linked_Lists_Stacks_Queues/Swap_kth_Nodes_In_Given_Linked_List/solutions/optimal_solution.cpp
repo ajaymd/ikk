@@ -52,7 +52,8 @@ LinkedListNode *swap_nodes(LinkedListNode *head, int k)
 
 	Let's understand why? - 
 	When we started distance between ptr2 and temp is k - 1 links.
-	We have incremented both temp and ptr2 same no of times, hence at the end also distance between ptr2 and 
+	We have incremented both temp and ptr2 same no of times, hence at the end also distance 
+	between ptr2 and 
 	temp will be k - 1 links. 
 	Now temp is at last node hence ptr2 will be at kth node from end! 
 

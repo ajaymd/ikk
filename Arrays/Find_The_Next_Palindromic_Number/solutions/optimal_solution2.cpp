@@ -46,7 +46,8 @@ long long int next_palindrome(int n)
 	n = 999 -> all_nine_case = 1001,
 	n = 125 -> all_nine_case = 1001.
 
-	Suppose n = 2147447411 -> all_nine_case = 10000000001, which can not be stored in int, so use long long int to avoid overflow. 
+	Suppose n = 2147447411 -> all_nine_case = 10000000001, which can not be stored in int, so use 
+	long long int to avoid overflow. 
 	*/
 	long long int all_nine_case = pow(10, len) + 1LL;
 	/*
@@ -63,16 +64,33 @@ long long int next_palindrome(int n)
 	n = 123456 -> left_half_str = "123" -> mirror_without_addition_case = 123321,
 	n = 1234567 -> left_half_str = "1234" -> mirror_without_addition_case = 1234321.
 	*/
-	long long int mirror_without_addition_case = string_to_lli(left_half_str + string(left_half_str.rbegin() + offset, left_half_str.rend()));
+	long long int mirror_without_addition_case = string_to_lli(
+		left_half_str + 
+		string(
+			left_half_str.rbegin() + 
+			offset, left_half_str.rend()
+		)
+	);
 	/*
-	n = 123456 -> left_half_str = "123" -> left_half_plus_one_str = "124" -> mirror_with_addition_case = 124421,
-	n = 1234567 -> left_half_str = "1234" -> left_half_plus_one_str = "1235" -> mirror_with_addition_case = 1235321.
+	n = 123456 -> left_half_str = "123" -> left_half_plus_one_str = "124" -> 
+	mirror_with_addition_case = 124421,
+	n = 1234567 -> left_half_str = "1234" -> left_half_plus_one_str = "1235" -> 
+	mirror_with_addition_case = 1235321.
 
-	Suppose n = 2147447411 -> mirror_with_addition_case = 2147557412, which can not be stored in int, so use long long int to avoid overflow. 
+	Suppose n = 2147447411 -> mirror_with_addition_case = 2147557412, which can not be stored in 
+	int, so use long long int to avoid overflow. 
 	*/ 
-	long long int mirror_with_addition_case = string_to_lli(left_half_plus_one_str + string(left_half_plus_one_str.rbegin() + offset, left_half_plus_one_str.rend()));
+	long long int mirror_with_addition_case = string_to_lli(
+		left_half_plus_one_str + 
+		string(
+			left_half_plus_one_str.rbegin() + 
+			offset, 
+			left_half_plus_one_str.rend()
+		)
+	);
 	/*
-	In these cases mirror_without_addition_case will be smaller than n, so it can not be the answer.
+	In these cases mirror_without_addition_case will be smaller than n, so it can not be the 
+	answer.
 
 	n = 123456 -> left_half_str = "123" -> mirror_without_addition_case = 123321,
 	n = 1234567 -> left_half_str = "1234" -> mirror_without_addition_case = 1234321.

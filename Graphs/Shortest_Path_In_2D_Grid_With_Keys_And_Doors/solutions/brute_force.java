@@ -54,7 +54,8 @@ public class Solution {
             {
                 // System.out.println(board[y][x]);
 				if (board[y][x] == '@'/*Start*/)
-					walk(board, y, x, 0, initVisited(board), new ArrayDeque<>(), shortestPathToGoal);
+					walk(board, y, x, 0, 
+                        initVisited(board), new ArrayDeque<>(), shortestPathToGoal);
             }
 		return shortestPathToGoal;
 	}

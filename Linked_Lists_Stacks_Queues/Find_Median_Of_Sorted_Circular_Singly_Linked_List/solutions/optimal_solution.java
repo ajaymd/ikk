@@ -15,7 +15,8 @@ public class Solution {
         }
     };
 
-    public static LinkedListNode _insert_node_into_singlylinkedlist(LinkedListNode head, LinkedListNode tail, int val) {
+    public static LinkedListNode _insert_node_into_singlylinkedlist(LinkedListNode head, 
+        LinkedListNode tail, int val) {
         if(head == null) {
             head = new LinkedListNode(val);
             tail = head;
@@ -104,16 +105,25 @@ public class Solution {
 
             Now first case is trivial.
 
-            In 2nd case if we can find first smallest element (call it head) then finding median will be trivial. Just find middle element/elements.
+            In 2nd case if we can find first smallest element (call it head) then finding median 
+            will be trivial. Just find middle element/elements.
             // (2 . 2 . 4 . 6 . 8 . 8) then head will be ([2]head . 2 . 4 . 6 . 8 . 8)
         
-            In 3rd case if we can find first largest element (call it head) then finding median will be trivial. Just find middle element/elements.
+            In 3rd case if we can find first largest element (call it head) then finding median 
+            will be trivial. Just find middle element/elements.
             // (8 . 8 . 4 . 6 . 2 . 2) then head will be ([8]head . 8 . 4 . 6 . 2 . 2)
 
         */
 
         int N = find_size(ptr);
-        // We do not know if given linked list is non-increasing or non-decreasing. If it is non_decreasing (2.4.6.8) then there will be <= 1 pair big.small (8.2). If it is non_increasing (8.6.4.2) then there will be many pair big.small (8.6, 6.4, 4.2). When both non-increasing and non-decreasing (2.2.2) then there will be no small.big. This function returns pointer to small. For non-decreasing case it will be unique. For (2 . 2 . 2) it will be NULL. For non-increasing it will be any one of the valid pairs. 
+        /*
+        We do not know if given linked list is non-increasing or non-decreasing. If it is 
+        non_decreasing (2.4.6.8) then there will be <= 1 pair big.small (8.2). If it is 
+        non_increasing (8.6.4.2) then there will be many pair big.small (8.6, 6.4, 4.2). When both
+        non-increasing and non-decreasing (2.2.2) then there will be no small.big. This function 
+        returns pointer to small. For non-decreasing case it will be unique. For (2 . 2 . 2) it 
+        will be NULL. For non-increasing it will be any one of the valid pairs. 
+        */
         LinkedListNode first_small = find_first_small(ptr);                        
 
         // When all elements are same (2.2.2) then return any element.
@@ -123,7 +133,10 @@ public class Solution {
         }
 
         LinkedListNode head = null;
-        // Take pointer to small that we got previously, as head and check if linked list is non-decreasing or not.
+        /*
+        Take pointer to small that we got previously, as head and check if linked list is 
+        non-decreasing or not.
+        */
         if (is_non_decreasing(first_small))                                         
         {
             // If it is non-decreasing then we have found our head
@@ -183,8 +196,12 @@ public class Solution {
         }
 
         //----added manually----
-        ptr_tail.next = ptr;                                                            // Till now it was linear, now join tail to head and make it circular. 
-        // Now we have got circular linked list but ptr will be the first element, but we need to give arbitrary node. 
+        // Till now it was linear, now join tail to head and make it circular. 
+        ptr_tail.next = ptr;                                                            
+        /*
+        Now we have got circular linked list but ptr will be the first element, but we need to 
+        give arbitrary node. 
+        */
         // Value of arbitrary_shift will be [0, ptr_size). 
         int arbitrary_shift = Integer.parseInt(in.nextLine());
         while (arbitrary_shift > 0)

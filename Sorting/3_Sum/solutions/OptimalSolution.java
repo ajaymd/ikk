@@ -25,7 +25,9 @@ public class OptimalSolution {
                      * 1. Add it to the set
                      * 2. Move either the left pointer or the right pointer
                      */
-                    if (!set.contains(currentElement + "," + input.get(left) + "," + input.get(right))) {
+                    if (!set.contains(
+                    		currentElement + "," + input.get(left) + "," + input.get(right)
+                    	)) {
                         set.add(currentElement + "," + input.get(left) + "," + input.get(right));
                     }
                     left++;

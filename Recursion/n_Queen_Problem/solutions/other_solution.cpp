@@ -11,7 +11,9 @@ const char no_queen = '-';
 
 /*
 Function to check if we can place a queen at position chess_board[row][col].
-As we are placing queens row wise, we only have to check possible clash with queens placed above the current row. (No need to worry about the chessboard below current row, as we have not placed any queens below current row yet!)
+As we are placing queens row wise, we only have to check possible clash with queens placed above 
+the current row. (No need to worry about the chessboard below current row, as we have not placed 
+any queens below current row yet!)
 */ 
 bool is_safe(vector<string> &chess_board, int row, int col, int n)
 {
@@ -45,7 +47,8 @@ bool is_safe(vector<string> &chess_board, int row, int col, int n)
 	return true;
 }
 
-void find_all_arrangements_util(vector<vector<string>> &ret, vector<string> &chess_board, int n, int row)
+void find_all_arrangements_util(vector<vector<string>> &ret, vector<string> &chess_board, int n, 
+	int row)
 {
 	// If all queens are placed.
 	if (row == n)
@@ -62,7 +65,10 @@ void find_all_arrangements_util(vector<vector<string>> &ret, vector<string> &che
 		{
 			// Place queen.
 			chess_board[row][col] = queen;
-			// We have placed queens in rows from 0 to row, without any clash. Now try to place queen in next row.
+			/*
+			We have placed queens in rows from 0 to row, without any clash. Now try to place 
+			queen in next row.
+			*/
 			find_all_arrangements_util(ret, chess_board, n, row + 1);
 			// We have considered the current possibility, now backtrack.
 			chess_board[row][col] = no_queen;

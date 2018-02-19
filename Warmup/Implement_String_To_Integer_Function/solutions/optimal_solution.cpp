@@ -26,8 +26,10 @@ int string_to_integer(string s)
 	while (i < n && isdigit(s[i]))
 	{
 		/*
-		Suppose we have number 123 and we want to append 4 at the end to make it 1234, then it can be done using, (123 * 10) + 4 = 1234.
-		If we have string "1234", then to convert it to number by visiting left to right, we can do 0 -> 1 -> 12 -> 123 -> 1234. 
+		Suppose we have number 123 and we want to append 4 at the end to make it 1234, then it 
+		can be done using, (123 * 10) + 4 = 1234.
+		If we have string "1234", then to convert it to number by visiting left to right, we can 
+		do 0 -> 1 -> 12 -> 123 -> 1234. 
 		*/ 
 		ans = (ans * 10) + (s[i] - '0');
 		i++;

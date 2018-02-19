@@ -20,7 +20,8 @@ vector<string> generate_all_subsets(string s)
 	- ["", "x", "y", "xy"]
 	- ["", "x", "y", "xy", "z", "xz", "yz", "xyz"]
 	Let me explain what we have done in last step.
-	First take array from previous step, that is ["", "x", "y", "xy"], append 'z' to each string, that is ["z", "xz", "yz", "xyz"], now merge it with array in previous step! 
+	First take array from previous step, that is ["", "x", "y", "xy"], append 'z' to each string, 
+	that is ["z", "xz", "yz", "xyz"], now merge it with array in previous step! 
 	*/
 	for (int i = 1; i <= n; i++)
 	{
@@ -28,7 +29,8 @@ vector<string> generate_all_subsets(string s)
 		for (int j = 0; j < old_len; j++)
 		{
 			/*
-			Note that we are doing push_back that is adding value at the end of array, so we already have the old values stored in it.
+			Note that we are doing push_back that is adding value at the end of array, so we 
+			already have the old values stored in it.
 			*/
 			all_subsets.push_back(all_subsets[j] + s[i - 1]);
 		}

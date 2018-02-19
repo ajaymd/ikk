@@ -37,13 +37,15 @@ vector<int> max_in_sliding_window(vector<int> arr, int w)
 	1 3 -1 -3 [5 3 6] 7 -> 6
 	1 3 -1 -3 5 [3 6 7] -> 7 (and this index is n - 1)
 
-	So for i = 0 to w - 2, we will just setup the deque and for i = w - 1 to n - 1, we will add the answer. 
+	So for i = 0 to w - 2, we will just setup the deque and for i = w - 1 to n - 1, we will add 
+	the answer. 
 	*/
 	for (int i = 0; i < n; i++)
 	{
 		/*
 		Suppose arr[j] <= arr[i] where j < i, then arr[j] is not needed, it can be removed. 
-		ith number is on the right side of jth number and jth number is <= ith number, so jth number can never be the answer for further calculations! 
+		ith number is on the right side of jth number and jth number is <= ith number, so jth 
+		number can never be the answer for further calculations! 
 		Try some examples to understand this clearly!
 		*/
 		while (!indices.empty() && arr[indices.back()] <= arr[i])
@@ -56,14 +58,19 @@ vector<int> max_in_sliding_window(vector<int> arr, int w)
 		if (i >= w - 1)
 		{
 			/*
-			Current window should only see elements in arr[i - w + 1, i], so remove previous elements if any.
-			When i >= w then only this while loop can be executed, so we have placed this inside if statement.
+			Current window should only see elements in arr[i - w + 1, i], so remove previous 
+			elements if any.
+			When i >= w then only this while loop can be executed, so we have placed this inside 
+			if statement.
 			*/
 			while (indices.front() <= i - w)
 			{
 				indices.pop_front();
 			}
-			// Observe that deque contains numbers in decreasing order, so first number is the maximum number! 
+			/*
+			Observe that deque contains numbers in decreasing order, so first number is the 
+			maximum number! 
+			*/
 			ans[i - w + 1] = arr[indices.front()];
 		}
 	}

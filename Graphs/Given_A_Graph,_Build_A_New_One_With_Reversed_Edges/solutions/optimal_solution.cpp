@@ -19,7 +19,10 @@ struct Node
 
 void dfs(Node *node, unordered_map<int, Node *> &reversed)
 {	
-	// Note that we are passing reversed by reference, either use passing by reference or use global variable. 
+	/*
+	Note that we are passing reversed by reference, either use passing by reference or use global 
+	variable. 
+	*/
 	// First create new node.
 	reversed[node->val] = new Node(node->val);
 	int n = node->neighbours.size();
@@ -38,7 +41,10 @@ void dfs(Node *node, unordered_map<int, Node *> &reversed)
 
 Node *build_other_graph(Node *node)
 {
-	// In constraints we are given that each node contains distinct values, so we can keep track of node address using that value. {value : node}.
+	/*
+	In constraints we are given that each node contains distinct values, so we can keep track of 
+	node address using that value. {value : node}.
+	*/
 	unordered_map<int, Node *> reversed;
 	// Build the graph.
 	dfs(node, reversed);
@@ -85,7 +91,8 @@ string helper(int graph_nodes, vector<int> graph_from, vector<int> graph_to)
 	}	 
 
 	// Student will return only one node. Do a dfs and get all the nodes.
-	unordered_map<int, Node *> reversed = helper_get_all_addresses_in_reversed_graph(build_other_graph(original[1]));
+	unordered_map<int, Node *> reversed = 
+	helper_get_all_addresses_in_reversed_graph(build_other_graph(original[1]));
 
 	if (reversed.size() != graph_nodes)
 	{
@@ -159,7 +166,8 @@ int main()
 			assert(1 <= graph_to[i]);
 			assert(graph_to[i] <= graph_nodes);
 			assert(graph_from[i] != graph_to[i]);
-			assert(already_present_edges.find({graph_from[i], graph_to[i]}) == already_present_edges.end());
+			assert(already_present_edges.find({graph_from[i], graph_to[i]}) == 
+				already_present_edges.end());
 			already_present_edges.insert({graph_from[i], graph_to[i]});
 		}
 

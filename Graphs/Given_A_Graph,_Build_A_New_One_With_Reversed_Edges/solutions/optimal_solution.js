@@ -22,7 +22,10 @@ const MAX_NODES = 315;
 
 // ---- START ----
 
-// In constraints we are given that each node contains distinct values, so we can keep track of node address using that value. {value : node}.
+/*
+In constraints we are given that each node contains distinct values, so we can keep track of node 
+address using that value. {value : node}.
+*/
 var reversed_graph = new Map();
 
 function dfs(node)

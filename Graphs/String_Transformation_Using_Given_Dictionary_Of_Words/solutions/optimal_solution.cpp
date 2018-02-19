@@ -176,7 +176,10 @@ vector<string> string_transformation(vector<string> words, string start, string 
 	solution(words, start, stop);
 	// From parent information gathered from BFS, construct the actual string transformation.
 	vector<string> ans;
-	// Start from stop string. Go to its parent, then its parent's parent... till we reach start string. 
+	/*
+	Start from stop string. Go to its parent, then its parent's parent... till we reach start 
+	string. 
+	*/
 	int stop_idx = no_of_words - 1;
 	// If stop string is not reached in BFS.
 	if (parent.find(stop_idx) == parent.end())
@@ -184,7 +187,10 @@ vector<string> string_transformation(vector<string> words, string start, string 
 		ans.push_back("-1");
 		return ans;
 	}
-	// Start from stop string. Go to its parent, then its parent's parent... till we reach start string.
+	/*
+	Start from stop string. Go to its parent, then its parent's parent... till we reach start 
+	string.
+	*/
 	while (stop_idx != -1)
 	{
 		ans.push_back(words[stop_idx]);

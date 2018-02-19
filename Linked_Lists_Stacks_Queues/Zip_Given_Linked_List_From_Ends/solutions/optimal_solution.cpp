@@ -86,7 +86,8 @@ LinkedListNode *zip_given_linked_list(LinkedListNode *head)
 	*/
 	list2 = reverse_linked_list(list2);
 	/*
-	Instead of defining two new pointers next1 and next2, we can use previously defined slow and fast to save memory, but for readability purpose we have used two new pointers.
+	Instead of defining two new pointers next1 and next2, we can use previously defined slow and 
+	fast to save memory, but for readability purpose we have used two new pointers.
 	*/
 	LinkedListNode *next1;
 	LinkedListNode *next2;

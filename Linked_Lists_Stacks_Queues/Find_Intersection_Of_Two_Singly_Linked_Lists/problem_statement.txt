@@ -47,7 +47,7 @@ Maximum time allowed in interview: 20 Minutes.
 
 Realize that when comparing two nodes, you should be comparing the addresses, and NOT values.
 
-Due to some HackerRank limitations currently we are providing code-stubs only in C, C++, C++ 14, Java 7, Java 8, JavaScript, Python 2 and Python 3.
+Due to some HackerRank limitations currently we are providing code-stubs only in C, C++, C++ 14, C#, Java 7, Java 8, JavaScript, Python 2 and Python 3.
 
 For other languages simply write your solution (no need to read input and write output) assuming that you are given input arguments mentioned in the input format. Your solution will be checked manually. Do not worry about input, output and testcases. Just submit it.  
 

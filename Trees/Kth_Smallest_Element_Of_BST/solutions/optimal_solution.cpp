@@ -28,13 +28,19 @@ TreeNode* bst_insert(TreeNode* root, int val)
 	// element is <= hence insert it in left subtree.
 	if (val <= root->val)											
 	{
-		// if root->left_ptr is null then new TreeNode will be created and root->left_ptr is assigned its address else it will be assigned to the same value as previouly stored.
+		/*
+		if root->left_ptr is null then new TreeNode will be created and root->left_ptr is assigned
+		its address else it will be assigned to the same value as previouly stored.
+		*/
 		root->left_ptr = bst_insert(root->left_ptr, val);			
 	}
 	// element is > hence insert it in right subtree.
 	else  															
 	{
-		// if root->right_ptr is null then new TreeNode will be created and root->right_ptr is assigned its address else it will be assigned to the same value as previouly stored.
+		/*
+		if root->right_ptr is null then new TreeNode will be created and root->right_ptr is 
+		assigned its address else it will be assigned to the same value as previouly stored.
+		*/
 		root->right_ptr = bst_insert(root->right_ptr, val);			
 	}
 	return root;
@@ -44,7 +50,10 @@ TreeNode* bst_insert(TreeNode* root, int val)
 
 // kth smallest element is stored in this variable. 
 int kth_element;													
-// when running more than one testcases then dont use static in counter = 0 use this and initialize counter = 0 at the beginning of each testcase. 
+/*
+when running more than one testcases then dont use static in counter = 0 use this and initialize 
+counter = 0 at the beginning of each testcase. 
+*/
 //int counter = 0;													
 
 void get_k_th_element(TreeNode* root, int k)
@@ -56,7 +65,10 @@ void get_k_th_element(TreeNode* root, int k)
 	{
 		return;
 	}
-	// first try to find from left subtree, because elements in left suubtree will be smaller than the root.
+	/*
+	first try to find from left subtree, because elements in left suubtree will be smaller than 
+	the root.
+	*/
 	get_k_th_element(root->left_ptr, k);							
 	// if we have not found the answer till now. 		
 	if (counter < k)												

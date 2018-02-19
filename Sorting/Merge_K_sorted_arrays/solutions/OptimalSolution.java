@@ -21,7 +21,8 @@ public class OptimalSolution {
             // Add the next element from the same row from which element is
             // removed, if available
             if (rem.column + 1 < N) {
-                priorityQueue.add(new Node(arr[rem.row][rem.column + 1], rem.row, rem.column + 1));
+                priorityQueue.add(new Node(arr[rem.row][rem.column + 1], rem.row, 
+                    rem.column + 1));
             }
         }
         return ans;

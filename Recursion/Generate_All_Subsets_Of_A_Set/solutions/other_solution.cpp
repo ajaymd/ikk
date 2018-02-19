@@ -10,7 +10,9 @@ void generate_all_subsets_util(vector<string> &all_subsets, string &s, int pos, 
 {
 	/*
 	If we have reached the end then add generated subset. 
-	In C++ string.length() is O(1), but make sure about your language. If it is O(n) then better to calculate it only once, store it (store it in global variable or pass as an argument to the function) and reuse it. 
+	In C++ string.length() is O(1), but make sure about your language. If it is O(n) then better 
+	to calculate it only once, store it (store it in global variable or pass as an argument to the
+	function) and reuse it. 
 	*/
 	if (pos == s.length())
 	{

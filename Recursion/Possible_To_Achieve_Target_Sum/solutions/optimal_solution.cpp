@@ -14,20 +14,25 @@ const long long int MAX_VAL = 100000000000000000LL;
 	----
 
 
-	bool check(int start, int n, vector<long int> &arr, long int remaining, bool at_lest_one_included)
-	{	// Note that we are passing arr by reference. Either pass by reference or use global variable. Passing by value will slow down the solution. 
+	bool check(int start, int n, vector<long int> &arr, long int remaining, bool 
+		at_lest_one_included)
+	{	
+		// Note that we are passing arr by reference. Either pass by reference or use global 
+		variable. Passing by value will slow down the solution. 
 		if (start >= n)
 		{
 			// remaining sum should be 0 and we should have included at least one number!
 			return remaining == 0 && at_lest_one_included;
 		}
 	    
-		// We are not including current element. So at_lest_one_included will be dependent on previous elements. 
+		// We are not including current element. So at_lest_one_included will be dependent on 
+		previous elements. 
 		if (check(start + 1, n, arr, remaining, at_lest_one_included))
 		{
 			return true;
 		}
-		// Include the current element. Now we have included at least one element so at_lest_one_included should be true. 
+		// Include the current element. Now we have included at least one element so 
+		at_lest_one_included should be true. 
 		return check(start + 1, n, arr, remaining - arr[start], true);
 	}
 
@@ -38,19 +43,31 @@ const long long int MAX_VAL = 100000000000000000LL;
 
 */
 
-bool check(int start, int n, vector<long long int> &arr, long long int remaining, bool at_lest_one_included)
-{	// Note that we are passing arr by reference. Either pass by reference or use global variable. Passing by value will slow down the solution. 
+/*
+Note that we are passing arr by reference. Either pass by reference or use global variable. 
+Passing by value will slow down the solution. 
+*/
+bool check(int start, int n, vector<long long int> &arr, long long int remaining, 
+	bool at_lest_one_included)
+{	
+
 	if (start >= n)
 	{
 		// remaining sum should be 0 and we should have included at least one number!
 		return remaining == 0 && at_lest_one_included;
 	}
-	// We are not including current element. So at_lest_one_included will be dependent on previous elements. 
+	/*
+	We are not including current element. So at_lest_one_included will be dependent on previous 
+	elements. 
+	*/
 	if (check(start + 1, n, arr, remaining, at_lest_one_included))
 	{
 		return true;
 	}
-	// Include the current element. Now we have included at least one element so at_lest_one_included should be true. 
+	/*
+	Include the current element. Now we have included at least one element so 
+	at_lest_one_included should be true. 
+	*/
 	return check(start + 1, n, arr, remaining - arr[start], true);
 }
 

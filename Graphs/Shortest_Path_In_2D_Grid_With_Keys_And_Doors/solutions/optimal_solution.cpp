@@ -4,20 +4,24 @@ using namespace std;
 
 // ---- START ----
 
-const int MAX_ROWS = 100, MAX_COLS = 100, MAX_KEYS = 10, MAX_MASK = (1 << MAX_KEYS), INF = MAX_ROWS * MAX_COLS * (MAX_KEYS + 1);
+const int MAX_ROWS = 100, MAX_COLS = 100, MAX_KEYS = 10, MAX_MASK = (1 << MAX_KEYS), 
+	INF = MAX_ROWS * MAX_COLS * (MAX_KEYS + 1);
 const int add_r[4] = {-1, 0, 1, 0};
 const int add_c[4] = {0, -1, 0, 1};
 
-vector<vector<int>> build_path(vector<vector<vector<int>>> &dp, vector<vector<vector<pair<pair<int, int>, int>>>> &parent, int ring_of_keys, pair<int, int> &start, pair<int, int> &stop)
+vector<vector<int>> build_path(vector<vector<vector<int>>> &dp, 
+	vector<vector<vector<pair<pair<int, int>, int>>>> &parent, int ring_of_keys, 
+	pair<int, int> &start, pair<int, int> &stop)
 {
 	vector<vector<int>> ans;
 	ans.push_back(vector<int>(0));
 	ans[0].push_back(stop.first);
 	ans[0].push_back(stop.second);
-	// cout << " - dp = " << dp[stop.first][stop.second][ring_of_keys] << " (" << stop.first << ", " << stop.second << ") ring = " << ring_of_keys << endl;
-	// cout << " - " << ans.size() << endl;
 
-	// stop only when ring_of_keys is 0. Both conditions are necessary. Consider input 1 5 "#a@A+#", here @ -> a -> @ -> A -> + , so when reconstructing + -> A -> @ and still we need to continue! 
+	/*
+	stop only when ring_of_keys is 0. Both conditions are necessary. Consider input 1 5 "#a@A+#", 
+	here @ -> a -> @ -> A -> + , so when reconstructing + -> A -> @ and still we need to continue! 
+	*/
 	while (stop != start || ring_of_keys != 0)
 	{
 		pair<pair<int, int>, int> par = parent[stop.first][stop.second][ring_of_keys];
@@ -26,8 +30,6 @@ vector<vector<int>> build_path(vector<vector<vector<int>>> &dp, vector<vector<ve
 		ans.push_back(vector<int>(0));
 		ans[ans.size() - 1].push_back(stop.first);
 		ans[ans.size() - 1].push_back(stop.second);
-		// cout << " - dp = " << dp[stop.first][stop.second][ring_of_keys] << " (" << stop.first << ", " << stop.second << ") ring = " << ring_of_keys << endl;
-		// cout << " - " << ans.size() << endl;
 	}
 	reverse(ans.begin(), ans.end());
 	return ans;
@@ -68,7 +70,10 @@ bool can_open_door(char door, int ring_of_keys)
 	return (ring_of_keys >> (door - 'A')) & 1;
 }
 
-void add_neighbour_to_queue(int to_r, int to_c, int to_ring_of_keys, pair<pair<int, int>, int> from, vector<vector<vector<pair<pair<int, int>, int>>>> &parent, vector<vector<vector<int>>> &dp, vector<vector<vector<bool>>> &visited, queue<pair<pair<int, int>, int>> &q)
+void add_neighbour_to_queue(int to_r, int to_c, int to_ring_of_keys, 
+	pair<pair<int, int>, int> from, vector<vector<vector<pair<pair<int, int>, int>>>> &parent, 
+	vector<vector<vector<int>>> &dp, vector<vector<vector<bool>>> &visited, 
+	queue<pair<pair<int, int>, int>> &q)
 {
 	parent[to_r][to_c][to_ring_of_keys] = from;
 	dp[to_r][to_c][to_ring_of_keys] = dp[from.first.first][from.first.second][from.second] + 1;
@@ -76,7 +81,10 @@ void add_neighbour_to_queue(int to_r, int to_c, int to_ring_of_keys, pair<pair<i
 	q.push({{to_r, to_c}, to_ring_of_keys});
 }
 
-void bfs(vector<string> &grid, pair<int, int> &start, vector<vector<vector<int>>> &dp, vector<vector<vector<pair<pair<int, int>, int>>>> &parent, vector<vector<vector<bool>>> &visited)		// better to pass vectors by reference
+// better to pass vectors by reference
+void bfs(vector<string> &grid, pair<int, int> &start, vector<vector<vector<int>>> &dp, 
+	vector<vector<vector<pair<pair<int, int>, int>>>> &parent, 
+	vector<vector<vector<bool>>> &visited)		
 {
 	int rows = grid.size();
 	int cols = grid[0].length();
@@ -91,9 +99,6 @@ void bfs(vector<string> &grid, pair<int, int> &start, vector<vector<vector<int>>
 	{
 		pair<pair<int, int>, int> from = q.front();
 		q.pop();
-
-		// cout << "popped = (" << from.first.first << ", " << from.first.second << ") - ring = " << from.second << " length = " << dp[from.first.first][from.first.second][from.second] << endl;
-
 		if (is_stop(grid[from.first.first][from.first.second]))
 		{
 			continue;
@@ -111,7 +116,8 @@ void bfs(vector<string> &grid, pair<int, int> &start, vector<vector<vector<int>>
 			{
 				continue;
 			}
-			else if (is_land(grid[to_r][to_c]) || is_start(grid[to_r][to_c]) || is_stop(grid[to_r][to_c]))
+			else if (is_land(grid[to_r][to_c]) || is_start(grid[to_r][to_c]) || 
+				is_stop(grid[to_r][to_c]))
 			{
 				if (visited[to_r][to_c][from.second] == false)
 				{
@@ -123,7 +129,8 @@ void bfs(vector<string> &grid, pair<int, int> &start, vector<vector<vector<int>>
 				int new_ring_of_keys = from.second  | (1 << (grid[to_r][to_c] - 'a'));
 				if (visited[to_r][to_c][new_ring_of_keys] == false)
 				{
-					add_neighbour_to_queue(to_r, to_c, new_ring_of_keys, from, parent, dp, visited, q);
+					add_neighbour_to_queue(to_r, to_c, new_ring_of_keys, from, parent, dp, 
+						visited, q);
 				}
 			}
 			else if (is_door(grid[to_r][to_c]))
@@ -133,7 +140,8 @@ void bfs(vector<string> &grid, pair<int, int> &start, vector<vector<vector<int>>
 				{
 					if (visited[to_r][to_c][from.second] == false)
 					{
-						add_neighbour_to_queue(to_r, to_c, from.second, from, parent, dp, visited, q);
+						add_neighbour_to_queue(to_r, to_c, from.second, from, parent, dp, 
+							visited, q);
 					}
 				}
 			}
@@ -141,7 +149,9 @@ void bfs(vector<string> &grid, pair<int, int> &start, vector<vector<vector<int>>
 	}
 }
 
-void get_start_and_stop_positions(vector<string> &grid, pair<int, int> &start, pair<int, int> &stop)	// node that start and stop are passed by reference hence change will be reflected. 
+// node that start and stop are passed by reference hence change will be reflected. 
+void get_start_and_stop_positions(vector<string> &grid, pair<int, int> &start, 
+	pair<int, int> &stop)	
 {
 	int rows = grid.size();
 	int cols = grid[0].length();
@@ -168,17 +178,30 @@ vector<vector<int>> find_shortest_path(vector<string> grid)
 	pair<int, int> start, stop;
 	// Get the starting and ending point.
 	get_start_and_stop_positions(grid, start, stop);
-
-	// dp[r][c][ring] denotes length of shortest path from starting point to (r, c) and we have already got keys in the ring. 
+	/*
+	dp[r][c][ring] denotes length of shortest path from starting point to (r, c) and we have 
+	already got keys in the ring. 
+	*/
 	vector<vector<vector<int>>> dp(rows, vector<vector<int>>(cols, vector<int>(MAX_MASK, INF)));
-	// parent[r][c][ring] denotes the last node through which dp[r][c][ring] is updated. This will help to reconstruct the path.
-	vector<vector<vector<pair<pair<int, int>, int>>>> parent(rows, vector<vector<pair<pair<int, int>, int>>>(cols, vector<pair<pair<int, int>, int>>(MAX_MASK, {{-1, -1}, -1})));
-	// visited[r][c][ring] keeps track of dp[r][c][ring] is visited or not. Though parent is enough to track this, but for readability purpose I have added this also. 
-	vector<vector<vector<bool>>> visited(rows, vector<vector<bool>>(cols, vector<bool>(MAX_MASK, false)));
+	/*
+	parent[r][c][ring] denotes the last node through which dp[r][c][ring] is updated. This will 
+	help to reconstruct the path.
+	*/
+	vector<vector<vector<pair<pair<int, int>, int>>>> parent(rows, 
+		vector<vector<pair<pair<int, int>, int>>>(cols, vector<pair<pair<int, int>, int>>
+			(MAX_MASK, {{-1, -1}, -1})));
+	/*
+	visited[r][c][ring] keeps track of dp[r][c][ring] is visited or not. Though parent is enough 
+	to track this, but for readability purpose I have added this also. 
+	*/
+	vector<vector<vector<bool>>> visited(rows, 
+		vector<vector<bool>>(cols, vector<bool>(MAX_MASK, false)));
 	// Do bfs.
 	bfs(grid, start, dp, parent, visited);
-
-	// As dp[r][c][ring] denotes shortest path from start point and we have already got keys in the ring, we just need to find for which key path is shorter. 
+	/*
+	As dp[r][c][ring] denotes shortest path from start point and we have already got keys in the 
+	ring, we just need to find for which key path is shorter. 
+	*/
 	int length = INF;
 	int ring_of_keys;
 	for (int i = 0; i < MAX_MASK; i++)

@@ -21,7 +21,8 @@ bool is_palindrome(string &s, int l, int r)
 	return true;
 }
 
-void generate_palindromic_decompositions_util(vector<string> &decompositions_container, string &s, int pos, string cur_decomposition)
+void generate_palindromic_decompositions_util(vector<string> &decompositions_container, string &s,
+	int pos, string cur_decomposition)
 {
 	// If we have reached the end, add the string. 
 	if (pos == n)
@@ -37,11 +38,13 @@ void generate_palindromic_decompositions_util(vector<string> &decompositions_con
 			if (pos == 0)
 			{
 				// We are adding s[0, i] so do not put '|' before it.
-				generate_palindromic_decompositions_util(decompositions_container, s, i + 1, s.substr(pos, i - pos + 1));
+				generate_palindromic_decompositions_util(decompositions_container, s, i + 1, 
+					s.substr(pos, i - pos + 1));
 			}
 			else
 			{
-				generate_palindromic_decompositions_util(decompositions_container, s, i + 1, cur_decomposition + '|' + s.substr(pos, i - pos + 1));
+				generate_palindromic_decompositions_util(decompositions_container, s, i + 1, 
+					cur_decomposition + '|' + s.substr(pos, i - pos + 1));
 			}
 		}
 	}
@@ -49,7 +52,9 @@ void generate_palindromic_decompositions_util(vector<string> &decompositions_con
 
 vector<string> generate_palindromic_decompositions(string s)
 {
-	// Store length of given string in global variable because we will be accessing it lots of time. 
+	/*
+	Store length of given string in global variable because we will be accessing it lots of time.
+	*/
 	n = s.length();
 	vector<string> decompositions_container;
 	generate_palindromic_decompositions_util(decompositions_container, s, 0, "");

@@ -7,18 +7,23 @@ public:
     int val;
     LinkedListNode *next;
 
-    LinkedListNode(int node_value) {
+    LinkedListNode(int node_value) 
+    {
         val = node_value;
         next = NULL;
     }
 };
 
-LinkedListNode* _insert_node_into_singlylinkedlist(LinkedListNode *head, LinkedListNode *tail, int val) {
-    if(head == NULL) {
+LinkedListNode* _insert_node_into_singlylinkedlist(LinkedListNode *head, LinkedListNode *tail, 
+	int val) 
+{
+    if(head == NULL) 
+    {
         head = new LinkedListNode(val);
         tail = head;
     }
-    else {
+    else 
+    {
         LinkedListNode *node = new LinkedListNode(val);
         tail->next = node;
         tail = tail->next;
@@ -150,7 +155,8 @@ int main()
         }
 
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        operations_tail = _insert_node_into_singlylinkedlist(operations, operations_tail, operations_item);
+        operations_tail = _insert_node_into_singlylinkedlist(operations, operations_tail, 
+        	operations_item);
 
         if(i == 0) {
             operations = operations_tail;

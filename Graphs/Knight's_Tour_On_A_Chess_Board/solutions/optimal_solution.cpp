@@ -11,13 +11,17 @@ const int no_of_possible_moves = 8;
 const int add_row[] = {-2, -2, -1, 1, 2, 2, 1, -1};
 const int add_col[] = {-1, 1, 2, 2, 1, -1, -2, -2};
 
-// Check if position described by new_row th row and new_col th col, is inside the chess board or not.
+/*
+Check if position described by new_row th row and new_col th col, is inside the chess board or 
+not.
+*/
 bool is_valid_position(int rows, int cols, int new_row, int new_col)
 {
 	return ((0 <= new_row) && (new_row < rows) && (0 <= new_col) && (new_col < cols));
 } 
 
-int find_minimum_number_of_moves(int rows, int cols, int start_row, int start_col, int end_row, int end_col) 
+int find_minimum_number_of_moves(int rows, int cols, int start_row, 
+	int start_col, int end_row, int end_col) 
 {
 	// If starting and ending positions are same.
 	if (start_row == end_row && start_col == end_col)
@@ -53,9 +57,11 @@ int find_minimum_number_of_moves(int rows, int cols, int start_row, int start_co
 				if (dist[new_row][new_col] == -1)
 				{
 					/*
-					From starting position we can reach current position in dist[cur_row][cur_col] moves.
+					From starting position we can reach current position in dist[cur_row][cur_col]
+					moves.
 					From current position we reach the neighbour in 1 move. 
-					So, from starting position, the neighbour can be reached in dist[cur_row][cur_col] + 1 moves.
+					So, from starting position, the neighbour can be reached in 
+					dist[cur_row][cur_col] + 1 moves.
 					*/
 					dist[new_row][new_col] = dist[cur_row][cur_col] + 1;
 					// If we have found the ending position. 
@@ -104,7 +110,8 @@ int main()
 		assert(end_row < rows);
 		assert(0 <= end_col);
 		assert(end_col < cols);
-		int moves = find_minimum_number_of_moves(rows, cols, start_row, start_col, end_row, end_col);
+		int moves = find_minimum_number_of_moves(rows, cols, start_row, 
+			start_col, end_row, end_col);
 		assert(-1 <= moves);
 		cout << moves << endl;
 	}

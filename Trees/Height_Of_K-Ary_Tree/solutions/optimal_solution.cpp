@@ -6,7 +6,10 @@ const int MAX_N = 100000;
 
 struct TreeNode
 {
-	// To find height of tree, value stored in nodes does not matter. So in input also we are not given this field. 
+	/*
+	To find height of tree, value stored in nodes does not matter. So in input also we are not 
+	given this field. 
+	*/
 	//int val;															
 	// Address of children nodes. 
 	vector<TreeNode*> children;											

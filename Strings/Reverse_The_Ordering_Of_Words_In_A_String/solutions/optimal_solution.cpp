@@ -6,7 +6,10 @@ const int MAX_N = 100000;
 
 // ----------------------- START -------------------------
 
-// Suppose s = "abcdefgh" and we call reverse_string(s[2], 4) then this function will reverse "cdef" part of "abcdefgh".  
+/*
+Suppose s = "abcdefgh" and we call reverse_string(s[2], 4) then this function will reverse "cdef" 
+part of "abcdefgh".  
+*/
 void reverse_string(char *str, int len)
 {
     for(int i = 0; i < len / 2; i++)
@@ -31,7 +34,8 @@ string reverse_ordering_of_words(string s)
         }
     }
     /* 
-	If there is no space at the end then last word will not be reversed in the above for loop. So need to reverse it. 
+	If there is no space at the end then last word will not be reversed in the above for loop. 
+	So need to reverse it. 
 	Think about s = "hi". 
 	Reverse the last word.
     */

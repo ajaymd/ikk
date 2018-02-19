@@ -11,7 +11,8 @@ const int add_r[8] = {0, -1, -1, -1, 0, 1, 1, 1};
 const int add_c[8] = {-1, -1, 0, 1, 1, 1, 0, -1};
 
 /*
-Note that we are passing matrix by reference. Passing by value will not work because we are doing modifications in matrix. So either pass by reference or use global variable.  
+Note that we are passing matrix by reference. Passing by value will not work because we are doing 
+modifications in matrix. So either pass by reference or use global variable.  
 */
 void dfs(int r, int c, vector<vector<int>> &matrix)	
 {

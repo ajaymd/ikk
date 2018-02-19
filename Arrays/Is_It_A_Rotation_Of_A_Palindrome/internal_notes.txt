@@ -1,15 +1,3 @@
-GeeksforGeeks Solution:
-http://www.geeksforgeeks.org/check-given-string-rotation-palindrome/
-
-Our Solution:
-https://github.com/InterviewKickstart/CodingProblemsIK/tree/master/Arrays/Is_It_A_Rotation_Of_A_Palindrome
-
-Problem type:
-1) We handle the input/output and user only needs to complete the given funciton.
-or
-2) User writes code from the scratch. Nothing is provided by us. 
-This problem is of type: 1
-
 Here problem is of type 1 hence the input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
  
 First and only line contains one string. (Same as input format to the function.)

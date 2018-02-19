@@ -21,7 +21,8 @@ public class Solution {
 	// ---- START ----
 
     /*
-    In constraints we are given that each node contains distinct values, so we can keep track of node address using that value. {value : node} 
+    In constraints we are given that each node contains distinct values, so we can keep track of 
+    node address using that value. {value : node} 
     */
 	static HashMap<Integer, Node> reversed_graph = new HashMap<Integer, Node>();
 
@@ -39,7 +40,8 @@ public class Solution {
 				dfs(node.neighbours.get(i));
 			}
             // Add the reverse edge. 
-			reversed_graph.get(node.neighbours.get(i).val).neighbours.add(reversed_graph.get(node.val));
+			reversed_graph.get(node.neighbours.get(i).val).neighbours.add(
+                reversed_graph.get(node.val));
 		}
 	}
 
@@ -80,7 +82,8 @@ public class Solution {
         {
             original.put(i, new Node(i));
         }
-        HashMap<Pair<Integer, Integer>, Boolean> edges = new HashMap<Pair<Integer, Integer>, Boolean>();
+        HashMap<Pair<Integer, Integer>, Boolean> edges = 
+            new HashMap<Pair<Integer, Integer>, Boolean>();
         int graph_edges = graph_from.length;
         for (int i = 0; i < graph_edges; i++)
         {
@@ -90,7 +93,8 @@ public class Solution {
         }	 
         
         // Student will return only one node. Do a dfs and get all the nodes.
-        HashMap<Integer, Node> reversed = helper_get_all_addresses_in_reversed_graph(build_other_graph(original.get(1)));
+        HashMap<Integer, Node> reversed = 
+            helper_get_all_addresses_in_reversed_graph(build_other_graph(original.get(1)));
 
         if (reversed.size() != graph_nodes)
         {

@@ -156,7 +156,8 @@ public:
 	}
 };
 
-vector<int> implement_LRU_cache(int capacity, vector<int> query_type, vector<int> key, vector<int> value)
+vector<int> implement_LRU_cache(int capacity, vector<int> query_type, vector<int> key, 
+	vector<int> value)
 {
 	int n = query_type.size();
 	// Setup cache. 

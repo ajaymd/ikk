@@ -13,8 +13,11 @@ long long int how_many_BSTs(int n)
 	// Base case.
 	BSTs[0] = 1LL;
 	/*
-	In recursion there will be lots of recalculations (unnecessary recalculations), so to avoid that we can store the values once calculated. 
-	Here in each loop iteration we will find the value of BSTs[cur_BST_size]. As we are calculating from 1 to n, when we are finding value for BSTs[cur_BST_size], we will have values for BSTs[ < cur_BST_size] already calculated and they can be used directly.
+	In recursion there will be lots of recalculations (unnecessary recalculations), so to avoid 
+	that we can store the values once calculated. 
+	Here in each loop iteration we will find the value of BSTs[cur_BST_size]. As we are 
+	calculating from 1 to n, when we are finding value for BSTs[cur_BST_size], we will have 
+	values for BSTs[ < cur_BST_size] already calculated and they can be used directly.
 	*/
 	for (int cur_BST_size = 1; cur_BST_size <= n; cur_BST_size++)
 	{
@@ -23,8 +26,10 @@ long long int how_many_BSTs(int n)
 			number_of_nodes_in_left_subBST < cur_BST_size; 
 			number_of_nodes_in_left_subBST++)
 		{
-			int number_of_nodes_in_right_subBST = cur_BST_size - 1 - number_of_nodes_in_left_subBST;
-			BSTs[cur_BST_size] += BSTs[number_of_nodes_in_left_subBST] * BSTs[number_of_nodes_in_right_subBST];
+			int number_of_nodes_in_right_subBST = 
+				cur_BST_size - 1 - number_of_nodes_in_left_subBST;
+			BSTs[cur_BST_size] += BSTs[number_of_nodes_in_left_subBST] * 
+				BSTs[number_of_nodes_in_right_subBST];
 		}
 	}
 	return BSTs[n];

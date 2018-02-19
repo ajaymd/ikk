@@ -62,7 +62,10 @@ public:
 			    // Check timestamp in hash map.
 			    if(cache[top.second].first == top.first) 
 			    {
-				    // Element has same time stamp in heap and hash map hence we have found the element to be removed.
+			    	/*
+				    Element has same time stamp in heap and hash map hence we have found the 
+				    element to be removed.
+				    */
 				    // Remove it from hash map.
 				    cache.erase(top.second);
 				    // Remove from heap.
@@ -85,7 +88,8 @@ public:
 	}
 };
 
-vector<int> implement_LRU_cache(int capacity, vector<int> query_type, vector<int> key, vector<int> value)
+vector<int> implement_LRU_cache(int capacity, vector<int> query_type, vector<int> key, 
+	vector<int> value)
 {
 	int n = query_type.size();
 	// Setup cache. 

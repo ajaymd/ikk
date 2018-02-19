@@ -6,7 +6,10 @@ const int MAX_N = 100000;
 
 // ------------------------ START ---------------------
 
-// Function to recursively check, if string s in range start to end (both inclusive), is a valid palindrome or not.
+/*
+Function to recursively check, if string s in range start to end (both inclusive), is a valid 
+palindrome or not.
+*/
 bool recursive_palindrome_check(string &s, int start, int end)
 {
 	/* 
@@ -30,13 +33,17 @@ bool recursive_palindrome_check(string &s, int start, int end)
 		return recursive_palindrome_check(s, start, end - 1);
 	}
 	/*
-	If s[start] and s[end] both are alphabetical characters then compare them ignoring their cases and if they found to be same then continue check after ignoring both alphabetical characters.
+	If s[start] and s[end] both are alphabetical characters then compare them ignoring their cases
+	and if they found to be same then continue check after ignoring both alphabetical characters.
 	*/
 	if (tolower(s[start]) == tolower(s[end]))
 	{
 		return recursive_palindrome_check(s, start + 1, end - 1);
 	}
-	// If s[start] and s[end] both are different alphabetical characters (after ignoring their cases) then s is not a palindrome.  
+	/*
+	If s[start] and s[end] both are different alphabetical characters (after ignoring their cases)
+	then s is not a palindrome.  
+	*/
 	return false;
 }
 

@@ -10,7 +10,8 @@ const char queen = 'q';
 const char no_queen = '-';
 
 // Function to check if we can place a queen at position chess_board[row][col].
-bool is_safe(vector<bool> &slash_diagonal_occupied, vector<bool> &col_occupied, vector<bool> &back_slash_diagonal_occupied, int row, int col, int n)
+bool is_safe(vector<bool> &slash_diagonal_occupied, vector<bool> &col_occupied, 
+	vector<bool> &back_slash_diagonal_occupied, int row, int col, int n)
 {
 	// Check top-left to bottom-right diagonal.
 	if (slash_diagonal_occupied[row + col])
@@ -30,7 +31,9 @@ bool is_safe(vector<bool> &slash_diagonal_occupied, vector<bool> &col_occupied, 
 	return true;
 }
 
-void find_all_arrangements_util(vector<vector<string>> &ret, vector<string> &chess_board, vector<bool> &slash_diagonal_occupied, vector<bool> &col_occupied, vector<bool> &back_slash_diagonal_occupied, int n, int row)
+void find_all_arrangements_util(vector<vector<string>> &ret, vector<string> &chess_board, 
+	vector<bool> &slash_diagonal_occupied, vector<bool> &col_occupied, 
+	vector<bool> &back_slash_diagonal_occupied, int n, int row)
 {
 	// If all queens are placed.
 	if (row == n)
@@ -43,7 +46,8 @@ void find_all_arrangements_util(vector<vector<string>> &ret, vector<string> &che
 	for (int col = 0; col < n; col++)
 	{
 		// We can place a queen only if it does not clash with already placed queens.
-		if (is_safe(slash_diagonal_occupied, col_occupied, back_slash_diagonal_occupied, row, col, n))
+		if (is_safe(slash_diagonal_occupied, col_occupied, back_slash_diagonal_occupied, row, 
+			col, n))
 		{
 			// Place queen.
 			chess_board[row][col] = queen;
@@ -51,8 +55,12 @@ void find_all_arrangements_util(vector<vector<string>> &ret, vector<string> &che
 			slash_diagonal_occupied[row + col] = true;
 			col_occupied[col] = true;
 			back_slash_diagonal_occupied[row - col + n - 1] = true;
-			// We have placed queens in rows from 0 to row, without any clash. Now try to place queen in next row.
-			find_all_arrangements_util(ret, chess_board, slash_diagonal_occupied, col_occupied, back_slash_diagonal_occupied, n, row + 1);
+			/*
+			We have placed queens in rows from 0 to row, without any clash. Now try to place 
+			queen in next row.
+			*/
+			find_all_arrangements_util(ret, chess_board, slash_diagonal_occupied, col_occupied, 
+				back_slash_diagonal_occupied, n, row + 1);
 			// We have considered the current possibility, now backtrack.
 			chess_board[row][col] = no_queen;
 			// Mark appropriate diagonals and column as unoccupied.
@@ -71,13 +79,23 @@ vector<vector<string>> find_all_arrangements(int n)
 	string chess_board_empty_row(n, no_queen);
 	// Chessboard containing no queen.
 	vector<string> chess_board(n, chess_board_empty_row);
-	// If slash_diagonal_occupied[i] = true then slash diagonal number i is occupied by one of the already placed queens.
+	/*
+	If slash_diagonal_occupied[i] = true then slash diagonal number i is occupied by one of the 
+	already placed queens.
+	*/
 	vector<bool> slash_diagonal_occupied (n + n - 1, false);
-	// If col_occupied[i] = true then column number i is occupied by one of the already placed queens. 
+	/*
+	If col_occupied[i] = true then column number i is occupied by one of the already placed 
+	queens. 
+	*/
 	vector<bool> col_occupied (n, false);
-	// If back_slash_diagonal_occupied[i] = true then back slash diagonal number i is occupied by one of the already placed queens.
+	/*
+	If back_slash_diagonal_occupied[i] = true then back slash diagonal number i is occupied by 
+	one of the already placed queens.
+	*/
 	vector<bool> back_slash_diagonal_occupied (n + n - 1, false);
-	find_all_arrangements_util(ret, chess_board, slash_diagonal_occupied, col_occupied, back_slash_diagonal_occupied, n, 0);
+	find_all_arrangements_util(ret, chess_board, slash_diagonal_occupied, col_occupied, 
+		back_slash_diagonal_occupied, n, 0);
 	return ret;
 }
 

@@ -32,7 +32,10 @@ int find_height(int k, vector<int> from, vector<int> to)
 		// Just clear the global variable. 
 		kary[i].clear();										
 	}
-	// It is not a good idea to iterate over from array for each node, hence we iterate over from array once and store children of each node separately in kary[node].  
+	/*
+	It is not a good idea to iterate over from array for each node, hence we iterate over from 
+	array once and store children of each node separately in kary[node].  
+	*/
 	for (int i = 0; i < edges; i++)								
 	{
 		// Array kary[node] will store all the children of node. 
@@ -40,7 +43,10 @@ int find_height(int k, vector<int> from, vector<int> to)
 		// Ignore this. This is just for validation of input.
 		assert(kary[from[i]].size() <= k);						
 	}
-	// Till now we have separated and stored children of each node in kary[node] array. Now we can do dfs and find the height of the tree. 
+	/*
+	Till now we have separated and stored children of each node in kary[node] array. Now we can 
+	do dfs and find the height of the tree. 
+	*/
 	return find_max_height(1);									
 }
 

@@ -36,7 +36,8 @@ bool should_turn(int cur_row, int cur_col, int rows, int cols)
 	# O O	 O O O #
 
 
-	< (rows + 1) / 2 will give priority to top part when current position is horizontally centered. 
+	< (rows + 1) / 2 will give priority to top part when current position is horizontally 
+	centered. 
 	< cols / 2 will give priority to right part when current position is vertically centered.
 	
 	*/
@@ -106,7 +107,8 @@ int main()
 			for (int j = 0; j < cols; j++)
 			{
 				cin >> matrix[i][j];
-				assert(('a' <= matrix[i][j] && matrix[i][j] <= 'z') || ('A' <= matrix[i][j] && matrix[i][j] <= 'Z'));
+				assert(('a' <= matrix[i][j] && matrix[i][j] <= 'z') || 
+					('A' <= matrix[i][j] && matrix[i][j] <= 'Z'));
 			}
 		}
 		string ret = printSpirally(matrix);

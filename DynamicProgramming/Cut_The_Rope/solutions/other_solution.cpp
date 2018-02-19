@@ -16,22 +16,33 @@ long long int max_product_from_cut_pieces(int n)
 	for (int cur_rope_length = 2; cur_rope_length <= n; cur_rope_length++)
 	{
 		/*
-		Think practically, when ever we are making last cur it will be between 1 and cur_rope_length - 1. 
-		Also due to bottom-up approach we already have found the maximum product for smaller lengths. 
-		So now we iterate over all the possibilities of last cut (from 1 to cur_rope_length - 1) and find the maximum product for the cur_rope_length.
+		Think practically, when ever we are making last cur it will be between 1 and 
+		cur_rope_length - 1. 
+		Also due to bottom-up approach we already have found the maximum product for smaller 
+		lengths. 
+		So now we iterate over all the possibilities of last cut (from 1 to cur_rope_length - 1) 
+		and find the maximum product for the cur_rope_length.
 		*/
 		for (int cut_length = 1; cut_length < cur_rope_length; cut_length++)
 		{
-			max_product[cur_rope_length] = max(max_product[cur_rope_length], (long long int) cut_length * max_product[cur_rope_length - cut_length]);
+			max_product[cur_rope_length] = max(
+				max_product[cur_rope_length], 
+				(long long int) cut_length * max_product[cur_rope_length - cut_length]
+			);
 		}
 		/*
 		In the above loop we have found the answer when we have to make at least one cut.
-		For cur_rope_length=n we have to make at least one cut and when we iterate over 1 to cur_rope_length - 1 we are already making one cut, hence max_product[cur_rope_length - cut_length]) "need not" to have at least one cut.
+		For cur_rope_length=n we have to make at least one cut and when we iterate over 1 to 
+		cur_rope_length - 1 we are already making one cut, hence max_product[cur_rope_length - 
+		cut_length] "need not" to have at least one cut.
 		So for lengths other than n update answer when no cut. 
 		*/
 		if (cur_rope_length != n)
 		{
-			max_product[cur_rope_length] = max(max_product[cur_rope_length], (long long int)cur_rope_length);
+			max_product[cur_rope_length] = max(
+				max_product[cur_rope_length], 
+				(long long int)cur_rope_length
+			);
 		}
 	}
 	return max_product[n];
