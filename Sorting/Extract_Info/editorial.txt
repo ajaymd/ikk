@@ -1,0 +1,9 @@
+Optimal solution
+Optimal solution will be to use two maps, one to maintain the count and other one to maintain max value.
+For every entry you get, you increment the count to the corresponding key and put maximum of the current value and the value corresponding to that key in the map.
+
+Note:
+Comparing two string with length N is O(N) operation.
+
+Space Complexity: O(n*(MAX_LENGTH(KEYS)+MAX_LENGTH(VALUES)))
+Time Complexity: O(n*(MAX_LENGTH(VALUE))
