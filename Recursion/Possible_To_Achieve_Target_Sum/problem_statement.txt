@@ -5,7 +5,7 @@ Problem Statement:
 
 Given an array arr of size n and a target sum k. 
 
-You have to determine, whether there exists a group of numbers (need not to be contiguous) in arr such that their sum equals to k.
+You have to determine, whether there exists a group of numbers (numbers need not to be contiguous and group can not be empty) in arr such that their sum equals to k.
 
 Input Format:
 

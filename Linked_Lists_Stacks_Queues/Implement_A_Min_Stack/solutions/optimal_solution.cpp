@@ -10,16 +10,12 @@ vector<int> min_stack(vector<int> operations)
 {
 	int n = operations.size();
 	vector<int> ans;
-	/*
-	At any point of time min_till_now.top() will contain minimum of all elements present in stack 
-	simple_stack.
-	*/
-	stack<int> simple_stack, min_till_now;
+	// At any point of time min_till_now.top() will contain minimum of all elements present in stack.
+	stack<int> min_till_now;
 	for (int i = 0; i < n; i++)
 	{
 		if (operations[i] >= 1)
 		{
-			simple_stack.push(operations[i]);
 			/*
 			If stack is empty then after adding operations[i], minimum of entire stack will become
 			operations[i]. 
@@ -35,9 +31,8 @@ vector<int> min_stack(vector<int> operations)
 		}
 		else if (operations[i] == -1)
 		{
-			if (simple_stack.empty() == false)
+			if (min_till_now.empty() == false)
 			{
-				simple_stack.pop();
 				min_till_now.pop();
 			}
 		}

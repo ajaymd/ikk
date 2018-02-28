@@ -40,5 +40,5 @@ Expected solution is O(N ^ 2). That will be very easy to write in an interview.
 
 Maximum time allowed in interview: 20 Minutes. 
 
-
+Python: If getting run time error then try to use iterative version to check if string is a palindrome or not.
 

@@ -6,6 +6,8 @@ Problem Statement:
 
 Given a k-ary tree containing N nodes. You have to find height of the tree. (Length of the longest path from root to any node.)
 
+(We are looking for number of edges on longest path from root to any node, not number of nodes on longest path from root to any node.)
+
 Input Format:
 
 There are two arguments. First one denotes integer k, second one denotes root of the k-ary tree. 

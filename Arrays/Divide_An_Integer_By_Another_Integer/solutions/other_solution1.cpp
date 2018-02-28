@@ -22,25 +22,20 @@ long long int divide(long long int a, long long int b)
 	// neg / neg
 	if (a < 0 && b < 0)									
 	{
-		a = -a;
-		b = -b;
+		return divide(-a, -b);
 	}
-	long long int ans = 0;
+	// like 2 / 5
+	if (a < b)											
+	{
+		return 0;
+	}
+	// 37 / 3 can be written as 8 * (37 / (3 * 8)) + (37 - (3 * 8)) / 3
 	int no_of_shifts = 0;
 	while ((b << (no_of_shifts + 1)) <= a)
 	{
 		no_of_shifts++;
 	}
-	while(a >= b)
-	{
-		while ((b << no_of_shifts) > a)
-		{
-			no_of_shifts--;
-		}
-		ans += (1LL << no_of_shifts);
-		a -= (b << no_of_shifts);
-	}
-	return ans;
+	return (1LL << no_of_shifts) + divide(a - (b << no_of_shifts), b);
 }
 
 //-------------------------STOP------------------------------

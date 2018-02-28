@@ -26,16 +26,12 @@ long long int divide(long long int a, long long int b)
 		b = -b;
 	}
 	long long int ans = 0;
-	int no_of_shifts = 0;
-	while ((b << (no_of_shifts + 1)) <= a)
-	{
-		no_of_shifts++;
-	}
 	while(a >= b)
 	{
-		while ((b << no_of_shifts) > a)
+		int no_of_shifts = 0;
+		while ((b << (no_of_shifts + 1)) <= a)
 		{
-			no_of_shifts--;
+			no_of_shifts++;
 		}
 		ans += (1LL << no_of_shifts);
 		a -= (b << no_of_shifts);

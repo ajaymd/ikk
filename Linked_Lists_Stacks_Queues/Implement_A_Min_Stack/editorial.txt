@@ -36,7 +36,7 @@ As each operation is performed in constant time and there are total n operations
 Auxiliary Space Used:
 
 O(n). 
-As we are using two extra stacks and one extra vector to store values.
+As we are using one extra stack and one extra vector to store values.
 
 
 Space Compelxity:

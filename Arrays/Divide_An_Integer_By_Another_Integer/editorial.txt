@@ -33,29 +33,46 @@ When we set q31 = 0 then we have to solve
 (2^30 * q30 + ... + 2^0 * q0) * b = a
 and when we set q31 = 1 then we have to solve 
 (2^30 * q30 + ... + 2^0 * q0) * b = a - 2^31 * b.
-For that we can use recursion.
 
 
 
 
 
 
-Consider 37 / 3. We keep on left shifting divisor by 1 (multiply by 2) till it does not exceed 37, here so it will be 3 -> 6 -> 12 -> 24. Now we can write our division 37 / 3 = (37 / (3 * 8)) * 8 + (37 - (3 * 8)) / 3. Now first part is (37 / 24) * 8 = 1 * 8 = 1 * 2^(number of shifts). Second part is 13 / 3 and this problem is smaller version of the same problem we are trying to solve, so we use recursion.
+Consider 37 / 3. We keep on left shifting divisor by 1 (multiply by 2) till it does not exceed 37, here it will be 3 -> 6 -> 12 -> 24. Now we can write our division 37 / 3 = (37 / (3 * 8)) * 8 + (37 - (3 * 8)) / 3. Now first part is (37 / 24) * 8 = 1 * 8 = 1 * 2^(number of shifts). Second part is 13 / 3 and this problem is smaller version of the same problem we are trying to solve.
 
 
 
 
 
 
-Approach we have used is called divide and conqure. 
+We have provided 3 solutions, and all of them uses the same idea described above, but different implementations.
 
-Time complexity of the function is O(log(a) ^ 2) because of shifting and recursive function calls. 
+1) other_solution1.cpp: Recursive solution. 
 
-Auxiliary space and space complexity of solution provided by us is O(log(a)) due to recursive function call. For readability purpose we have used recursive implementation. But we can use iterative implementation to bring down space complexity to O(1). 
+Time complexity of the function is O(log(a) ^ 2). Recursive function can be called O(log(a)) times, and in each function call we are shifting no_of_shifts times that is O(log(a)). (Shift operation is considered as O(1).)
+
+Auxiliary space and space complexity is O(log(a)) due to recursive function call. 
+
+2) other_solution2.cpp: Iterative solution.
+
+Time complexity of the function is O(log(a) ^ 2). Recursive function can be called O(log(a)) times, and in each function call we are shifting no_of_shifts times that is O(log(a)). (Shift operation is considered as O(1).)
+
+Auxiliary space and space complexity is O(1).
+
+3) optimal_solution.cpp: Iterative solution.
+
+After some observations, in other_solution2.cpp we can notice that, value of variable no_of_shifts decreases always. Suppose it decreases like 60 -> 55 -> 50 -> ... -> 0. Then in other_solution2.cpp, we start no_of_shifts from 0 and increment it to 60, again for 55 we will increment no_of_shifts from 0 to 55. But as we know it will decrease from 60 to 55, we can directly start from 60 and quickly reach 55. Then from 55 to 50 (instead of 0 to 55)... After this optimization, overall we will do O(loga) shifts. 
+
+Time complexity of the function is O(log(a) + log(a)) -> O(log(a)). (Shift operation is considered as O(1).)
+
+Auxiliary space and space complexity is O(1).
+
+
+
+
 
 If you are using C then direct copy pasting the code provided by us (which is in C++) will not work. In C abs(x) and fabs(x) are different. Use fabs instead of abs. 
-
-
 
 
 

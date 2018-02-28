@@ -11,16 +11,16 @@ Have a look at the solution provided by us.
 
 Time Complexity:
 
-O(2n * catalan number(2n)).
+O(2n * catalan number(n)).
 
 
 Auxiliary Space Used:
 
-O(2n * catalan number(2n)).
+O(2n * catalan number(n)).
 
 
 Space Complexity:
 
-O(2n * catalan number(2n)).
+O(2n * catalan number(n)).
 
 
