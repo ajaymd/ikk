@@ -1,0 +1,12 @@
+Naive solution:
+Start with the first bolt and compare it with each nut until we find a match. In the worst case we require n comparisons. Doing this for all bolts gives us O(N^2) complexity.
+
+Optimal solution:
+We can use quick sort technique to solve this.
+
+This algorithm first performs a partition by picking a random element of bolts array as pivot, rearrange the array of nuts and returns the partition index ‘i’ such that all nuts smaller than nuts[i] are on the left side and all nuts greater than nuts[i] are on the right side. Next using the nuts[i] we can partition the array of bolts. Partitioning operations can easily be implemented in O(n). This operation also makes nuts and bolts array nicely partitioned. Now we apply this partitioning recursively on the left and right sub-array of nuts and bolts.
+
+As we apply partitioning on nuts and bolts both so the total time complexity will be Θ(2*NlogN) = Θ(N*logN) on average.
+
+Space Complexity: O(1)
+Time Complexity: O(N*Log(N))
