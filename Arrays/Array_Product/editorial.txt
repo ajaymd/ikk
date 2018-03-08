@@ -1,0 +1,26 @@
+Given an array of numbers A of size N, find and print array of numbers P of size N, where P[i] is the product of all
+numbers A[j], where j!=i.
+
+A naive approach would be, to find ith element of output array(i.e. P[i]), iterate over an entire input array A to
+get the product of all elements A[j], such that j!=i.
+
+Time Complexity: O(N*N)
+Auxiliary Space Used: O(1)
+
+An optimal approach would be as follows:
+Notice that for P[i], product of all input array elements other than ith element is nothing but
+                       (product of all elements A[j], 0<=j<=(i-1)) * (product of all elements A[j], (i+1)<=j<=(N-1))
+                     = (A[0]*A[1]*...*A[i-1]) * (A[i+1]*A[i+2]*...*A[N-1])
+
+So, iterate input array A twice to fill output array P, once for updating P[i] with (A[0]*A[1]*...*A[i-1]), and next
+one for updating P[i] with (A[i+1]*A[i+2]*...*A[N-1]).
+Please see the commented code for detailed implementation of optimal approach.
+
+Time Complexity: O(N)
+Auxiliary Space Used: O(1)
+
+
+
+
+
+

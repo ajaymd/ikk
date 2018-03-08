@@ -1,0 +1,10 @@
+Input:
+The first line of the input contains a single integer N denoting the size of input array
+In the next N lines, each line contains a numbers Ai, denoting ith number of the input array A, (1<=i<=N)
+
+Output:
+Print N lines, each line containing a number Pi, denoting ith number of the resultant product array P
+
+
+Solution: http://stackoverflow.com/questions/2680548/given-an-array-of-numbers-return-array-of-products-of-all-other-numbers-no-div
+
