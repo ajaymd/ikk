@@ -26,17 +26,10 @@ You can't use division anywhere in solution
 -2147483648 <= products[i] <= 2147483647, i=1,2,3,...,n
 
 
-Expected Time Complexity : O(n)
-Expected Auxillary Space Complexity : O(1)
-
-
-
 Notes:
 
 Usage of resultant products array will not be considered as extra space used.
 Without using division is the key constraint to remember.
-
-
 
 
 Sample Test Cases:
