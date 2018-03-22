@@ -29,7 +29,7 @@ class TreeNode:
 
 # Complete the function below.
 
-def find_height(k, root):
+def find_height(root):
     # Handle base case when root is a leaf node.                    
     if (len(root.children) == 0):							
         return 0
@@ -37,7 +37,7 @@ def find_height(k, root):
     for i in range(0, len(root.children)):
         temp = root.children[i]
         # Find height of each children and store the maximum height of children. 
-        h = max(h, find_height(k, temp))					
+        h = max(h, find_height(temp))					
     return h + 1	
 
 '''
@@ -84,7 +84,7 @@ if __name__ == "__main__":
 
     root = build_tree(frm, to)
 
-    res = find_height(k, root)
+    res = find_height(root)
     f.write(str(res) + "\n")
 
 

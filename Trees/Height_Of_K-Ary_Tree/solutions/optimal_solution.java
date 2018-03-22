@@ -36,7 +36,7 @@ public class Solution {
 	    };
     */
 
-    static int find_height(int k, TreeNode root)
+    static int find_height(TreeNode root)
     {
         // Handle base case when root is a leaf node.
         if (root.children.size() == 0)									
@@ -48,7 +48,7 @@ public class Solution {
         {
             TreeNode temp = root.children.get(i);
             // Find height of each children and store the maximum height of children. 
-            h = Math.max(h, find_height(k, temp));						
+            h = Math.max(h, find_height(temp));						
         }
         return h + 1;			
     }
@@ -111,7 +111,7 @@ public class Solution {
 
         TreeNode root = build_tree(from, to);
 
-        res = find_height(k, root);
+        res = find_height(root);
         bw.write(String.valueOf(res));
         bw.newLine();
 

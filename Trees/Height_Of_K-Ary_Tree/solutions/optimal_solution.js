@@ -34,7 +34,7 @@ function TreeNode()
 	}
 */
 
-function find_height(k, root) 
+function find_height(root) 
 {
     // Handle base case when root is a leaf node.
     if (root.children.length == 0)									
@@ -46,7 +46,7 @@ function find_height(k, root)
     {
         var temp = root.children[i];
         // Find height of each children and store the maximum height of children. 
-        h = Math.max(h, find_height(k, temp));				       
+        h = Math.max(h, find_height(temp));				       
     }
     return h + 1;	
 }
@@ -109,7 +109,7 @@ process.stdin.on('end', function() {
 
     var root = build_tree(from, to);
 
-    res = find_height(k, root);
+    res = find_height(root);
     wstream.write(res + "\n");
 
     wstream.end();

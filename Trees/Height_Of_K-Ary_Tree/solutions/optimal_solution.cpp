@@ -39,7 +39,7 @@ struct TreeNode
     };
 */
 
-int find_height(int k, TreeNode* root)
+int find_height(TreeNode* root)
 {
 	// Handle base case when root is a leaf node.
 	if (root->children.size() == 0)										
@@ -50,7 +50,7 @@ int find_height(int k, TreeNode* root)
 	for (int i = 0; i < root->children.size(); i++)
 	{
 		// Find height of each children and store the maximum height of children. 
-		h = max(h, find_height(k, root->children[i]));					
+		h = max(h, find_height(root->children[i]));					
 	}
 	return h + 1;			
 }
@@ -139,7 +139,7 @@ int main()
 
 		TreeNode* root = build_tree(from, to);
 
-		int h = find_height(k, root);
+		int h = find_height(root);
 		assert(0 <= h);
 		assert(h <= N - 1);
 		cout << h << endl;
