@@ -223,10 +223,10 @@ vector<vector<int>> find_shortest_path(vector<string> grid)
 
 int main()
 {
-	freopen("..//test_cases//sample_test_cases_input.txt", "r", stdin);
-	freopen("..//test_cases//sample_test_cases_expected_output.txt", "w", stdout);
-	//freopen("..//test_cases//handmade_test_cases_input.txt", "r", stdin);
-	//freopen("..//test_cases//handmade_test_cases_expected_output.txt", "w", stdout);
+	//freopen("..//test_cases//sample_test_cases_input.txt", "r", stdin);
+	//freopen("..//test_cases//sample_test_cases_expected_output.txt", "w", stdout);
+	freopen("..//test_cases//handmade_test_cases_input.txt", "r", stdin);
+	freopen("..//test_cases//handmade_test_cases_expected_output.txt", "w", stdout);
 	//freopen("..//test_cases//generated_small_test_cases_input.txt", "r", stdin);
 	//freopen("..//test_cases//generated_small_test_cases_expected_output.txt", "w", stdout);
 	//freopen("..//test_cases//generated_big_test_cases_input.txt", "r", stdin);
@@ -238,17 +238,19 @@ int main()
 	while (test_cases--)
 	{
 		int rows, cols;
-		cin >> rows >> cols;
-		assert(1 <= rows);
+		// cin >> rows >> cols;
+		cin >> rows;
+		/* assert(1 <= rows);
 		assert(rows <= MAX_ROWS);
 		assert(1 <= cols);
-		assert(cols <= MAX_COLS);
+		assert(cols <= MAX_COLS);*/
 
 		vector<string> grid (rows);
 		int start = 0, stop = 0;
 		for (int r = 0; r < rows; r++)
 		{
 			cin >> grid[r];
+			cols = grid[r].length();
 			for (int c = 0; c < cols; c++)
 			{
 				assert(
@@ -274,13 +276,14 @@ int main()
 
 		vector<vector<int>> ans = find_shortest_path(grid);
 
-		cout << ans.size() << endl;
+		cout << ans.size() << " cells will be visited in shortest path." << endl;
+		cout << "Actual path is:" << endl;
 		assert(ans.size() != 0);
-		/*for (int i = 0; i < ans.size(); i++)
+		for (int i = 0; i < ans.size(); i++)
 		{
 			cout << ans[i][0] << " " << ans[i][1] << endl;
 		}
-		cout << endl;*/
+		cout << endl;
 	}
 
 	return 0;

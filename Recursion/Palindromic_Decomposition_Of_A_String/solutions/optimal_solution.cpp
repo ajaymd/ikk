@@ -107,12 +107,12 @@ int main()
 {
 	//freopen("..//test_cases//sample_test_cases_input.txt", "r", stdin);
 	//freopen("..//test_cases//sample_test_cases_expected_output.txt", "w", stdout);
-	//freopen("..//test_cases//handmade_test_cases_input.txt", "r", stdin);
-	//freopen("..//test_cases//handmade_test_cases_expected_output.txt", "w", stdout);
+	freopen("..//test_cases//handmade_test_cases_input.txt", "r", stdin);
+	freopen("..//test_cases//handmade_test_cases_expected_output.txt", "w", stdout);
 	//freopen("..//test_cases//generated_small_test_cases_input.txt", "r", stdin);
 	//freopen("..//test_cases//generated_small_test_cases_expected_output.txt", "w", stdout);
-	freopen("..//test_cases//generated_big_test_cases_input.txt", "r", stdin);
-	freopen("..//test_cases//generated_big_test_cases_expected_output.txt", "w", stdout);
+	//freopen("..//test_cases//generated_big_test_cases_input.txt", "r", stdin);
+	//freopen("..//test_cases//generated_big_test_cases_expected_output.txt", "w", stdout);
 	//freopen("..//test_cases//ignore.txt", "w", stdout);
 
 	int test_cases;
@@ -134,12 +134,12 @@ int main()
 		}
 		vector<string> ans = generate_palindromic_decompositions(s);
 		int len = ans.size();
-		cout << len << endl;
+		cout << len << " different palindromic decompositions possible." << endl;
 		for (int i = 0; i < len; i++)
 		{
-			//cout << ans[i] << endl;
+			cout << ans[i] << endl;
 		}
-		//cout << endl;
+		cout << endl;
 	}
 
 	return 0;

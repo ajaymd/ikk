@@ -66,7 +66,16 @@ void copy_output(ifstream &fin)
 	ofstream fout(file_name.c_str());
 	// start from here
 
-
+	string temp;
+	while(1)
+	{
+		getline(fin, temp);
+		if (temp == "")
+		{
+			break;
+		}
+		fout << temp << endl;
+	}
 
 
 	fout.close();

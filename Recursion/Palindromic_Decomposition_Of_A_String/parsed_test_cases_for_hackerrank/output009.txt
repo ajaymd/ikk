@@ -1,0 +1,5 @@
+4 different palindromic decompositions possible.
+yyy
+y|yy
+yy|y
+y|y|y

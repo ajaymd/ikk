@@ -1,0 +1,3 @@
+2 different palindromic decompositions possible.
+b|aa|c
+b|a|a|c

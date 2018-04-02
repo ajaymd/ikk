@@ -1,1 +1,4 @@
-4 is the maximum length possible.
+4 is the length of longest path in weighted DAG.
+Actual path is:
+2
+1

@@ -1,1 +1,8 @@
-6
+6 cells will be visited in shortest path.
+Actual path is:
+56 4
+56 5
+56 6
+57 6
+57 7
+57 8

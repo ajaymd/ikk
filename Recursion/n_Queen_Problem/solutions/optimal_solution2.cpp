@@ -180,16 +180,16 @@ int main()
 		assert(1 <= n);
 		assert(n <= MAX_N);
 		vector<vector<string>> res = find_all_arrangements(n);
-		cout << res.size() << endl;
+		cout << res.size() << " different arrangements possible." << endl << endl;
 		for(int res_i = 0; res_i < res.size(); res_i++) 
 		{
         	for(int res_j = 0; res_j < res[res_i].size(); res_j++) 
         	{
-            	//cout << res[res_i][res_j] << endl;
+            	cout << res[res_i][res_j] << endl;
         	}
-        	//cout << endl;
+        	cout << endl;
     	}
-    	//cout << endl;
+    	cout << endl;
 	}
 
 	return 0;

@@ -166,12 +166,12 @@ int main()
 {
 	//freopen("..//test_cases//sample_test_cases_input.txt", "r", stdin);
 	//freopen("..//test_cases//sample_test_cases_expected_output.txt", "w", stdout);
-	freopen("..//test_cases//handmade_test_cases_input.txt", "r", stdin);
-	freopen("..//test_cases//handmade_test_cases_expected_output.txt", "w", stdout);
+	//freopen("..//test_cases//handmade_test_cases_input.txt", "r", stdin);
+	//freopen("..//test_cases//handmade_test_cases_expected_output.txt", "w", stdout);
 	//freopen("..//test_cases//generated_small_test_cases_input.txt", "r", stdin);
 	//freopen("..//test_cases//generated_small_test_cases_expected_output.txt", "w", stdout);
-	//freopen("..//test_cases//generated_big_test_cases_input.txt", "r", stdin);
-	//freopen("..//test_cases//generated_big_test_cases_expected_output.txt", "w", stdout);
+	freopen("..//test_cases//generated_big_test_cases_input.txt", "r", stdin);
+	freopen("..//test_cases//generated_big_test_cases_expected_output.txt", "w", stdout);
 	//freopen("..//test_cases//ignore.txt", "w", stdout);
 
 	int test_cases;
@@ -222,12 +222,13 @@ int main()
 		{
 			length += weight[{path[i], path[i + 1]}];				
 		}
-		cout << length << endl;
-		/*for (int i = 0; i < path.size(); i++)
+		cout << length << " is the length of longest path in weighted DAG." << endl;
+		cout << "Actual path is:" << endl;
+		for (int i = 0; i < path.size(); i++)
 		{
-			cout << path[i] << " ";	
+			cout << path[i] << endl;	
 		}
-		cout << endl;*/
+		cout << endl;
 	}
 	return 0;
 }

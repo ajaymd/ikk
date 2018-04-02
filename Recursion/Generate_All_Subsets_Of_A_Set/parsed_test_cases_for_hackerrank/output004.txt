@@ -1,0 +1,17 @@
+16
+
+x
+y
+xy
+z
+xz
+yz
+xyz
+w
+xw
+yw
+xyw
+zw
+xzw
+yzw
+xyzw

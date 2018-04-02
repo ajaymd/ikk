@@ -66,8 +66,18 @@ void copy_output(ifstream &fin)
 	ofstream fout(file_name.c_str());
 	// start from here
 
+	int len;
+	fin >> len;
+	fout << len << endl;
+	string temp;
+	// scan '\n' after the len in file.
+	getline(fin, temp);
 
-
+	for (int i = 0; i < len; i++)
+	{
+		getline(fin, temp);
+		fout << temp << endl;
+	}
 
 	fout.close();
 	// To resolve "\r\n" vs "\n" issue. 

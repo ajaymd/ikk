@@ -1,0 +1,2 @@
+1 different palindromic decompositions possible.
+x|y|z

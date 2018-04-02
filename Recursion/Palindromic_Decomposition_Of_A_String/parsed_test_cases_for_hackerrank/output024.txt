@@ -1,0 +1,9 @@
+8 different palindromic decompositions possible.
+abba|eae
+a|bb|a|eae
+a|b|b|a|eae
+a|bb|aea|e
+a|b|b|aea|e
+abba|e|a|e
+a|bb|a|e|a|e
+a|b|b|a|e|a|e

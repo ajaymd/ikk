@@ -66,8 +66,16 @@ void copy_output(ifstream &fin)
 	ofstream fout(file_name.c_str());
 	// start from here
 
-
-
+	string temp, prev_temp="*";
+	while(1)
+	{
+		getline(fin, temp);
+		if (temp == "" && prev_temp == ""){
+			break;
+		}
+		prev_temp = temp;
+		fout << temp << endl;
+	}
 
 	fout.close();
 	// To resolve "\r\n" vs "\n" issue. 

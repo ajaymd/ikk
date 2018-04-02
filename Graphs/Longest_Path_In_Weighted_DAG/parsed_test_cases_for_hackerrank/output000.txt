@@ -1,1 +1,5 @@
-5 is the maximum length possible.
+5 is the length of longest path in weighted DAG.
+Actual path is:
+1
+3
+4

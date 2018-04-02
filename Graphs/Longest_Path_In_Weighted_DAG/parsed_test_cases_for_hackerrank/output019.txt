@@ -1,1 +1,16 @@
-14303151709 is the maximum length possible.
+14303151709 is the length of longest path in weighted DAG.
+Actual path is:
+8
+9
+10
+11
+12
+13
+14
+16
+17
+18
+19
+20
+21
+23

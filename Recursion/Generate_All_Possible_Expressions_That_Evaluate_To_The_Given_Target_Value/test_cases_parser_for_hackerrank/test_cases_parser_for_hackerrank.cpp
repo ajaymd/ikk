@@ -66,15 +66,15 @@ void copy_output(ifstream &fin)
 	ofstream fout(file_name.c_str());
 	// start from here
 
-	/*int len;
+	int len;
 	fin >> len;
-	fout << len << endl;
+	fout << len << " different expressions possible." << endl;
 	for (int i = 0; i < len; i++)
 	{
 		string temp;
 		fin >> temp;
 		fout << temp << endl;
-	}*/
+	}
 
 	fout.close();
 	// To resolve "\r\n" vs "\n" issue. 

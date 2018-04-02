@@ -1,1 +1,7 @@
-5
+5 cells will be visited in shortest path.
+Actual path is:
+5 69
+4 69
+3 69
+2 69
+1 69

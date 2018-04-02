@@ -1,0 +1,17 @@
+16 different palindromic decompositions possible.
+ikikkiki
+iki|kk|iki
+i|k|i|kk|iki
+i|kik|k|iki
+iki|k|k|iki
+i|k|i|k|k|iki
+i|kikkik|i
+i|kik|kik|i
+iki|k|kik|i
+i|k|i|k|kik|i
+i|k|ikki|k|i
+iki|kk|i|k|i
+i|k|i|kk|i|k|i
+i|kik|k|i|k|i
+iki|k|k|i|k|i
+i|k|i|k|k|i|k|i

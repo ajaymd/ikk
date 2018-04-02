@@ -1,1 +1,17 @@
-15
+15 cells will be visited in shortest path.
+Actual path is:
+44 8
+45 8
+46 8
+47 8
+47 7
+48 7
+49 7
+50 7
+50 6
+50 5
+51 5
+52 5
+53 5
+53 4
+54 4

@@ -1,0 +1,12 @@
+2 different arrangements possible.
+
+-q--
+---q
+q---
+--q-
+
+--q-
+q---
+---q
+-q--
+
