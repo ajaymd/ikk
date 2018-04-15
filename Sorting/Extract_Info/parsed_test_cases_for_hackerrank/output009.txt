@@ -1,0 +1,7 @@
+ordinary:1,man
+of:2,reach
+sitting:1,on
+would:1,be
+a:1,server
+somewhere:1,out
+this:1,testcase
