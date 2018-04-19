@@ -1,52 +1,42 @@
-# Note - this does not do evaluation on the fly while building the expression
 
-EXPRS = ['+', '*', '$']
+#https://leetcode.com/problems/expression-add-operators/discuss/71968/Clean-Python-DFS-with-comments
+# dfs() parameters:
+# num: remaining num string
+# temp: temporary string with operators added
+# cur: current result of  "temp" string
+# last: last multiply-level number in "temp". if next operator is multiply, cur and last will be updated
+# res: result to return
 
 
-def intersperse(lst, e=None):
-    arr = [e] * (2 * len(lst) - 1)
-    arr[0::2] = lst
-    return arr
+class Solution(object):
+    def addOperators(self, num, target):
+        res, self.target = [], target
+        for i in range(1, len(num) + 1):
+            # For hacker rank leading zeros are fine so commenting out to pass test cases
+            # if i > 1 and num[0] == "0":  # prevent "0*" as a number (number with leading zeros)
+                # continue
+            # generate every possible concatenation
+            self.dfs(num[i:], num[:i], int(num[:i]), int(num[:i]), res)  # this step put first number in the string
+        return res
 
-
-def generate_all_expressions(exp, r):
-    output = []
-    if not exp or not isinstance(exp, str) or (not r and r != '0'):
-        return output
-
-    result = int(r)
-
-    if len(exp) == 1:
-        if int(exp) == int(result):
-            return '%s=%s' % (exp, result)
-
-    arr = intersperse(list(exp))
-    n = len(arr)
-
-    # recursive function to build possible expressions and prune
-    def _build_exprs(c):
-        curr_exp = ''.join([x for x in arr[:c] if x != '$'])
-        curr_result = eval(curr_exp)
-
-        # prune here if current value is greater than result
-        if eval(curr_exp) > result:
+    def dfs(self, num, temp, cur, last, res):
+        if not num:
+            if cur == self.target:
+                res.append(temp)
             return
-
-        if c == n:
-            if curr_result == result:
-                output.append('%s=%s' % (curr_exp, result))
-            return
-
-        for e in EXPRS:
-            arr[c] = e
-            _build_exprs(c + 2)
-            # set current char back to None
-            arr[c] = None
-
-    _build_exprs(1)
-    return output
+        for i in range(1, len(num) + 1):
+            val = num[:i]
+            # For hacker rank leading zeros are fine so commenting out to pass test cases
+            # if i > 1 and num[0] == "0":  # prevent "0*" as a number (number with leading zeros)
+                # continue
+            # insert an operator at every possible location
+            self.dfs(num[i:], temp + "+" + val, cur + int(val), int(val), res)
+            # we don't have option for - so commenting out
+            # self.dfs(num[i:], temp + "-" + val, cur - int(val), -int(val), res)
+            # a + b * c => s * c => (s - b) + b * c => using last to do that
+            self.dfs(num[i:], temp + "*" + val, cur - last + last * int(val), last * int(val), res)
 
 
-a = '551'
-result = '25'
-print generate_all_expressions(a, result)
+def generate_all_expressions(s, target):
+    sol = Solution()
+    return sol.addOperators(s, target)

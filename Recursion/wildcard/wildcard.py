@@ -2,7 +2,7 @@ POSSIBILITIES = ['1', '0']
 WILDCARD = '?'
 
 
-def wildcard(string_input):
+def find_all_possibilities(string_input):
     if not string_input or not WILDCARD in string_input:
         return [string_input]
 
@@ -32,5 +32,5 @@ def wildcard(string_input):
     return output
 
 
-print wildcard('10??1?')
+print find_all_possibilities('10??1?')
 

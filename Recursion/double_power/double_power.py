@@ -1,4 +1,4 @@
-def power(base, exp):
+def pow(base, exp):
     absexp = abs(exp)
 
     # recursive function to calculate base ^ positive exponent
@@ -23,5 +23,5 @@ def power(base, exp):
     return result
 
 
-print power(2, -3)
+print pow(2, -3)
 

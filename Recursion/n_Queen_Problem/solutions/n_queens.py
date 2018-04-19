@@ -1,22 +1,27 @@
-def generate_n_queens(n):
+def find_all_arrangements(n):
     # fill the board initially
     board = [x for x in range(n)]
     output = []
     _generate_n_queens(board, 0, n, output)
-    print_output(output, n)
+    return generate_output(output)
 
 
-def print_output(output, n):
-    if not output:
-        print 'There are no solutions for n: ', n
-        return
+def generate_output(boards):
+    output = []
+    for arr in boards:
+        o = [['-'] * len(arr) for _ in range(len(arr))]
+        for r, c in enumerate(arr):
+            o[r][c] = 'q'
+        # join rows
+        output.append([''.join(row) for row in o])
+    return output
 
-    print 'For n: ', n
-    for arr in output:
-        out_board = print_board(arr)
-        for row in out_board:
-            print ' '.join([str(x) for x in row])
-        print '\n'
+
+def print_board(arr):
+    output = [['-'] * len(arr) for _ in range(len(arr))]
+    for r, c in enumerate(arr):
+        output[r][c] = 'q'
+    return output
 
 
 def _generate_n_queens(board, start, n, output):
@@ -49,12 +54,5 @@ def _is_board_valid(board, i):
     return True
 
 
-def print_board(arr):
-    output = [[0] * len(arr) for _ in range(len(arr))]
-    for r, c in enumerate(arr):
-        output[r][c] = 'x'
-    return output
-
-
 for i in range(6):
-    generate_n_queens(i)
+    print find_all_arrangements(i)

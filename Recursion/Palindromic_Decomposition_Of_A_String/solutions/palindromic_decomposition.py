@@ -1,4 +1,4 @@
-def palindromic_decomposition(string):
+def generate_palindromic_decompositions(string):
     if not string or len(string) == 1:
         return [string]
 
@@ -52,7 +52,7 @@ def _is_palindrome(string, start, end):
     return string[start] == string[end] and _is_palindrome(string, start+1, end-1)
 
 
-print palindromic_decomposition('abcba')
-# print palindromic_decomposition('abaccdaba')
-# print palindromic_decomposition('abracadabra')
-# print palindromic_decomposition('abba')
+print generate_palindromic_decompositions('abcba')
+# print generate_palindromic_decompositions('abaccdaba')
+# print generate_palindromic_decompositions('abracadabra')
+# print generate_palindromic_decompositions('abba')

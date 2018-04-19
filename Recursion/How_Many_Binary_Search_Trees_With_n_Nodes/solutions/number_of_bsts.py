@@ -1,4 +1,4 @@
-def how_many_bsts(n):
+def how_many_BSTs(n):
     def how_many_bsts_memo(n, memo):
         if n in memo:
             return memo[n]
@@ -27,5 +27,5 @@ def how_many_bsts_no_memo(n):
 
 
 num = 50
-print how_many_bsts(num)
+print how_many_BSTs(num)
 # print how_many_bsts_no_memo(num)

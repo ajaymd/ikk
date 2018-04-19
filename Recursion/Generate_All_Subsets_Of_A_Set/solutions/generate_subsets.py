@@ -15,8 +15,11 @@ def generate_all_subsets(s):
         _generate_all_subsets(so_far, rest[1:])
 
     _generate_all_subsets([], s)
-    return output
+
+    # hackerrank was expecting a list of strings and not a list of lists :-/
+    # return output
+    return [''.join(x) for x in output]
 
 
-a = [1, 2, 3]
+a = ['x', 'y', 'z']
 print generate_all_subsets(a)
