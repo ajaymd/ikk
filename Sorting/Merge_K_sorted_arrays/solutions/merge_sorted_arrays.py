@@ -1,7 +1,7 @@
 from heapq import heappush, heappop
 
 
-def merge_sorted_arrays(arrs):
+def mergeArrays(arrs):
     heap = []
     k = len(arrs)
     n = len(arrs[0])
@@ -22,7 +22,7 @@ def merge_sorted_arrays(arrs):
 
 
 ars = [[1, 3, 5, 7], [2, 4, 6, 8], [0, 9, 10, 11]]
-print merge_sorted_arrays(ars)
+print mergeArrays(ars)
 
 ars2 = [[6, 10, 15], [7, 9, 18]]
-print merge_sorted_arrays(ars2)
+print mergeArrays(ars2)

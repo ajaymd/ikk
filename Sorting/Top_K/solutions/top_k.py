@@ -1,7 +1,7 @@
 from heapq import heappush, heappop
 
 
-def top_k(arr, k):
+def topK(arr, k):
     heap = []
     if not arr:
         return heap
@@ -28,8 +28,8 @@ def top_k(arr, k):
 
 a = [1, 5, 4, 4, 2]
 k = 2
-print top_k(a, k)
+print topK(a, k)
 
 a = [1, 5, 1, 5, 1]
 k = 2
-print top_k(a, k)
+print topK(a, k)

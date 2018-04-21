@@ -1,13 +1,14 @@
-def ms_niave(arr):
+# Naive merge sort as described in Sedgewick
+def ms_naive(arr):
     if not arr or len(arr) == 1:
         return arr
     mid = int(len(arr)/2)
-    left = ms_niave(arr[:mid])
-    right = ms_niave(arr[mid:])
-    return merge_niave(left, right)
+    left = ms_naive(arr[:mid])
+    right = ms_naive(arr[mid:])
+    return merge_naive(left, right)
 
 
-def merge_niave(left, right):
+def merge_naive(left, right):
     if not left and not right:
         return []
     if not left:
@@ -25,6 +26,7 @@ def merge_niave(left, right):
     return output
 
 
+# Merge sort
 def merge_sort(arr):
     if not arr or len(arr) == 1:
         return arr
@@ -68,6 +70,7 @@ def merge(a, aux, low, mid, high):
             j += 1
 
 
+# Bottom up merge sort without recursion
 def bottom_up_ms(a):
     if not a or len(a) < 2:
         return
@@ -84,7 +87,7 @@ def bottom_up_ms(a):
 
 
 A = [1, 2, 3, 4, 0, 1.5, 2.5, 7, 8]
-output = ms_niave(A)
+output = ms_naive(A)
 print output
 
 A = [1, 2, 3, 4, 0, 1.5, 2.5, 7, 8]
