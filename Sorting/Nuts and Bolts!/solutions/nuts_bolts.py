@@ -43,8 +43,3 @@ def partition(arr, low, high, pivot):
 
     swap(arr, i, high)
     return i
-
-
-nuts = ['@', '#', '$', '%', '^', '&']
-bolts = ['$', '%', '&', '^', '@', '#']
-match_nuts_bolts(nuts, bolts)
