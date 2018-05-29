@@ -1,0 +1,104 @@
+Knight's tour!
+
+
+
+
+
+Problem Statement:
+
+
+
+Given a phone keypad as shown below:
+
+1 2 3
+4 5 6
+7 8 9
+  0
+
+How many different phone numbers of given length can be formed starting from the given digit? The constraint is that the movement from one digit to the next is similar to the movement of the Knight in a chess game.
+
+For eg. if we are at 1 then the next digit can be either 6 or 8 if we are at 6 then the next digit can be 1, 7 or 0.
+
+Repetition of digits are allowed - 1616161616 is a valid number. 
+The problem requires us to just give the count of different phone numbers and not necessarily list the numbers.
+Find a polynomial-time solution, based on Dynamic Programming.
+
+
+Input Format:
+
+
+
+You will be given 2 integer values, startdigit and phonenumberlength, denoting starting digit and the required length respectively.
+
+
+
+Output Format:
+
+
+
+Return a long integer denoting the total number of possible numbers that can be formed.
+
+
+
+Constraints:
+
+
+
+0 <= startdigit <= 9
+
+1 <=  phonenumberlength <= 30
+
+
+Sample Test Case:
+
+
+
+Sample Input-1:
+
+
+
+startdigit = 1
+
+phonenumberlength = 2
+
+
+
+Sample Output-1:
+
+
+
+2
+
+
+
+Explanation-1:
+
+
+
+Two possible numbers of length 2: 14, 18
+
+
+
+Sample Input-2:
+
+
+
+startdigit = 1
+
+phonenumberlength = 3
+
+
+
+Sample Output-2:
+
+
+
+5
+
+
+
+Explanation-2:
+
+
+
+Possible numbers of length 3: 143, 149, 140, 181, 183

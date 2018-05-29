@@ -1,0 +1,26 @@
+Recursive solution
+
+Think of it recursively like this: How many numbers can I construct using 10 digits starting from 1?
+
+Answer is
+
+[number of 9-digit numbers starting from 8] + [number of 9-digit numbers starting from 6]
+
+So how many "9-digit numbers starting from 8" are there? Well,
+
+[number of 8-digit numbers starting from 1] + [number of 8-digit numbers starting from 3]
+
+Hence, we can recursively build this as
+
+f(len, i) = sum(f(len-1, knight neighbours of i))
+
+Base case would be f(0, num), where
+f(0, num) = 1, if num = starting digit
+f(0, num) = 0, otherwise
+
+Optimal solution
+
+We can memoize the recurrence relationship mentioned above or build an iterative version for the same problem.
+
+Space Complexity: O(phonenumberlength)
+Time Complexity: O(phonenumberlength)
