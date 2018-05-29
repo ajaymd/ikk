@@ -1,0 +1,25 @@
+Recursive solution
+
+A function f(i) is defined to denote the maximal stolen value from the first house to the ith house, and the value contained in the ith house is denoted as values[i]. When the thief reaches the ith house, he has two choices: to steal or not.
+
+If he steals then he will obtain
+f(i-2) + values[i]
+
+If he does not steal he can obtain
+f(i-1)
+
+Thus, the relationship can be written as
+f(i) = max(f(i-2) + values[i], f(i-1)) 
+
+Base case would be 0 and 1. We can make values[0] at 0 and max(values[0], values[1]) at 1.
+
+
+Optimal solution
+
+We can memoize the recurrence relationship mentioned above or build an iterative version for the same problem.
+We can see for any random x, f(x) depends on f(x-1) and f(x-2). Thus we can iteratively move from 0 to n and at each step we can have
+f[i] = max(f[i-2] + values[i], f[i-1])
+and f[n] will be the final answer.
+
+Space Complexity: O(length(values))
+Time Complexity: O(length(values))
