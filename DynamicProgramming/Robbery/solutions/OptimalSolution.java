@@ -5,13 +5,13 @@ public class OptimalSolution {
      * Space Complexity: O(length(values))
      * Time Complexity: O((length(values))
      */
-    private int maxStolenValue(int[] values) {
+    public static int maxStolenValue(int[] values) {
         int memo[] = new int[values.length];
         Arrays.fill(memo, -1);
         return maxStolenTill(values.length - 1, values, memo);
     }
     
-    private int maxStolenTill(int index, int[] values, int[] memo) {
+    private static int maxStolenTill(int index, int[] values, int[] memo) {
         if (index < 0) {
             return 0;
         }

@@ -5,11 +5,11 @@ public class OptimalSolution {
      * Space Complexity: O(1)
      * Time Complexity: O(2^(length(values))
      */
-    private int maxStolenValue(int[] values) {
+    public static int maxStolenValue(int[] values) {
         return maxStolenTill(values.length - 1, values);
     }
     
-    private int maxStolenTill(int index, int[] values) {
+    private static int maxStolenTill(int index, int[] values) {
         if (index < 0) {
             return 0;
         }
