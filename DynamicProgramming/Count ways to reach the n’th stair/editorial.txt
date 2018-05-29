@@ -1,0 +1,24 @@
+Let us try to solve this problem for 1, 2 and 3 stairs.
+ 
+Recursive solution
+
+We will denote s(n) as the number of ways to reach nth stair using given stairs, which would be 1, 2 and 3 in our explanation.
+
+We can reach n from n-1, n-2 and n-3 by adding 1 stair of 1, 2 and 3 respectively.
+Thus we get the following relationship
+
+s(n) = s(n-1) + s(n-2) + s(n-3)
+
+Base case would be 0. We can reach 0 by only starting there. Thus, s(0) = 1
+
+
+Optimal solution
+
+We can memoize the recurrence relationship mentioned above or build an iterative version for the same problem.
+We can see for any random stair x, s(x) depends on s(y), where y < x. Thus we can iteratively move from 0 to n and at each step we can have
+s[x] = s[x-1] + s[x-2] + s[x-3]
+and s[n] will be the final answer.
+
+
+Space Complexity: O(n*length(steps))
+Time Complexity: O(n*(length(steps))
