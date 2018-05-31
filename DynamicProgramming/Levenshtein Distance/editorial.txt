@@ -1,0 +1,26 @@
+Recursive solution
+
+The idea is process all characters one by one staring from either from left or right sides of both strings.
+Let us traverse from right corner, there are two possibilities for every pair of character being traversed.
+
+m: Length of strWord1 (first string)
+n: Length of strWord2 (second string)
+
+If last characters of two strings are same, nothing much to do. Ignore last characters and get count for remaining strings. So we recur for lengths m-1 and n-1.
+Else (If last characters are not same), we consider all operations on ‘str1’, consider all three operations on last character of first string, recursively compute minimum cost for all three operations and take minimum of three values.
+a)Insert: Recur for m and n-1
+b)Remove: Recur for m-1 and n
+c)Replace: Recur for m-1 and n-1
+
+Optimal solution
+
+We can memoize the recurrence relationship mentioned above or build an iterative version for the same problem.
+If last characters match, then
+dp[i][j] = dp[i-1][j-1];
+Else
+dp[i][j] = 1 + min(dp[i][j-1],  // Insert
+                   dp[i-1][j],  // Remove
+                   dp[i-1][j-1]); // Replace
+
+Space Complexity: O(length(strWord1)*length(strWord2)) 
+Time Complexity: O(length(strWord1)*length(strWord2))
