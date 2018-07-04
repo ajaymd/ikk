@@ -68,21 +68,21 @@ unordered_set<string> words_hash;
 // Check if str1 and str2 differs ar exactly one positon.
 bool only_one_char_difference(int len, string &str1, string &str2)
 {
-	int difference = 0;
-	for (int i = 0; i < len; i++)
-	{
-		if (str1[i] != str2[i])
-		{
-			// If there is already one miss match, and now we have found another. 
-			if (difference == 1)
-			{
-				return false;
-			}
-			difference++;
-		}
-	}
-	// If difference == 0, it means strings are same. So, difference == 1 is needed. 
-	return difference == 1;
+    int difference = 0;
+    for (int i = 0; i < len; i++)
+    {
+        if (str1[i] != str2[i])
+        {
+            // If there is already one miss match, and now we have found another. 
+            if (difference == 1)
+            {
+                return false;
+            }
+            difference++;
+        }
+    }
+    // If difference == 0, it means strings are same. So, difference == 1 is needed. 
+    return difference == 1;
 }
 
 void run_custom_checker(const TestStruct t_obj,
@@ -115,13 +115,8 @@ void run_custom_checker(const TestStruct t_obj,
     
     string temp;
     vector<string> ans;
-    while(1)
+    while(getline(output_file, temp))
     {
-        getline(output_file, temp);
-        if (temp == "")
-        {
-            break;
-        }
         ans.push_back(temp);
     }
     int ans_size = ans.size();
@@ -132,13 +127,8 @@ void run_custom_checker(const TestStruct t_obj,
     expected_output_file.open(t_obj.testcase_expected_output_path.c_str()); 
     
     vector<string> expected_ans;
-    while(1)
+    while(getline(expected_output_file, temp))
     {
-        getline(expected_output_file, temp);
-        if (temp == "")
-        {
-            break;
-        }
         expected_ans.push_back(temp);
     }
     int expected_ans_size = expected_ans.size();
@@ -148,6 +138,13 @@ void run_custom_checker(const TestStruct t_obj,
     
     if (expected_ans_size == 1 && ans_size == 1)
     {
+        // Must be "-1".
+        if (ans[0] != expected_ans[0])
+        {
+            r_obj.result = false;
+            r_obj.score = 0.0f;
+            r_obj.message = "Wrong answer!";
+        }
         return;
     }
     if (ans_size != expected_ans_size)
@@ -176,6 +173,16 @@ void run_custom_checker(const TestStruct t_obj,
         return;
     }
     int len = expected_ans[0].length();
+    for (int i = 0; i < ans_size; i++)
+    {
+        if (ans[i].length() != len)
+        {
+            r_obj.result = false;
+            r_obj.score = 0.0f;
+            r_obj.message = "Wrong answer!";
+            return;
+        }
+    }
     for (int i = 1; i < ans_size; i++)
     {
         if (only_one_char_difference(len, ans[i - 1], ans[i]) == false)

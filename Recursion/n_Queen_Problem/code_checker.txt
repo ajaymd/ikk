@@ -72,71 +72,71 @@ As we are placing queens row wise, we only have to check possible clash with que
 */ 
 bool is_safe(vector<string> &chess_board, int row, int col, int n)
 {
-	// Check top-left to bottom-right diagonal.
-	int cur_row = row, cur_col = col;
-	while (cur_row >= 0 && cur_col >= 0)
-	{
-		if (chess_board[cur_row--][cur_col--] == queen)
-		{
-			return false;
-		}
-	}
-	// Check column.
-	cur_row = row;
-	while (cur_row >= 0)
-	{
-		if (chess_board[cur_row--][col] == queen)
-		{
-			return false;
-		}
-	}
-	// Check top-right to bottom-left diagonal.
-	cur_row = row, cur_col = col;
-	while (cur_row >= 0 && cur_col < n)
-	{
-		if (chess_board[cur_row--][cur_col++] == queen)
-		{
-			return false;
-		}
-	}
-	return true;
+    // Check top-left to bottom-right diagonal.
+    int cur_row = row, cur_col = col;
+    while (cur_row >= 0 && cur_col >= 0)
+    {
+        if (chess_board[cur_row--][cur_col--] == queen)
+        {
+            return false;
+        }
+    }
+    // Check column.
+    cur_row = row;
+    while (cur_row >= 0)
+    {
+        if (chess_board[cur_row--][col] == queen)
+        {
+            return false;
+        }
+    }
+    // Check top-right to bottom-left diagonal.
+    cur_row = row, cur_col = col;
+    while (cur_row >= 0 && cur_col < n)
+    {
+        if (chess_board[cur_row--][cur_col++] == queen)
+        {
+            return false;
+        }
+    }
+    return true;
 }
 
 void find_all_arrangements_util(vector<vector<string>> &ret, vector<string> &chess_board, int n, int row)
 {
-	// If all queens are placed.
-	if (row == n)
-	{
-		// Add the current arrangement.
-		ret.push_back(chess_board);
-		return;
-	}
-	// For current row, try to place queen at chess_board[row][0 <= col < n].
-	for (int col = 0; col < n; col++)
-	{
-		// We can place a queen only if it does not clash with already placed queens.
-		if (is_safe(chess_board, row, col, n))
-		{
-			// Place queen.
-			chess_board[row][col] = queen;
-			// We have placed queens in rows from 0 to row, without any clash. Now try to place queen in next row.
-			find_all_arrangements_util(ret, chess_board, n, row + 1);
-			// We have considered the current possibility, now backtrack.
-			chess_board[row][col] = no_queen;
-		}
-	}
+    // If all queens are placed.
+    if (row == n)
+    {
+        // Add the current arrangement.
+        ret.push_back(chess_board);
+        return;
+    }
+    // For current row, try to place queen at chess_board[row][0 <= col < n].
+    for (int col = 0; col < n; col++)
+    {
+        // We can place a queen only if it does not clash with already placed queens.
+        if (is_safe(chess_board, row, col, n))
+        {
+            // Place queen.
+            chess_board[row][col] = queen;
+            // We have placed queens in rows from 0 to row, without any clash. Now try to place queen in next row.
+            find_all_arrangements_util(ret, chess_board, n, row + 1);
+            // We have considered the current possibility, now backtrack.
+            chess_board[row][col] = no_queen;
+        }
+    }
 }
 
 vector<vector<string>> find_all_arrangements(int n)
 {
-	// We will store all the possible arrangements in this array.
-	vector<vector<string>> ret;
-	// Chessboard row containing no queen.
-	string chess_board_empty_row(n, no_queen);
-	// Chessboard containing no queen.
-	vector<string> chess_board(n, chess_board_empty_row);
-	find_all_arrangements_util(ret, chess_board, n, 0);
-	return ret;
+    // We will store all the possible arrangements in this array.
+    vector<vector<string>> ret;
+    // Chessboard row containing no queen.
+    string chess_board_empty_row(n, no_queen);
+    // Chessboard containing no queen.
+    vector<string> chess_board(n, chess_board_empty_row);
+    find_all_arrangements_util(ret, chess_board, n, 0);
+    return ret;
 }
 
 
@@ -175,9 +175,8 @@ void run_custom_checker(const TestStruct t_obj,
     output_file.open(t_obj.testcase_output_path.c_str()); 
     
     string temp;
-    for (int i = 0; i < our_len; i++)
+    while(getline(output_file, temp))
     {
-        getline(output_file, temp);
         auto it = our_arrangements.find(temp);
         if (it == our_arrangements.end())
         {

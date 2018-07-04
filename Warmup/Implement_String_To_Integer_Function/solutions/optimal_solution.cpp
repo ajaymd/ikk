@@ -63,7 +63,7 @@ int main()
 		string s;
 		getline(cin, s);
 		int n = s.length();
-		assert(0 <= n);
+		assert(1 <= n);
 		assert(n <= MAX_N);
 		bool at_lest_one_digit = false;
 		for (int i = 0; i < n; i++)

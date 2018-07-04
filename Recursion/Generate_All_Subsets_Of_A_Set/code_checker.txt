@@ -65,26 +65,26 @@ public:
 
 void generate_all_subsets_util(vector<string> &all_subsets, string &s, int pos, string cur_subset)
 {
-	/*
-	If we have reached the end then add generated subset. 
-	In C++ string.length() is O(1), but make sure about your language. If it is O(n) then better to calculate it only once, store it (store it in global variable or pass as an argument to the function) and reuse it. 
-	*/
-	if (pos == s.length())
-	{
-		all_subsets.push_back(cur_subset);
-		return;
-	}
-	// Do not include s[pos].
-	generate_all_subsets_util(all_subsets, s, pos + 1, cur_subset);
-	// Include s[pos].
-	generate_all_subsets_util(all_subsets, s, pos + 1, cur_subset + s[pos]);
+    /*
+    If we have reached the end then add generated subset. 
+    In C++ string.length() is O(1), but make sure about your language. If it is O(n) then better to calculate it only once, store it (store it in global variable or pass as an argument to the function) and reuse it. 
+    */
+    if (pos == s.length())
+    {
+        all_subsets.push_back(cur_subset);
+        return;
+    }
+    // Do not include s[pos].
+    generate_all_subsets_util(all_subsets, s, pos + 1, cur_subset);
+    // Include s[pos].
+    generate_all_subsets_util(all_subsets, s, pos + 1, cur_subset + s[pos]);
 }
 
 vector<string> generate_all_subsets(string s)
 {
-	vector<string> all_subsets;
-	generate_all_subsets_util(all_subsets, s, 0, "");
-	return all_subsets;
+    vector<string> all_subsets;
+    generate_all_subsets_util(all_subsets, s, 0, "");
+    return all_subsets;
 }
 
 #include<unordered_set>
@@ -117,9 +117,8 @@ void run_custom_checker(const TestStruct t_obj,
     output_file.open(t_obj.testcase_output_path.c_str()); 
     
     string temp;
-    for (int i = 0; i < our_len; i++)
+    while(getline(output_file, temp))
     {
-        getline(output_file, temp);
         auto it = our_subsets.find(temp);
         if (it == our_subsets.end())
         {

@@ -1,4 +1,4 @@
-Knight's tour!
+﻿Knight's tour!
 
 
 
@@ -75,7 +75,7 @@ Explanation-1:
 
 
 
-Two possible numbers of length 2: 14, 18
+Two possible numbers of length 2: 16, 18
 
 
 
@@ -101,4 +101,4 @@ Explanation-2:
 
 
 
-Possible numbers of length 3: 143, 149, 140, 181, 183
+Possible numbers of length 3: 160, 161, 167, 181, 183

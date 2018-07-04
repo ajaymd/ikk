@@ -1,3 +1,5 @@
+Constraint must be 1 <= |s| <= 10^5 and not 0 <= |s| <= 10^5, because languages like Python will fail with error "EOFError: EOF when reading a line".
+
 Input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
  
 First and only line in input contains one string denoting s.

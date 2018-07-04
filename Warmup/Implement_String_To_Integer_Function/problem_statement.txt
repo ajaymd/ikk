@@ -48,7 +48,7 @@ Return first integer extracted from given string.
 
 Constraints:
 
-0 <= |s| <= 10^5
+1 <= |s| <= 10^5
 s may contain numerical as well as non numerical characters. 
 If number is present then it is guaranteed that it will fit in integer. (No need to think about integer overflow.)
 Solution with linear time complexity and constant space is expected.

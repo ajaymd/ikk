@@ -140,6 +140,14 @@ void run_custom_checker(const TestStruct t_obj,
             return;
         }
     }
+
+    if (counter % 2)
+    {
+        r_obj.result = false;
+        r_obj.score = 0.0f;
+        r_obj.message = "Wrong answer!";
+        return;
+    }
         
     ifstream expected_output(t_obj.testcase_expected_output_path);
     int expected_length;
