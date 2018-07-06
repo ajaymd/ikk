@@ -2,6 +2,8 @@
 
 using namespace std;
 
+// ------------------------------------START-------------------------------------
+
 const int MAX_N = 300000, MAX_A = 4000000;
 
 int check_if_prime(int no)
@@ -10,7 +12,7 @@ int check_if_prime(int no)
 	{
 		return 0;
 	}
-	for (int i = 2; i * i <= no; i++)						
+	for (int i = 2; i < no; i++)						
 	{
 		if (no % i == 0)
 		{
@@ -37,6 +39,8 @@ string detect_primes(vector<int> a)
 	}
 	return ans;
 }
+
+// -------------------------------------END----------------------------------------
 
 int main()
 {
