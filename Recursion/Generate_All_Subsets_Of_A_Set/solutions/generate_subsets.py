@@ -1,7 +1,5 @@
 def generate_all_subsets(s):
     output = []
-    if len(s) < 1:
-        return output
 
     # recursive function to generate subsets
     def _generate_all_subsets(so_far, rest):
@@ -16,10 +14,15 @@ def generate_all_subsets(s):
 
     _generate_all_subsets([], s)
 
-    # hackerrank was expecting a list of strings and not a list of lists :-/
+    # IK OJ is expecting a list of strings and not a list of lists
     # return output
     return [''.join(x) for x in output]
 
 
 a = ['x', 'y', 'z']
 print generate_all_subsets(a)
+a = ['x']
+print generate_all_subsets(a)
+a = []
+print generate_all_subsets(a)
+

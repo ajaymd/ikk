@@ -1,11 +1,10 @@
-def match_nuts_bolts(nuts, bolts):
+def solve(nuts, bolts):
     def _match_paris(low, high):
         if low >= high:
             return
 
         # choose the last character of bolts array for nuts partition
         pivot = partition(nuts, low, high, bolts[high])
-        # print 'pivot is ', pivot
         # now partition bolts using the pivot from above
         partition(bolts, low, high, nuts[pivot])
 
@@ -14,8 +13,15 @@ def match_nuts_bolts(nuts, bolts):
         _match_paris(pivot+1, high)
 
     _match_paris(0, len(nuts)-1)
-    print nuts
-    print bolts
+    # print(nuts)
+    # print(bolts)
+
+    # Making it match IK OJ's expected output
+    output = []
+    for i, nut in enumerate(nuts):
+        output.append('%s %s' % (nut, bolts[i]))
+
+    return output
 
 
 def swap(arr, i, j):
@@ -43,3 +49,8 @@ def partition(arr, low, high, pivot):
 
     swap(arr, i, high)
     return i
+
+
+NUTS = [4, 32, 5, 7]
+BOLTS = [32, 7, 5, 4]
+print solve(NUTS, BOLTS)

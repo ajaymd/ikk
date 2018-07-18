@@ -44,52 +44,47 @@ class Trie(object):
             self.add_word(word)
 
 
-DIRECTIONS = [(0, 1), (0, -1), (-1, 0), (1, 0)]
+# Leetcode version has only 4 neighboring cells, IK has 8 cells
+DIRECTIONS = [(0, 1), (0, -1), (-1, 0), (1, 0), (-1, 1), (1, 1), (-1, -1), (1, -1)]
 
 
-class Solution(object):
+def findWords(words, board):
+    trie = Trie()
+    trie.add_words(words)
+    root = trie.root
 
-    def findWords(self, board, words):
-        """
-        :type board: List[List[str]]
-        :type words: List[str]
-        :rtype: List[str]
-        """
-        trie = Trie()
-        trie.add_words(words)
-        root = trie.root
+    output = []
 
-        output = []
+    def _dfs(node, i, j, path):
+        if node.is_word_end:
+            output.append(path)
+            node.is_word_end = False
 
-        def _dfs(node, i, j, path):
-            if node.is_word_end:
-                output.append(path)
-                node.is_word_end = False
+        if i < 0 or i >= len(board) or j < 0 or j >= len(board[0]):
+            return
 
-            if i < 0 or i >= len(board) or j < 0 or j >= len(board[0]):
-                return
+        # save current pos to put back
+        tmp = board[i][j]
+        child = node.children.get(tmp)
+        if not child:
+            return
+        board[i][j] = '#'
+        for dr, dc in DIRECTIONS:
+            _dfs(child, i + dr, j + dc, path + tmp)
+        # set board back at end of dfs
+        board[i][j] = tmp
 
-            # save current pos to put back
-            tmp = board[i][j]
-            child = node.children.get(tmp)
-            if not child:
-                return
-            board[i][j] = '#'
-            for dr, dc in DIRECTIONS:
-                _dfs(child, i + dr, j + dc, path + tmp)
-            # set board back at end of dfs
-            board[i][j] = tmp
+    # start here
+    for i in range(len(board)):
+        for j in range(len(board[0])):
+            _dfs(root, i, j, '')
 
-        # start here
-        for i in range(len(board)):
-            for j in range(len(board[0])):
-                _dfs(root, i, j, '')
-
-        return output
+    return output
 
 
 
-sol = Solution()
+
+
 b = [
   ['o','a','a','n'],
   ['e','t','a','e'],
@@ -97,4 +92,4 @@ b = [
   ['i','f','l','v']
 ]
 w = ["oath","pea","eat","rain"]
-print sol.findWords(b, w)
+print findWords(w, b)
