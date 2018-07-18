@@ -5,7 +5,8 @@ def generate_all_subsets(s):
     def _generate_all_subsets(so_far, rest):
         # base case
         if len(rest) == 0:
-            output.append(so_far)
+            # IK OJ is expecting a list of strings and not a list of lists
+            output.append(''.join(so_far))
             return
 
         # recurse after adding current and not adding current to so_far
@@ -14,9 +15,7 @@ def generate_all_subsets(s):
 
     _generate_all_subsets([], s)
 
-    # IK OJ is expecting a list of strings and not a list of lists
-    # return output
-    return [''.join(x) for x in output]
+    return output
 
 
 a = ['x', 'y', 'z']

@@ -1,10 +1,14 @@
+from random import randint
+from itertools import starmap
+
 def solve(nuts, bolts):
     def _match_paris(low, high):
         if low >= high:
             return
 
-        # choose the last character of bolts array for nuts partition
-        pivot = partition(nuts, low, high, bolts[high])
+        # choose a random bolt as partition
+        idx = randint(low, high)
+        pivot = partition(nuts, low, high, bolts[idx])
         # now partition bolts using the pivot from above
         partition(bolts, low, high, nuts[pivot])
 
@@ -17,11 +21,13 @@ def solve(nuts, bolts):
     # print(bolts)
 
     # Making it match IK OJ's expected output
-    output = []
-    for i, nut in enumerate(nuts):
-        output.append('%s %s' % (nut, bolts[i]))
-
-    return output
+    # Can do this instead of using map
+    # output = []
+    # for i, nut in enumerate(nuts):
+    #     output.append('%s %s' % (nut, bolts[i]))
+    #
+    # return output
+    return list(starmap(lambda i, nut: '%s %s' % (nut, bolts[i]), enumerate(nuts)))
 
 
 def swap(arr, i, j):
@@ -53,4 +59,4 @@ def partition(arr, low, high, pivot):
 
 NUTS = [4, 32, 5, 7]
 BOLTS = [32, 7, 5, 4]
-print solve(NUTS, BOLTS)
+print(solve(NUTS, BOLTS))
