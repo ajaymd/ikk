@@ -16,8 +16,8 @@ No two queens to attack each other, we need to satisfy the following conditions:
 
 1) There must be only one queen in one row.
 2) There must be only one queen in one column.
-3) There must be only one queen in diagonal from top-left to bottom-right (that is like / , so we will call it slash diagonal.)
-4) There must be only one queen in diagonal from top-right to bottom-left (that is like \ , so we will call it back-slash diagonal.)
+3) There must be only one queen in diagonal from top-left to bottom-right (that is like \ , so we will call it back-slash diagonal.)
+4) There must be only one queen in diagonal from top-right to bottom-left (that is like / , so we will call it slash diagonal.)
 
 We can start placing queens row wise, from top row to bottom row. Once we have placed any queen in any row we will move to next next row. (So this will ensure that condition 1 is satisfied!) Now for condition 2, 3 and 4 we can perform a check before placing queen at any position.
 
