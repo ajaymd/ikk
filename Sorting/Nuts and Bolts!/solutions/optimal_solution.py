@@ -1,5 +1,8 @@
+# START
+
 from random import randint
 from itertools import starmap
+
 
 def solve(nuts, bolts):
     def _match_paris(low, high):
@@ -55,6 +58,10 @@ def partition(arr, low, high, pivot):
 
     swap(arr, i, high)
     return i
+
+# STOP
+
+# TEST RUN
 
 
 NUTS = [4, 32, 5, 7]

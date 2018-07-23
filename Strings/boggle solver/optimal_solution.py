@@ -19,6 +19,8 @@ words = ["oath","pea","eat","rain"] and board =
 Output: ["eat","oath"]
 """
 
+# START
+
 from collections import defaultdict
 
 
@@ -82,14 +84,14 @@ def findWords(words, board):
     return output
 
 
+# STOP
 
-
-
+# SAMPLE TEST CASES
 b = [
-  ['o','a','a','n'],
-  ['e','t','a','e'],
-  ['i','h','k','r'],
-  ['i','f','l','v']
+  ['o', 'a', 'a', 'n'],
+  ['e', 't', 'a', 'e'],
+  ['i', 'h', 'k',' r'],
+  ['i', 'f', 'l', 'v']
 ]
-w = ["oath","pea","eat","rain"]
-print findWords(w, b)
+w = ['oath', 'pea', 'eat', 'rain']
+print(findWords(w, b))
