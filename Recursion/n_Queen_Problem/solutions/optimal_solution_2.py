@@ -1,7 +1,7 @@
 # Reference - https://github.com/InterviewKickstart/CodingProblemsIK/blob/master/Recursion/n_Queen_Problem/editorial.txt
 
 
-# START
+# ------------------------------------------ START ------------------------------------------
 
 def find_all_arrangements(n):
     output = []
@@ -54,7 +54,7 @@ def generate_output(boards):
     return output
 
 
-# STOP
+# ------------------------------------------ STOP ------------------------------------------
 
 
 # MAIN FUNCTION/SAMPLE INPUT

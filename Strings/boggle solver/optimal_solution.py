@@ -19,7 +19,7 @@ words = ["oath","pea","eat","rain"] and board =
 Output: ["eat","oath"]
 """
 
-# START
+# ------------------------------------------ START ------------------------------------------
 
 from collections import defaultdict
 
@@ -84,7 +84,7 @@ def findWords(words, board):
     return output
 
 
-# STOP
+# ------------------------------------------ STOP ------------------------------------------
 
 # SAMPLE TEST CASES
 b = [

@@ -1,7 +1,7 @@
 # Reference - https://github.com/InterviewKickstart/CodingProblemsIK/blob/master/Recursion/n_Queen_Problem/editorial.txt
 
 
-# START
+# ------------------------------------------ START ------------------------------------------
 QUEEN = 'q'
 NO_QUEEN = '-'
 
@@ -49,7 +49,7 @@ def find_all_arrangements(n):
     return output
 
 
-# STOP
+# ------------------------------------------ STOP ------------------------------------------
 
 
 # MAIN FUNCTION/SAMPLE INPUT

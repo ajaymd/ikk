@@ -1,4 +1,6 @@
-# START
+# ------------------------------------------ START ------------------------------------------
+
+
 def generate_all_subsets(s):
     output = []
 
@@ -18,7 +20,7 @@ def generate_all_subsets(s):
 
     return output
 
-# STOP
+# ------------------------------------------ STOP ------------------------------------------
 
 
 # SAMPLE TEST CASES

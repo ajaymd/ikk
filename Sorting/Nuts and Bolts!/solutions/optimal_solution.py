@@ -1,4 +1,4 @@
-# START
+# ------------------------------------------ START ------------------------------------------
 
 from random import randint
 from itertools import starmap
@@ -59,7 +59,7 @@ def partition(arr, low, high, pivot):
     swap(arr, i, high)
     return i
 
-# STOP
+# ------------------------------------------ STOP ------------------------------------------
 
 # TEST RUN
 
