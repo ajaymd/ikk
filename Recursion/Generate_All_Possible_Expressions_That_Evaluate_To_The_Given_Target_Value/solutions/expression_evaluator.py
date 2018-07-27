@@ -1,42 +1,58 @@
 
-#https://leetcode.com/problems/expression-add-operators/discuss/71968/Clean-Python-DFS-with-comments
-# dfs() parameters:
-# num: remaining num string
-# temp: temporary string with operators added
-# cur: current result of  "temp" string
-# last: last multiply-level number in "temp". if next operator is multiply, cur and last will be updated
-# res: result to return
+# ------------------------------------------ START ------------------------------------------
 
+def generate_all_expressions(num, target):
+    """
+    :type num: str
+    :type target: int
+    :rtype: List[str]
+    """
+    if not num:
+        return []
+    output = []
 
-class Solution(object):
-    def addOperators(self, num, target):
-        res, self.target = [], target
-        for i in range(1, len(num) + 1):
-            # For hacker rank leading zeros are fine so commenting out to pass test cases
-            # if i > 1 and num[0] == "0":  # prevent "0*" as a number (number with leading zeros)
-                # continue
-            # generate every possible concatenation
-            self.dfs(num[i:], num[:i], int(num[:i]), int(num[:i]), res)  # this step put first number in the string
-        return res
-
-    def dfs(self, num, temp, cur, last, res):
-        if not num:
-            if cur == self.target:
-                res.append(temp)
+    def _dfs(so_far, evaluated, start, prev):
+        """
+        :param so_far: expression so far (string)
+        :param evaluated: evaluated value so far (int)
+        :param start: index to start recursing from
+        :param prev: prev value to use for the multiplication special case to give it precedence (explained
+            in comments)
+        :return: doesn't return, appends to output in the base case
+        """
+        if start == len(num):
+            if evaluated == target:
+                output.append(so_far)
             return
-        for i in range(1, len(num) + 1):
-            val = num[:i]
-            # For hacker rank leading zeros are fine so commenting out to pass test cases
-            # if i > 1 and num[0] == "0":  # prevent "0*" as a number (number with leading zeros)
-                # continue
-            # insert an operator at every possible location
-            self.dfs(num[i:], temp + "+" + val, cur + int(val), int(val), res)
-            # we don't have option for - so commenting out
-            # self.dfs(num[i:], temp + "-" + val, cur - int(val), -int(val), res)
-            # a + b * c => s * c => (s - b) + b * c => using last to do that
-            self.dfs(num[i:], temp + "*" + val, cur - last + last * int(val), last * int(val), res)
+
+        for i in range(start, len(num)):
+            curr = num[start:i + 1]
+            curr_int = int(curr)
+            if start == 0:
+                # just appending digits for first pass
+                _dfs(so_far + curr, curr_int, i + 1, curr_int)
+            else:
+                _dfs(so_far + '+' + curr, evaluated + curr_int, i + 1, curr_int)
+                # Detailed explanation - 
+                #   https://github.com/InterviewKickstart/CodingProblemsIK/blob/master/Recursion/Generate_All_Possible_Expressions_That_Evaluate_To_The_Given_Target_Value/solutions/optimal_solution.cpp
+                # In short we need to give precdence to multiplication - eg if we have a + b * c, we really
+                #   want a + (b*c) and not (a+b) * c;
+                # Having the evaluated so far value say s and prev value passed up b (for addition b, and
+                #   for multiplication a * b), will help us evaluate correctly
+                # For prev addition; ev = (a + b), prev = b, curr = c; so current calculation
+                #   (ev - prev) + (prev * curr) will give us (a + b - b) + (b * c) = a + (b * c)
+                # For prev multiplication; ev = (a * b), prev = a * b, curr = c; so current calculation
+                #   (ev - prev) + (prev * curr) will give us (a * b - a * b) + (a * b * c) = a * b * c
+                # For prev subtraction (in LC) ; ev = (a - b), prev = -b, curr = c; so current calculation
+                #   (ev - prev) + (prev * curr) will give us (a - b + b) + (-b * c) = a - (b * c)
+                _dfs(so_far + '*' + curr, (evaluated - prev) + (prev * curr_int), i + 1, prev * curr_int)
+
+    _dfs('', 0, 0, 0)
+    return output
+
+# ------------------------------------------ STOP ------------------------------------------
+
+# MAIN/SAMPLE INPUT
 
 
-def generate_all_expressions(s, target):
-    sol = Solution()
-    return sol.addOperators(s, target)
+print(generate_all_expressions('222', 24))
