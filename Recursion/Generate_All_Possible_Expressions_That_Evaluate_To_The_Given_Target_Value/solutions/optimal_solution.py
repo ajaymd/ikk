@@ -26,15 +26,16 @@ def generate_all_expressions(num, target):
             return
 
         for i in range(idx, len(num)):
-            # For an input like 1234, depending on idx, curr will be 1, 12, 123, 1234; 2 23 234; 3 34; 4 (all possible splits)
+            # For an input like 1234, depending on idx, curr will be 1, 12, 123, 1234; 2 23 234; 3 34; 4 (all
+            #   possible splits)
             # This takes care of the concat case as concat has most precedence
             curr = num[idx:i+1]
             curr_int = int(curr)
             if idx == 0:
                 # just appending digits for this pass
-                # this can be outside the recursive function before dfs is called, but having it here makes it more DRY
-                # since we will have to do the curr and curr_int outside otherwise
-                # for 1234 case, when idx = 0, we will have 1, 12, 123, 1234
+                # this can be outside the recursive function before dfs is called, but having it here makes
+                # it more DRY since we will have to do the curr and curr_int outside otherwise for 1234 case,
+                #   when idx = 0, we will have 1, 12, 123, 1234
                 # prev value is just current_int (which is same as evaluated)
                 _dfs(so_far + curr, curr_int, i+1, curr_int)
             else:
