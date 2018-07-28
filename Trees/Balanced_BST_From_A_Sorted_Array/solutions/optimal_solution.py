@@ -25,24 +25,24 @@ class TreeNode:
         self.right_ptr = None
 '''
 
-# build tree using values (a[l], a[l+1], ..., a[r]).
-def build_balanced_bst_helper(l, r, a):                         
-    if (l > r):  
-        return None
-    m = l + (r - l + 1) / 2
-    m = int(m)
-    # to build balanced tree we need to choose the middle element as the root 
-    temp_tree_node = TreeNode(a[m])                                     
-    # recursively create subtree and add it as left child    
-    temp_tree_node.left_ptr = build_balanced_bst_helper(l, m - 1, a)    
-    # recursively create subtree and add it as right child 
-    temp_tree_node.right_ptr = build_balanced_bst_helper(m + 1, r, a)   
-    return temp_tree_node
 
-def build_balanced_bst(a): 
-    N = len(a)
+def build_balanced_bst(a):
+    # build tree using values (a[left], a[left+1], ..., a[right]).
+    # indices are inclusive
+    def _build_balanced_bst(left, right):
+        if left > right:
+            return
+
+        # to build balanced tree we need to choose the middle element as the root
+        mid = int((left + right) / 2)
+        node = TreeNode(a[mid])
+        # recursively create subtrees and add them as left and right children
+        node.left_ptr = _build_balanced_bst(left, mid - 1)
+        node.right_ptr = _build_balanced_bst(mid + 1, right)
+        return node
+
     # build balanced BST
-    return build_balanced_bst_helper(0, N - 1, a)               
+    return _build_balanced_bst(0, len(a) - 1)
 
 '''
     -----------------------------------STOP----------------------------------------
