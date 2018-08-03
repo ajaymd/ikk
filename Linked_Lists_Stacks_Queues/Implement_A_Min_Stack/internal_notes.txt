@@ -1,4 +1,4 @@
-Input format in problem statement describes the input format to the particular function, not the actual programme. They might be different. So, input format to the actual programme is:
+Input format in problem statement describes the input format for the function that students need to complete and not the raw input.  So, raw input format can be described as:
  
 First line contains one integer denoting size of the input array.
 Next n lines contains one integer, together denoting the values to be stored in input array.

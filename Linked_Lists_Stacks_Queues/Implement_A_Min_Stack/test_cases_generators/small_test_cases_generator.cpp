@@ -31,7 +31,7 @@ long long int random_number(long long int mod)
 	return -1;
 }
 
-// --------------------------------------------------------------------------
+// ----------------------------------------------------------------------
 
 const int MAX_N = 500, MIN_VAL = -1, MAX_VAL = 2000000000;
 
@@ -61,7 +61,9 @@ void random_test_case()
 int main()
 {
 	srand(time(NULL));
-	freopen("..//test_cases//generated_small_test_cases_input.txt", "w", stdout);
+	freopen(
+		"..//test_cases//generated_small_test_cases_input.txt", "w", stdout
+	);
 	//freopen("..//test_cases//ignore.txt", "w", stdout);
 
 	int test_cases = 15;

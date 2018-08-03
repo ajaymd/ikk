@@ -40,7 +40,9 @@ const char no_queen = '-';
 
 /*
 Function to check if we can place a queen at position chess_board[row][col].
-As we are placing queens row wise, we only have to check possible clash with queens placed above the current row. (No need to worry about the chessboard below current row, as we have not placed any queens below current row yet!)
+As we are placing queens row wise, we only have to check possible clash with queens placed above the current
+row. (No need to worry about the chessboard below current row, as we have not placed any queens below current
+row yet!)
 */ 
 bool is_safe(vector<string> &chess_board, int row, int col, int n)
 {
@@ -91,7 +93,10 @@ void find_all_arrangements_util(vector<vector<string>> &ret, vector<string> &che
         {
             // Place queen.
             chess_board[row][col] = queen;
-            // We have placed queens in rows from 0 to row, without any clash. Now try to place queen in next row.
+            /*
+            We have placed queens in rows from 0 to row, without any clash. Now try to place queen in next
+            row.
+            */
             find_all_arrangements_util(ret, chess_board, n, row + 1);
             // We have considered the current possibility, now backtrack.
             chess_board[row][col] = no_queen;
@@ -115,8 +120,10 @@ vector<vector<string>> find_all_arrangements(int n)
 #include<unordered_set>
 unordered_set<string> our_arrangements;
 
-void run_custom_checker(stringstream &input_file, stringstream &expected_output_file, stringstream &output_file, 
-	ResultStruct &r_obj) {
+void run_custom_checker(
+    stringstream &input_file, stringstream &expected_output_file, stringstream &output_file, 
+    ResultStruct &r_obj
+) {
     //Don't print anything to STDOUT in this function
     //Enter your custom checker scoring logic here
 

@@ -31,15 +31,21 @@ long long int random_number(long long int mod)
 	return -1;
 }
 
-// --------------------------------------------------------------------------
+// ----------------------------------------------------------------------
 
 
 
 int main()
 {
 	srand(time(NULL));
-	//freopen("..//test_cases//generated_small_test_cases_input.txt", "w", stdout);
-	//freopen("..//test_cases//ignore.txt", "w", stdout);
+	// freopen(
+	// 	"..//test_cases//generated_small_test_cases_input.txt",
+	// 	"w", stdout
+	// );
+	// freopen(
+	// 	"..//test_cases//ignore.txt",
+	// 	"w", stdout
+	// );
 
 
 

@@ -12,7 +12,7 @@ There is only one argument denoting integer array a.
 
 Output Format:
 
-Return a string of size N, where ith character of string contains ‘1’ if a[i] is a prime number else it should contain ‘0’. (1 is neither a prime nor a composite number, hence according to the previous statement, it should go in else part, i.e. ith character should contain '0', when a[i] = 1.)
+Return a string of size N, where ith character of string contains '1' if a[i] is a prime number else it should contain '0'. (1 is neither a prime nor a composite number, hence according to the previous statement, it should go in else part, i.e. ith character should contain '0', when a[i] = 1.)
 
 Constraints:
 
@@ -39,7 +39,6 @@ Explanation:
 Notes:
 
 Maximum time allowed in interview: 20 Minutes.
-
 
 
 

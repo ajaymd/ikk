@@ -2,8 +2,10 @@
 
 using namespace std;
 
-// When counter is 5 then return "005" when counter is 48 then return "048" when counter is 123 then return "123"
-
+/*
+When counter is 5 then return "005" when counter is 48 then return "048" when
+counter is 123 then return "123"
+*/
 string integer_to_string(int counter)
 {
 	string ret = "";
@@ -19,8 +21,10 @@ string integer_to_string(int counter)
 	return ret;					
 }
 
-// If we have added output for 5 testcases (output000.txt to output004.txt) then this will return output005.txt
-
+/*
+If we have added output for 5 testcases (output000.txt to output004.txt) then
+this will return output005.txt
+*/
 string file_name_for_next_output()
 {
 	static int output_counter = 0;			// for outputxxx.txt
@@ -29,8 +33,10 @@ string file_name_for_next_output()
 	return "..//parsed_test_cases_for_hackerrank//output" + no + ".txt";
 }
 
-// If we have added input for 5 testcases (input000.txt to input004.txt) then this will return input005.txt
-
+/*
+If we have added input for 5 testcases (input000.txt to input004.txt) then this
+will return input005.txt
+*/
 string file_name_for_next_input()
 {
 	static int input_counter = 0;			// for inputxxx.txt
@@ -41,25 +47,18 @@ string file_name_for_next_input()
 
 // According to problem statement output format complete this method. 
 /*
-	If output is a string then:
+If output is a string then:
 
+string file_name = file_name_for_next_output();
+freopen(file_name.c_str(), "w", stdout);
+string s;
+cin >> s;
+cout << s << endl;
 
+Here we are writing to some outputxxx.txt file. 
 
-	string file_name = file_name_for_next_output();
-	ofstream fout(file_name.c_str());
-	string s;
-	fin >> s;
-	fout << s << endl;
-
-	fout.close();
-
-
-
-	Here we are writing to some outputxxx.txt file. 
-
-	Make sure that we are using appropriate format (like endl, spaces, tabs etc).
+Make sure that we are using appropriate format (like endl, spaces, tabs etc).
 */
-
 void copy_output(ifstream &fin)
 {
 	string file_name = file_name_for_next_output();
@@ -79,36 +78,37 @@ void copy_output(ifstream &fin)
 
 	fout.close();
 	// To resolve "\r\n" vs "\n" issue. 
-	string command_to_run = "dos2unix ..//parsed_test_cases_for_hackerrank//" + file_name;
+	string command_to_run = 
+		"dos2unix ..//parsed_test_cases_for_hackerrank//" + file_name;
 	system(command_to_run.c_str());
 }
 
 // According to problem statement input format complete this method. 
 /*
-	If input is an array then:
+If input is an array then:
 
 
 
-	string file_name = file_name_for_next_output();
-	ofstream fout(file_name.c_str());
-	int N;
-	fin >> N;
-	fout << N << endl;
-	for (int i = 0; i < N; i++)
-	{
-		int no;
-		fin >> no;
-		fout << no << " ";
-	}
-	fout << endl;
+string file_name = file_name_for_next_output();
+ofstream fout(file_name.c_str());
+int N;
+fin >> N;
+fout << N << endl;
+for (int i = 0; i < N; i++)
+{
+	int no;
+	fin >> no;
+	fout << no << " ";
+}
+fout << endl;
 
-	fout.close();
-	
+fout.close();
 
 
-	Here we are writing to some inputxxx.txt file. 
 
-	Make sure that we are using appropriate format (like endl, spaces, tabs etc).
+Here we are writing to some inputxxx.txt file. 
+
+Make sure that we are using appropriate format (like endl, spaces, tabs etc).
 */
 
 void copy_input(ifstream &fin)
@@ -129,13 +129,19 @@ void copy_input(ifstream &fin)
 
 	fout.close();
 	// To resolve "\r\n" vs "\n" issue. 
-	string command_to_run = "dos2unix ..//parsed_test_cases_for_hackerrank//" + file_name;
+	string command_to_run = 
+		"dos2unix ..//parsed_test_cases_for_hackerrank//" + file_name;
 	system(command_to_run.c_str());
 }
 
-// This fucntion copies no_of_test_cases testcases from given files. copy_input_from file will contain inputs and copy_output_from will contain expected outpus. 
-
-void parse_test_cases(string copy_input_from, string copy_output_from, int no_of_test_cases)
+/*
+This fucntion copies no_of_test_cases testcases from given files.
+copy_input_from file will contain inputs and copy_output_from will contain
+expected outpus. 
+*/
+void parse_test_cases(
+	string copy_input_from, string copy_output_from, int no_of_test_cases
+)
 {
 	if (no_of_test_cases <= 0)
 	{
@@ -159,10 +165,26 @@ void parse_test_cases(string copy_input_from, string copy_output_from, int no_of
 
 int main()
 {
-	parse_test_cases("..//test_cases//sample_test_cases_input.txt", "..//test_cases//sample_test_cases_expected_output.txt", 2);
-	parse_test_cases("..//test_cases//handmade_test_cases_input.txt", "..//test_cases//handmade_test_cases_expected_output.txt", 8);
-	parse_test_cases("..//test_cases//generated_small_test_cases_input.txt", "..//test_cases//generated_small_test_cases_expected_output.txt", 15);
-	parse_test_cases("..//test_cases//generated_big_test_cases_input.txt", "..//test_cases//generated_big_test_cases_expected_output.txt", 5);
+	parse_test_cases(
+		"..//test_cases//sample_test_cases_input.txt",
+		"..//test_cases//sample_test_cases_expected_output.txt",
+		2
+	);
+	parse_test_cases(
+		"..//test_cases//handmade_test_cases_input.txt",
+		"..//test_cases//handmade_test_cases_expected_output.txt",
+		8
+	);
+	parse_test_cases(
+		"..//test_cases//generated_small_test_cases_input.txt",
+		"..//test_cases//generated_small_test_cases_expected_output.txt",
+		15
+	);
+	parse_test_cases(
+		"..//test_cases//generated_big_test_cases_input.txt",
+		"..//test_cases//generated_big_test_cases_expected_output.txt",
+		5
+	);
 
 	return 0;
 }
