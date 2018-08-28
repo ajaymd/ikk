@@ -1,0 +1,10 @@
+Optimal solution
+
+The idea is to consider the given board as a graph. Each cell has 4 neighbours, top, bottom, left and right. We cannot go to a wall neighbour.
+
+If we have only one guard then the problem becomes straight-forward problem for BFS. We will put that guard in the queue at the start and keep running breadth first search and denote the distance to all the cells from that guard. Places which cannot be reached will be marked -1.
+
+When there are more than one guards, we run a multi-source BFS. In multi-source breadth first search we add all the guards to the queue at the start with 0 distance. Then with every move to the neighbour, we add 1 to the original distance of the respective guard. We keep on storing the minimum distance of that cell from the guard when we reach a cell first time.
+
+Space Complexity: O(n*m)
+Time Complexity: O(n*m)
