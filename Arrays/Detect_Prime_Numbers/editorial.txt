@@ -1,94 +1,44 @@
-For any number a[i], we iterate over 2 to a[i] - 1 and check if any of them
-divides a[i] or not.  If we find atleast one number that divides a[i] then a[i]
-is not a prime number.  So, this is a brute force solution with time complexity
-O(N * MAX_A).  Have a look at the "brute_force_solution.cpp" provided by us.
+For any number a[i], we iterate over 2 to a[i] - 1 and check if any of them divides a[i] or not.  If we find atleast one number that divides a[i] then a[i] is not a prime number.  So, this is a brute force solution with time complexity O(N * MAX_A).  Have a look at the "brute_force_solution.cpp" provided by us.
 
 
 
 
 
-Any positive number x, which is non-prime (and not 1), can be written as 
-x = a * b where a > 1 and b > 1.  Here both a and b can not be > root(x), 
-because if a > root(x) and b > root(x) then, a * b > root(x) * root(x), hence
-a * b > x, which contradicts a * b = x.  When number is a square like 16 then
-it can be written as root(16) * root(16).  So, non-prime number x can be writen
-as a * b having at least one of them <= root(x). Now in previous solution for
-each a[i], loop from root(a[i]) + 1 to a[i] - 1 is not necessary. So, now our
-solution will become O(N * root(MAX_A)).  Have a look at the 
-"sub_optimal_solution.cpp" provided by us. 
+Any positive number x, which is non-prime (and not 1), can be written as x = a * b where a > 1 and b > 1.  Here both a and b can not be > root(x), because if a > root(x) and b > root(x) then, a * b > root(x) * root(x), hence a * b > x, which contradicts a * b = x.  When number is a square like 16 then it can be written as root(16) * root(16).  So, non-prime number x can be writen as a * b having at least one of them <= root(x). Now in previous solution for each a[i], loop from root(a[i]) + 1 to a[i] - 1 is not necessary.  So, now our solution will become O(N * root(MAX_A)).  Have a look at the "sub_optimal_solution.cpp" provided by us. 
 
 
 
 
 
-Still we can improve.  We can write any composite number as multiplication of
-prime numbers. Like 60 = 2 * 2 * 3 * 5.  So, when we find any prime number, we
-can visit all the multiple of it and mark them as visited (non-prime).  We
-start from 2 as base case, consider 2 as prime number and mark all its
-multiples 4, 6, 8, 10, ... as visited (non-prime) because they are multiples of 
-2.  After considering 2, we will consider 3.  Now, 3 is not marked as visited,
-which means, there are no factors of 3 and it is a prime number.  Hence for 3
-also, we do the same thing, mark all its multiples 6, 9, 12, 15 ... as visited 
-(non-prime), because they are multiple of 3.  Now 4 comes, but 4 is marked as
-visited by 2, so we know that 4 is not a prime number.  Here also we can do the
-same thing mark all its multiples 8, 12, 16 ... as visited, but all those
-positions are already marked as visited by 2, because all multiples of 4 are
-also multiples of 2.  So, no need to do rework!  Now, we keep on following the
-same steps for next numbers.  Try to find prime numbers till 30 and you will
-get more clear idea.
+Still we can improve.  We can write any composite number as multiplication of prime numbers. Like 60 = 2 * 2 * 3 * 5.  So, when we find any prime number, we can visit all the multiple of it and mark them as visited (non-prime).  We start from 2 as base case, consider 2 as prime number and mark all its multiples 4, 6, 8, 10, ... as visited (non-prime) because they are multiples of 2.  After considering 2, we will consider 3.  Now, 3 is not marked as visited, which means, there are no factors of 3 and it is a prime number.  Hence for 3 also, we do the same thing, mark all its multiples 6, 9, 12, 15 ... as visited (non-prime), because they are multiple of 3.  Now 4 comes, but 4 is marked as visited by 2, so we know that 4 is not a prime number.  Here also we can do the same thing mark all its multiples 8, 12, 16 ... as visited, but all those positions are already marked as visited by 2, because all multiples of 4 are also multiples of 2.  So, no need to do rework!  Now, we keep on following the same steps for next numbers.  Try to find prime numbers till 30 and you will get more clear idea.
 
 
 
 
 
-Still there can be some optimizations.  When we find any prime number like 11,
-we mark 22, 33. 44, 55, 66 ... them as non-prime, but 22, 33, 44, 55 are
-already visited by smaller prime numbers.  Like 22 is visited by 2, 33 is
-visited by 3, 44 is visited by 4 ... 110 is visited by 10.  So, instead of
-start marking multiples as non-prime from x + x, we can start from x * x. 
+Still there can be some optimizations.  When we find any prime number like 11, we mark 22, 33. 44, 55, 66 ... them as non-prime, but 22, 33, 44, 55 are already visited by smaller prime numbers.  Like 22 is visited by 2, 33 is visited by 3, 44 is visited by 4 ... 110 is visited by 10.  So, instead of start marking multiples as non-prime from x + x, we can start from x * x. 
 
-This solution will be O(N * log(log MAX_A)).  Have a look at the
-"optimal_solution.cpp" provided by us.  This algoritham is called as "Sieve of
-Eratosthenes".
+This solution will be O(N * log(log MAX_A)).  Have a look at the "optimal_solution.cpp" provided by us.  This algoritham is called as "Sieve of Eratosthenes".
 
 
 
 
 
-Can we say that solution with time complexity O(N * log(log MAX_A)) is better
-than solution with time complexity O(N * root(MAX_A))?  NO!  It depends on
-situation.  In terms of time complexity of course it is better, but we should
-also consider space!  Solution with time complexity O(N * root(A)) requires
-O(1) extra space, but other needs O(MAX_A) extra space.  So, when space is more
-imp than time, we should opt the slower one! 
+Can we say that solution with time complexity O(N * log(log MAX_A)) is better than solution with time complexity O(N * root(MAX_A))?  NO!  It depends on situation.  In terms of time complexity of course it is better, but we should also consider space!  Solution with time complexity O(N * root(A)) requires O(1) extra space, but other needs O(MAX_A) extra space.  So, when space is more imp than time, we should opt the slower one! 
 
 
 
 
 
-When we are given a single integer and we need to find if it is a prime or not,
-we should use Sieve of Eratosthenes?  No!!  If there is only one number to
-check then, we can do it in O(root(A)) by iterating over 2 to root(A).  We
-should use Sieve of Eratosthenes only when, numbers are given in some range
-where pre-processing can work.  Think! 
+When we are given a single integer and we need to find if it is a prime or not, we should use Sieve of Eratosthenes?  No!!  If there is only one number to check then, we can do it in O(root(A)) by iterating over 2 to root(A).  We should use Sieve of Eratosthenes only when, numbers are given in some range where pre-processing can work.  Think! 
 
 
 
 
 
-In this problem we are given the range of a[i]'s.  But when given a stream of
-random numbers and nothing is specified about range of a[i] then we can use
-caching (though caching will be useful only when some numbers are going to
-repeat, but in real life it is likely to happen).  We maintain two hash-tables.
-One containing prime numbers encountered till now and other containing
-non-prime numbers encountered till now.  For next number, we check the presence
-in our hash tables and if it is present in one of them then nothing much to do,
-but if it is not present then we use O(root(number)) method to check if it is
-prime or non-prime and add into appropriate hash table for future reference.
+In this problem we are given the range of a[i]'s.  But when given a stream of random numbers and nothing is specified about range of a[i] then we can use caching (though caching will be useful only when some numbers are going to repeat, but in real life it is likely to happen).  We maintain two hash-tables.  One containing prime numbers encountered till now and other containing non-prime numbers encountered till now.  For next number, we check the presence in our hash tables and if it is present in one of them then nothing much to do, but if it is not present then we use O(root(number)) method to check if it is prime or non-prime and add into appropriate hash table for future reference.
 
-Here also we can improve, there is no need to store even numbers as non-prime.
-We can handle the case of even number separately.  Doing this will helo to save
-some space.  
+Here also we can improve, there is no need to store even numbers as non-prime.  We can handle the case of even number separately.  Doing this will help to save some space.
 
 
 
