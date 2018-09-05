@@ -3,20 +3,19 @@ import java.util.*;
 import java.text.*;
 import java.math.*;
 import java.util.regex.*;
-import javafx.util.Pair;
 
-public class Solution {
+class Solution {
 
     static class Node
-	{
-		Integer val;
-		Vector<Node> neighbours = new Vector<Node>(0);
-		Node(Integer _val)
-		{
-			val = _val;
-			neighbours.clear();
-		}
-	};
+    {
+        Integer val;
+        Vector<Node> neighbours = new Vector<Node>(0);
+        Node(Integer _val)
+        {
+            val = _val;
+            neighbours.clear();
+        }
+    };
 
 	// ---- START ----
 
@@ -77,24 +76,24 @@ public class Solution {
     }
 
     static String helper(int graph_nodes, int[] graph_from, int[] graph_to) {
-    	HashMap<Integer, Node> original = new HashMap<Integer, Node>();
+        int MAX_NODES = 315;
+        
+        HashMap<Integer, Node> original = new HashMap<Integer, Node>();
         for (int i = 1; i <= graph_nodes; i++)
         {
             original.put(i, new Node(i));
         }
-        HashMap<Pair<Integer, Integer>, Boolean> edges = 
-            new HashMap<Pair<Integer, Integer>, Boolean>();
+        HashMap<Integer, Boolean> edges = new HashMap<Integer, Boolean>();
         int graph_edges = graph_from.length;
         for (int i = 0; i < graph_edges; i++)
         {
             original.get(graph_from[i]).neighbours.add(original.get(graph_to[i]));
 
-            edges.put(new Pair<Integer, Integer> (graph_from[i], graph_to[i]), true);
-        }	 
-        
+            edges.put(MAX_NODES * (graph_from[i] - 1) + graph_to[i] - 1, true);
+        }
+
         // Student will return only one node. Do a dfs and get all the nodes.
-        HashMap<Integer, Node> reversed = 
-            helper_get_all_addresses_in_reversed_graph(build_other_graph(original.get(1)));
+        HashMap<Integer, Node> reversed = helper_get_all_addresses_in_reversed_graph(build_other_graph(original.get(1)));
 
         if (reversed.size() != graph_nodes)
         {
@@ -117,11 +116,12 @@ public class Solution {
             for (int i = 0; i < n; i++)
             {
                 int _val = node.neighbours.get(i).val;
-                if (edges.containsKey(new Pair<Integer, Integer> (_val, val)) == false)
+                int temp = MAX_NODES * (_val - 1) + val - 1;
+                if (edges.containsKey(temp) == false)
                 {
                     return "Wrong Answer!";
                 }
-                edges.remove(new Pair<Integer, Integer> (_val, val));
+                edges.remove(temp);
             }
         }
         // All the edges should be present in the new graph. 
@@ -134,14 +134,7 @@ public class Solution {
 
     public static void main(String[] args) throws IOException {
         Scanner in = new Scanner(System.in);
-        final String fileName = System.getenv("OUTPUT_PATH");
-        BufferedWriter bw = null;
-        if (fileName != null) {
-            bw = new BufferedWriter(new FileWriter(fileName));
-        }
-        else {
-            bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        }
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         String res;
         String[] graph_nodesm = in.nextLine().split(" ");
