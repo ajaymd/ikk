@@ -42,9 +42,5 @@ Given a 3-ary tree with 5 nodes. Node 1 has 3 children 2, 3 and 5, and node 5 ha
 Longest path from root is 1 -> 5 -> 4 and it's length is 2.
 
 Notes:
-Due to some HackerRank limitations currently we are providing code-stubs only in C++, C++ 14, C#, Java 7, Java 8, JavaScript, Python 3 and Swift.
 
-Total there are 30 test cases, out of which 1 test case (test case no. 28) is a degenerate tree (pathological tree) of size 10^5. Due to recursion limit, some languages like javascript and python might not pass it, so don't worry about that. But if you are using C++ or Java then it is expected to pass it.  
-
-For other languages simply write your solution (no need to read input and write output) assuming that you are given input arguments mentioned in the input format. Your solution will be checked manually. Do not worry about input, output and testcases. Just submit it.  
-
+Total there are 30 test cases, out of which 1 test case (test case no. 027) is a degenerate tree (pathological tree) of size 10^5. Due to recursion limit, some languages like JavaScript, Ruby, Python etc. might not pass it, so don't worry about that. But if you are using C++ or Java then it is expected to pass it.  
