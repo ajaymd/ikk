@@ -6,3 +6,4 @@ a.out.dSYM
 out/
 Arrays/TEST/
 venv
+*.zip
